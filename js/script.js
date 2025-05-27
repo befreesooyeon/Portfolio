@@ -46,3 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
     moveHighlightTo(activeLink);
   });
 });
+
+// Visual-Logo-spin Gsap
+  window.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(".line1 .logo-spin", {
+    rotation: 360,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".visual",
+      start: "top top",
+      end: "bottom top",
+      scrub: 0.1,
+      // markers: true
+    }
+  });
+});

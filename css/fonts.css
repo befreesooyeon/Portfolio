@@ -24,6 +24,29 @@ src: url('../fonts/Pretendard-Bold.otf') format('opentype');
 
 @font-face {
 font-family: 'Ampersand';
+font-style: normal;
 font-weight: 400;
 src: url('../fonts/FHAmpersandDisplayTest-Regular.otf') format('opentype');
 }
+
+@font-face {
+font-family: 'Ogg';
+font-style: normal;
+font-weight: 400;
+src: url('../fonts/Ogg-Regular.otf') format('opentype');
+}
+
+@font-face {
+font-family: 'Ogg';
+font-style: italic;
+font-weight: 400;
+src: url('../fonts/Ogg-RegularItalic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Pinyon_Script';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../fonts/PinyonScript-Regular.ttf') format('truetype');
+}
+

@@ -11,7 +11,7 @@ li {list-style: none;}
 address, em, i {font-style: normal;}
 
 /* Layout */
-.wrap {width: 100%; overflow: hidden; position: relative; margin: auto;}
+.wrap {width: 100%; overflow: hidden; position: relative; margin: auto; margin-bottom: 3000px;}
 body {font-family: 'pretendard'; font-style: normal; font-weight: 400; background: #F5F5F5; color: #252525; font-size: 17px;}
 
 /* 공통요소 */
@@ -19,6 +19,8 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 
 /* 영어폰트 */
 .en1 {font-family: 'Ampersand', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: -10px;}
+.en2 {font-family: 'Ogg'; font-style: normal;}
+.en3 {font-family: 'Pinyon_Script';}
 
 /* header */
 header {position: fixed; top: 0; left: 0; width: 100%; height: 40px; z-index: 100; margin-top: 20px;}
@@ -36,17 +38,31 @@ header {position: fixed; top: 0; left: 0; width: 100%; height: 40px; z-index: 10
 .inner header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: #000; border-radius: 50%;}
 
 /* visual */
-.visual {width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;}
-.visual .inner {margin: 190px 0 130px; }
-.visual .inner .visual-L {position: absolute; bottom: 100px; left: 96px;}
-.visual .inner .visual-L .top {font-size: 16px; color: #666; text-align: left;}
-.visual .inner .visual-L .bottom {display: flex; gap: 10px;}
-.visual .inner .visual-L .bottom p {font-size: 26px; text-align: right;}
-.visual .inner .visual-R {text-align: center; margin: 0 auto;}
-.visual .inner .visual-R .mainTitle {text-align: right;}
-.visual .inner .visual-R .mainTitle .line {display: flex; justify-content: flex-end; gap: 4px;}
-.visual .en1 {font-size: 274px; line-height: 230px; }
+.visual { width: 100%; height: 100vh; text-align: right; position: relative;}
+.visual .inner {display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding: 170px 0 130px; box-sizing: border-box;}
+.visual .mainTitle { text-align: right;}
+.visual .mainTitle .en1 {font-size: 274px; line-height: 234px; white-space: nowrap;}
+.visual .mainTitle .line1 { display: flex; justify-content: flex-end; align-items: center; gap: 4px;}
+.visual .mainTitle .line2, .visual .mainTitle .line3 { display: block; }
+.visual .subText {display: flex; flex-direction: column; gap: 16px; text-align: left; position: absolute; bottom: 15%;}
+.visual .subText .copyright { font-size: 16px; color: #666; margin-bottom: 30px;}
+.visual .subText .desc {display: flex; flex-direction: row-reverse; gap: 50px; font-size: 22px;}
 
+/* narrative */
+.narrative {margin-top: 130px;}
+.narrative .inner {position: relative;}
+.narrative .top {display: flex; justify-content: space-between; margin-bottom: 155px;}
+.narrative .top .leftBox .line1 { font-size: 160px; line-height: 1;}
+.narrative .top .leftBox .line2.en2 {display: block; font-size: 160px; margin-left: 175px; line-height: 0.6;} 
+.narrative .top .leftBox .line2.en3 {color: #B7D3C6;}
+.narrative .top .rightBox {text-align: right;}
+.narrative .top .rightBox p {font-size: 16px; line-height: 24px; margin-bottom: 104px;}
+.narrative .top .rightBox img {width: 90%;}
 
+.narrative .bottom {display: flex; border-top: 1px solid #252525; width: 62%; margin-left: 175px; padding-top: 20px; box-sizing: border-box;}
 
-
+.narrative .bottom .caption {margin-right: 50px; font-size: 18px;}
+.narrative .bottom .en {margin-right: 40px; font-size: 16px; line-height: 24px;}
+.narrative .bottom .kr {font-size: 16px; line-height: 24px;}
+.narrative .scroll {position: absolute; right: 0; bottom: 28%;}
+.narrative .scroll img {margin-left: 16px;}
