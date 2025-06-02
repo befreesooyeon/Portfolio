@@ -9,7 +9,7 @@
   <script src="js/script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <title>Sooyeon LEE - Desinger</title>
+  <title>Sooyeon LEE - Designer</title>
 </head>
 <body>
   <div class="wrap">
@@ -22,7 +22,7 @@
       <a href="#">HOME</a>
       <a href="#">ABOUT</a>
       <a href="#">WORKS</a>
-      <a href="#">CONTACT</a>
+      <a href="#" class="mail-link" onclick="copyEmail()"   title="클릭하면 복사됩니다">CONTACT</a>
       <div class="highlight"></div>
     </nav>
 
@@ -40,7 +40,7 @@
       <div class="inner">
         <div class="mainTitle">
           <p class="line1 en1">DESINGER <img class="logo-spin" src="images/Logo.svg" alt="로고 이미지"></p>
-          <p class="line2 en1">CRAFTED UX</p>
+          <p class="line2 en1">CRAFTED UX <span class="dot"></span></p>
           <p class="line3 en1">BY FEEL</p>
         </div>
 
@@ -56,41 +56,269 @@
   </div>
       </div>
     </section>
-    <section class="narrative">
-      <div class="inner">
-        <div class="top">
-          <div class="leftBox">
-            <span class="line1 en2">Intro</span>
-            <span class="line2 en2"><span class="line2 en3">N</span>arrative</span>
+    <!-- narrative (가로스크롤) -->
+    <div class="narrative-container">
+      <section class="narrative">
+        <div class="inner">
+          <div class="top">
+            <div class="leftBox">
+              <h2 class="line1 en2">Intro</span>
+              <h2 class="line2 en2"><span class="line2 en3">N</span>arrative</h2>
+            </div>
+            <div class="rightBox">
+            <p>This is a brief narrative of how I became the designer I am today. <br>
+            Not just what I’ve done, but how I’ve grown.</p>
+            <img src="images/exImg01.png" alt="인트로 이미지">
+            </div>
+            </div>
+          <div class="bottom">
+            <div class="des">      
+              <p class="caption">(Info)</p>
+              <ul> <li class="en">I started with questions, made with curiosity,<br>
+                and grew through constant exploration.<br>
+                Now, I design to make things not only work—but mean something.
+              </li>
+              <li class="kr">
+                질문에서 시작해, 호기심으로 만들고 <br>
+                시행착오 속에서 조금씩 성장해왔습니다. <br>
+                지금은 작동하는 것을 넘어, 의미 있는 디자인을 고민합니다.
+              </li>
+            </ul>
+            </div>
+            <span class="scroll">SCROLL<img src="images/icon_scroll.svg" alt=""></span>
           </div>
-          <div class="rightBox">
-          <p>This is a brief narrative of how I became the designer I am today. <br>
-          Not just what I’ve done, but how I’ve grown.</p>
-          <img src="images/exImg01.png" alt="인트로 이미지">
-          </div>
-          </div>
-        <div class="bottom">
-          <p class="caption">(Info)</p>
-          <p class="en">
-            I started with questions, made with curiosity,<br>
-            and grew through constant exploration.<br>
-            Now, I design to make things not only work—but mean something.
-          </p>
-          <p class="kr">
-            질문에서 시작해, 호기심으로 만들고 <br>
-            시행착오 속에서 조금씩 성장해왔습니다. <br>
-            지금은 작동하는 것을 넘어, 의미 있는 디자인을 고민합니다.
-          </p>
         </div>
-        <span class="scroll">scroll <img src="images/icon_scroll.svg" alt=""></span>
+      </section>
+      <!-- orizin -->
+      <section class="orizin">
+        <div class="inner">
+          <h2 class="tit">
+            <span class="line1 en2"><span class="en4">O</span>ri</span>
+            <span class="line2 en2">gin</span>
+          </h2>
+          <ul class="imgs">
+            <li>
+              <img src="images/origon_01.png" alt="포트폴리오 작업 중인 사진">
+              <div class="txt">
+                <p class="en3">01</p>
+                <p class="txt">Working on<br> Portfolio</p>
+              </div>
+            </li>
+            <li>
+              <img src="images/origon_02.png" alt="대학교 시각디자인과 졸업전시 사진">
+              <div class="txt">
+                <p class="en3">02</p>
+                <p class="txt">University Graduation Show<br>(A+ UX/UI)</p>
+              </div>
+            </li>
+          </ul>
+          <div class="des">
+            <p class="caption">[Rooted in curiosity]</p>
+            <div class="txtbox">
+              <p class="en">Design wasn’t a choice for me—it came naturally.<br>
+              My habit of observing and constantly asking, “Why is it<br>
+              made this way?” led me to UX/UI design.  I found more joy<br>
+              in understanding the why than just creating something.</p>
+              <p class="kr">
+                디자인은 제게 선택이 아닌, 자연스러운 흐름이었습니다. <br>
+                무언가를 관찰하고 “왜 이렇게 만들었을까?”를 끊임없이<br>
+                고민하는 성향은 저를 UX/UI 디자인으로 이끌었습니다. <br>
+                만드는 것 자체보다, 그 이유를 탐구하는 과정이 흥미로웠습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- now -->
+      <section class="now">
+        <div class="inner">
+          <div class="left"> 
+            <h2 class="tit en2">
+              <span class="en4">N</span>ow
+            </h2>
+          </div>
+          <div class="right">
+            <div class="content">
+              <div class="folder">
+                <div class="images">
+                  <p class="img01 draggable-item"><img src="images/now_01.png" alt="데일리 일상">Daily.jpg</p>
+                  <p class="img02 draggable-item"><img src="images/now_02.png" alt=" 커피 사진">need.jpg</p>
+                  <p class="img03 draggable-item"><img src="images/now_03.png" alt="데일리 일상">Senior Show.png</p>
+              </div>
+                <img src="images/now_folder.png" alt="폴더 이미지">
+                <div class="textBox">
+                  <p class="name">Soo yeon lee.zip</p>
+                  <p class="items">3 items</p>
+                </div>
+              </div>
+            </div>
+            <div class="des">
+              <p class="caption">[Shaped by doing]</p>
+              <div class="txtbox">
+                <p class="en">Even small projects taught me a lot through trial and error. <br> While juggling different jobs to make ends meet, I never gave up on design—and that perseverance<br>
+                shaped me. Now, I strive to balance function, emotion, and user-centered thinking.</p>
+                <p class="kr">
+                작은 프로젝트라도 직접 해내며 시행착오 속에서 저만의 기준을 쌓아왔습니다.<br>여러 일을 병행하면서도 디자인을 놓지 않았던 시간이 지금의 저를 만들었습니다. <br>지금은 실용성과 감성, 사용자 중심 사고 사이의 균형을 고민하며 설계합니다.
+                </p>
+            </div>
+            </div>
+          </div>
+      </div>
+      <div class="tooltip">
+            <!-- 삼각형 꼬리 -->
+            <svg class="tooltip-tail" xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
+                <path d="M0.474546 1.57468C0.205567 0.853401 0.818264 0.111425 1.5774 0.239122L24.6361 4.11792C25.3953 4.24562 25.7315 5.14722 25.2413 5.7408L10.3528 23.7708C9.86267 24.3644 8.91375 24.2048 8.64477 23.4835L0.474546 1.57468Z" fill="#4A6CF7"/>
+            </svg>
+            <!-- 말풍선 본체 -->
+            <div class="tooltip-bubble">
+              <span>Sooe</span>
+            </div>
+      </div>
+      </section>
+      <section class="become">
+        <div class="inner">
+          <div class="left"> 
+            <h2 class="tit en2">
+              <span class="line1 en2"><span class="en4">B</span>e</span>
+              <span class="line2 en2">come</span>
+            </h2>
+          </div>
+          <div class="right">
+            <div class="photo">
+              <img src="images/become_01.png" alt="대학교 시각디자인과 졸업전시 사진">
+                <div class="txt">
+                  <p class="en3">03</p>
+                  <p class="txt">[End]</p>
+                </div>
+            </div>
+            <div class="des">
+              <p class="caption">[Evolving Vision]</p>
+              <div class="txtbox">
+                <p class="en">I want to design experiences that are not just beautiful,<br> but meaningful to both users and brands.<br>My goal is to grow as a designer who embraces challenges and solves problems with depth.</p>
+                <p class="kr">
+                앞으로는 단순히 예쁜 디자인이 아닌, <br>사용자와 브랜드 모두에게 의미 있는 경험을 주는 디자인을 만들고 싶습니다.<br>도전 앞에서 멈추지 않고, 깊이 있는 문제 해결을 통해 성장하는 디자이너가 되고자 합니다.
+                </p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- modal -->
+    <div class="modal-overlay" id="folderModal">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="top">
+          <ul class="madal-close">
+            <li class="r"></li>
+            <li class="y"></li>
+            <li class="g"></li>
+          </ul>
+          <p>Soo yeon lee.zip</p>
+        </div>
+        <div class="bottom">
+          <ul>
+            <li><img src="images/modal_1.png" alt="사진">01_work.jpeg</li>
+            <li><img src="images/modal_2.png" alt="사진">02_learn.jpeg</li>
+            <li><img src="images/modal_3.png" alt="사진">03_design.jpe...</li>
+          </ul>
         </div>
       </div>
+    </div>
+    </div>
+    <!-- keywords -->
+    <sectin class="keyWords">
+      <div class="textWrap"> 
+        <div class="line1 en5">Curious</div>
+        <div class="line2">
+          <span class="en2">hands</span>
+          <span class="line-divider"></span>
+          <span>on</span>
+        </div>
+        <div class="line3">
+          <div class="scrollText">
+            <span class="one en2">considerate</span>
+            <span class="two"><span class="en3">R</span>esilient </span>
+            <span class="one en2">Observant</span>
+            <span class="two"><span class="en3">I</span>ntentional </span>
+          </div>
+        </div>
+        <div class="line4 en5">& Evolving <img src="images/keyword_arrow.svg" alt="아래 방향 스크롤"></div>
+      </div>
+    </sectin>
+    <!-- marquee -->
+    <div class="marquee">
+      <div class="marquee-content">
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+      </div>
+      <div class="marquee-content">
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+        <span><img src="images/marquee_Logo.svg" alt="">About me</span>
+      </div>
+    </div>
+    <!-- about -->
+    <section class="about">
+      <div class="inner">
+        <div class="profile">
+          <div class="left">
+            <h2 class="name">Soo yeon Lee<span class="dot"></span> <span class="en6">UIUX Desinger</span></h2>
+            <p class="info">
+              Korea, Seoul
+              <span>qazxcvbnm322@naver.com</span>
+            </p>
+        <p class="introduction">
+          <span class="en7">Aiming to design meaningful<br>experiences for users and brands.</span>
+          <span class="first-group">
+            안녕하세요. 만나뵙게 되어 반갑습니다. <br>
+            시각디자인을 전공하고, UI/UX 디자인을 중심으로 활동해왔습니다. <br>
+            약 1년간의 실무와 프리랜서 경험을 통해, 사용자 경험을 깊이 고민하는 습관을 길렀습니다.<br>
+            초기에는 시각적 완성도에 집중했으나, 점차 문제 해결과 설계의 맥락에 관심을 갖게 되었습니다.
+          </span>
+          <span class="second-group">
+            기획 단계부터 흐름을 고려해 기능과 형태의 균형을 맞추며, 설득력 있는 디자인을 지향합니다. <br>
+            현재는 단순히 보기 좋은 화면보다, 사용자와 브랜드 모두에게 의미 있는 경험을 설계하고자 합니다.
+          </span>
+        </p>
+            <a href="">GET MY RESUME <img src="images/icon_arrow-up.svg" alt=""></a>
+          </div>
+          <div class="right">
+            <img src="images/about_profile.png" alt="프로필 사진">
+          </div>
+        </div>
+      <div class="contents">
+        <div class="section">
+          <h3 class="en8">(Experiences)</h3>
+          <ul class="list">
+            <li>
+              <span class="job">UI UX Designer (worker)</span>
+              <span class="company">@ gridge</span>
+              <span class="period">2024-2025</span>
+            </li>
+            <li>
+              <span class="job">Design Intern</span>
+              <span class="company">@ soft_squared</span>
+              <span class="period">2024</span>
+            </li>
+            <li>
+              <span class="job">UI UX Designer</span>
+              <span class="company">@ M doctor</span>
+              <span class="period">2023-2024</span>
+            </li>
+          </ul>
+        </div>
+        
+
+      </div>
     </section>
-
-
-
-
-
   </div>
 </body>
 </html>

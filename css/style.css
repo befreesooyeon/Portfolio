@@ -12,57 +12,209 @@ address, em, i {font-style: normal;}
 
 /* Layout */
 .wrap {width: 100%; overflow: hidden; position: relative; margin: auto; margin-bottom: 3000px;}
-body {font-family: 'pretendard'; font-style: normal; font-weight: 400; background: #F5F5F5; color: #252525; font-size: 17px;}
+body {font-family: 'pretendard'; font-style: normal; font-weight: 400; background: #F5F5F5; color: #252525; font-size: 16px;}
 
 /* 공통요소 */
-.inner {margin: auto 96px;}
+.inner {margin: 0 96px;}
+.dot::after {content: ''; width: 14px; height: 14px; border-radius: 50%; background: #B7D3C6; display: inline-block; margin-left: 20px; cursor: pointer;}
+
 
 /* 영어폰트 */
-.en1 {font-family: 'Ampersand', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: -10px;}
+.en1 {font-family: 'Ampersand', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: -14px;}
 .en2 {font-family: 'Ogg'; font-style: normal;}
-.en3 {font-family: 'Pinyon_Script';}
+.en3 {font-family: 'Pinyon_Script'; letter-spacing: -4px;}
+.en4 {font-family: 'Ogg'; font-style: italic;}
+.en5 { font-family: 'voyage'; letter-spacing: -4px; line-height: 1;}
+.en6 {font-family: 'Ogg'; font-weight: 500; line-height: 1;}
+.en7 {font-family: 'Ogg-Book'; letter-spacing: -2px;}
+.en8 {font-family: 'Ampersand'; font-style: italic; line-height: 1;}
 
 /* header */
-header {position: fixed; top: 0; left: 0; width: 100%; height: 40px; z-index: 100; margin-top: 20px;}
-.inner header .innerHeader { display: flex; justify-content: space-between; align-items: center; height: 100%; margin: 0 auto; position:relative; margin: auto 96px;}
-.inner header .innerHeader .logo a {display: block; width: 100%; height: 100%; font-size: 20px; font-weight: normal;}
-.inner header .innerHeader .gnb-c {  position: absolute; left: 50%; transform: translateX(-50%);
+header {position: fixed; top: 0; left: 0; width: 100%; height: 40px; z-index: 100; margin-top: 20px; font-size: 17px;}
+header .innerHeader { display: flex; justify-content: space-between; align-items: center; height: 100%; margin: 0 auto; position:relative; margin: auto 96px;}
+header .innerHeader .logo a {display: block; width: 100%; height: 100%; font-size: 20px; font-weight: normal;}
+header .innerHeader .gnb-c {  position: absolute; left: 50%; transform: translateX(-50%);
   display: flex; justify-content: center; align-items: center; gap: 24px; height: 40px; width: 343px; border: 1px dashed #252525; background: hsla(0, 0%, 99%, 0.4); border-radius: 40px; z-index: 1;}
-.inner header .innerHeader .gnb-c a {display: block; box-sizing: border-box; position: relative;
+header .innerHeader .gnb-c a {display: block; box-sizing: border-box; position: relative;
   z-index: 2; color: #252525; }
-.inner header .innerHeader .gnb-c a.active, header .innerHeader .gnb-c a.focus {color: #fff;}
-.inner header .innerHeader .gnb-c .highlight {position: absolute; top: 6px; height: 28px;  border-radius: 20px; background: #E4E4E4; z-index: 1; transition: all 0.3s ease;}
-.inner header .innerHeader .gnb-r ul {display: flex; gap: 20px;}
-.inner header .innerHeader .gnb-r ul li {height: 40px; border: 1px dashed #252525; background: hsla(0, 0%, 99%, 0.4); border-radius: 40px; line-height: 40px; text-align: center;}
-.inner header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 0 20px; box-sizing: border-box; gap: 4px;}
-.inner header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: #000; border-radius: 50%;}
+header .innerHeader .gnb-c a.active, header .innerHeader .gnb-c a.focus {color: #fff;}
+header .innerHeader .gnb-c .highlight {position: absolute; top: 6px; height: 28px;  border-radius: 20px; background: #E4E4E4; z-index: 1; transition: all 0.3s ease;}
+header .innerHeader .gnb-r ul {display: flex; gap: 20px;}
+header .innerHeader .gnb-r ul li {height: 40px; border: 1px dashed #252525; background: hsla(0, 0%, 99%, 0.4); border-radius: 40px; line-height: 40px; text-align: center;}
+header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 0 20px; box-sizing: border-box; gap: 4px;}
+header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: #000; border-radius: 50%;}
 
-/* visual */
+/* Section-visual */
 .visual { width: 100%; height: 100vh; text-align: right; position: relative;}
 .visual .inner {display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding: 170px 0 130px; box-sizing: border-box;}
 .visual .mainTitle { text-align: right;}
 .visual .mainTitle .en1 {font-size: 274px; line-height: 234px; white-space: nowrap;}
 .visual .mainTitle .line1 { display: flex; justify-content: flex-end; align-items: center; gap: 4px;}
-.visual .mainTitle .line2, .visual .mainTitle .line3 { display: block; }
+.visual .mainTitle .line2 {display: flex; align-items: end; justify-content: flex-end; margin-left: 30px;}
 .visual .subText {display: flex; flex-direction: column; gap: 16px; text-align: left; position: absolute; bottom: 15%;}
-.visual .subText .copyright { font-size: 16px; color: #666; margin-bottom: 30px;}
+.visual .subText .copyright {font-size: 14px; color: #666; margin-bottom: 30px;}
 .visual .subText .desc {display: flex; flex-direction: row-reverse; gap: 50px; font-size: 22px;}
 
-/* narrative */
-.narrative {margin-top: 130px;}
-.narrative .inner {position: relative;}
+/* Section-narrative 가로 스크롤 시작*/
+.narrative-container {padding: 130px 0 170px; box-sizing: border-box; display: flex; width: 100%; height: 100vh; overflow: hidden;}
+
+.narrative {width: 100vw; height: 100vh; flex-shrink: 0;}
 .narrative .top {display: flex; justify-content: space-between; margin-bottom: 155px;}
-.narrative .top .leftBox .line1 { font-size: 160px; line-height: 1;}
-.narrative .top .leftBox .line2.en2 {display: block; font-size: 160px; margin-left: 175px; line-height: 0.6;} 
+.narrative .top .leftBox .line1 { font-size: 160px; line-height: 1; font-weight: normal;}
+.narrative .top .leftBox .line2.en2 {display: block; font-size: 160px; margin-left: 175px; line-height: 0.6;  font-weight: normal;} 
 .narrative .top .leftBox .line2.en3 {color: #B7D3C6;}
 .narrative .top .rightBox {text-align: right;}
-.narrative .top .rightBox p {font-size: 16px; line-height: 24px; margin-bottom: 104px;}
+.narrative .top .rightBox p {line-height: 24px; margin-bottom: 104px;}
 .narrative .top .rightBox img {width: 90%;}
-
-.narrative .bottom {display: flex; border-top: 1px solid #252525; width: 62%; margin-left: 175px; padding-top: 20px; box-sizing: border-box;}
-
+.narrative .bottom {display: flex; justify-content: space-between; align-items: flex-start}
+.narrative .bottom .des {display: flex; border-top: 1px solid #252525; width: 62%; margin-left: 175px; padding-top: 20px; box-sizing: border-box;}
 .narrative .bottom .caption {margin-right: 50px; font-size: 18px;}
-.narrative .bottom .en {margin-right: 40px; font-size: 16px; line-height: 24px;}
-.narrative .bottom .kr {font-size: 16px; line-height: 24px;}
-.narrative .scroll {position: absolute; right: 0; bottom: 28%;}
-.narrative .scroll img {margin-left: 16px;}
+.narrative .bottom .des ul {display: flex;}
+.narrative .bottom .en {margin-right: 40px; line-height: 24px;}
+.narrative .bottom .kr {line-height: 24px;}
+.narrative .bottom .scroll { line-height: 24px; display: flex; align-items: center;}
+.narrative .bottom .scroll img {margin-left: 16px; animation: scrollTip 2s ease-out infinite;
+}
+
+/* Section-Origin */
+
+/* 공통 텍스트 */
+section .inner .tit {font-size: 160px; font-weight: normal; color: #B7D3C6; line-height: 0.6;}
+section .inner .tit .line2 {margin-left: 164px;}
+section .inner .des .en {margin-bottom: 15px; line-height: 24px;}
+section .inner .des .kr {line-height: 24px;}
+section .inner .des {display: flex; width: 100%; gap: 50px;}
+section .inner .txt {display: flex; justify-content: space-between; gap: 100px; text-align: right; line-height: 22px;}
+section .inner .txt .en3 {font-size: 40px; line-height: 1;}
+
+
+.orizin {width: 2400px; height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;}
+.orizin .inner {display: flex; align-items: center;}
+.orizin .inner > *:not(:last-child) {margin-right: 220px;}
+/* .orizin .inner .tit .line2 {margin-left: 164px;} */
+.orizin .inner .imgs {display: flex; gap: 100px;}
+.orizin .inner .imgs li img {margin-bottom: 20px; filter: grayscale(100%);}
+.orizin .inner .des .caption {font-size: 18px;} 
+.orizin .inner .des .en {margin-bottom: 15px; line-height: 24px;}
+.orizin .inner .des .kr {line-height: 24px;}
+
+/* .narrative scroll animation */
+@keyframes scrollTip {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+/* hover */
+.orizin .inner .imgs li img:hover {filter: grayscale(0%);}
+
+/* Section-now */
+.now {width: 100vw; height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative;}
+.now .inner {display: flex; align-items: center; gap: 148px;}
+.now .inner .right {position: relative; width: 100%;}
+.now .inner .right .content .folder {margin-top: 260px;}
+.now .inner .right .content .folder > img {cursor: pointer;}
+.now .inner .right .content .folder .images img {display: block; margin-bottom: 10px; border: 8px solid #fff; box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15); width: 80%;}
+.now .inner .right .content .folder .images p {font-weight: 300;}
+.now .inner .right .content .folder .images .img01 {position: absolute; left: 3%; top: 129px;}
+.now .inner .right .content .folder .images .img02 {position: absolute; top: 10%; right: 249px;}
+.now .inner .right .content .folder .images .img03 {position: absolute; top: 129px; right: 0;}
+.now .inner .right .content .folder {text-align: center; margin-bottom: 64px;}
+.now .inner .right .content .folder .textBox {margin-top: 10px;}
+.now .inner .right .content .folder .textBox .name {font-size: 24px; color: #666; font-weight: 300; margin-bottom: 7px;}
+.now .inner .right .content .folder .textBox .items {color: #666; font-weight: 300;}
+
+/* images Drag */
+.draggable-item {position: absolute; cursor: move; user-select: none;}
+.draggable-item.dragging {z-index: 1000;}
+
+/* tooltip */
+.tooltip { position: absolute; display: inline-flex; align-items: center;
+    background: transparent; top: -100px; left: 200%;}
+.tooltip-bubble {padding: 8px 13px; box-sizing: border-box; display: flex; justify-content: center; align-items: center; border-radius: 20px;
+    background: #4A6CF7; color: #fff; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15); z-index: 2; line-height: 24px; margin-left: 6px; margin-top: 30px; z-index: 9999;}
+
+/* 모달 오버레이 */
+.modal-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); display: none; justify-content: center; align-items: center; z-index: 9999;}
+.modal-overlay.active {display: flex;}
+
+/* 모달 내용 */
+.modal-content {width: 1000px; height: 600px; border-radius: 14px; border: 1px solid rgba(0, 0, 0, 0.12); background: #FFF; box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.15); position: relative;}
+
+/* 모달 탑 */
+.modal-content .modal-body .top {display: flex; justify-content: space-between; align-items: center; padding: 25px 18px 0 18px; box-sizing: border-box; position: relative;}
+.modal-content .modal-body .top p {position: absolute; left: 50%; transform: translateX(-50%); margin: 0;}
+.modal-content .modal-body .top .madal-close {display: flex; gap: 12px;}
+.modal-content .modal-body .top .madal-close li {border: 1px solid rgba(0, 0, 0, 0.12);}
+.modal-content .modal-body .top .madal-close .r {display: block; width: 17px; height: 17px; border-radius: 50%; background: #FF5E57; cursor: pointer;}
+.modal-content .modal-body .top .madal-close .y {display: block; width: 17px; height: 17px; border-radius: 50%; background: #FFBB2E;}
+.modal-content .modal-body .top .madal-close .g {display: block; width: 17px; height: 17px; border-radius: 50%; background: #38C149;}
+
+/* 모달 바텀 */
+.modal-content .modal-body .bottom {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;}
+.modal-content .modal-body .bottom ul {margin: 0; display: flex; justify-content: center; gap: 100px;}
+.modal-content .modal-body .bottom ul li {text-align: center; font-weight: 300;}
+.modal-content .modal-body .bottom ul li img {display: block; margin-bottom: 20px; border: 8px solid #fff; box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15); filter: grayscale(100%); transition: all .2s;}
+
+/* img hover */
+.modal-content .modal-body .bottom ul li img:hover {
+  filter: grayscale(0%); transform: rotate(6deg) scale(1.1); transition: all .2s;}
+
+/* Section-become */
+.become {width: 100vw; height: 100%; flex-shrink: 0; display: flex; align-items: flex-start; justify-content: space-between; 
+    position: relative;}
+.become .inner {display: flex; align-items: center; justify-content: space-between;}
+.become .inner .left .tit span {white-space: nowrap;}
+.become .inner .right {align-self: flex-start;}
+.become .inner .right .des {margin-top: 140px;}
+.become .inner .right .photo img {margin-bottom: 20px; width: 100%; filter: grayscale(100%);}
+
+/* Section-keyword */
+.keyWords .textWrap {padding: 130px 195px; box-sizing: border-box; text-align: center; line-height: 1;}
+.keyWords .textWrap > div:not(:last-child) {margin-bottom: 10px;}
+.keyWords .textWrap .line1, .keyWords .textWrap .line4 {font-size: 130px;}
+.keyWords .textWrap .line2 {font-size: 130px; display: flex; gap: 67px; align-items: baseline; justify-content: center;}
+.keyWords .textWrap .line2 .line-divider {width: 300px; height: 1px; background: #252525; align-self: center;}
+.keyWords .textWrap .line3 {border: 1px solid #252525; border-radius: 500px; max-width: 1540px; width: 100%; overflow: hidden; margin: 0 auto;}
+.keyWords .textWrap .line3 .scrollText {display: flex; gap: 100px; font-size: 150px; padding: 25px 26px; box-sizing: border-box; line-height: 1; align-items: center;}
+.keyWords .textWrap .line4 img {margin-left: 20px;}
+
+/* hover */
+.keyWords .textWrap .line3 .scrollText span:hover {color: #B7D3C6; transition: all .1s;}
+
+
+/* marquee */
+.marquee {overflow: hidden; white-space: nowrap; box-sizing: border-box; padding: 25px 0; border-top: 1px solid #252525; border-bottom: 1px solid #252525; transition: all .2s;}
+.marquee .marquee-content {animation: marquee-content 20s linear infinite; font-size: 45px; text-transform: uppercase; display: inline-block; white-space: nowrap;}
+.marquee .marquee-content span {margin-right: 50px;}
+.marquee .marquee-content span img {margin-right: 50px; vertical-align: middle;}
+
+@keyframes marquee-content {
+  0% { transform: translateX(10%); }
+  100% { transform: translateX(-100%); }
+}
+
+.marquee:hover {background: #B7D3C6; transition: all .2s;}
+
+/* Section-about */
+.about {margin-top: 130px; width: 100%; height: 100vw;}
+.about .inner .profile {display: flex; justify-content: space-between;  /* max-width: 1728px; */ }
+.about .inner .profile .left .name {font-size: 140px; line-height: 0.8; letter-spacing: -4px; font-weight: 500; margin-bottom: 30px;}
+.about .inner .profile .left .name .dot {position: relative; display: inline-block;}
+.about .inner .profile .left .name .en6 {font-size: 100px; white-space: nowrap;}
+.about .inner .profile .left .info {font-size: 24px; font-weight: 500; line-height: 1; margin-bottom: 40px;}
+.about .inner .profile .left .info span {display: block; font-size: 18px; padding: 10px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50px; width: fit-content; margin-top: 10px;}
+.about .inner .profile .left  .introduction {font-size: 16px; line-height: 30px;}
+.about .inner .profile .left  .introduction .en7 {font-size: 40px; line-height: 50px; margin-bottom: 30px; display: block;}
+.about .inner .profile .left  .introduction .first-group {margin-bottom: 10px; display: block;}
+.about .inner .profile .left  .introduction .second-group {margin-bottom: 20px; display: block;}
+.about .inner .profile .left a {cursor: pointer; font-size: 18px; line-height: 36px; padding: 8px 16px; box-sizing: border-box; border: 1px solid #252525; 
+border-radius: 50px; display: block; width: fit-content;}
+.about .inner .profile .right {width: 50%;}
+.about .inner .profile .right img {filter: grayscale(100%); border-radius: 16px; width: 100%; height: 100%; object-fit: cover;}
+
+/* content */
+.about .inner .contents {margin-top: 196px;}
+.about .inner .contents .section {padding: 100px 0; box-sizing: border-box; border-top: 1px solid #252525; display: flex; justify-content: space-between;}
+.about .inner .contents .section .en8 {font-size: 48px;}
+.about .inner .contents .section ul {font-size: 18px;}

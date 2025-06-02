@@ -20,12 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function setActiveLink(link) {
     links.forEach(a => a.classList.remove('active'));
     link.classList.add('active');
-    localStorage.setItem('activeIndex', [...links].indexOf(link));
+    // localStorage 대신 메모리에 저장
+    window.activeIndex = [...links].indexOf(link);
     moveHighlightTo(link);
   }
 
   // 초기 세팅
-  const savedIndex = localStorage.getItem('activeIndex');
+  const savedIndex = window.activeIndex || 0;
   const initialLink = links[savedIndex] || links[0];
   setActiveLink(initialLink);
 
@@ -47,8 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function copyEmail() {
+    navigator.clipboard.writeText('qazxcvbnm322@naver.com');
+    alert('이메일이 복사되었습니다!');
+}
+
 // Visual-Logo-spin Gsap
-  window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to(".line1 .logo-spin", {
@@ -59,7 +65,133 @@ document.addEventListener("DOMContentLoaded", () => {
       start: "top top",
       end: "bottom top",
       scrub: 0.1,
-      // markers: true
     }
   });
+
+  // 가로스크롤 start
+  gsap.registerPlugin(ScrollTrigger);   
+
+  let sections = gsap.utils.toArray(".narrative-container section");
+  {
+let totalWidth = 0;
+sections.forEach(section => {
+    totalWidth += section.offsetWidth;
+});
+
+let scrollTween = gsap.to(sections, {
+    x: -totalWidth + window.innerWidth, // 실제 너비로 계산
+    ease: "none",
+    scrollTrigger: {
+        trigger: '.narrative-container',
+        pin: true,
+        scrub: 1,
+        start: 'top top',
+        end: () => "+=" + totalWidth + "px", // 실제 너비로 end 계산
+    }
+});
+
+//  Tooltip 스크롤
+const tooltip = document.querySelector(".tooltip");
+const nowSection = document.querySelector(".narrative-container .now");
+
+gsap.to(tooltip, {
+  top: "55%",
+  left: "67%",
+  ease: "none",
+  scrollTrigger: {
+    trigger: '.narrative-container',
+    start: 'top top',
+    end: () => "+=" + (nowSection.offsetLeft + nowSection.offsetWidth) + "px", // .now 섹션이 끝나는 지점
+    scrub: 1,
+  }
+});
+
+// imgs move
+let draggedElement = null;
+let offsetX = 0, offsetY = 0;
+
+document.querySelectorAll('.draggable-item').forEach(item => {
+  item.addEventListener('mousedown', (e) => {
+    draggedElement = item;
+    draggedElement.classList.add('dragging');
+    const rect = item.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+  });
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!draggedElement) return;
+  
+  const container = draggedElement.closest('.images').getBoundingClientRect();
+  draggedElement.style.left = (e.clientX - container.left - offsetX) + 'px';
+  draggedElement.style.top = (e.clientY - container.top - offsetY) + 'px';
+});
+
+document.addEventListener('mouseup', () => {
+  if (draggedElement) {
+    draggedElement.classList.remove('dragging');
+    draggedElement = null;
+  }
+});
+
+
+// 모달 이벤트 시작
+// 모달 열기
+document.querySelector('.now .folder > img').addEventListener('click', function() {
+  const modal = document.getElementById('folderModal');
+  const body = document.body;
+  const container = document.querySelector('.narrative-container');
+  
+  modal.classList.add('active');
+  body.classList.add('modal-open');
+  container.classList.add('modal-open');
+});
+
+// 모달 닫기 함수
+function closeModal() {
+  const modal = document.getElementById('folderModal');
+  const body = document.body;
+  const container = document.querySelector('.narrative-container');
+  
+  modal.classList.remove('active');
+  body.classList.remove('modal-open');
+  container.classList.remove('modal-open');
+}
+
+// 빨간 버튼 클릭시 닫기
+document.querySelector('.r').addEventListener('click', closeModal);
+
+// 오버레이 클릭시 닫기
+document.querySelector('.modal-overlay').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeModal();
+  }
+});
+
+// keywords gsap
+const scrollText = document.querySelector('.keyWords .scrollText');
+const originalHTML = scrollText.innerHTML;
+scrollText.innerHTML = originalHTML + originalHTML + originalHTML;
+
+let tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.keyWords',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: 1, // 더 부드럽게
+    ease: "power1.inOut"
+  }
+});
+
+tl.to(scrollText, {
+  x: '-50%',
+  duration: 1,
+  ease: "none"
+});
+
+
+
+
+  }
 });

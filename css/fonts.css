@@ -50,3 +50,30 @@ src: url('../fonts/Ogg-RegularItalic.otf') format('opentype');
     src: url('../fonts/PinyonScript-Regular.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'voyage';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/voyage-regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Ogg';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/Ogg-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Ogg-Book';
+    font-style: normal;
+    font-weight: 450;
+    src: url('../fonts/OggText-Book.otf') format('opentype');
+}
+
+@font-face {
+font-family: 'Ampersand';
+font-style: italic;
+font-weight: 400;
+src: url('../fonts/FHAmpersandDisplayTest-RegularItalic.otf') format('opentype');
+}
