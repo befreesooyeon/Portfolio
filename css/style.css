@@ -27,7 +27,7 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 .en5 { font-family: 'voyage'; letter-spacing: -4px; line-height: 1;}
 .en6 {font-family: 'Ogg'; font-weight: 500; line-height: 1;}
 .en7 {font-family: 'Ogg-Book'; letter-spacing: -2px;}
-.en8 {font-family: 'Ampersand'; font-style: italic; line-height: 1;}
+.en8 {font-family: 'Ampersand'; font-style: italic; line-height: 1; font-weight: normal;}
 
 /* header */
 header {position: fixed; top: 0; left: 0; width: 100%; height: 40px; z-index: 100; margin-top: 20px; font-size: 17px;}
