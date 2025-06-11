@@ -27,7 +27,7 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 .en5 { font-family: 'voyage'; letter-spacing: -4px; line-height: 1;}
 .en6 {font-family: 'Ogg'; font-weight: 500; line-height: 1;}
 .en7 {font-family: 'Ogg-Book'; letter-spacing: -2px;}
-.en8 {font-family: 'Ampersand'; font-style: italic; line-height: 1; font-weight: normal;}
+.en8 {font-family: 'Ampersand'; font-style: italic; line-height: 1; font-weight: normal; letter-spacing: -1px;}
 
 /* header */
 header {position: fixed; top: 0; left: 0; width: 100%; height: 40px; z-index: 100; margin-top: 20px; font-size: 17px;}
@@ -164,8 +164,9 @@ section .inner .txt .en3 {font-size: 40px; line-height: 1;}
 .become {width: 100vw; height: 100%; flex-shrink: 0; display: flex; align-items: flex-start; justify-content: space-between; 
     position: relative;}
 .become .inner {display: flex; align-items: center; justify-content: space-between;}
-.become .inner .left .tit span {white-space: nowrap;}
-.become .inner .right {align-self: flex-start;}
+.become .inner .left {width: 50%;}
+.become .inner .left .tit > span {display: block;}
+.become .inner .right {align-self: flex-start; width: 50%;}
 .become .inner .right .des {margin-top: 140px;}
 .become .inner .right .photo img {margin-bottom: 20px; width: 100%; filter: grayscale(100%);}
 
@@ -197,7 +198,7 @@ section .inner .txt .en3 {font-size: 40px; line-height: 1;}
 .marquee:hover {background: #B7D3C6; transition: all .2s;}
 
 /* Section-about */
-.about {margin-top: 130px; width: 100%; height: 100vw;}
+.about {margin-top: 130px; width: 100%;}
 .about .inner .profile {display: flex; justify-content: space-between;  /* max-width: 1728px; */ }
 .about .inner .profile .left .name {font-size: 140px; line-height: 0.8; letter-spacing: -4px; font-weight: 500; margin-bottom: 30px;}
 .about .inner .profile .left .name .dot {position: relative; display: inline-block;}
@@ -214,7 +215,18 @@ border-radius: 50px; display: block; width: fit-content;}
 .about .inner .profile .right img {filter: grayscale(100%); border-radius: 16px; width: 100%; height: 100%; object-fit: cover;}
 
 /* content */
-.about .inner .contents {margin-top: 196px;}
-.about .inner .contents .section {padding: 100px 0; box-sizing: border-box; border-top: 1px solid #252525; display: flex; justify-content: space-between;}
-.about .inner .contents .section .en8 {font-size: 48px;}
-.about .inner .contents .section ul {font-size: 18px;}
+.about .inner .contents {margin-top: 196px;} 
+.about .inner .contents .box {display: flex; justify-content: space-between; padding: 100px 0; box-sizing: border-box; border-top: 1px solid #252525;}
+.about .inner .contents .box .en8 {font-size: 48px; width: 50%;}
+.about .inner .contents .box .list {font-size: 20px; width: 50%;}
+.about .inner .contents .box .list li {padding: 10px 0; border-bottom: 1px solid #252525; box-sizing: border-box;}
+.about .inner .contents .box .list li .period {float: right;}
+.about .inner .contents .box .list li:last-child {border-bottom: none;}
+.about .inner .contents .box .grid {font-size: 20px; width: 50%;}
+.about .inner .contents .box .grid .conBox {display: flex;}
+.about .inner .contents .box .grid .conBox div:nth-child(2) {margin-left: 200px;}
+.about .inner .contents .box .grid .title {font-weight: 500; display: flex; margin-bottom: 20px;}
+.about .inner .contents .box .grid .title svg {margin-right: 10px;}
+.about .inner .contents .box .grid ul {margin-bottom: 70px;}
+.about .inner .contents .box .grid ul li {margin-bottom: 5px; line-height: 32px;}
+.about .inner .contents .box .grid ul li:last-child {margin-bottom: 0;}
