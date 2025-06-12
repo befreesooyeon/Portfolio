@@ -179,7 +179,7 @@ let tl = gsap.timeline({
     trigger: '.keyWords',
     start: 'top bottom',
     end: 'bottom top',
-    scrub: 1, // 더 부드럽게
+    scrub: 1,
     ease: "power1.inOut"
   }
 });
@@ -189,6 +189,39 @@ tl.to(scrollText, {
   duration: 1,
   ease: "none"
 });
+
+// About-accordion
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  
+  accordionItems.forEach(item => {
+      const accordionTit = item.querySelector('.accordion-tit');
+      const accordionIcon = item.querySelector('.accordion-icon');
+      const accordionContent = item.querySelector('.accordion-content');
+      
+      accordionTit.addEventListener('click', function() {
+          const isActive = item.classList.contains('active');
+          
+          // 모든 아코디언 항목 닫기
+          accordionItems.forEach(otherItem => {
+              otherItem.classList.remove('active');
+              const otherContent = otherItem.querySelector('.accordion-content');
+              otherContent.style.maxHeight = '0';
+          });
+          
+          // 클릭한 항목이 닫혀있었다면 열기
+          if (!isActive) {
+              item.classList.add('active');
+              accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+          }
+      });
+});
+
+
+
+
+
+
+
 
 
 
