@@ -44,7 +44,7 @@ header .innerHeader .gnb-c {position: absolute; left: 50%; transform: translateX
 
 header .innerHeader .gnb-c a {display: block; box-sizing: border-box; position: relative; z-index: 2; color: #252525; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2); /* 글자에 약한 광택 */}
 header .innerHeader .gnb-c a.active, header .innerHeader .gnb-c a.focus {color: #fff;}
-header .innerHeader .gnb-c .highlight {position: absolute; top: 6px; height: 28px;  border-radius: 20px; background: #E4E4E4; z-index: 1; transition: all 0.3s ease;}
+header .innerHeader .gnb-c .highlight {position: absolute; top: 6px; height: 28px;  border-radius: 20px; background: #D4D4D4; z-index: 1; transition: all 0.3s ease;}
 header .innerHeader .gnb-r ul {display: flex; gap: 20px;}
 header .innerHeader .gnb-r ul li {height: 40px; border: 1px dashed #000; background: hsla(0, 0%, 99%, 0.08);
   backdrop-filter: blur(10px); border-radius: 40px; line-height: 40px; text-align: center; box-shadow:inset -1px -1px 0 rgba(255, 255, 255, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.15);}
@@ -61,7 +61,8 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 .visual .mainTitle .line2 {display: flex; align-items: end; justify-content: flex-end; margin-left: 30px;}
 .visual .subText {display: flex; flex-direction: column; gap: 16px; text-align: left; position: absolute; bottom: 15%;}
 .visual .subText .copyright {font-size: 14px; color: #666; margin-bottom: 30px;}
-.visual .subText .desc {display: flex; flex-direction: row-reverse; gap: 50px; font-size: 22px;}
+.visual .subText .desc {font-size: 22px; display: flex; gap: 80px;}
+.visual .subText .desc .intro {display: block; margin-left: 84px;}
 
 /* Section-narrative 가로 스크롤 시작*/
 .narrative-container {padding: 130px 0 170px; box-sizing: border-box; display: flex; width: 100%; height: 100vh; overflow: hidden;}
