@@ -60,26 +60,25 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 .visual .subText .desc {font-size: 22px; display: flex; gap: 80px;}
 .visual .subText .desc .intro {display: block; margin-left: 84px;}
 
-/* Section-narrative 가로 스크롤 시작*/
-.narrative-container {padding: 130px 0 170px; box-sizing: border-box; display: flex; width: 100%; height: 100vh; overflow: hidden;}
+.narrative-container {position: relative; display: flex; width: 100%; height: 100vh; overflow: hidden;}
+.narrative .inner {position: relative; height: 100%; box-sizing: border-box;}
 
-.narrative {width: 100vw; height: 100vh; flex-shrink: 0;}
-.narrative .top {display: flex; justify-content: space-between; margin-bottom: 155px;}
-.narrative .top .leftBox .line1 { font-size: 160px; line-height: 1; font-weight: normal;}
-.narrative .top .leftBox .line2.en2 {display: block; font-size: 160px; margin-left: 175px; line-height: 0.6;  font-weight: normal;} 
-.narrative .top .leftBox .line2.en3 {color: #B7D3C6;}
-.narrative .top .rightBox {text-align: right;}
-.narrative .top .rightBox p {line-height: 24px; margin-bottom: 104px;}
-.narrative .top .rightBox img {width: 90%;}
-.narrative .bottom {display: flex; justify-content: space-between; align-items: flex-start}
-.narrative .bottom .des {display: flex; border-top: 1px solid #252525; width: 62%; margin-left: 175px; padding-top: 20px; box-sizing: border-box;}
-.narrative .bottom .caption {margin-right: 50px; font-size: 18px;}
-.narrative .bottom .des ul {display: flex;}
-.narrative .bottom .en {margin-right: 40px; line-height: 24px;}
-.narrative .bottom .kr {line-height: 24px;}
-.narrative .bottom .scroll { line-height: 24px; display: flex; align-items: center;}
-.narrative .bottom .scroll img {margin-left: 16px; animation: scrollTip 2s ease-out infinite;
-}
+/* 네러티브 표지 */
+.narrative .inner::before {content: ''; position: absolute; top: 50%; left: 50%; width: 1px; height: 78%; background: #ccc; transform: translate(-50%, -50%); z-index: 1;}
+.narrative .inner::after {content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background:#ccc; transform: translateY(-50%); z-index: 1;}
+.narrative {width: 100%; height: 100vh; flex-shrink: 0;}
+.narrative .title {position: absolute; left: 50%; top: 0; transform: translate(-50%); font-size: 20px; font-weight: normal; margin-top: 70px; z-index: 1;}
+.narrative .tabList {position: relative; font-size: 150px; width: 100%; height: 100vh;} 
+.narrative .tabList .tab {transition: color 0.3s ease;  cursor: pointer; }
+.narrative .tabList .tab:hover {color: #B7D3C6; transition: color 0.3s ease;}
+.narrative .tabList li:nth-child(1) {position: absolute; left: 0; top: 0;}
+.narrative .tabList li:nth-child(2) {position: absolute; right: 0; top: 0;} 
+.narrative .tabList li:nth-child(3) {position: absolute; left: 0; bottom: 0;} 
+.narrative .tabList li:nth-child(4) {position: absolute; right: 0; bottom: 0;} 
+.narrative .image-view {position: absolute; z-index: 999; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+#mainImage {width: 288px; height: 384px; object-fit: cover;}
+.narrative .scroll-btn {position: absolute; bottom: 0; left: 50%; transform: translate(-50%, -20%); font-size: 40px; padding: 24px 85px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+margin-bottom: 70px; background: #F5F5F5; z-index: 1;}
 
 /* Section-Origin */
 

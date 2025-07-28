@@ -90,6 +90,22 @@ let scrollTween = gsap.to(sections, {
     }
 });
 
+// narrtive 표지 마우스 hover시 사진 변경
+const tabs = document.querySelectorAll('.tab');
+  const mainImage = document.getElementById('mainImage');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('mouseenter', () => {
+      const imageName = tab.getAttribute('data-image');
+      mainImage.setAttribute('src', `images/${imageName}`);
+    });
+
+    tab.addEventListener('mouseleave', () => {
+      // 기본 이미지로 다시 복귀 (원한다면)
+      mainImage.setAttribute('src', 'images/narrativePhoto.png');
+    });
+  });
+
 //  Tooltip 스크롤
 const tooltip = document.querySelector(".tooltip");
 const nowSection = document.querySelector(".narrative-container .now");
