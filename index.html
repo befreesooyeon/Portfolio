@@ -14,29 +14,29 @@
 <body>
   <div class="wrap">
     <div class="inner">
-    <!-- header -->
-  <header>
-  <div class="innerHeader">
-    <h1 class="logo"><a href="index.html">SOOYEON LEE</a></h1>
-    <nav class="gnb-c">
-      <a href="#">HOME</a>
-      <a href="#">ABOUT</a>
-      <a href="#">WORKS</a>
-      <a href="#" class="mail-link" onclick="copyEmail()"   title="클릭하면 복사됩니다">CONTACT</a>
-      <div class="highlight"></div>
-    </nav>
+      <!-- header -->
+      <header>
+      <div class="innerHeader">
+        <h1 class="logo"><a href="index.html">SOOYEON LEE</a></h1>
+        <nav class="gnb-c">
+          <a href="#home">HOME</a>
+          <a href="#about">ABOUT</a>
+          <a href="#works">WORKS</a>
+          <a href="#footer" class="mail-link" onclick="copyEmail()"   title="클릭하면 복사됩니다">CONTACT</a>
+          <div class="highlight"></div>
+        </nav>
 
-    <nav class="gnb-r">
-      <ul>
-        <li><a href="#">FORTUNE <img src="images/icon_arrow-up.svg" alt="방향 아이콘"></a></li>
-        <li><a href="#">LIGHT <span></span></a></li>
-      </ul>
-    </nav>
-  </div>
-  </header>
+        <nav class="gnb-r">
+          <ul>
+            <li><a href="#">FORTUNE <img src="images/icon_arrow-up.svg" alt="방향 아이콘"></a></li>
+            <li><a href="#">LIGHT <span></span></a></li>
+          </ul>
+        </nav>
+      </div>
+      </header>    
     </div>
     <!-- visual -->
-    <section class="visual">
+    <section class="visual" id="home">
       <div class="inner">
         <div class="mainTitle">
           <p class="line1 en1">DESINGER <img class="logo-spin" src="images/Logo.svg" alt="로고 이미지"></p>
@@ -63,13 +63,14 @@
         <div class="inner">
           <h2 class="title">[ Intro narrative ]</h2>
           <ul class="tabList">
-            <li class="tab en2" data-image="orizin.png"><span class="en3">O</span>rigin</li>
-            <li class="tab en2" data-image="now.png"><span class="en3">N</span>ow</li>
-            <li class="tab en2" data-image="form.png"><span class="en3">F</span>orm</li>
-            <li class="tab en2" data-image="pulse.png"><span class="en3">P</span> ulse</li>
+            <li class="tab en2" data-image="orizin.png" data-text="불편의 출처부터 파고듭니다."><span class="en3">O</span>rigin</li>
+            <li class="tab en2" data-image="now.png" data-text="지금 필요한 건, 바로 캐치합니다."><span class="en3">N</span>ow</li>
+            <li class="tab en2" data-image="form.png" data-text="보기 좋고, 쓰기 좋게 만듭니다."><span class="en3">F</span>orm</li>
+            <li class="tab en2" data-image="pulse.png" data-text="흐름 끊기면, 다시 짭니다."><span class="en3">P</span> ulse</li>
           </ul>
           <div class="image-view fixed-size">
             <img id="mainImage" src="images/narrativePhoto.png" alt="메인이미지">
+            <p id="mainTxt">각 키워드에 마우스를 올려보세요 ☺</p>
           </div>
           <p class="scroll-btn en2">Scroll
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"><g clip-path="url(#clip0_743_163)"><path d="M26.6667 8.33331C26.6667 9.56998 27.8883 11.4166 29.125 12.9666C30.715 14.9666 32.615 16.7116 34.7933 18.0433C36.4267 19.0416 38.4067 20 40 20M40 20C38.4067 20 36.425 20.9583 34.7933 21.9566C32.615 23.29 30.715 25.035 29.125 27.0316C27.8883 28.5833 26.6667 30.4333 26.6667 31.6666M40 20L4.43708e-07 20" stroke="#252525"/></g><defs><clipPath id="clip0_743_163"><rect width="40" height="40" fill="white" transform="translate(40) rotate(90)"/></clipPath>
@@ -159,7 +160,6 @@
             </div>
             </div>
           </div>
-  
           <div class="right">
             <div class="des">
               <p class="caption">[Shaped by doing]</p>
@@ -184,22 +184,37 @@
             </div>
       </div>
       </section>
+
+      <!-- now-modal -->
+      <div class="modal-overlay" id="folderModal">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="top">
+              <ul class="madal-close">
+                <li class="r"></li>
+                <li class="y"></li>
+                <li class="g"></li>
+              </ul>
+              <p>Soo yeon lee.zip</p>
+            </div>
+            <div class="bottom">
+              <ul>
+                <li><img src="images/modal_1.png" alt="사진">01_work.jpeg</li>
+                <li><img src="images/modal_2.png" alt="사진">02_learn.jpeg</li>
+                <li><img src="images/modal_3.png" alt="사진">03_design.jpe...</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section class="become">
         <div class="inner">
           <div class="left"> 
             <h2 class="tit en2">
-              <span class="line1 en2"><span class="en4">B</span>e</span>
-              <span class="line2 en2">come</span>
+              <span class="line1">What<span class="en3">R</span>emains</span>
+              <span class="line2"><span class="point">DESIGN</span><span class="en3">with Soul</span></span>
             </h2>
-          </div>
-          <div class="right">
-            <div class="photo">
-              <img src="images/become_01.png" alt="대학교 시각디자인과 졸업전시 사진">
-                <div class="txt">
-                  <p class="en3">03</p>
-                  <p class="txt">[End]</p>
-                </div>
-            </div>
             <div class="des">
               <p class="caption">[Evolving Vision]</p>
               <div class="txtbox">
@@ -210,31 +225,12 @@
             </div>
             </div>
           </div>
+          <div class="right">
+              <img src="images/become_01.png" alt="디자인 작업중인 모습">
+          </div>
         </div>
-      </section>
     </div>
-    <!-- modal -->
-    <div class="modal-overlay" id="folderModal">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="top">
-          <ul class="madal-close">
-            <li class="r"></li>
-            <li class="y"></li>
-            <li class="g"></li>
-          </ul>
-          <p>Soo yeon lee.zip</p>
-        </div>
-        <div class="bottom">
-          <ul>
-            <li><img src="images/modal_1.png" alt="사진">01_work.jpeg</li>
-            <li><img src="images/modal_2.png" alt="사진">02_learn.jpeg</li>
-            <li><img src="images/modal_3.png" alt="사진">03_design.jpe...</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    </div>
+  
     <!-- keywords -->
     <sectin class="keyWords">
       <div class="textWrap"> 
@@ -275,7 +271,7 @@
       </div>
     </div>
     <!-- about -->
-    <section class="about">
+    <section class="about" id="about">
       <div class="inner">
         <div class="profile">
           <div class="left">
@@ -498,7 +494,7 @@
         </div>
     </section>
 
-    <section class="works">
+    <section class="works" id="works">
       <h2 class="title">Works <span><svg xmlns="http://www.w3.org/2000/svg" width="230" height="230" viewBox="0 0 230 230" fill="none">
       <path d="M230 114.211H149.751C131.797 114.211 115.789 98.1984 115.789 80.2488V0H114.211V80.2488C114.211 98.2032 98.1984 114.211 80.2488 114.211H0V115.789H80.2488C98.2032 115.789 114.211 131.802 114.211 149.751V230H115.789V189.876V149.751C115.789 131.797 131.802 115.789 149.751 115.789H230V114.211Z" fill="#B7D3C6"/>
       </svg></span>

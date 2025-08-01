@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     link.addEventListener('click', e => {
-      e.preventDefault();
+      // e.preventDefault(); (a 태그 기본 동작 막는 코드)
       setActiveLink(link);
     });
   });
@@ -52,6 +52,7 @@ function copyEmail() {
     navigator.clipboard.writeText('qazxcvbnm322@naver.com');
     alert('이메일이 복사되었습니다!');
 }
+
 
 // Visual-Logo-spin Gsap
 window.addEventListener("DOMContentLoaded", () => {
@@ -92,19 +93,23 @@ let scrollTween = gsap.to(sections, {
 
 // narrtive 표지 마우스 hover시 사진 변경
 const tabs = document.querySelectorAll('.tab');
-  const mainImage = document.getElementById('mainImage');
+const mainImage = document.getElementById('mainImage');
+const mainTxt = document.getElementById('mainTxt');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('mouseenter', () => {
-      const imageName = tab.getAttribute('data-image');
-      mainImage.setAttribute('src', `images/${imageName}`);
-    });
-
-    tab.addEventListener('mouseleave', () => {
-      // 기본 이미지로 다시 복귀 (원한다면)
-      mainImage.setAttribute('src', 'images/narrativePhoto.png');
-    });
+tabs.forEach(tab => {
+  tab.addEventListener('mouseenter', () => {
+    const imageName = tab.getAttribute('data-image');
+    const text = tab.getAttribute('data-text');
+    mainImage.setAttribute('src', `images/${imageName}`);
+    mainTxt.textContent = text;
   });
+
+  tab.addEventListener('mouseleave', () => {
+    // 이미지 & 텍스트 원래대로
+    mainImage.setAttribute('src', 'images/narrativePhoto.png');
+    mainTxt.textContent = '각 키워드에 마우스를 올려보세요 ☺';
+  });
+});
 
 // orizin marquee
   function cloneMarqueeContent(trackSelector) {
@@ -122,16 +127,16 @@ const tooltip = document.querySelector(".tooltip");
 const nowSection = document.querySelector(".narrative-container .now");
 
 gsap.to(tooltip, {
-  top: "55%",
-  left: "67%",
+  top: "50%",
+  left: "20%",
   ease: "none",
   scrollTrigger: {
-    trigger: '.narrative-container',
-    start: 'top top',
+    trigger: '.now',
+    start: 'top',
     end: () => "+=" + (nowSection.offsetLeft + nowSection.offsetWidth) + "px", // .now 섹션이 끝나는 지점
     scrub: 1,
   }
-});
+}); 
 
 document.addEventListener('mousemove', (e) => {
   if (!draggedElement) return;
@@ -151,7 +156,7 @@ document.addEventListener('mouseup', () => {
 
 // 모달 이벤트 시작
 // 모달 열기
-document.querySelector('.now .folder > img').addEventListener('click', function() {
+document.querySelector('.now .inner .folder-content').addEventListener('click', function() {
   const modal = document.getElementById('folderModal');
   const body = document.body;
   const container = document.querySelector('.narrative-container');
