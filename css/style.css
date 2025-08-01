@@ -80,57 +80,59 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 .narrative .scroll-btn {position: absolute; bottom: 0; left: 50%; transform: translate(-50%, -20%); font-size: 40px; padding: 24px 85px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; gap: 10px;
 margin-bottom: 70px; background: #F5F5F5; z-index: 1;}
 
-/* Section-Origin */
 
 /* 공통 텍스트 */
-section .inner .tit {font-size: 160px; font-weight: normal; color: #B7D3C6; line-height: 0.6;}
-section .inner .tit .line2 {margin-left: 164px;}
+section .inner .des {display: flex; width: 100%; gap: 50px;}
 section .inner .des .en {margin-bottom: 15px; line-height: 24px;}
 section .inner .des .kr {line-height: 24px;}
-section .inner .des {display: flex; width: 100%; gap: 50px;}
-section .inner .txt {display: flex; justify-content: space-between; gap: 100px; text-align: right; line-height: 22px;}
-section .inner .txt .en3 {font-size: 40px; line-height: 1;}
 
-
-.orizin {width: 2400px; height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;}
-.orizin .inner {display: flex; align-items: center;}
-.orizin .inner > *:not(:last-child) {margin-right: 220px;}
-/* .orizin .inner .tit .line2 {margin-left: 164px;} */
+/* Section-Origin */
+.orizin {height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;}
+.orizin .inner {display: flex; align-items: center; margin-left: -192px;}
+.orizin .inner .orizin-marquee { transform: rotate(-90deg); }
+.orizin .inner .orizin-marquee .o-marquee { border-top: 1px solid #252525; border-bottom: 1px solid #252525; font-size: 100px; display: flex; align-items: center; width: 100vh; overflow: hidden; position: relative; padding: 40px; box-sizing: border-box; height: 200px; }
+.orizin .inner .orizin-marquee .o-marquee:first-child { margin-bottom: 65px; }
+.orizin .inner .orizin-marquee .o-marquee .marquee-track { display: flex; }
+.orizin .inner .orizin-marquee .o-marquee .marquee-track .content1 { display: flex; align-items: center; gap: 100px; white-space: nowrap; position: relative; margin-right: 100px; animation: scroll-down 10s linear infinite; }
+.orizin .inner .orizin-marquee .o-marquee .marquee-track .content1 .icon1{ animation: spin 5s linear infinite;}
+@keyframes spin { 
+  0% { transform: rotate(0deg); } 
+  100% { transform: rotate(360deg); } 
+}
+.orizin .inner .orizin-marquee .o-marquee .marquee-track .content2 { display: flex; align-items: center; gap: 100px; margin-right: 100px; animation: scroll-up 10s linear infinite; }
+.orizin .inner .orizin-marquee .o-marquee .marquee-track .content2 .en4 { color: #B7D3C6; }
+.orizin .inner .orizin-marquee .o-marquee .marquee-track .content2 .icon { transform: rotate(90deg); padding: 20px 40px; }
+@keyframes scroll-down { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+@keyframes scroll-up { 0% { transform: translateX(-50%); } 100% { transform: translateX(0%); } }
 .orizin .inner .imgs {display: flex; gap: 100px;}
 .orizin .inner .imgs li img {margin-bottom: 20px; filter: grayscale(100%);}
 .orizin .inner .des .caption {font-size: 18px;} 
 .orizin .inner .des .en {margin-bottom: 15px; line-height: 24px;}
 .orizin .inner .des .kr {line-height: 24px;}
 
-/* .narrative scroll animation */
-@keyframes scrollTip {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(10px); }
-  100% { transform: translateX(0); }
-}
+/* orizin-content */
+.orizin .inner .content {display: flex; justify-content: center; align-items: center; gap: 168px; 
+margin-left: -96px;}
+.orizin .inner .content .txt {display: flex; justify-content: space-between; text-align: right;}
+.orizin .inner .content .txt .en3 {letter-spacing: 0; font-size: 40px;}
 
-/* hover */
-.orizin .inner .imgs li img:hover {filter: grayscale(0%);}
+/* orizin-content 사진 hover */
+.orizin .inner .content .imgs li img:hover {filter: grayscale(0%);}
 
 /* Section-now */
 .now {width: 100vw; height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative;}
-.now .inner {display: flex; align-items: center; gap: 148px;}
-.now .inner .right {position: relative; width: 100%;}
-.now .inner .right .content .folder {margin-top: 260px;}
-.now .inner .right .content .folder > img {cursor: pointer;}
-.now .inner .right .content .folder .images img {display: block; margin-bottom: 10px; border: 8px solid #fff; box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15); width: 80%;}
-.now .inner .right .content .folder .images p {font-weight: 300;}
-.now .inner .right .content .folder .images .img01 {position: absolute; left: 3%; top: 129px;}
-.now .inner .right .content .folder .images .img02 {position: absolute; top: 10%; right: 249px;}
-.now .inner .right .content .folder .images .img03 {position: absolute; top: 129px; right: 0;}
-.now .inner .right .content .folder {text-align: center; margin-bottom: 64px;}
-.now .inner .right .content .folder .textBox {margin-top: 10px;}
-.now .inner .right .content .folder .textBox .name {font-size: 24px; color: #666; font-weight: 300; margin-bottom: 7px;}
-.now .inner .right .content .folder .textBox .items {color: #666; font-weight: 300;}
-
-/* images Drag */
-.draggable-item {position: absolute; cursor: move; user-select: none;}
-.draggable-item.dragging {z-index: 1000;}
+.now .inner {display: flex; align-items: center; gap: 327px;}
+.now .inner .left {position: relative;}
+.now .inner .left .folder {position: absolute; top: 50%; transform: translate(-50%,-50%);}
+.now .inner .left .folder .images > img {width: 113px; height: 138px; display: block; margin-bottom: 10px; border: 4px solid #fff; box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15);}
+.now .inner .left .folder .images {display: flex;}
+.now .inner .left .folder .images .img01 {transform: rotate(-15deg);}
+/* .now .inner .left .folder .images .img02 {} */
+.now .inner .left .folder .images .img03 {transform: rotate(24deg);}
+.now .inner .left .folder .folder-content {text-align: center;}
+.now .inner .left .folder .folder-content .textBox {color: #666;}
+.now .inner .left .folder .folder-content .name {font-size: 24px; font-weight:300; margin-bottom: 6px;}
+.now .inner .left .folder .folder-content .name::before {content: ''; width: 8px; height: 8px; border-radius: 50%; background: #B7D3C6;  display: inline-block;  margin-right: 5px;}
 
 /* tooltip */
 .tooltip { position: absolute; display: inline-flex; align-items: center;

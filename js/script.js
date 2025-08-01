@@ -106,6 +106,17 @@ const tabs = document.querySelectorAll('.tab');
     });
   });
 
+// orizin marquee
+  function cloneMarqueeContent(trackSelector) {
+    const track = document.querySelector(trackSelector);
+    const content = track.children[0].cloneNode(true);
+    track.appendChild(content);
+  }
+
+  cloneMarqueeContent('#marquee1 .marquee-track');
+  cloneMarqueeContent('#marquee2 .marquee-track');
+
+  
 //  Tooltip 스크롤
 const tooltip = document.querySelector(".tooltip");
 const nowSection = document.querySelector(".narrative-container .now");
@@ -120,20 +131,6 @@ gsap.to(tooltip, {
     end: () => "+=" + (nowSection.offsetLeft + nowSection.offsetWidth) + "px", // .now 섹션이 끝나는 지점
     scrub: 1,
   }
-});
-
-// imgs move
-let draggedElement = null;
-let offsetX = 0, offsetY = 0;
-
-document.querySelectorAll('.draggable-item').forEach(item => {
-  item.addEventListener('mousedown', (e) => {
-    draggedElement = item;
-    draggedElement.classList.add('dragging');
-    const rect = item.getBoundingClientRect();
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
-  });
 });
 
 document.addEventListener('mousemove', (e) => {
