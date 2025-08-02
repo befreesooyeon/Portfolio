@@ -154,38 +154,63 @@ document.addEventListener('mouseup', () => {
 });
 
 
-// 모달 이벤트 시작
-// 모달 열기
-document.querySelector('.now .inner .folder-content').addEventListener('click', function() {
-  const modal = document.getElementById('folderModal');
+// modal 통합
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
   const body = document.body;
   const container = document.querySelector('.narrative-container');
-  
+  const header = document.querySelector('header');
+
   modal.classList.add('active');
   body.classList.add('modal-open');
   container.classList.add('modal-open');
-});
-
-// 모달 닫기 함수
-function closeModal() {
-  const modal = document.getElementById('folderModal');
-  const body = document.body;
-  const container = document.querySelector('.narrative-container');
-  
-  modal.classList.remove('active');
-  body.classList.remove('modal-open');
-  container.classList.remove('modal-open');
+  header.style.zIndex = 0; // 모달 실행 시 헤더 z-index 낮춤
 }
 
-// 빨간 버튼 클릭시 닫기
-document.querySelector('.r').addEventListener('click', closeModal);
+function closeModal() {
+  const modals = document.querySelectorAll('.modal-overlay');
+  const body = document.body;
+  const container = document.querySelector('.narrative-container');
+  const header = document.querySelector('header');
 
-// 오버레이 클릭시 닫기
-document.querySelector('.modal-overlay').addEventListener('click', function(e) {
-  if (e.target === this) {
-    closeModal();
-  }
+  modals.forEach(modal => modal.classList.remove('active'));
+  body.classList.remove('modal-open');
+  container.classList.remove('modal-open');
+  header.style.zIndex = 10000; // 모달 닫을 때 헤더 z-index 원복
+}
+
+// 📌 폴더 모달 열기
+document.querySelector('.now .inner .folder-content').addEventListener('click', function () {
+  openModal('folderModal');
 });
+
+// 📌 포춘 모달 열기
+document.querySelector('.fortune-trigger').addEventListener('click', function (e) {
+  e.preventDefault();
+  openModal('fortuneModal');
+});
+
+// 📌 BACK 버튼 클릭 시 닫기 (포춘 모달 전용)
+document.querySelector('#fortuneModal .content a').addEventListener('click', function (e) {
+  e.preventDefault();
+  closeModal();
+});
+
+// 📌 빨간 버튼 클릭시 닫기
+document.querySelectorAll('.r').forEach(btn => {
+  btn.addEventListener('click', closeModal);
+});
+
+// 📌 오버레이 클릭시 닫기
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function (e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+});
+
+
 
 // keywords gsap
 const scrollText = document.querySelector('.keyWords .scrollText');
