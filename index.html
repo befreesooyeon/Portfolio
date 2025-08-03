@@ -9,6 +9,7 @@
   <script src="js/script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
   <title>Sooyeon LEE - Designer</title>
 </head>
 <body>
@@ -28,8 +29,10 @@
 
         <nav class="gnb-r">
           <ul>
-            <li><a href="#" class="fortune-trigger">FORTUNE <img src="images/icon_arrow-up.svg" alt="방향 아이콘"></a></li>
-            <li><a href="#">LIGHT<span></span></a></li>
+            <li><a href="#" class="fortune-trigger">FORTUNE <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" >
+            <path d="M4.73788 12.2583L3.79507 11.3155L9.45193 5.65862L4.26648 5.65862V4.31983H11.7335V11.7869H10.3947L10.3947 6.60143L4.73788 12.2583Z" fill="#252525" stroke="none"/></svg>
+            </a></li>
+            <li><a href="#" id="themeToggle">LIGHT<span></span></a></li>
           </ul>
         </nav>
       </div>
@@ -39,9 +42,9 @@
           <div class="content">
             <a href="#">BACK</a>
             <ul class="cards">
-              <li class="card-01"></li>
-              <li class="card-02"></li>
-              <li class="card-03"></li>
+              <li class="card-01"><img src="images/card_01.svg" alt="첫번쨰 카드"></li>
+              <li class="card-02"><img src="images/card_02.svg" alt="두번째 카드"></li>
+              <li class="card-03"><img src="images/card_03.svg" alt="세번째 카드"></li>
             </ul>
             <a href="#" class="select-btn">Please Select One Card.</a>
           </div>
@@ -188,8 +191,8 @@
         </div>
       <div class="tooltip">
             <!-- 삼각형 꼬리 -->
-            <svg class="tooltip-tail" xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
-                <path d="M0.474546 1.57468C0.205567 0.853401 0.818264 0.111425 1.5774 0.239122L24.6361 4.11792C25.3953 4.24562 25.7315 5.14722 25.2413 5.7408L10.3528 23.7708C9.86267 24.3644 8.91375 24.2048 8.64477 23.4835L0.474546 1.57468Z" fill="#4A6CF7"/>
+            <svg class="tooltip-tail" xmlns="http://www.w3.org/2000/svg" width="26" height="25" fill="none">
+                <path d="M0.474546 1.57468C0.205567 0.853401 0.818264 0.111425 1.5774 0.239122L24.6361 4.11792C25.3953 4.24562 25.7315 5.14722 25.2413 5.7408L10.3528 23.7708C9.86267 24.3644 8.91375 24.2048 8.64477 23.4835L0.474546 1.57468Z" fill="#4A6CF7" stroke="none"/>
             </svg>
             <!-- 말풍선 본체 -->
             <div class="tooltip-bubble">
@@ -306,7 +309,10 @@
             현재는 단순히 보기 좋은 화면보다, 사용자와 브랜드 모두에게 의미 있는 경험을 설계하고자 합니다.
           </p>
         </div>
-            <a href="">GET MY RESUME <img src="images/icon_arrow-up.svg" alt=""></a>
+            <a href="">GET MY RESUME
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M7.10682 18.3874L5.69261 16.9731L14.1779 8.48786H6.39971V6.47968H17.6003V17.6803H15.5921V9.90208L7.10682 18.3874Z" fill="#252525" stroke="none"/></svg>
+            </a>
           </div>
           <div class="right">
             <img src="images/about_profile.png" alt="프로필 사진">

@@ -1,17 +1,16 @@
+
 // header highlight
 document.addEventListener("DOMContentLoaded", () => {
   const gnb = document.querySelector('.gnb-c');
   const highlight = gnb.querySelector('.highlight');
   const links = gnb.querySelectorAll('a');
-
   const padX = 8; // 가상 padding-left/right
-  const padY = 4;  // 가상 padding-top/bottom
+  const padY = 4; // 가상 padding-top/bottom
 
   // highlight 이동 + 크기 설정 함수
   function moveHighlightTo(link) {
     const linkLeft = link.offsetLeft;
     const linkWidth = link.offsetWidth;
-
     highlight.style.left = `${linkLeft - padX}px`;
     highlight.style.width = `${linkWidth + padX * 2}px`;
   }
@@ -20,10 +19,92 @@ document.addEventListener("DOMContentLoaded", () => {
   function setActiveLink(link) {
     links.forEach(a => a.classList.remove('active'));
     link.classList.add('active');
-    // localStorage 대신 메모리에 저장
-    window.activeIndex = [...links].indexOf(link);
+
+    // 색상 적용
+    applyLinkColors();
     moveHighlightTo(link);
   }
+
+  // 다크/라이트 모드에 맞춰 링크 색상 적용
+  function applyLinkColors() {
+    const isDark = document.body.classList.contains('dark-mode');
+    links.forEach(a => a.style.color = isDark ? "#dbdbdb" : "#252525");
+    const activeLink = document.querySelector('.gnb-c a.active');
+    if (activeLink) {
+      activeLink.style.color = isDark ? "#252525" : "#ffffff";
+    }
+  }
+
+// 메뉴 클릭 시 active 이동 + GSAP 스크롤 이동
+links.forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    setActiveLink(this);
+
+    const targetId = this.getAttribute('href');
+    if (targetId && targetId.startsWith('#')) {
+      const target = document.querySelector(targetId);
+      if (target) {
+        const headerOffset = 130; // 헤더 높이
+        const targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+        gsap.to(window, {
+          scrollTo: targetY,
+          duration: 1, // 스크롤 시간(초)
+          ease: "power2.inOut" // 자연스러운 감속/가속
+        });
+      }
+    }
+  });
+});
+
+  // Dark Mode
+  document.getElementById('themeToggle').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const body = document.body;
+    const isDark = body.classList.toggle('dark-mode');
+    const btn = this;
+
+    const tl = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
+
+if (isDark) {
+  btn.firstChild.textContent = 'DARK';
+  tl.to("body", { backgroundColor: "#000", color: "#dbdbdb" }, 0)
+    .to("#themeToggle span", { backgroundColor: "#dbdbdb", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }, 0)
+    .to(".section-light", { backgroundColor: "#f5f5f5" }, 0)
+    .to(".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }, 0)
+    .to(".text-dark", { color: "#dbdbdb" }, 0)
+    .to("svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }, 0)
+    .to("header .innerHeader .gnb-c, header .innerHeader .gnb-r ul li", {borderColor: "#dbdbdb" }, 0)
+    .to("header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }, 0)
+    .to("header .innerHeader .gnb-r ul li a span", { backgroundColor: "#dbdbdb" }, 0)
+    .to("header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }, 0)
+    .to(".visual .subText .copyright", { color: "#999999" }, 0);
+} 
+  else {
+  btn.firstChild.textContent = 'LIGHT';
+  tl.to("body", { backgroundColor: "#f5f5f5", color: "#252525" }, 0)
+    .to("#themeToggle span", { backgroundColor: "#000", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }, 0)
+    .to(".section-light", { backgroundColor: "#f5f5f5" }, 0)
+    .to(".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }, 0)
+    .to(".text-dark", { color: "#252525" }, 0)
+    .to("svg path", { fill: "#252525", stroke: "#252525" }, 0)
+    .to("header .innerHeader .gnb-c, header .innerHeader .gnb-r ul li", {borderColor: "#252525" }, 0)
+    .to("header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }, 0)
+    .to("header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000" }, 0)
+    .to("header .innerHeader .gnb-r ul li a svg path", { stroke: "none" }, 0)
+    .to("header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }, 0)
+    .to(".visual .subText .copyright", { color: "#777777" }, 0);
+}
+
+    // 모드 변경 후 현재 활성 메뉴 색상 갱신
+    applyLinkColors();
+  });
+
+  // 페이지 로드 시 첫 번째 메뉴 활성화
+  setActiveLink(links[0]);
+
 
   // 초기 세팅
   const savedIndex = window.activeIndex || 0;
@@ -52,6 +133,8 @@ function copyEmail() {
     navigator.clipboard.writeText('qazxcvbnm322@naver.com');
     alert('이메일이 복사되었습니다!');
 }
+
+
 
 
 // Visual-Logo-spin Gsap
@@ -208,6 +291,13 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
       closeModal();
     }
   });
+
+// 📌 ESC 키로 닫기
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
 });
 
 
