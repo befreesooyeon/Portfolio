@@ -42,7 +42,8 @@ header .innerHeader .gnb-c {position: absolute; left: 50%; transform: translateX
 header .innerHeader .gnb-c a {display: block; box-sizing: border-box; position: relative; z-index: 2; color: #252525; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2); /* 글자에 약한 광택 */ cursor: pointer;}
 header .innerHeader .gnb-c a.active, header .innerHeader .gnb-c a.focus {color: #fff;}
 header .innerHeader .gnb-c .highlight {position: absolute; top: 6px; height: 28px;  border-radius: 20px; background: #D4D4D4; z-index: 1; transition: all 0.3s ease;}
-header .innerHeader .gnb-r ul {display: flex; gap: 20px;}
+
+header .innerHeader .gnb-r ul {display: flex; gap: 20px; }
 header .innerHeader .gnb-r ul li {height: 40px; border: 1px dashed #000; background: hsla(0, 0%, 99%, 0.08);
   backdrop-filter: blur(10px); border-radius: 40px; line-height: 40px; text-align: center; box-shadow:inset -1px -1px 0 rgba(255, 255, 255, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.15);}
 header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 0 20px; box-sizing: border-box; gap: 4px; cursor: pointer;}
@@ -79,8 +80,9 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 .visual .subText .desc {font-size: 22px; display: flex; gap: 80px;}
 .visual .subText .desc .intro {display: block; margin-left: 84px;}
 
-.narrative-container {position: relative; display: flex; width: 100%; height: 100vh; overflow: hidden;}
+.narrative-container {position: relative; display: flex; width: 100%; height: 100vh; overflow: hidden; scroll-behavior: smooth;}
 .narrative .inner {position: relative; height: 100%; box-sizing: border-box;}
+
 
 /* 네러티브 표지 */
 .narrative .inner::before {content: ''; position: absolute; top: 50%; left: 50%; width: 1px; height: 78%; background: #ccc; transform: translate(-50%, -50%); z-index: 1;}
@@ -94,11 +96,20 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 .narrative .tabList li:nth-child(2) {position: absolute; right: 0; top: 0;} 
 .narrative .tabList li:nth-child(3) {position: absolute; left: 0; bottom: 0;} 
 .narrative .tabList li:nth-child(4) {position: absolute; right: 0; bottom: 0;} 
+
 .narrative .image-view {position: absolute; z-index: 999; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center;}
+
 .narrative .image-view img {margin-bottom: 20px;}
 #mainImage {width: 288px; height: 384px; object-fit: cover;}
-.narrative .scroll-btn {position: absolute; bottom: 0; left: 50%; transform: translate(-50%, -20%); font-size: 40px; padding: 24px 85px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; gap: 10px;
-margin-bottom: 70px; background: #F5F5F5; z-index: 1;}
+
+.narrative .scroll-btn {position: absolute; bottom: 0; left: 50%; transform: translate(-50%, -20%); font-size: 40px; padding: 24px 85px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; gap: 10px;margin-bottom: 70px; background: #F5F5F5; z-index: 1; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease;
+  cursor: pointer; overflow: hidden;}
+
+.scroll-btn:hover {background: #B7D3C6; transform: translate(-50%, -20%) scale(1.05);}
+.scroll-btn svg {transition: transform 0.3s ease;}
+.scroll-btn:hover svg {transform: translateX(8px);}
+
+
 
 
 /* 공통 텍스트 */

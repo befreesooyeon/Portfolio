@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-// 메뉴 클릭 시 active 이동 + GSAP 스크롤 이동
+// Heeader nav 메뉴 클릭 시 active 이동 + GSAP 스크롤 이동
 links.forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
@@ -76,7 +76,8 @@ if (isDark) {
     .to(".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }, 0)
     .to(".text-dark", { color: "#dbdbdb" }, 0)
     .to("svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }, 0)
-    .to("header .innerHeader .gnb-c, header .innerHeader .gnb-r ul li", {borderColor: "#dbdbdb" }, 0)
+    .to("header .innerHeader .gnb-c", {borderColor: "#dbdbdb" }, 0)
+    .to("header .innerHeader .gnb-r ul li", {borderColor: "#dbdbdb" }, 0)
     .to("header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }, 0)
     .to("header .innerHeader .gnb-r ul li a span", { backgroundColor: "#dbdbdb" }, 0)
     .to("header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }, 0)
@@ -90,7 +91,8 @@ if (isDark) {
     .to(".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }, 0)
     .to(".text-dark", { color: "#252525" }, 0)
     .to("svg path", { fill: "#252525", stroke: "#252525" }, 0)
-    .to("header .innerHeader .gnb-c, header .innerHeader .gnb-r ul li", {borderColor: "#252525" }, 0)
+    .to("header .innerHeader .gnb-c", {borderColor: "#252525" }, 0)
+    .to("header .innerHeader .gnb-r ul li", {borderColor: "#252525" }, 0)
     .to("header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }, 0)
     .to("header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000" }, 0)
     .to("header .innerHeader .gnb-r ul li a svg path", { stroke: "none" }, 0)
@@ -133,8 +135,6 @@ function copyEmail() {
     navigator.clipboard.writeText('qazxcvbnm322@naver.com');
     alert('이메일이 복사되었습니다!');
 }
-
-
 
 
 // Visual-Logo-spin Gsap
@@ -193,6 +193,32 @@ tabs.forEach(tab => {
     mainTxt.textContent = '각 키워드에 마우스를 올려보세요 ☺';
   });
 });
+
+
+
+
+
+// narrtive 표지  Scroll-btn 클릭 시 페이지 이동
+document.querySelector('.scroll-btn').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const container = document.querySelector('.narrative-container');
+  const target = document.querySelector('#next-section');
+
+  if (container && target) {
+    const targetPosition = target.offsetLeft;
+
+    // 부드러운 스크롤
+    container.scrollTo({
+      left: targetPosition,
+      behavior: 'smooth'
+    });
+  }
+});
+
+
+
+
 
 // orizin marquee
   function cloneMarqueeContent(trackSelector) {
