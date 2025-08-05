@@ -206,8 +206,7 @@ margin-left: -96px;}
 .become .inner {display: flex; justify-content: space-between; gap: 177px;}
 .become .inner .left {display: flex; flex-direction: column; justify-content: space-between;}
 .become .inner .left .tit {font-weight: normal; font-size: 130px; line-height: 1;}
-.become .inner .left .tit .line1 .en3 {color: #B7D3C6;}
-.become .inner .left .tit .line2 .en3 {color: #B7D3C6;  white-space: nowrap;}
+.become .inner .left .tit .line1 .en3 , .become .inner .left .tit .line2 .en3 {color: #B7D3C6;  white-space: nowrap;}
 .become .inner .left .tit .line2 {margin-left: 155px;}
 .become .inner .left .tit .point {font-size: 60px; padding: 20px 104px; box-sizing: border-box; border: 1px solid #252525; border-radius: 60%; margin-right: 20px;}
 .become .inner .right img {width: 468px; height: 736px; transition: all 0.3s; cursor: pointer;}
@@ -301,10 +300,18 @@ transform-origin: center;}
 
 /* Section-Works */
 .works {margin-top: 130px; width: 100%;}
+.works .inner {position: relative;}
 .works .title {font-size: 600px; line-height: 1; letter-spacing: -24px;
 font-weight: 500; margin-left: -217px; display: flex;}
 .works .title svg {margin-bottom: 368px;}
 .works .inner .topText {margin-top: 150px; display: flex; justify-content: space-between; font-size: 48px; line-height: 60px; letter-spacing: -1.92px;}
-.works .inner .filter-navigation {display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid #252525; margin: 100px 0 50px; font-size: 20px; line-height: 32px; font-weight: 500;}
+
+.works .inner .filter-wrapper { position: relative; }
+.works  .inner .filter-wrapper .filter-navigation { display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid #252525; margin: 100px 0 50px; font-size: 20px; line-height: 32px; font-weight: 500; }
+.works .inner .filter-wrapper .filter-navigation .filter-item { position: relative; padding-left: 30px; display: inline-block; cursor: pointer; }
+.works .inner .filter-wrapper .filter-navigation .filter-item a { text-decoration: none; color: inherit; }
+.works .inner .filter-wrapper .filter-navigation .filter-item.active a { font-weight: 700; }
+.works .filter-indicator { position: absolute; top: 60%; left: 0; transform: translateY(-50%); height: 20px; width: 20px; background: #B7D3C6; pointer-events: none; z-index: 2;}
+
+
 .works .inner .portfolio-grid .project-card .project-image img {border-radius: 16px;}
-/* .works .inner .portfolio-grid .project-card .project-image .project-info */

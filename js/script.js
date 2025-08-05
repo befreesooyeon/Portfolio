@@ -247,22 +247,6 @@ gsap.to(tooltip, {
   }
 }); 
 
-document.addEventListener('mousemove', (e) => {
-  if (!draggedElement) return;
-  
-  const container = draggedElement.closest('.images').getBoundingClientRect();
-  draggedElement.style.left = (e.clientX - container.left - offsetX) + 'px';
-  draggedElement.style.top = (e.clientY - container.top - offsetY) + 'px';
-});
-
-document.addEventListener('mouseup', () => {
-  if (draggedElement) {
-    draggedElement.classList.remove('dragging');
-    draggedElement = null;
-  }
-});
-
-
 // modal 통합
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
@@ -374,6 +358,38 @@ tl.to(scrollText, {
           }
       });
 });
+
+// ⭐️ WORKS-filter 클릭 시 클래스 적용
+const filterItems = document.querySelectorAll('.filter-item');
+const indicator = document.querySelector('.filter-indicator');
+
+filterItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // active 클래스 이동
+    filterItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+
+    // padding-left: 30px 지점에 고정
+    const parentRect = item.parentElement.getBoundingClientRect();
+    const leftPos = item.offsetLeft + 0; // 왼쪽 + 30px
+
+    gsap.to(indicator, {
+      duration: 0.5,
+      x: leftPos,
+      ease: 'power2.out',
+    });
+  });
+});
+
+
+
+
+
+
+
+
+
+
 
 
 

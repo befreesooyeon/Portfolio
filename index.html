@@ -532,39 +532,26 @@
           <p>A Collection Of Works</p>
           <p>(2021-2025)</p>
         </div>
-        <ul class="filter-navigation">
-          <li class="filter-item"><a href="#" data-filter="all">ALL</a></li>
-          <li class="filter-item"><a href="#" data-filter="ux-ui">UX UI</a></li>
-          <li class="filter-item"><a href="#" data-filter="clone">CLONE CODING</a></li>
-          <li class="filter-item"><a href="#" data-filter="graphic">GRAPHIC</a></li>
-          <li class="filter-item"><a href="#" data-filter="editorial">EDITORIAL</a></li>
-        </ul>
-        <div class="portfolio-grid">
-            <article class="project-card" data-category="ux-ui">
-                <div class="project-image">
-                    <a href="#" class="project-link">
-                      <img src="images/Aesop_cover.png" alt="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M7.10682 18.3874L5.69261 16.9731L14.1779 8.48786H6.39971V6.47968H17.6003V17.6803H15.5921V9.90208L7.10682 18.3874Z" fill="#252525"/>
-                      </svg>
-                    </a>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-brand">Brand Identity</h3>
-                    <span class="project-category">(GRAPHIC)</span>
-                    <p class="project-description">A Complete Brand Identity Design Project Including Logo, Color Palette, And Visual Guidelines.</p>
-                </div>
-            </article>
+        <div class="filter-wrapper">
+          <ul class="filter-navigation">
+            <li class="filter-item active"><a data-filter="all">ALL</a></li>
+            <li class="filter-item"><a data-filter="ux-ui">UX UI</a></li>
+            <li class="filter-item"><a data-filter="clone">CLONE CODING</a></li>
+            <li class="filter-item"><a data-filter="graphic">GRAPHIC</a></li>
+            <li class="filter-item"><a data-filter="editorial">EDITORIAL</a></li>
+          </ul>
+          <div class="filter-indicator"></div>
         </div>
+        <div class="portfolio-grid"></div>
 
-        <!-- <div class="modal-overlay" id="projectModal">
+        <div class="modal-overlay" id="projectModal">
           <div class="modal-content">
             <a href="#" class="close-modal">CLOSE</a>
             <div class="modal-inner">
               JS로 내용이 채워질 영역
             </div>
           </div>
-        </div> -->
+        </div>
 
         <div class="load-more-container">
             <button class="load-more-btn">Load More</button>
