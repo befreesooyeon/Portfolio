@@ -317,21 +317,9 @@ font-weight: 500; margin-left: -217px; display: flex;}
 /* works - portfolio-gird 스타일 정의  */
 .works .inner .portfolio-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 27px; margin-top: 50px;   width: 100%;}
 .works .inner .portfolio-grid .card .thumbnail {position: relative;}
-.works .inner .portfolio-grid .card .thumbnail .icon-circle  {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
-  overflow: hidden;
-  position: absolute; bottom: 20px; left: 20px; 
-}
-.works .inner .portfolio-grid .card .thumbnail .icon-circle svg {
-  display: block;
-}
+.works .inner .portfolio-grid .card .thumbnail .icon-circle  {display: inline-flex;
+justify-content: center; align-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; cursor: pointer; overflow: hidden; position: absolute; bottom: 20px; left: 20px;}
+.works .inner .portfolio-grid .card .thumbnail .icon-circle svg {display: block;}
 .works .inner .portfolio-grid .card .card-content {margin-top: 20px;}
 .works .inner .portfolio-grid .card .card-content .tit {display: flex;justify-content: space-between; align-items: center;  font-weight: 500;}
 .works .inner .portfolio-grid .card .card-content .tit h3 {font-size: 20px; font-weight: 500;}
@@ -340,3 +328,10 @@ font-weight: 500; margin-left: -217px; display: flex;}
 .works .inner .portfolio-grid .card .thumbnail img {border-radius: 16px; width: 100%;}
 .works .inner .load-more-wrapper {text-align: center; margin-top: 100px;} 
 #loadMoreBtn {padding: 16px 32px; box-sizing: border-box; font-size: 18px; background: none; border: 1px solid #252525; border-radius: 50px; font-weight: 500;  cursor: pointer; display: inline-block;}
+
+/* Section-my-photo */
+.my-photo {margin-top: 260px; width: 100%; margin-bottom: 1000px;}
+.my-photo .inner .text-wrap {position: relative;}
+.my-photo .inner .text-wrap .en2{font-size: 130px; font-weight: normal; line-height: 1; text-align: center; letter-spacing: -4px; white-space: nowrap;}
+.my-photo .inner .text-wrap .en2 .color {color: #B7D3C6;}
+.my-photo .inner .text-wrap a {width: 424px; height: 140px; border: 1px solid #252525; background: #F5F5F5; border-radius: 50%; display: flex; justify-content: center; align-items: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
