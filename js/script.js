@@ -315,6 +315,26 @@ filterItems.forEach(item => {
   });
 });
 
+// ⭐️ hover 시 효과
+document.querySelectorAll('.icon-circle').forEach(circle => {
+  const icon = circle.querySelector('svg');
+
+  circle.addEventListener('mouseenter', () => {
+    gsap.to(icon, {
+      xPercent: 100,
+      duration: 0.25,
+      ease: 'power2.in',
+      onComplete: () => {
+        gsap.set(icon, { xPercent: -100 });
+        gsap.to(icon, {
+          xPercent: 0,
+          duration: 0.25,
+          ease: 'power2.out'
+        });
+      }
+    });
+  });
+});
 
 
 

@@ -2,66 +2,67 @@
 
 export const portfolioData = [
 {
-id: "card1",
+id: "1",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(UX UI)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 },
 {
-id: "card2",
+id: "2",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(UX UI)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 },
 {
-id: "card3",
+id: "3",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(UX UI)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 },
 {
-id: "card4",
+id: "4",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(UX UI)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 },
 {
-id: "card5",
+id: "5",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(UX UI)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 },
 {
-id: "card6",
+id: "6",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(UX UI)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 },
 {
-id: "card7",
+id: "7",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(UX UI)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 },
 {
-id: "card8",
+id: "8",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(UX UI)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 },
 {
-id: "card9",
+id: "9",
 title: "Aesop",
 image: "../images/Aesop_cover.png",
-category: "(UI UX)",
+category: "(CLONE CODING)",
 description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
 }
 ];
+

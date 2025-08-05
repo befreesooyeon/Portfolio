@@ -314,11 +314,28 @@ font-weight: 500; margin-left: -217px; display: flex;}
 .works .filter-indicator { position: absolute; top: 60%; left: 0; transform: translateY(-50%); height: 20px; width: 20px; background: #B7D3C6; pointer-events: none; z-index: 2;}
 
 /* works - portfolio-gird 스타일 정의  */
-.works .inner .portfolio-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 27px; margin-top: 50px;   width: 100%;}
+.works .inner .portfolio-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 27px; margin-top: 50px;   width: 100%;}
+.works .inner .portfolio-grid .card .thumbnail {position: relative;}
+.works .inner .portfolio-grid .card .thumbnail .icon-circle  {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute; bottom: 20px; left: 20px; 
+}
+.works .inner .portfolio-grid .card .thumbnail .icon-circle svg {
+  display: block;
+}
 .works .inner .portfolio-grid .card .card-content {margin-top: 20px;}
 .works .inner .portfolio-grid .card .card-content .tit {display: flex;justify-content: space-between; align-items: center;  font-weight: 500;}
 .works .inner .portfolio-grid .card .card-content .tit h3 {font-size: 20px; font-weight: 500;}
 .works .inner .portfolio-grid .card .card-content .tit p {color: #666;}
 .works .inner .portfolio-grid .card .card-content .description {color: #666; line-height: 24px; margin-top: 10px; display: block;}
-
 .works .inner .portfolio-grid .card .thumbnail img {border-radius: 16px; width: 100%;}
+.works .inner .load-more-wrapper {text-align: center; margin-top: 100px;} 
+#loadMoreBtn {padding: 16px 32px; box-sizing: border-box; font-size: 18px; background: none; border: 1px solid #252525; border-radius: 50px; font-weight: 500;  cursor: pointer; display: inline-block;}
