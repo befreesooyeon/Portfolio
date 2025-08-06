@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /*reset*/
-*{padding: 0; margin: 0; /* scroll-behavior: smooth; */}
+*{padding: 0; margin: 0;}
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
 h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
 a {color:inherit; text-decoration: none;}
@@ -11,8 +11,8 @@ li {list-style: none;}
 address, em, i {font-style: normal;}
 
 /* Layout */
-.wrap {width: 100%; overflow: hidden; position: relative; margin: auto; margin-bottom: 3000px;}
-body {font-family: 'pretendard'; font-style: normal; font-weight: 400; background: #F5F5F5; color: #252525; font-size: 16px;}
+.wrap {width: 100%; overflow: hidden; position: relative; margin: auto;}
+body {font-family: 'pretendard'; font-style: normal; font-weight: 400; background: #F5F5F5; color: #252525; font-size: 16px; }
 
 /* 공통요소 */
 .inner {margin: 0 96px;}
@@ -41,7 +41,7 @@ header .innerHeader .gnb-c {position: absolute; left: 50%; transform: translateX
 
 header .innerHeader .gnb-c a {display: block; box-sizing: border-box; position: relative; z-index: 2; color: #252525; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2); /* 글자에 약한 광택 */ cursor: pointer;}
 header .innerHeader .gnb-c a.active, header .innerHeader .gnb-c a.focus {color: #fff;}
-header .innerHeader .gnb-c .highlight {position: absolute; top: 6px; height: 28px;  border-radius: 20px; background: #D4D4D4; z-index: 1; transition: all 0.3s ease;}
+header .innerHeader .gnb-c .highlight {position: absolute; top: 6px; height: 28px;  border-radius: 20px; background: #D4D4D4; z-index: 1;}
 
 header .innerHeader .gnb-r ul {display: flex; gap: 20px; }
 header .innerHeader .gnb-r ul li {height: 40px; border: 1px dashed #000; background: hsla(0, 0%, 99%, 0.08);
@@ -169,7 +169,7 @@ margin-left: -96px;}
 
 /* tooltip */
 .tooltip { position: absolute; display: inline-flex; align-items: center;
-    background: transparent; top: 40%; left: 60%; z-index: 999;}
+    background: transparent; top: 50%; left: 60%; z-index: 999;}
 .tooltip-bubble {padding: 8px 13px; box-sizing: border-box; display: flex; justify-content: center; align-items: center; border-radius: 20px;
     background: #4A6CF7; color: #fff; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15); z-index: 2; line-height: 24px; margin-left: 6px; margin-top: 30px; z-index: 9999;}
 
@@ -316,6 +316,7 @@ font-weight: 500; margin-left: -217px; display: flex;}
 
 /* works - portfolio-gird 스타일 정의  */
 .works .inner .portfolio-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 27px; margin-top: 50px;   width: 100%;}
+.works .inner .portfolio-grid .card {cursor: pointer;}
 .works .inner .portfolio-grid .card .thumbnail {position: relative;}
 .works .inner .portfolio-grid .card .thumbnail .icon-circle  {display: inline-flex;
 justify-content: center; align-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; cursor: pointer; overflow: hidden; position: absolute; bottom: 20px; left: 20px;}
@@ -329,9 +330,25 @@ justify-content: center; align-items: center; width: 44px; height: 44px; border-
 .works .inner .load-more-wrapper {text-align: center; margin-top: 100px;} 
 #loadMoreBtn {padding: 16px 32px; box-sizing: border-box; font-size: 18px; background: none; border: 1px solid #252525; border-radius: 50px; font-weight: 500;  cursor: pointer; display: inline-block;}
 
+/* portfolio-modal */
+#projectModal .modal-content {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none; background: #f5f5f5;}
+
+
+
 /* Section-my-photo */
-.my-photo {margin-top: 260px; width: 100%; margin-bottom: 1000px;}
+.my-photo {margin-top: 260px; width: 100%;}
 .my-photo .inner .text-wrap {position: relative;}
 .my-photo .inner .text-wrap .en2{font-size: 130px; font-weight: normal; line-height: 1; text-align: center; letter-spacing: -4px; white-space: nowrap;}
 .my-photo .inner .text-wrap .en2 .color {color: #B7D3C6;}
 .my-photo .inner .text-wrap a {width: 424px; height: 140px; border: 1px solid #252525; background: #F5F5F5; border-radius: 50%; display: flex; justify-content: center; align-items: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+
+/* Section-footer */
+.footer {margin-top: 130px; background: #000; color: #dbdbdb; width: 100%; height: 100%;}
+.footer .inner {padding: 130px 0 80px; box-sizing: border-box;}
+.footer .inner .footer-top {display: flex; justify-content: space-between;}
+.footer .inner .footer-top .info {font-size: 20px; line-height: 24px;}
+.footer .inner .footer-top .footer-btn {font-size: 40px; padding: 40px 80px; box-sizing: border-box; border: 1px solid #454545; transform: rotate(-5deg); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;  transition: all 0.6s ease;}
+.footer .inner .footer-top .footer-btn:hover {transform: rotate(-10deg); transition: all 0.6s ease;}
+.footer .inner .footer-bottom {margin-top: 160px; display: flex; justify-content: space-between;}
+.footer .inner .footer-bottom .brand {font-size: 150px; letter-spacing: -6px; line-height: 1;}
+.footer .inner .footer-meta {margin-top: 40px; display: flex; justify-content: space-between; text-transform: uppercase; padding-top: 10px; border-top: 1px solid #dbdbdb;}

@@ -1,62 +1,177 @@
-
-// header highlight
+// header highlight + 스크롤 연동 + 속도 반응형 애니메이션
 document.addEventListener("DOMContentLoaded", () => {
   const gnb = document.querySelector('.gnb-c');
   const highlight = gnb.querySelector('.highlight');
-  const links = gnb.querySelectorAll('a');
+  const gnbLinks = gnb.querySelectorAll('a');
   const padX = 8; // 가상 padding-left/right
-  const padY = 4; // 가상 padding-top/bottom
+  let activeLink = null; // 현재 active 상태의 링크 저장
+  let lastScrollY = window.scrollY; // 마지막 스크롤 위치 저장
 
-  // highlight 이동 + 크기 설정 함수
-  function moveHighlightTo(link) {
-    const linkLeft = link.offsetLeft;
-    const linkWidth = link.offsetWidth;
-    highlight.style.left = `${linkLeft - padX}px`;
-    highlight.style.width = `${linkWidth + padX * 2}px`;
+  // 📌 공통 스크롤 애니메이션 함수
+  function smoothScrollTo(targetY, duration = 1, ease = "power2.inOut") {
+    gsap.to(window, {
+      scrollTo: targetY,
+      duration: duration,
+      ease: ease
+    });
   }
 
-  // active 상태 적용
-  function setActiveLink(link) {
-    links.forEach(a => a.classList.remove('active'));
-    link.classList.add('active');
-
-    // 색상 적용
-    applyLinkColors();
-    moveHighlightTo(link);
-  }
-
-  // 다크/라이트 모드에 맞춰 링크 색상 적용
-  function applyLinkColors() {
-    const isDark = document.body.classList.contains('dark-mode');
-    links.forEach(a => a.style.color = isDark ? "#dbdbdb" : "#252525");
-    const activeLink = document.querySelector('.gnb-c a.active');
-    if (activeLink) {
-      activeLink.style.color = isDark ? "#252525" : "#ffffff";
-    }
-  }
-
-// Heeader nav 메뉴 클릭 시 active 이동 + GSAP 스크롤 이동
-links.forEach(link => {
-  link.addEventListener('click', function (e) {
+  // 📌 앵커 링크 스크롤 처리 함수
+  function handleAnchorClick(e, link) {
     e.preventDefault();
-    setActiveLink(this);
-
-    const targetId = this.getAttribute('href');
+    const targetId = link.getAttribute('href');
     if (targetId && targetId.startsWith('#')) {
       const target = document.querySelector(targetId);
       if (target) {
         const headerOffset = 130; // 헤더 높이
         const targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-
-        gsap.to(window, {
-          scrollTo: targetY,
-          duration: 1, // 스크롤 시간(초)
-          ease: "power2.inOut" // 자연스러운 감속/가속
-        });
+        smoothScrollTo(targetY);
       }
     }
+  }
+
+  // highlight 이동 + 크기 설정 함수
+  function moveHighlightTo(link, speedFactor = 1) {
+    if (!link) return;
+    const linkLeft = link.offsetLeft;
+    const linkWidth = link.offsetWidth;
+
+    // 📌 scroll 속도에 비례해 duration 조절 (speedFactor = 1이 기본)
+    gsap.to(highlight, {
+      left: linkLeft - padX,
+      width: linkWidth + padX * 2,
+      duration: 0.3 / speedFactor, // 빠른 스크롤 → 더 빠른 이동
+      ease: speedFactor > 1 ? "elastic.out(1, 0.5)" : "power2.out" // 빠르면 튕김, 기본은 부드럽게
+    });
+  }
+
+  // active 상태 적용
+  function setActiveLink(link, speedFactor = 1) {
+    gnbLinks.forEach(a => a.classList.remove('active'));
+    link.classList.add('active');
+    activeLink = link;
+
+    // 색상 적용
+    applyLinkColors();
+    moveHighlightTo(link, speedFactor);
+  }
+
+  // 다크/라이트 모드에 맞춰 링크 색상 적용
+  function applyLinkColors() {
+    const isDark = document.body.classList.contains('dark-mode');
+    gnbLinks.forEach(a => a.style.color = isDark ? "#dbdbdb" : "#252525");
+    if (activeLink) {
+      activeLink.style.color = isDark ? "#252525" : "#ffffff";
+    }
+  }
+
+  // 📌 페이지 로드 시 기본 활성화 (첫 번째 링크)
+  activeLink = gnbLinks[0];
+  setActiveLink(activeLink);
+
+  // 📌 마우스 올리면 하이라이트 이동
+  gnbLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => moveHighlightTo(link));
   });
-});
+
+  // 📌 메뉴 전체에서 마우스 나가면 active 위치로 복귀
+  gnb.addEventListener('mouseleave', () => {
+    if (activeLink) moveHighlightTo(activeLink);
+  });
+
+  // 📌 클릭 시 active 고정 + 스크롤 이동
+  gnbLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      setActiveLink(link);
+      handleAnchorClick(e, link);
+    });
+  });
+
+  // 📌 스크롤 시 현재 섹션에 맞춰 active 변경 + 속도 반응형 애니메이션
+  const sections = Array.from(gnbLinks)
+    .map(link => {
+      const id = link.getAttribute('href');
+      if (id && id.startsWith('#')) {
+        const section = document.querySelector(id);
+        if (section) return { link, section };
+      }
+      return null;
+    })
+    .filter(item => item !== null);
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const headerOffset = 140; // 헤더 보정값
+
+    // 📌 스크롤 속도 계산
+    const scrollSpeed = Math.abs(scrollY - lastScrollY);
+    lastScrollY = scrollY;
+    const speedFactor = Math.min(Math.max(scrollSpeed / 50, 1), 3); 
+    // speedFactor 최소 1, 최대 3
+
+    let current = null;
+    for (const { link, section } of sections) {
+      if (scrollY >= section.offsetTop - headerOffset) {
+        current = link;
+      }
+    }
+
+    if (current && current !== activeLink) {
+      setActiveLink(current, speedFactor);
+    }
+  });
+
+  // 📌 창 크기 변경 시 active 위치 재조정
+  window.addEventListener('resize', () => {
+    if (activeLink) moveHighlightTo(activeLink);
+  });
+
+  // 📌 전체 페이지 내 a[href^="#"] 클릭 시 부드러운 스크롤 적용 (gnb 제외)
+  const allLinks = document.querySelectorAll('a[href^="#"]:not(.gnb-c a)');
+  allLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      handleAnchorClick(e, this);
+    });
+  });
+
+  // 📌 Dark Mode 애니메이션 설정 객체
+  const themeAnimationConfig = {
+    dark: {
+      buttonText: 'DARK',
+      animations: [
+        ["body", { backgroundColor: "#000", color: "#dbdbdb" }],
+        ["#themeToggle span", { backgroundColor: "#dbdbdb", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }],
+        [".section-light", { backgroundColor: "#f5f5f5" }],
+        [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
+        [".text-dark", { color: "#dbdbdb" }],
+        ["svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
+        ["header .innerHeader .gnb-c", { borderColor: "#dbdbdb" }],
+        ["header .innerHeader .gnb-r ul li", { borderColor: "#dbdbdb" }],
+        ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
+        ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#dbdbdb" }],
+        ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }],
+        [".visual .subText .copyright", { color: "#999999" }]
+      ]
+    },
+    light: {
+      buttonText: 'LIGHT',
+      animations: [
+        ["body", { backgroundColor: "#f5f5f5", color: "#252525" }],
+        ["#themeToggle span", { backgroundColor: "#000", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }],
+        [".section-light", { backgroundColor: "#f5f5f5" }],
+        [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
+        [".text-dark", { color: "#252525" }],
+        ["svg path", { fill: "#252525", stroke: "#252525" }],
+        ["header .innerHeader .gnb-c", { borderColor: "#252525" }],
+        ["header .innerHeader .gnb-r ul li", { borderColor: "#252525" }],
+        ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
+        ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000" }],
+        ["header .innerHeader .gnb-r ul li a svg path", { stroke: "none" }],
+        ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }],
+        [".visual .subText .copyright", { color: "#777777" }]
+      ]
+    }
+  };
 
   // Dark Mode
   document.getElementById('themeToggle').addEventListener('click', function (e) {
@@ -65,162 +180,115 @@ links.forEach(link => {
     const body = document.body;
     const isDark = body.classList.toggle('dark-mode');
     const btn = this;
+    const config = isDark ? themeAnimationConfig.dark : themeAnimationConfig.light;
 
     const tl = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
-
-if (isDark) {
-  btn.firstChild.textContent = 'DARK';
-  tl.to("body", { backgroundColor: "#000", color: "#dbdbdb" }, 0)
-    .to("#themeToggle span", { backgroundColor: "#dbdbdb", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }, 0)
-    .to(".section-light", { backgroundColor: "#f5f5f5" }, 0)
-    .to(".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }, 0)
-    .to(".text-dark", { color: "#dbdbdb" }, 0)
-    .to("svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }, 0)
-    .to("header .innerHeader .gnb-c", {borderColor: "#dbdbdb" }, 0)
-    .to("header .innerHeader .gnb-r ul li", {borderColor: "#dbdbdb" }, 0)
-    .to("header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }, 0)
-    .to("header .innerHeader .gnb-r ul li a span", { backgroundColor: "#dbdbdb" }, 0)
-    .to("header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }, 0)
-    .to(".visual .subText .copyright", { color: "#999999" }, 0);
-} 
-  else {
-  btn.firstChild.textContent = 'LIGHT';
-  tl.to("body", { backgroundColor: "#f5f5f5", color: "#252525" }, 0)
-    .to("#themeToggle span", { backgroundColor: "#000", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }, 0)
-    .to(".section-light", { backgroundColor: "#f5f5f5" }, 0)
-    .to(".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }, 0)
-    .to(".text-dark", { color: "#252525" }, 0)
-    .to("svg path", { fill: "#252525", stroke: "#252525" }, 0)
-    .to("header .innerHeader .gnb-c", {borderColor: "#252525" }, 0)
-    .to("header .innerHeader .gnb-r ul li", {borderColor: "#252525" }, 0)
-    .to("header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }, 0)
-    .to("header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000" }, 0)
-    .to("header .innerHeader .gnb-r ul li a svg path", { stroke: "none" }, 0)
-    .to("header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }, 0)
-    .to(".visual .subText .copyright", { color: "#777777" }, 0);
-}
+    
+    btn.firstChild.textContent = config.buttonText;
+    
+    // 애니메이션 적용
+    config.animations.forEach(([selector, props]) => {
+      tl.to(selector, props, 0);
+    });
 
     // 모드 변경 후 현재 활성 메뉴 색상 갱신
     applyLinkColors();
   });
-
-  // 페이지 로드 시 첫 번째 메뉴 활성화
-  setActiveLink(links[0]);
-
-
-  // 초기 세팅
-  const savedIndex = window.activeIndex || 0;
-  const initialLink = links[savedIndex] || links[0];
-  setActiveLink(initialLink);
-
-  // 이벤트
-  links.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      moveHighlightTo(link);
-    });
-
-    link.addEventListener('click', e => {
-      // e.preventDefault(); (a 태그 기본 동작 막는 코드)
-      setActiveLink(link);
-    });
-  });
-
-  gnb.addEventListener('mouseleave', () => {
-    const activeLink = gnb.querySelector('a.active');
-    moveHighlightTo(activeLink);
-  });
 });
 
-function copyEmail() {
-    navigator.clipboard.writeText('qazxcvbnm322@naver.com');
-    alert('이메일이 복사되었습니다!');
-}
-
-
-// Visual-Logo-spin Gsap
-window.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.to(".line1 .logo-spin", {
-    rotation: 360,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".visual",
-      start: "top top",
-      end: "bottom top",
-      scrub: 0.1,
-    }
-  });
-
-  // 가로스크롤 start
-  gsap.registerPlugin(ScrollTrigger);   
-
+// 가로스크롤 start
+window.addEventListener("DOMContentLoaded", () => { 
   let sections = gsap.utils.toArray(".narrative-container section");
-  {
-let totalWidth = 0;
-sections.forEach(section => {
+  
+  let totalWidth = 0;
+  sections.forEach(section => {
     totalWidth += section.offsetWidth;
-});
+  });
 
-let scrollTween = gsap.to(sections, {
+  let scrollTween = gsap.to(sections, {
     x: -totalWidth + window.innerWidth, // 실제 너비로 계산
     ease: "none",
     scrollTrigger: {
-        trigger: '.narrative-container',
-        pin: true,
-        scrub: 1,
-        start: 'top top',
-        end: () => "+=" + totalWidth + "px", // 실제 너비로 end 계산
+      trigger: '.narrative-container',
+      pin: true,
+      scrub: 1,
+      start: 'top top',
+      end: () => "+=" + totalWidth + "px", // 실제 너비로 end 계산
     }
-});
-
-// narrtive 표지 마우스 hover시 사진 변경
-const tabs = document.querySelectorAll('.tab');
-const mainImage = document.getElementById('mainImage');
-const mainTxt = document.getElementById('mainTxt');
-
-tabs.forEach(tab => {
-  tab.addEventListener('mouseenter', () => {
-    const imageName = tab.getAttribute('data-image');
-    const text = tab.getAttribute('data-text');
-    mainImage.setAttribute('src', `images/${imageName}`);
-    mainTxt.textContent = text;
   });
 
-  tab.addEventListener('mouseleave', () => {
-    // 이미지 & 텍스트 원래대로
-    mainImage.setAttribute('src', 'images/narrativePhoto.png');
-    mainTxt.textContent = '각 키워드에 마우스를 올려보세요 ☺';
-  });
-});
+  // 📌 로고 회전 애니메이션 설정
+  const logoRotationConfigs = [
+    {
+      selector: ".line1 .logo-spin",
+      trigger: ".visual",
+      start: "top top",
+      end: "bottom top",
+      scrub: 0.1
+    },
+    {
+      selector: ".footer-spin",
+      trigger: ".footer-spin",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 0.1
+    }
+  ];
 
-
-
-
-
-// narrtive 표지  Scroll-btn 클릭 시 페이지 이동
-document.querySelector('.scroll-btn').addEventListener('click', function (e) {
-  e.preventDefault();
-
-  const container = document.querySelector('.narrative-container');
-  const target = document.querySelector('#next-section');
-
-  if (container && target) {
-    const targetPosition = target.offsetLeft;
-
-    // 부드러운 스크롤
-    container.scrollTo({
-      left: targetPosition,
-      behavior: 'smooth'
+  logoRotationConfigs.forEach(config => {
+    gsap.to(config.selector, {
+      rotation: 360,
+      ease: "none",
+      scrollTrigger: {
+        trigger: config.trigger,
+        start: config.start,
+        end: config.end,
+        scrub: config.scrub
+      }
     });
-  }
-});
+  });
 
+  // narrtive 표지 마우스 hover시 사진 변경
+  const tabs = document.querySelectorAll('.tab');
+  const mainImage = document.getElementById('mainImage');
+  const mainTxt = document.getElementById('mainTxt');
+  const defaultImage = 'images/narrativePhoto.png';
+  const defaultText = '각 키워드에 마우스를 올려보세요 ☺';
 
+  tabs.forEach(tab => {
+    tab.addEventListener('mouseenter', () => {
+      const imageName = tab.getAttribute('data-image');
+      const text = tab.getAttribute('data-text');
+      mainImage.setAttribute('src', `images/${imageName}`);
+      mainTxt.textContent = text;
+    });
 
+    tab.addEventListener('mouseleave', () => {
+      // 이미지 & 텍스트 원래대로
+      mainImage.setAttribute('src', defaultImage);
+      mainTxt.textContent = defaultText;
+    });
+  });
 
+  // narrtive 표지 Scroll-btn 클릭 시 페이지 이동
+  document.querySelector('.scroll-btn').addEventListener('click', function (e) {
+    e.preventDefault();
 
-// orizin marquee
+    const container = document.querySelector('.narrative-container');
+    const target = document.querySelector('#next-section');
+
+    if (container && target) {
+      const targetPosition = target.offsetLeft;
+
+      // 부드러운 스크롤
+      container.scrollTo({
+        left: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+
+  // 📌 marquee 복제 함수
   function cloneMarqueeContent(trackSelector) {
     const track = document.querySelector(trackSelector);
     const content = track.children[0].cloneNode(true);
@@ -230,131 +298,126 @@ document.querySelector('.scroll-btn').addEventListener('click', function (e) {
   cloneMarqueeContent('#marquee1 .marquee-track');
   cloneMarqueeContent('#marquee2 .marquee-track');
 
-  
-//  Tooltip 스크롤
-const tooltip = document.querySelector(".tooltip");
-const nowSection = document.querySelector(".narrative-container .now");
+  // Tooltip 스크롤
+  const tooltip = document.querySelector(".tooltip");
+  const nowSection = document.querySelector(".narrative-container .now");
 
-gsap.to(tooltip, {
-  top: "50%",
-  left: "20%",
-  ease: "none",
-  scrollTrigger: {
-    trigger: '.now',
-    start: 'top',
-    end: () => "+=" + (nowSection.offsetLeft + nowSection.offsetWidth) + "px", // .now 섹션이 끝나는 지점
-    scrub: 1,
-  }
-}); 
+  gsap.to(tooltip, {
+    top: "50%",
+    left: "18%",
+    ease: "none",
+    scrollTrigger: {
+      trigger: '.now',
+      start: 'top',
+      end: () => "+=" + (nowSection.offsetLeft + nowSection.offsetWidth) + "px", // .now 섹션이 끝나는 지점
+      scrub: 1,
+    }
+  }); 
 
-// keywords gsap
-const scrollText = document.querySelector('.keyWords .scrollText');
-const originalHTML = scrollText.innerHTML;
-scrollText.innerHTML = originalHTML + originalHTML + originalHTML;
+  // keywords gsap
+  const scrollText = document.querySelector('.keyWords .scrollText');
+  const originalHTML = scrollText.innerHTML;
+  scrollText.innerHTML = originalHTML + originalHTML + originalHTML;
 
-let tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.keyWords',
-    start: 'top bottom',
-    end: 'bottom top',
-    scrub: 1,
-    ease: "power1.inOut"
-  }
-});
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.keyWords',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1,
+      ease: "power1.inOut"
+    }
+  });
 
-tl.to(scrollText, {
-  x: '-50%',
-  duration: 1,
-  ease: "none"
-});
+  tl.to(scrollText, {
+    x: '-50%',
+    duration: 1,
+    ease: "none"
+  });
 
-// About-accordion
+  // About-accordion
   const accordionItems = document.querySelectorAll('.accordion-item');
   
   accordionItems.forEach(item => {
-      const accordionTit = item.querySelector('.accordion-tit');
-      const accordionIcon = item.querySelector('.accordion-icon');
-      const accordionContent = item.querySelector('.accordion-content');
+    const accordionTit = item.querySelector('.accordion-tit');
+    const accordionContent = item.querySelector('.accordion-content');
+    
+    accordionTit.addEventListener('click', function() {
+      const isActive = item.classList.contains('active');
       
-      accordionTit.addEventListener('click', function() {
-          const isActive = item.classList.contains('active');
-          
-          // 모든 아코디언 항목 닫기
-          accordionItems.forEach(otherItem => {
-              otherItem.classList.remove('active');
-              const otherContent = otherItem.querySelector('.accordion-content');
-              otherContent.style.maxHeight = '0';
-          });
-          
-          // 클릭한 항목이 닫혀있었다면 열기
-          if (!isActive) {
-              item.classList.add('active');
-              accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-          }
+      // 모든 아코디언 항목 닫기
+      accordionItems.forEach(otherItem => {
+        otherItem.classList.remove('active');
+        const otherContent = otherItem.querySelector('.accordion-content');
+        otherContent.style.maxHeight = '0';
       });
-});
-
-// ⭐️ WORKS-filter 클릭 시 클래스 적용
-const filterItems = document.querySelectorAll('.filter-item');
-const indicator = document.querySelector('.filter-indicator');
-
-filterItems.forEach(item => {
-  item.addEventListener('click', () => {
-    // active 클래스 이동
-    filterItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-
-    const parentRect = item.parentElement.getBoundingClientRect();
-    const leftPos = item.offsetLeft + 0;
-
-    gsap.to(indicator, {
-      duration: 0.5,
-      x: leftPos,
-      ease: 'power2.out',
-    });
-  });
-});
-
-// ⭐️ hover 시 효과
-document.querySelectorAll('.icon-circle').forEach(circle => {
-  const icon = circle.querySelector('svg');
-
-  circle.addEventListener('mouseenter', () => {
-    gsap.to(icon, {
-      xPercent: 100,
-      duration: 0.25,
-      ease: 'power2.in',
-      onComplete: () => {
-        gsap.set(icon, { xPercent: -100 });
-        gsap.to(icon, {
-          xPercent: 0,
-          duration: 0.25,
-          ease: 'power2.out'
-        });
+      
+      // 클릭한 항목이 닫혀있었다면 열기
+      if (!isActive) {
+        item.classList.add('active');
+        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
       }
     });
   });
+
+  // ⭐️ WORKS-filter 클릭 시 클래스 적용
+  const filterItems = document.querySelectorAll('.filter-item');
+  const indicator = document.querySelector('.filter-indicator');
+
+  filterItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // active 클래스 이동
+      filterItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      const leftPos = item.offsetLeft + 0;
+
+      gsap.to(indicator, {
+        duration: 0.5,
+        x: leftPos,
+        ease: 'power2.out',
+      });
+    });
+  });
+
+  // ⭐️ hover 시 효과
+  document.querySelectorAll('.works .inner .portfolio-grid .card').forEach(card => {
+    const icon = card.querySelector('.icon-circle svg');
+    if (!icon) return; // 아이콘 없으면 패스
+
+    card.addEventListener('mouseenter', () => {
+      gsap.to(icon, {
+        xPercent: 100,
+        duration: 0.25,
+        ease: 'power2.in',
+        onComplete: () => {
+          gsap.set(icon, { xPercent: -100 });
+          gsap.to(icon, {
+            xPercent: 0,
+            duration: 0.25,
+            ease: 'power2.out'
+          });
+        }
+      });
+    });
+  });
+
+  // 📌 Footer Get In Touch 버튼 클릭 시 이메일 작성 (새창)
+const footerBtn = document.querySelector('.footer .footer-btn');
+if (footerBtn) {
+  footerBtn.addEventListener('click', function() {
+    const email = 'sooeaeoyo@gmail.com';
+    const mailtoLink = `mailto:${email}`;
+    window.open(mailtoLink, '_blank');
+  });
+}
+
+
+
+
+
+
+
+
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  }
-});
