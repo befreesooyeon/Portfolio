@@ -17,6 +17,7 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 /* 공통요소 */
 .inner {margin: 0 96px;}
 .dot::after {content: ''; width: 14px; height: 14px; border-radius: 50%; background: #B7D3C6; display: inline-block; margin-left: 20px; cursor: pointer;}
+.modal-close-btn {cursor: pointer; font-weight: 500; display: inline;}
 
 
 /* 영어폰트 */
@@ -60,7 +61,6 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 /* fortune-modal */
 #fortuneModal .modal-content {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none;}
 #fortuneModal .modal-content .content {height: 100vh; padding: 70px 245px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; justify-content: space-between;}
-#fortuneModal .modal-content .content a {font-weight: 500; display: block; width: 100%; cursor: pointer;}
 #fortuneModal .modal-content .content .cards {display: flex; justify-content: center; gap: 60px;}
 #fortuneModal .modal-content .content .cards li {transition: all 0.2s;}
 #fortuneModal .modal-content .content .cards .card-01:hover, #fortuneModal .modal-content .content .cards .card-02:hover, #fortuneModal .modal-content .content .cards .card-03:hover {transform: scale(1.05); transition: all 0.2s;}
@@ -212,7 +212,7 @@ margin-left: -96px;}
 .become .inner .right img {width: 468px; height: 736px; transition: all 0.3s; cursor: pointer;}
 .become .inner .right img:hover {transform: rotate(10deg); transition: all 0.3s;}
 /* Section-keyword */
-.keyWords .textWrap {padding: 130px 195px; box-sizing: border-box; text-align: center; line-height: 1;}
+.keyWords .textWrap {padding: 200px 195px; box-sizing: border-box; text-align: center; line-height: 1;}
 .keyWords .textWrap > div:not(:last-child) {margin-bottom: 10px;}
 .keyWords .textWrap .line1, .keyWords .textWrap .line4 {font-size: 130px;}
 .keyWords .textWrap .line2 {font-size: 130px; display: flex; gap: 67px; align-items: baseline; justify-content: center;}
@@ -242,7 +242,7 @@ margin-left: -96px;}
 .marquee:hover {background: #B7D3C6; transition: all .2s;}
 
 /* Section-about */
-.about {margin-top: 130px; width: 100%;}
+.about {margin-top: 200px; width: 100%;}
 .about .inner .profile {display: flex; justify-content: space-between;  /* max-width: 1728px; */ }
 .about .inner .profile .left .name {font-size: 140px; line-height: 0.8; letter-spacing: -4px; font-weight: 500; margin-bottom: 30px;}
 .about .inner .profile .left .name .dot {position: relative; display: inline-block;}
@@ -333,17 +333,47 @@ justify-content: center; align-items: center; width: 44px; height: 44px; border-
 /* portfolio-modal */
 #projectModal .modal-content {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none; background: #f5f5f5;}
 
-
-
 /* Section-my-photo */
-.my-photo {margin-top: 260px; width: 100%;}
-.my-photo .inner .text-wrap {position: relative;}
-.my-photo .inner .text-wrap .en2{font-size: 130px; font-weight: normal; line-height: 1; text-align: center; letter-spacing: -4px; white-space: nowrap;}
-.my-photo .inner .text-wrap .en2 .color {color: #B7D3C6;}
-.my-photo .inner .text-wrap a {width: 424px; height: 140px; border: 1px solid #252525; background: #F5F5F5; border-radius: 50%; display: flex; justify-content: center; align-items: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+.my-photo {margin-top:200px; width:100%; position:relative; overflow:hidden; display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; flex-direction:column; padding-bottom: 200px; box-sizing: border-box;}
+.my-photo .inner {position:relative; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; width:100%; height:100vh;}
+.my-photo .inner .text-wrap {position:absolute; top:0%; left:50%; transform:translateX(-50%); z-index:2; text-align:center;}
+.my-photo .inner .text-wrap .en2 {font-size:200px; font-weight:normal; line-height:1; letter-spacing:-4px; white-space:nowrap;}
+.my-photo .inner .text-wrap .color {color:#B7D3C6;}
+.my-photo .inner .text-wrap a {width:424px; height:140px; border:1px solid #252525; background:#F5F5F5; border-radius:50%; display:flex; justify-content:center; align-items:center; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+
+.gallery-wrapper {width:100%; height:100%; position:absolute; top:60%; left:0;}
+.gallery-card {position:absolute; width:348px; height:450px; cursor:pointer;}
+.gallery-card .card-img {width:100%; height:100%; position:relative; overflow:hidden;}
+.gallery-card .card-img img {width:100%; height:100%; object-fit:cover; display:block;}
+
+.gallery-card .card-hover { position: absolute; top: 0; left: 0; width: 100%; height: 100%; color: white; opacity: 0; transition: 0.3s; pointer-events: none; display: flex; justify-content: center; align-items: center; }
+
+.gallery-card:hover .card-hover { opacity: 1; pointer-events: auto; }
+.gallery-card .card-hover button { background: linear-gradient(135deg, hsla(0, 0%, 100%, 0.25) 0%, hsla(0, 0%, 100%, 0.1) 50%, hsla(0, 0%, 100%, 0.05) 100%); border: 1px solid hsla(0, 0%, 100%, 0.3); color: #fff; padding: 16px 40px; box-sizing: border-box; border-radius: 50px; font-size: 18px; cursor: pointer; position: relative; overflow: hidden; transition: background 0.1s ease, border-color 0.1s ease, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1); z-index: 2; }
+.gallery-card .card-hover button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%); transition: left 0.6s ease-in-out; z-index: 1; }
+.gallery-card .card-hover button:hover { background: linear-gradient(135deg, hsla(0, 0%, 100%, 0.35) 0%, hsla(0, 0%, 100%, 0.2) 50%, hsla(0, 0%, 100%, 0.1) 100%); border-color: hsla(0, 0%, 100%, 0.5); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.2); }
+.gallery-card .card-hover button:hover::before { left: 100%; }
+.gallery-card .card-hover button:active { transform: translateY(0px); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+.gallery-card .card-hover button::after { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.4s ease-out, height 0.4s ease-out; pointer-events: none; z-index: 0; }
+.gallery-card .card-hover button:hover::after { width: 300px; height: 300px; animation: ripple 1.2s ease-out infinite; }
+@keyframes ripple { 0% { width: 0; height: 0; opacity: 0.8; } 50% { opacity: 0.4; } 100% { width: 300px; height: 300px; opacity: 0; } }
+.gallery-card .card-hover button * { position: relative; z-index: 3; }
+.gallery-card .card-info { position: absolute; top: -65px; left: 0; width: 100%; color: #333; opacity: 0; transition: 0.3s; cursor: default;}
+.gallery-card:hover .card-info { opacity: 1; }
+.gallery-card .card-info h3 { font-size: 20px; font-weight: 600; margin: 0 0 6px 0; }
+.gallery-card .card-info p { font-size: 14px; line-height: 1.4; margin: 0; }
+@keyframes ripple { 0% { width: 0; height: 0; opacity: 0.8; } 50% { opacity: 0.4; } 100% { width: 300px; height: 300px; opacity: 0; } }
+
+
+/* My photo Modal-content  */
+.my-photo #photoModal .modal-content  {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none;}
+.my-photo #photoModal .modal-content .content {height: 100vh; padding: 70px 245px; box-sizing: border-box; text-align: center;}
+.modal-photo-wrapper img {width: 80%;}
+
+
 
 /* Section-footer */
-.footer {margin-top: 130px; background: #000; color: #dbdbdb; width: 100%; height: 100%;}
+.footer {/* margin-top: 130px; */ background: #000; color: #dbdbdb; width: 100%; height: 100%;}
 .footer .inner {padding: 130px 0 80px; box-sizing: border-box;}
 .footer .inner .footer-top {display: flex; justify-content: space-between;}
 .footer .inner .footer-top .info {font-size: 20px; line-height: 24px;}
