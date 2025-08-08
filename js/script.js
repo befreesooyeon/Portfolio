@@ -21,37 +21,55 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const targetId = link.getAttribute('href');
     if (targetId && targetId.startsWith('#')) {
-      const target = document.querySelector(targetId);
-      if (target) {
-        const headerOffset = 130; // 헤더 높이
-        const targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-        smoothScrollTo(targetY);
+      let targetY;
+      const headerOffset = 130; // 헤더 높이
+      
+      // #home 클릭 시 페이지 맨 위로 이동
+      if (targetId === '#home') {
+        targetY = 0;
+      } 
+      // #footer 클릭 시 스크롤 가능한 맨 아래로 이동 (margin-bottom 포함)
+      else if (targetId === '#footer') {
+        targetY = document.documentElement.scrollHeight - window.innerHeight;
+      } 
+      else {
+        const target = document.querySelector(targetId);
+        if (target) {
+          targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+        } else {
+          return;
+        }
       }
+      
+      smoothScrollTo(targetY);
     }
   }
 
   // highlight 이동 + 크기 설정 함수
   function moveHighlightTo(link, speedFactor = 1) {
-    if (!link) return;
-    const linkLeft = link.offsetLeft;
-    const linkWidth = link.offsetWidth;
+    if (!link || !highlight) return;
+    
+    const gnbRect = gnb.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+    const linkLeft = linkRect.left - gnbRect.left;
+    const linkWidth = linkRect.width;
 
-    // 📌 scroll 속도에 비례해 duration 조절 (speedFactor = 1이 기본)
     gsap.to(highlight, {
       left: linkLeft - padX,
       width: linkWidth + padX * 2,
-      duration: 0.3 / speedFactor, // 빠른 스크롤 → 더 빠른 이동
-      ease: speedFactor > 1 ? "elastic.out(1, 0.5)" : "power2.out" // 빠르면 튕김, 기본은 부드럽게
+      duration: 0.3 / speedFactor,
+      ease: speedFactor > 1 ? "elastic.out(1, 0.5)" : "power2.out"
     });
   }
 
   // active 상태 적용
   function setActiveLink(link, speedFactor = 1) {
+    if (!link) return;
+    
     gnbLinks.forEach(a => a.classList.remove('active'));
     link.classList.add('active');
     activeLink = link;
 
-    // 색상 적용
     applyLinkColors();
     moveHighlightTo(link, speedFactor);
   }
@@ -66,8 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 📌 페이지 로드 시 기본 활성화 (첫 번째 링크)
-  activeLink = gnbLinks[0];
-  setActiveLink(activeLink);
+  if (gnbLinks.length > 0) {
+    activeLink = gnbLinks[0];
+    setTimeout(() => {
+      setActiveLink(activeLink);
+    }, 100);
+  }
 
   // 📌 마우스 올리면 하이라이트 이동
   gnbLinks.forEach(link => {
@@ -88,42 +110,62 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 📌 스크롤 시 현재 섹션에 맞춰 active 변경 + 속도 반응형 애니메이션
-  const sections = Array.from(gnbLinks)
-    .map(link => {
-      const id = link.getAttribute('href');
-      if (id && id.startsWith('#')) {
-        const section = document.querySelector(id);
-        if (section) return { link, section };
-      }
-      return null;
-    })
-    .filter(item => item !== null);
+  const sections = [
+    { 
+      link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#home'),
+      section: document.querySelector('#home')
+    },
+    { 
+      link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#about'),
+      section: document.querySelector('#about')
+    },
+    { 
+      link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#works'),
+      section: document.querySelector('#works')
+    }
+  ].filter(item => item.link && item.section);
 
+  let scrollTimeout;
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const headerOffset = 140; // 헤더 보정값
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const scrollY = window.scrollY;
+      const headerOffset = 140;
 
-    // 📌 스크롤 속도 계산
-    const scrollSpeed = Math.abs(scrollY - lastScrollY);
-    lastScrollY = scrollY;
-    const speedFactor = Math.min(Math.max(scrollSpeed / 50, 1), 3); 
-    // speedFactor 최소 1, 최대 3
+      // 📌 스크롤 속도 계산
+      const scrollSpeed = Math.abs(scrollY - lastScrollY);
+      lastScrollY = scrollY;
+      const speedFactor = Math.min(Math.max(scrollSpeed / 50, 1), 3); 
 
-    let current = null;
-    for (const { link, section } of sections) {
-      if (scrollY >= section.offsetTop - headerOffset) {
-        current = link;
+      let current = null;
+      
+      // 페이지 맨 아래에서 CONTACT 활성화
+      if (scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100) {
+        current = Array.from(gnbLinks).find(link => link.getAttribute('href') === '#footer');
+      } else {
+        // 각 섹션의 시작점 기준으로 활성화
+        for (const { link, section } of sections.reverse()) {
+          const sectionTop = section.offsetTop - headerOffset;
+          
+          if (scrollY >= sectionTop) {
+            current = link;
+            break;
+          }
+        }
+        sections.reverse();
       }
-    }
 
-    if (current && current !== activeLink) {
-      setActiveLink(current, speedFactor);
-    }
+      if (current && current !== activeLink) {
+        setActiveLink(current, speedFactor);
+      }
+    }, 10);
   });
 
   // 📌 창 크기 변경 시 active 위치 재조정
   window.addEventListener('resize', () => {
-    if (activeLink) moveHighlightTo(activeLink);
+    setTimeout(() => {
+      if (activeLink) moveHighlightTo(activeLink);
+    }, 100);
   });
 
   // 📌 전체 페이지 내 a[href^="#"] 클릭 시 부드러운 스크롤 적용 (gnb 제외)
@@ -174,26 +216,29 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Dark Mode
-  document.getElementById('themeToggle').addEventListener('click', function (e) {
-    e.preventDefault();
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function (e) {
+      e.preventDefault();
 
-    const body = document.body;
-    const isDark = body.classList.toggle('dark-mode');
-    const btn = this;
-    const config = isDark ? themeAnimationConfig.dark : themeAnimationConfig.light;
+      const body = document.body;
+      const isDark = body.classList.toggle('dark-mode');
+      const btn = this;
+      const config = isDark ? themeAnimationConfig.dark : themeAnimationConfig.light;
 
-    const tl = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
-    
-    btn.firstChild.textContent = config.buttonText;
-    
-    // 애니메이션 적용
-    config.animations.forEach(([selector, props]) => {
-      tl.to(selector, props, 0);
+      const tl = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
+      
+      btn.firstChild.textContent = config.buttonText;
+      
+      // 애니메이션 적용
+      config.animations.forEach(([selector, props]) => {
+        tl.to(selector, props, 0);
+      });
+
+      // 모드 변경 후 현재 활성 메뉴 색상 갱신
+      applyLinkColors();
     });
-
-    // 모드 변경 후 현재 활성 메뉴 색상 갱신
-    applyLinkColors();
-  });
+  }
 });
 
 // 가로스크롤 start
@@ -287,7 +332,6 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
-
 
   // 📌 marquee 복제 함수
   function cloneMarqueeContent(trackSelector) {
@@ -404,21 +448,12 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // 📌 Footer Get In Touch 버튼 클릭 시 이메일 작성 (새창)
-const footerBtn = document.querySelector('.footer .footer-btn');
-if (footerBtn) {
-  footerBtn.addEventListener('click', function() {
-    const email = 'sooeaeoyo@gmail.com';
-    const mailtoLink = `mailto:${email}`;
-    window.open(mailtoLink, '_blank');
-  });
-}
-
-
-
-
-
-
-
-
+  const footerBtn = document.querySelector('.footer .footer-btn');
+  if (footerBtn) {
+    footerBtn.addEventListener('click', function() {
+      const email = 'sooeaeoyo@gmail.com';
+      const mailtoLink = `mailto:${email}`;
+      window.open(mailtoLink, '_blank');
+    });
+  }
 });
-
