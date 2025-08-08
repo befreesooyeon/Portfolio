@@ -74,15 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     moveHighlightTo(link, speedFactor);
   }
 
-  // 다크/라이트 모드에 맞춰 링크 색상 적용
-  function applyLinkColors() {
-    const isDark = document.body.classList.contains('dark-mode');
-    gnbLinks.forEach(a => a.style.color = isDark ? "#dbdbdb" : "#252525");
-    if (activeLink) {
-      activeLink.style.color = isDark ? "#252525" : "#ffffff";
-    }
-  }
-
   // 📌 페이지 로드 시 기본 활성화 (첫 번째 링크)
   if (gnbLinks.length > 0) {
     activeLink = gnbLinks[0];
@@ -91,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   }
 
+  
   // 📌 마우스 올리면 하이라이트 이동
   gnbLinks.forEach(link => {
     link.addEventListener('mouseenter', () => moveHighlightTo(link));
@@ -176,44 +168,86 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 📌 Dark Mode 애니메이션 설정 객체
-  const themeAnimationConfig = {
-    dark: {
-      buttonText: 'DARK',
-      animations: [
-        ["body", { backgroundColor: "#000", color: "#dbdbdb" }],
-        ["#themeToggle span", { backgroundColor: "#dbdbdb", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }],
-        [".section-light", { backgroundColor: "#f5f5f5" }],
-        [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
-        [".text-dark", { color: "#dbdbdb" }],
-        ["svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
-        ["header .innerHeader .gnb-c", { borderColor: "#dbdbdb" }],
-        ["header .innerHeader .gnb-r ul li", { borderColor: "#dbdbdb" }],
-        ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
-        ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#dbdbdb" }],
-        ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }],
-        [".visual .subText .copyright", { color: "#999999" }]
-      ]
-    },
-    light: {
-      buttonText: 'LIGHT',
-      animations: [
-        ["body", { backgroundColor: "#f5f5f5", color: "#252525" }],
-        ["#themeToggle span", { backgroundColor: "#000", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }],
-        [".section-light", { backgroundColor: "#f5f5f5" }],
-        [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
-        [".text-dark", { color: "#252525" }],
-        ["svg path", { fill: "#252525", stroke: "#252525" }],
-        ["header .innerHeader .gnb-c", { borderColor: "#252525" }],
-        ["header .innerHeader .gnb-r ul li", { borderColor: "#252525" }],
-        ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
-        ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000" }],
-        ["header .innerHeader .gnb-r ul li a svg path", { stroke: "none" }],
-        ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { stroke: "none" }],
-        [".visual .subText .copyright", { color: "#777777" }]
-      ]
+    // 다크/라이트 모드에 맞춰 링크 색상 적용
+  function applyLinkColors() {
+    const isDark = document.body.classList.contains('dark-mode');
+    gnbLinks.forEach(a => a.style.color = isDark ? "#dbdbdb" : "#252525");
+    if (activeLink) {
+      activeLink.style.color = isDark ? "#252525" : "#ffffff";
     }
-  };
+  }
+
+  // 📌 Dark Mode 애니메이션 설정 객체
+const themeAnimationConfig = {
+  dark: {
+    buttonText: 'DARK',
+    animations: [
+      ["body", { backgroundColor: "#f5f5f5", color: "#dbdbdb" }],
+      [".wrap", { backgroundColor: "#000", color: "#dbdbdb" }],
+
+      ["#themeToggle span", { backgroundColor: "#dbdbdb", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }],
+
+      [".section-light", { backgroundColor: "#f5f5f5" }],
+      [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
+      [".text-dark", { color: "#dbdbdb" }],
+
+      // SVG
+      ["svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
+      ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
+
+      // Borders
+      ["header .innerHeader .gnb-c", { borderColor: "#dbdbdb" }],
+      ["header .innerHeader .gnb-r ul li", { borderColor: "#dbdbdb" }],
+      [".orizin .inner .orizin-marquee .o-marquee", { borderColor: "#dbdbdb" }],
+
+      // Highlights / Buttons
+      ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
+      ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#dbdbdb" }],
+      [".narrative .scroll-btn", { backgroundColor: "#000000", borderColor: "#dbdbdb" }],
+      [".narrative .scroll-btn svg path", { fill: "none", stroke: "#dbdbdb" }],
+      [".orizin .inner .orizin-marquee .o-marquee svg", { fill: "none", stroke: "#dbdbdb" }],
+
+      // Text
+      [".visual .subText .copyright", { color: "#999999" }],
+    ]
+  },
+
+  light: {
+    buttonText: 'LIGHT',
+    animations: [
+      ["body", { backgroundColor: "#000000", color: "#252525" }],
+      [".wrap", { backgroundColor: "#f5f5f5", color: "#252525" }],
+
+      ["#themeToggle span", { backgroundColor: "#000", scale: 1.3, yoyo: true, repeat: 1, duration: 0.2 }],
+
+      [".section-light", { backgroundColor: "#f5f5f5" }],
+      [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
+      [".text-dark", { color: "#252525" }],
+
+      // SVG
+      ["svg path", { fill: "#252525", stroke: "#252525" }],
+      ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { fill: "#252525", stroke: "#252525" }],
+
+      // Borders
+      ["header .innerHeader .gnb-c", { borderColor: "#252525" }],
+      ["header .innerHeader .gnb-r ul li", { borderColor: "#252525" }],
+      [".orizin .inner .orizin-marquee .o-marquee", { borderColor: "#252525" }],
+
+      // Highlights / Buttons
+      ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
+      ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000" }],
+      [".narrative .scroll-btn", { backgroundColor: "#f5f5f5", borderColor: "#252525" }],
+      [".narrative .scroll-btn svg path", { fill: "none", stroke: "#252525" }],
+      [".orizin .inner .orizin-marquee .o-marquee svg", { fill: "none", stroke: "#252525" }],
+
+      // Text
+      [".visual .subText .copyright", { color: "#777777" }],
+    ]
+  }
+};
+
+
+
 
   // Dark Mode
   const themeToggle = document.getElementById('themeToggle');
@@ -272,8 +306,15 @@ window.addEventListener("DOMContentLoaded", () => {
       scrub: 0.1
     },
     {
+      selector: ".works .title svg",
+      trigger: ".works",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 0.1
+    },
+    {
       selector: ".footer-spin",
-      trigger: ".footer-spin",
+      trigger: "body",
       start: "top bottom",
       end: "bottom top",
       scrub: 0.1
