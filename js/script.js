@@ -288,6 +288,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
   // 📌 marquee 복제 함수
   function cloneMarqueeContent(trackSelector) {
     const track = document.querySelector(trackSelector);

@@ -8,11 +8,14 @@
 //     const body = document.body;
 //     const container = document.querySelector('.narrative-container');
 //     const header = document.querySelector('header');
-    
+
 //     modal.classList.add('active');
 //     body.classList.add('modal-open');
 //     container.classList.add('modal-open');
 //     header.style.zIndex = 0;
+    
+//     // 배경 스크롤 방지
+//     document.body.style.overflow = 'hidden';
 // }
 
 // export function closeModal() {
@@ -20,11 +23,14 @@
 //     const body = document.body;
 //     const container = document.querySelector('.narrative-container');
 //     const header = document.querySelector('header');
-    
+
 //     modals.forEach(modal => modal.classList.remove('active'));
 //     body.classList.remove('modal-open');
 //     container.classList.remove('modal-open');
 //     header.style.zIndex = 10000;
+    
+//     // 배경 스크롤 복원
+//     document.body.style.overflow = '';
 // }
 
 // function updatePhotoModal(galleryItem) {
@@ -48,7 +54,7 @@
 //     if (folderTrigger) {
 //         folderTrigger.addEventListener('click', () => openModal('folderModal'));
 //     }
-
+    
 //     // 포춘 모달
 //     const fortuneTrigger = document.querySelector('.fortune-trigger');
 //     if (fortuneTrigger) {
@@ -57,7 +63,7 @@
 //             openModal('fortuneModal');
 //         });
 //     }
-
+    
 //     // CLOSE 버튼 처리
 //     document.addEventListener('click', e => {
 //         if (e.target.classList.contains('modal-close-btn')) {
@@ -65,46 +71,46 @@
 //             closeModal();
 //         }
 //     });
-
+    
 //     // 빨간 닫기 버튼
 //     document.querySelectorAll('.r').forEach(btn =>
 //         btn.addEventListener('click', closeModal)
 //     );
-
+    
 //     // 오버레이 클릭 닫기
 //     document.querySelectorAll('.modal-overlay').forEach(overlay =>
 //         overlay.addEventListener('click', function (e) {
 //             if (e.target === this) closeModal();
 //         })
 //     );
-
+    
 //     // ESC 키 닫기
 //     document.addEventListener('keydown', e => {
 //         if (e.key === 'Escape') closeModal();
 //     });
-
+    
 //     // 포트폴리오 카드 → projectModal
 //     const portfolioGrid = document.querySelector('.portfolio-grid');
 //     if (portfolioGrid) {
 //         portfolioGrid.addEventListener('click', e => {
 //             const card = e.target.closest('.card');
 //             if (!card) return;
-
+            
 //             const id = card.dataset.id;
 //             const project = portfolioData.find(item => item.id === id);
 //             if (!project) return;
-
+            
 //             const modalInner = document.querySelector('#projectModal .modal-inner');
 //             modalInner.innerHTML = `
 //                 <h2>${project.title}</h2>
 //                 <img src="${project.image}" alt="${project.title}">
 //                 <p>${project.description}</p>
 //             `;
-
+            
 //             openModal('projectModal');
 //         });
 //     }
-
+    
 //     // 갤러리 View 버튼 → photoModal
 //     document.addEventListener('click', e => {
 //         if (e.target.classList.contains('photo-view-btn')) {
@@ -121,8 +127,12 @@
 //     });
 // }
 
+// modal.js
+
 import { portfolioData } from './data.js';
 import { galleryData } from './galleryData.js';
+
+let currentGalleryIndex = -1;
 
 export function openModal(modalId) {
     const modal = document.getElementById(modalId);
@@ -134,8 +144,6 @@ export function openModal(modalId) {
     body.classList.add('modal-open');
     container.classList.add('modal-open');
     header.style.zIndex = 0;
-    
-    // 배경 스크롤 방지
     document.body.style.overflow = 'hidden';
 }
 
@@ -149,16 +157,26 @@ export function closeModal() {
     body.classList.remove('modal-open');
     container.classList.remove('modal-open');
     header.style.zIndex = 10000;
-    
-    // 배경 스크롤 복원
     document.body.style.overflow = '';
+    currentGalleryIndex = -1;
 }
 
-function updatePhotoModal(galleryItem) {
+function updatePhotoModal(galleryItem, index) {
     const modalContent = document.querySelector('#photoModal .content');
+    currentGalleryIndex = index;
     
     modalContent.innerHTML = `
         <p class="modal-close-btn">CLOSE</p>
+        <button class="modal-nav-btn modal-nav-prev" ${index === 0 ? 'disabled' : ''}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M13.3333 8.33301C13.3333 9.56967 12.1117 11.4163 10.875 12.9663C9.285 14.9663 7.385 16.7113 5.20667 18.043C3.57333 19.0413 1.59333 19.9997 5.09966e-07 19.9997M5.09966e-07 19.9997C1.59333 19.9997 3.575 20.958 5.20667 21.9563C7.385 23.2897 9.285 25.0347 10.875 27.0313C12.1117 28.583 13.3333 30.433 13.3333 31.6663M5.09966e-07 19.9997L40 19.9997" stroke="#252525"/>
+            </svg>
+        </button>
+        <button class="modal-nav-btn modal-nav-next" ${index === galleryData.length - 1 ? 'disabled' : ''}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M26.6667 8.33301C26.6667 9.56967 27.8883 11.4163 29.125 12.9663C30.715 14.9663 32.615 16.7113 34.7933 18.043C36.4267 19.0413 38.4067 19.9997 40 19.9997M40 19.9997C38.4067 19.9997 36.425 20.958 34.7933 21.9563C32.615 23.2897 30.715 25.0347 29.125 27.0313C27.8883 28.583 26.6667 30.433 26.6667 31.6663M40 19.9997L4.43708e-07 19.9997" stroke="#252525"/>
+            </svg>
+        </button>
         <div class="modal-photo-wrapper">
             <img src="${galleryItem.image}" alt="${galleryItem.title}" class="modal-photo-image" />
         </div>
@@ -167,6 +185,14 @@ function updatePhotoModal(galleryItem) {
             <p class="modal-photo-description">${galleryItem.description}</p>
         </div>
     `;
+}
+
+function navigateGallery(direction) {
+    const newIndex = direction === 'prev' ? currentGalleryIndex - 1 : currentGalleryIndex + 1;
+    
+    if (newIndex >= 0 && newIndex < galleryData.length) {
+        updatePhotoModal(galleryData[newIndex], newIndex);
+    }
 }
 
 export function initModalTriggers() {
@@ -185,30 +211,58 @@ export function initModalTriggers() {
         });
     }
     
-    // CLOSE 버튼 처리
+    // 공통 이벤트 위임
     document.addEventListener('click', e => {
+        // CLOSE 버튼
         if (e.target.classList.contains('modal-close-btn')) {
             e.preventDefault();
             closeModal();
         }
+        
+        // 포토모달 네비게이션
+        if (e.target.closest('.modal-nav-prev')) {
+            navigateGallery('prev');
+        }
+        if (e.target.closest('.modal-nav-next')) {
+            navigateGallery('next');
+        }
+        
+        // 갤러리 View 버튼
+        if (e.target.classList.contains('photo-view-btn')) {
+            e.preventDefault();
+            const title = e.target.getAttribute('data-title');
+            const selectedIndex = galleryData.findIndex(item => item.title === title);
+            
+            if (selectedIndex !== -1) {
+                updatePhotoModal(galleryData[selectedIndex], selectedIndex);
+                openModal('photoModal');
+            }
+        }
     });
     
-    // 빨간 닫기 버튼
+    // 키보드 이벤트
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+        
+        // 포토모달이 활성화된 경우에만 방향키 동작
+        if (document.getElementById('photoModal').classList.contains('active')) {
+            if (e.key === 'ArrowLeft') navigateGallery('prev');
+            if (e.key === 'ArrowRight') navigateGallery('next');
+        }
+    });
+    
+    // 기존 닫기 이벤트들
     document.querySelectorAll('.r').forEach(btn =>
         btn.addEventListener('click', closeModal)
     );
     
-    // 오버레이 클릭 닫기
     document.querySelectorAll('.modal-overlay').forEach(overlay =>
         overlay.addEventListener('click', function (e) {
             if (e.target === this) closeModal();
         })
     );
-    
-    // ESC 키 닫기
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closeModal();
-    });
     
     // 포트폴리오 카드 → projectModal
     const portfolioGrid = document.querySelector('.portfolio-grid');
@@ -231,19 +285,4 @@ export function initModalTriggers() {
             openModal('projectModal');
         });
     }
-    
-    // 갤러리 View 버튼 → photoModal
-    document.addEventListener('click', e => {
-        if (e.target.classList.contains('photo-view-btn')) {
-            e.preventDefault();
-            
-            const title = e.target.getAttribute('data-title');
-            const selectedItem = galleryData.find(item => item.title === title);
-            
-            if (selectedItem) {
-                updatePhotoModal(selectedItem);
-                openModal('photoModal');
-            }
-        }
-    });
 }
