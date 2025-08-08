@@ -61,7 +61,7 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 
 /* fortune-modal */
 #fortuneModal .modal-content {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none;}
-#fortuneModal .modal-content .content {height: 100vh; padding: 70px 245px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; justify-content: space-between;}
+#fortuneModal .modal-content .content {height: 100vh; padding: 30px 245px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; justify-content: space-between;}
 #fortuneModal .modal-content .content .cards {display: flex; justify-content: center; gap: 60px;}
 #fortuneModal .modal-content .content .cards li {transition: all 0.2s;}
 #fortuneModal .modal-content .content .cards .card-01:hover, #fortuneModal .modal-content .content .cards .card-02:hover, #fortuneModal .modal-content .content .cards .card-03:hover {transform: scale(1.05); transition: all 0.2s;}
@@ -335,7 +335,7 @@ justify-content: center; align-items: center; width: 44px; height: 44px; border-
 #projectModal .modal-content {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none; background: #f5f5f5;}
 
 /* Section-my-photo */
-.my-photo {margin-top:200px; width:100%; position:relative; overflow:hidden; display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; flex-direction:column; padding-bottom: 300px; box-sizing: border-box;}
+.my-photo {margin-top:200px; width:100%; position:relative; overflow:hidden; display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; flex-direction:column; padding-bottom: 350px; box-sizing: border-box;}
 .my-photo .inner {position:relative; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; width:100%; height:100vh;}
 .my-photo .inner .text-wrap {position:absolute; top:0%; left:50%; transform:translateX(-50%); z-index:2; text-align:center;}
 .my-photo .inner .text-wrap .en2 {font-size:200px; font-weight:normal; line-height:1; letter-spacing:-4px; white-space:nowrap;}
