@@ -60,14 +60,56 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 }
 
 /* fortune-modal */
-#fortuneModal .modal-content {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none;}
-#fortuneModal .modal-content .content {height: 100vh; padding: 30px 245px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; justify-content: space-between;}
-#fortuneModal .modal-content .content .cards {display: flex; justify-content: center; gap: 60px;}
-#fortuneModal .modal-content .content .cards li {transition: all 0.2s;}
-#fortuneModal .modal-content .content .cards .card-01:hover, #fortuneModal .modal-content .content .cards .card-02:hover, #fortuneModal .modal-content .content .cards .card-03:hover {transform: scale(1.05); transition: all 0.2s;}
+#fortuneModal .modal-content {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none; background-color: #f5f5f5;}
+#fortuneModal .modal-content .content {height: 100vh;
+padding: 50px 96px; box-sizing: border-box; text-align: center; position: relative;
+display: flex; flex-direction: column; align-items: center;}
+#fortuneModal .modal-content .content .main-title {font-size: 100px; font-weight: 500;  letter-spacing: -1px; opacity: 1; transition: opacity 0.8s ease, transform 0.8s ease; margin-top: 50px; margin-bottom: 100px;}
+#fortuneModal .modal-content .content .main-title .icon {font-size: 60px; margin-left: 20px;}
+#fortuneModal .modal-content .content .cards {display: flex; justify-content: center;
+gap: 70px;}
+#fortuneModal .modal-content .content .cards li {width: 360px; height: 520px;
+cursor: pointer; position: relative; perspective: 1000px; transform-style: preserve-3d;
+transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); opacity: 0;
+transform: translateY(30px); animation: cardAppear 0.6s ease forwards;}
+#fortuneModal .modal-content .content .cards li:hover:not(.selected):not(.hide):not(.fade-out):not(.centered) {transform: scale(1.05) translateY(-5px); filter: drop-shadow(0 0px 16px rgba(0, 0, 0, 0.15));}
+#fortuneModal .modal-content .content .cards .card-01 {animation-delay: 0.2s;}
+#fortuneModal .modal-content .content .cards .card-02 {animation-delay: 0.4s;}
+#fortuneModal .modal-content .content .cards .card-03 {animation-delay: 0.6s;}
 
-#fortuneModal .modal-content .content .select-btn {font-size: 30px; padding: 32px 54px; box-sizing: border-box; border: 1px solid #252525; border-radius: 16px; display: flex; justify-content: center; align-items: center;}
+#fortuneModal .modal-content .content .cards li.selected {transform: translateY(-8px) scale(1.08); filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25)); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
+#fortuneModal .modal-content .content .cards li.centered {position: fixed !important;
+left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) scale(1.1) !important; z-index: 10; transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
 
+/* 선택되지 않은 카드들 부드러운 페이드 아웃 */
+#fortuneModal .modal-content .content .cards li.fade-out {opacity: 0 !important;
+transform: scale(0.9) translateY(30px) !important; pointer-events: none !important;
+transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
+#fortuneModal .modal-content .content .select-btn {font-size: 18px; font-weight: 500; width: 300px; height: 60px; box-sizing: border-box; border: 1px solid #252525; display: inline-flex; justify-content: center;
+align-items: center; border-radius: 50px; cursor: pointer; position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background-color: #f5f5f5; opacity: 0;
+pointer-events: none; transition: all 0.5s ease; z-index: 20;}
+
+#fortuneModal .modal-content .content .select-btn.show {bottom: 50px; opacity: 1;
+pointer-events: all;}
+@keyframes cardAppear {to {opacity: 1; transform: translateY(0);}}
+
+/* 카드 내부 구조 */
+.card-inner {
+width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
+transition: transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
+.card-inner.flipped {transform: rotateY(180deg);}
+.card-face {position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+border-radius: 8px; overflow: hidden;}
+
+/* 앞면 이미지 크기 조정 */
+.card-front img { width: 100%; height: 100%; object-fit: cover; object-position: center;
+}
+.card-back {transform: rotateY(180deg); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; box-sizing: border-box; position: relative;}
+.card-back img {width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute; top: 0; left: 0; z-index: 1;}
+.card-back .card-svg {flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; position: relative; z-index: 1;}
+.card-back .fortune-result {position: absolute; top: 50%; left: 50%; transform: translateX(-50%); width: 280px; z-index: 10; padding: 20px; }
+.card-back .fortune-title {font-size: 24px; color: #4A6CF7; font-weight: 500; margin-bottom: 8px;}
+.card-back .fortune-description {color: #666; line-height: 22px;}
 
 /* Section-visual */
 .visual { width: 100%; height: 100vh; text-align: right; position: relative;}
@@ -210,7 +252,7 @@ margin-left: -96px;}
 .become .inner .left .tit .line1 .en3 , .become .inner .left .tit .line2 .en3 {color: #B7D3C6;  white-space: nowrap;}
 .become .inner .left .tit .line2 {margin-left: 155px;}
 .become .inner .left .tit .point {font-size: 60px; padding: 20px 104px; box-sizing: border-box; border: 1px solid #252525; border-radius: 60%; margin-right: 20px;}
-.become .inner .right img {width: 468px; height: 736px; transition: all 0.3s; cursor: pointer;}
+.become .inner .right img {width: 468px; height: 736px; transition: all 0.3s; cursor: pointer; border: 1px solid #252525; border-radius: 50%;}
 .become .inner .right img:hover {transform: rotate(10deg); transition: all 0.3s;}
 /* Section-keyword */
 .keyWords .textWrap {padding: 200px 195px; box-sizing: border-box; text-align: center; line-height: 1;}
@@ -233,7 +275,7 @@ margin-left: -96px;}
 .marquee {overflow: hidden; white-space: nowrap; box-sizing: border-box; padding: 25px 0; border-top: 1px solid #252525; border-bottom: 1px solid #252525; transition: all .2s;}
 .marquee .marquee-content {animation: marquee-content 20s linear infinite; font-size: 45px; text-transform: uppercase; display: inline-block; white-space: nowrap;}
 .marquee .marquee-content span {margin-right: 50px;}
-.marquee .marquee-content span img {margin-right: 50px; vertical-align: middle;}
+.marquee .marquee-content span svg {margin-right: 50px; vertical-align: middle;}
 
 @keyframes marquee-content {
   0% { transform: translateX(10%); }
@@ -249,7 +291,7 @@ margin-left: -96px;}
 .about .inner .profile .left .name .dot {position: relative; display: inline-block;}
 .about .inner .profile .left .name .en6 {font-size: 100px; white-space: nowrap;}
 .about .inner .profile .left .info {font-size: 24px; font-weight: 500; line-height: 1; margin-bottom: 40px;}
-.about .inner .profile .left .info span {display: block; font-size: 18px; padding: 10px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50px; width: fit-content; margin-top: 10px;}
+.about .inner .profile .left .info span {display: block; font-size: 18px; padding: 10px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50px; width: fit-content; margin-top: 10px; cursor: pointer;}
 .about .inner .profile .left  .introduction {font-size: 16px; line-height: 30px;}
 .about .inner .profile .left  .introduction .en7 {font-size: 40px; line-height: 50px; margin-bottom: 30px; display: block;}
 .about .inner .profile .left  .introduction .first-group {margin-bottom: 10px; display: block;}
@@ -368,7 +410,7 @@ justify-content: center; align-items: center; width: 44px; height: 44px; border-
 
 /* My photo Modal-content  */
 .my-photo #photoModal .modal-content  {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none;}
-.my-photo #photoModal .modal-content .content {height: 100vh; padding: 30px 245px; box-sizing: border-box; text-align: center;  display: flex; justify-content: space-between; flex-direction: column; position: relative;}
+.my-photo #photoModal .modal-content .content {height: 100vh; padding: 50px 245px; box-sizing: border-box; text-align: center;  display: flex; justify-content: space-between; flex-direction: column; position: relative;}
 #photoModal .modal-nav-btn {position: absolute; top: 50%; transform: translateY(-50%);
 border: none; width: 50px; height: 50px; background: none; cursor: pointer; transition: all 0.2s ease;}
 #photoModal .modal-nav-btn:hover:not(:disabled) {transform: translateY(-50%) scale(1.2); transition: all 0.2s ease;}
@@ -382,7 +424,8 @@ border: none; width: 50px; height: 50px; background: none; cursor: pointer; tran
 
 /* Section-footer */
 .footer {background: #000; color: #dbdbdb; width: 100%; min-height: 100vh; 
-  position: fixed; bottom: 0; left: 0;  z-index: 1; }
+  position: fixed; bottom: 0; left: 0;  z-index: 1; display: flex
+; flex: none; flex-direction: column; flex-wrap: nowrap;}
 .footer .inner {padding: 260px 0 70px; box-sizing: border-box;}
 .footer .inner .footer-top {display: flex; justify-content: space-between;}
 .footer .inner .footer-top .info {font-size: 20px; line-height: 24px;}

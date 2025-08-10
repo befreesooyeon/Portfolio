@@ -194,11 +194,27 @@ const themeAnimationConfig = {
       // SVG
       ["svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
       ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
-
+      [".tooltip-tail path", { fill: "#4A6CF7", stroke: "none" }],
+      [".orizin .inner .orizin-marquee .o-marquee .marquee-track .content1 .icon1 path, .works .title svg path, .footer .inner .footer-bottom .footer-spin path", { fill: "#B7D3C6", stroke: "#B7D3C6" }],
+      [".orizin .inner .orizin-marquee .o-marquee .marquee-track .content2 .icon path", { fill: "none", stroke: "#dbdbdb" }],
+      [".about .inner .contents .box .grid .title .skill-icon svg path", { fill: "none", stroke: "#dbdbdb" }],
+      [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#dbdbdb", stroke: "none" }],
+      
       // Borders
       ["header .innerHeader .gnb-c", { borderColor: "#dbdbdb" }],
       ["header .innerHeader .gnb-r ul li", { borderColor: "#dbdbdb" }],
       [".orizin .inner .orizin-marquee .o-marquee", { borderColor: "#dbdbdb" }],
+      [".become .inner .left .tit .point", { borderColor: "#dbdbdb" }],
+      [".become .inner .right img", { borderColor: "#dbdbdb" }],
+      [".keyWords .textWrap .line3", { borderColor: "#dbdbdb" }],
+      [".marquee", { borderColor: "#dbdbdb" }],
+      [".about .inner .profile .left .info span, .about .inner .profile .left a ", { borderColor: "#dbdbdb" }],
+      [".about .inner .contents .box ", { borderColor: "#dbdbdb" }],
+      [".about .inner .contents .box .list li, .about .inner .contents .box .accordion-list .accordion-item  ", { borderColor: "#dbdbdb" }],
+      [".works .inner .filter-wrapper .filter-navigation, #loadMoreBtn", { borderColor: "#dbdbdb" }],
+      [".my-photo .inner .text-wrap a", { borderColor: "#dbdbdb", backgroundColor: "#000000" }],
+      [".footer .inner .footer-meta", { borderColor: "#252525"}],
+
 
       // Highlights / Buttons
       ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
@@ -206,9 +222,20 @@ const themeAnimationConfig = {
       [".narrative .scroll-btn", { backgroundColor: "#000000", borderColor: "#dbdbdb" }],
       [".narrative .scroll-btn svg path", { fill: "none", stroke: "#dbdbdb" }],
       [".orizin .inner .orizin-marquee .o-marquee svg", { fill: "none", stroke: "#dbdbdb" }],
+      [".keyWords .textWrap .line-divider", { backgroundColor: "#dbdbdb" }],
+      ["header .innerHeader .gnb-r ul li a .icon-wrap path, .about .inner .profile .left a svg path", { fill: "#dbdbdb", stroke: "none" }],
+      [".works .inner .portfolio-grid .card .thumbnail .icon-circle", {backgroundColor: "#000000"}],
+      ["#photoModal .modal-nav-btn svg path", {stroke: "#dbdbdb"}],
 
       // Text
-      [".visual .subText .copyright", { color: "#999999" }],
+      [".visual .subText .copyright, .now .inner .left .folder .folder-content .textBox", { color: "#999999" }],
+      [".works .inner .portfolio-grid .card .card-content .tit p, .works .inner .portfolio-grid .card .card-content .description", { color: "#999999" }],
+      [".gallery-card .card-info", { color: "#f5f5f5"}],
+      [".gallery-card .card-info p", { color: "#dbdbdb"}],
+      [".footer", { color: "#252525", backgroundColor: "#dbdbdb"}],
+      
+      // fortune
+      ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#000000", color: "#dbdbdb", borderColor: "#dbdbdb"}],
     ]
   },
 
@@ -227,21 +254,50 @@ const themeAnimationConfig = {
       // SVG
       ["svg path", { fill: "#252525", stroke: "#252525" }],
       ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { fill: "#252525", stroke: "#252525" }],
+      [".tooltip-tail path", { fill: "#4A6CF7", stroke: "none" }],
+      [".orizin .inner .orizin-marquee .o-marquee .marquee-track .content1 .icon1 path, .works .title svg path, .footer .inner .footer-bottom .footer-spin path", { fill: "#B7D3C6", stroke: "#B7D3C6" }],
+      [".orizin .inner .orizin-marquee .o-marquee .marquee-track .content2 .icon path", { fill: "none", stroke: "#252525" }],
+      [".about .inner .contents .box .grid .title .skill-icon svg path", { fill: "none", stroke: "#252525" }],
+      [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#252525", stroke: "none" }],
+      
 
       // Borders
       ["header .innerHeader .gnb-c", { borderColor: "#252525" }],
       ["header .innerHeader .gnb-r ul li", { borderColor: "#252525" }],
       [".orizin .inner .orizin-marquee .o-marquee", { borderColor: "#252525" }],
+      [".become .inner .left .tit .point", { borderColor: "#252525" }],
+      [".become .inner .right img", { borderColor: "#252525" }],
+      [".keyWords .textWrap .line3", { borderColor: "#252525" }],
+      [".marquee", { borderColor: "#252525" }],
+      [".about .inner .profile .left .info span, .about .inner .profile .left a ", { borderColor: "#252525" }],
+      [".about .inner .contents .box ", { borderColor: "#252525" }],
+      [".about .inner .contents .box .list li, .about .inner .contents .box .accordion-list .accordion-item  ", { borderColor: "#252525" }],
+      [".works .inner .filter-wrapper .filter-navigation, #loadMoreBtn", { borderColor: "#252525" }],
+      [".my-photo .inner .text-wrap a", { borderColor: "#252525", backgroundColor: "#f5f5f5" }],
+      [".footer .inner .footer-meta", { borderColor: "#dbdbdb"}],    
 
       // Highlights / Buttons
       ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
-      ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000" }],
+      ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000000" }],
       [".narrative .scroll-btn", { backgroundColor: "#f5f5f5", borderColor: "#252525" }],
       [".narrative .scroll-btn svg path", { fill: "none", stroke: "#252525" }],
       [".orizin .inner .orizin-marquee .o-marquee svg", { fill: "none", stroke: "#252525" }],
+      [".keyWords .textWrap .line-divider", { backgroundColor: "#252525" }],
+      ["header .innerHeader .gnb-r ul li a .icon-wrap path, .about .inner .profile .left a svg path", { fill: "#252525", stroke: "none" }],
+      [".works .inner .portfolio-grid .card .thumbnail .icon-circle", {backgroundColor: "#ffffff"}],
+      ["#photoModal .modal-nav-btn svg path", {stroke: "#252525"}],
+      
 
       // Text
       [".visual .subText .copyright", { color: "#777777" }],
+      [".now .inner .left .folder .folder-content .textBox", { color: "#666666" }],
+      [".works .inner .portfolio-grid .card .card-content .tit p, .works .inner .portfolio-grid .card .card-content .description", { color: "#666666" }],
+      [".gallery-card .card-info", { color: "#333333"}],
+      [".gallery-card .card-info p", { color: "#666666"}],
+      [".footer", { color: "#dbdbdb", backgroundColor: "#000000"}],
+
+      // fortune
+      ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#f5f5f5", color: "#252525", borderColor: "#252525"}],
     ]
   }
 };
