@@ -64,7 +64,7 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 #fortuneModal .modal-content .content {height: 100vh;
 padding: 50px 96px; box-sizing: border-box; text-align: center; position: relative;
 display: flex; flex-direction: column; align-items: center;}
-#fortuneModal .modal-content .content .main-title {font-size: 100px; font-weight: 500;  letter-spacing: -1px; opacity: 1; transition: opacity 0.8s ease, transform 0.8s ease; margin-top: 50px; margin-bottom: 100px;}
+#fortuneModal .modal-content .content .main-title {font-size: 100px; font-weight: 500;  letter-spacing: -1px; opacity: 1; transition: opacity 0.8s ease, transform 0.8s ease; margin-top: 50px; margin-bottom: 30px;}
 #fortuneModal .modal-content .content .main-title .icon {font-size: 60px; margin-left: 20px;}
 #fortuneModal .modal-content .content .cards {display: flex; justify-content: center;
 gap: 70px;}
