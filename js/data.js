@@ -57,12 +57,12 @@ image: "../images/arozjewelry_cover.png",
 category: "(CLONE CODING)",
 description: "프랑스 쥬얼리 브랜드 아로제주얼리 클론 코딩 결과물입니다."
 },
-// {
-// id: "9",
-// title: "Aesop",
-// image: "../images/Aesop_cover.png",
-// category: "(CLONE CODING)",
-// description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
-// }
+{
+id: "9",
+title: "Aesop",
+image: "../images/Aesop_cover.png",
+category: "(CLONE CODING)",
+description: "A web redesign project that reinterprets Aesop’s brand mood with a modern, trend-driven approach."
+}
 ];
 
