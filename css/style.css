@@ -62,7 +62,7 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 /* fortune-modal */
 #fortuneModal .modal-content {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none; background-color: #f5f5f5;}
 #fortuneModal .modal-content .content {height: 100vh;
-padding: 50px 96px; box-sizing: border-box; text-align: center; position: relative;
+padding: 40px 96px; box-sizing: border-box; text-align: center; position: relative;
 display: flex; flex-direction: column; align-items: center;}
 #fortuneModal .modal-content .content .main-title {font-size: 100px; font-weight: 500;  letter-spacing: -1px; opacity: 1; transition: opacity 0.8s ease, transform 0.8s ease; margin-top: 50px; margin-bottom: 30px;}
 #fortuneModal .modal-content .content .main-title .icon {font-size: 60px; margin-left: 20px;}
@@ -118,7 +118,7 @@ border-radius: 8px; overflow: hidden;}
 .visual .mainTitle .en1 {font-size: 274px; line-height: 234px; white-space: nowrap;}
 .visual .mainTitle .line1 { display: flex; justify-content: flex-end; align-items: center; gap: 4px;}
 .visual .mainTitle .line2 {display: flex; align-items: end; justify-content: flex-end; margin-left: 30px;}
-.visual .subText {display: flex; flex-direction: column; gap: 16px; text-align: left; position: absolute; bottom: 15%;}
+.visual .subText {display: flex; flex-direction: column; gap: 16px; text-align: left; position: absolute; bottom: 10%;}
 .visual .subText .copyright {font-size: 14px; color: #666; margin-bottom: 30px;}
 .visual .subText .desc {font-size: 22px; display: flex; gap: 80px;}
 .visual .subText .desc .intro {display: block; margin-left: 84px;}
@@ -286,19 +286,19 @@ margin-left: -96px;}
 
 /* Section-about */
 .about {margin-top: 200px; width: 100%;}
-.about .inner .profile {display: flex; justify-content: space-between;  /* max-width: 1728px; */ }
+.about .inner .profile {display: flex; justify-content: space-between;}
+.about .inner .profile .left {width: 60%; height: 100%; display: flex; flex-direction: column;}
 .about .inner .profile .left .name {font-size: 140px; line-height: 0.8; letter-spacing: -4px; font-weight: 500; margin-bottom: 30px;}
 .about .inner .profile .left .name .dot {position: relative; display: inline-block;}
 .about .inner .profile .left .name .en6 {font-size: 100px; white-space: nowrap;}
 .about .inner .profile .left .info {font-size: 24px; font-weight: 500; line-height: 1; margin-bottom: 40px;}
 .about .inner .profile .left .info span {display: block; font-size: 18px; padding: 10px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50px; width: fit-content; margin-top: 10px; cursor: pointer;}
-.about .inner .profile .left  .introduction {font-size: 16px; line-height: 30px;}
+.about .inner .profile .left  .introduction {line-height: 26px;}
 .about .inner .profile .left  .introduction .en7 {font-size: 40px; line-height: 50px; margin-bottom: 30px; display: block;}
 .about .inner .profile .left  .introduction .first-group {margin-bottom: 10px; display: block;}
 .about .inner .profile .left  .introduction .second-group {margin-bottom: 20px; display: block;}
-.about .inner .profile .left a {cursor: pointer; font-size: 18px; line-height: 36px; padding: 8px 16px; box-sizing: border-box; border: 1px solid #252525; 
-border-radius: 50px; display: flex; width: fit-content; justify-content: center; align-items: center; gap: 3px;}
-.about .inner .profile .right {width: 50%;}
+.about .inner .profile .left a {cursor: pointer; font-size: 18px; line-height: 36px; padding: 8px 16px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50px; display: flex; width: fit-content; justify-content: center; align-items: center; gap: 3px;}
+.about .inner .profile .right {width: 40%; height: 100%;}
 .about .inner .profile .right img {filter: grayscale(100%); border-radius: 16px; width: 100%; height: 100%; object-fit: cover;}
 
 /* content */
@@ -308,6 +308,7 @@ border-radius: 50px; display: flex; width: fit-content; justify-content: center;
 .about .inner .contents .box .list {font-size: 20px; width: 50%;}
 .about .inner .contents .box .list li {padding: 10px 0; border-bottom: 1px solid #252525; box-sizing: border-box;}
 .about .inner .contents .box .list li .period {float: right;}
+.about .inner .contents .box .list li:first-child {padding-top: 0;}
 .about .inner .contents .box .list li:last-child {border-bottom: none;}
 .about .inner .contents .box .grid {font-size: 20px; width: 50%;}
 .about .inner .contents .box .grid .conBox {display: flex;}
@@ -315,11 +316,11 @@ border-radius: 50px; display: flex; width: fit-content; justify-content: center;
 .about .inner .contents .box .grid .title {font-weight: 500; display: flex; margin-bottom: 20px;}
 .about .inner .contents .box .grid .title svg {margin-right: 10px;}
 .about .inner .contents .box .grid ul {margin-bottom: 70px;}
-.about .inner .contents .box .grid ul li {margin-bottom: 5px; line-height: 32px;}
+.about .inner .contents .box .grid ul li {margin-bottom: 5px; line-height: 32px; white-space: nowrap;}
 .about .inner .contents .box .grid ul li:last-child {margin-bottom: 0;}
 
 /* About-accordion */
-.about .inner .contents .box .accordion-list {width: 50%;}
+.about .inner .contents .box .accordion-list {width: 50%; height: 100%;}
 .about .inner .contents .box .accordion-list .accordion-item {padding: 30px 0; box-sizing: border-box; border-bottom: 1px solid #252525; cursor: pointer;}
 .about .inner .contents .box .accordion-list .accordion-item:first-child {padding: 0 0 30px}
 .about .inner .contents .box .accordion-list .accordion-item:last-child {border-bottom: 0;}
@@ -410,7 +411,7 @@ justify-content: center; align-items: center; width: 44px; height: 44px; border-
 
 /* My photo Modal-content  */
 .my-photo #photoModal .modal-content  {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none;}
-.my-photo #photoModal .modal-content .content {height: 100vh; padding: 50px 245px; box-sizing: border-box; text-align: center;  display: flex; justify-content: space-between; flex-direction: column; position: relative;}
+.my-photo #photoModal .modal-content .content {height: 100vh; padding: 40px 245px; box-sizing: border-box; text-align: center;  display: flex; justify-content: space-between; flex-direction: column; position: relative;}
 #photoModal .modal-nav-btn {position: absolute; top: 50%; transform: translateY(-50%);
 border: none; width: 50px; height: 50px; background: none; cursor: pointer; transition: all 0.2s ease;}
 #photoModal .modal-nav-btn:hover:not(:disabled) {transform: translateY(-50%) scale(1.2); transition: all 0.2s ease;}
@@ -432,5 +433,5 @@ border: none; width: 50px; height: 50px; background: none; cursor: pointer; tran
 .footer .inner .footer-top .footer-btn {font-size: 40px; padding: 40px 80px; box-sizing: border-box; border: 1px solid #454545; transform: rotate(-5deg); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;  transition: all 0.6s ease;}
 .footer .inner .footer-top .footer-btn:hover {transform: rotate(-10deg); transition: all 0.6s ease;}
 .footer .inner .footer-bottom {margin-top: 160px; display: flex; justify-content: space-between;}
-.footer .inner .footer-bottom .brand {font-size: 150px; letter-spacing: -6px; line-height: 1;}
+.footer .inner .footer-bottom .brand {font-size: 150px; letter-spacing: -6px; line-height: 1; white-space: nowrap;}
 .footer .inner .footer-meta {margin-top: 40px; display: flex; justify-content: space-between; text-transform: uppercase; padding-top: 10px; border-top: 1px solid #dbdbdb;}
