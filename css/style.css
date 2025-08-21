@@ -67,19 +67,21 @@ display: flex; flex-direction: column; align-items: center;}
 #fortuneModal .modal-content .content .main-title {font-size: 100px; font-weight: 500;  letter-spacing: -1px; opacity: 1; transition: opacity 0.8s ease, transform 0.8s ease; margin-top: 50px; margin-bottom: 30px;}
 #fortuneModal .modal-content .content .main-title .icon {font-size: 60px; margin-left: 20px;}
 #fortuneModal .modal-content .content .cards {display: flex; justify-content: center;
-gap: 70px;}
+gap: 70px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -40%);}
 #fortuneModal .modal-content .content .cards li {width: 360px; height: 520px;
 cursor: pointer; position: relative; perspective: 1000px; transform-style: preserve-3d;
 transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); opacity: 0;
 transform: translateY(30px); animation: cardAppear 0.6s ease forwards;}
-#fortuneModal .modal-content .content .cards li:hover:not(.selected):not(.hide):not(.fade-out):not(.centered) {transform: scale(1.05) translateY(-5px); filter: drop-shadow(0 0px 16px rgba(0, 0, 0, 0.15));}
 #fortuneModal .modal-content .content .cards .card-01 {animation-delay: 0.2s;}
 #fortuneModal .modal-content .content .cards .card-02 {animation-delay: 0.4s;}
 #fortuneModal .modal-content .content .cards .card-03 {animation-delay: 0.6s;}
+/* 
+#fortuneModal .modal-content .content .cards li .card-inner:hover:not(.selected):not(.hide):not(.fade-out):not(.centered) {transform: scale(1.01) translateY(-10px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
+#fortuneModal .modal-content .content .cards li.selected .card-inner {transform: translateY(-10px) scale(1.01); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
+#fortuneModal .modal-content .content .cards li.centered .card-inner {position: fixed !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) scale(1) !important; z-index: 10; transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
+#fortuneModal .modal-content .content .cards li.fade-out .card-inner {transform: scale(1) translateY(0px); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);} */
 
-#fortuneModal .modal-content .content .cards li.selected {transform: translateY(-8px) scale(1.08); filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25)); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
-#fortuneModal .modal-content .content .cards li.centered {position: fixed !important;
-left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) scale(1.1) !important; z-index: 10; transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
+
 
 /* 선택되지 않은 카드들 부드러운 페이드 아웃 */
 #fortuneModal .modal-content .content .cards li.fade-out {opacity: 0 !important;
@@ -424,7 +426,7 @@ border: none; width: 50px; height: 50px; background: none; cursor: pointer; tran
 
 
 /* Section-footer */
-.footer {background: #000; color: #dbdbdb; width: 100%; min-height: 100vh; 
+.footer {background: #000; color: #dbdbdb; width: 100%; max-height: 100vh; 
   position: fixed; bottom: 0; left: 0;  z-index: 1; display: flex
 ; flex: none; flex-direction: column; flex-wrap: nowrap;}
 .footer .inner {padding: 260px 0 70px; box-sizing: border-box;}
