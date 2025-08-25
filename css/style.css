@@ -70,35 +70,35 @@ header .innerHeader .gnb-r ul li a span {width: 16px; height: 16px; background: 
 #fortuneModal .modal-content .content .cards .card-02 { animation-delay: 0.4s; }
 #fortuneModal .modal-content .content .cards .card-03 { animation-delay: 0.6s; }
 
-#fortuneModal .cards li .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); transform: var(--flip, rotateY(0deg)) var(--move, translateZ(0)); will-change: transform; }
-#fortuneModal .cards li:not(.selected):not(.centered):not(.fade-out) .card-inner:hover { --move: scale(1.01) translateY(-10px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-#fortuneModal .cards li.selected .card-inner { --move: translateY(-10px) scale(1.01); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+#fortuneModal .cards li .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); transform-origin: center center; }
+#fortuneModal .cards li:not(.selected):not(.centered):not(.fade-out) .card-inner:hover { transform: scale(1.01) translateY(-10px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+#fortuneModal .cards li.selected .card-inner { transform: translateY(-10px) scale(1.01); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
-#fortuneModal .cards li.centered .card-inner { position: fixed; left: 50%; top: 50%; --move: translate(-50%, -50%) scale(1); z-index: 10; transition-duration: 1.2s; }
-#fortuneModal .cards li.fade-out .card-inner { --move: scale(1) translateY(0px); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+/* 중앙 정렬 상태 - 위치만 변경 */
+#fortuneModal .cards li.centered { position: fixed !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 10; transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* 중앙 정렬된 후 카드 뒤집기 */
+#fortuneModal .cards li.centered .card-inner { transform: none !important; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s; /* 0.3초 딜레이 */ }
+#fortuneModal .cards li.centered.flipped .card-inner { transform: rotateY(180deg) !important; }
+
+#fortuneModal .cards li.fade-out .card-inner { transform: scale(1) translateY(0px); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 #fortuneModal .cards li.fade-out { opacity: 0 !important; transform: scale(0.9) translateY(30px) !important; pointer-events: none !important; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
-/* flip: 컨테이너엔 회전만, 그림자는 뒷면에만 */
-#fortuneModal .cards li .card-inner.flipped { --flip: rotateY(180deg); }
-#fortuneModal .cards li .card-inner.flipped .card-back { filter: drop-shadow(0 16px 40px #B7D3C6); }
+#fortuneModal .cards li.centered.flipped .card-back { filter: drop-shadow(0 16px 40px #B7D3C6);}
 
-/* 면 세팅(사파리 포함) */
 .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 8px; overflow: hidden; }
 .card-front { transform: rotateY(0deg) translateZ(0); }
 .card-back { transform: rotateY(180deg) translateZ(0); display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; box-sizing: border-box; position: relative; }
 .card-front img, .card-back img { width: 100%; height: 100%; object-fit: cover; object-position: center; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); }
 
-/* 뒷면 텍스트 구역 */
 .card-back .card-svg { flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; position: relative; z-index: 1; }
 .card-back .fortune-result { position: absolute; top: 60%;left: 50%; transform: translate(-50%, -50%); width: 280px; z-index: 10; padding: 20px; }
 .card-back .fortune-title { font-size: 24px; color: #4A6CF7; font-weight: 500; margin-bottom: 8px; }
 .card-back .fortune-description { color: #666; line-height: 22px; }
 
-/* 버튼 */
 #fortuneModal .modal-content .content .select-btn { font-size: 18px; font-weight: 500; width: 300px; height: 60px; box-sizing: border-box; border: 1px solid #252525; display: inline-flex; justify-content: center; align-items: center; border-radius: 50px; cursor: pointer; position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background-color: #f5f5f5; opacity: 0; pointer-events: none; transition: all 0.5s ease; z-index: 20; }
 #fortuneModal .modal-content .content .select-btn.show { bottom: 50px; opacity: 1; pointer-events: all; }
 
-/* 기타 */
 @keyframes cardAppear { to { opacity: 1; transform: translateY(0); } }
 
 

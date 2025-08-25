@@ -1,6 +1,6 @@
 class FortuneCardModal {
   constructor() {
-    this.config = { dailyLock: false }; // 테스트 편의. 실서비스 시 true
+    this.config = { dailyLock: false }; //서비스 시 true 테스트 시 false
     this.state = { selectedCard: null, isFortuneShown: false, todaysCards: [] };
 
     this.$  = s => document.querySelector(s);
@@ -55,9 +55,8 @@ class FortuneCardModal {
     // 나머지 숨김
     this.els.cards.filter(x => x !== li).forEach(x => x.classList.add('fade-out'));
 
-    // 중앙 고정 + 플립 (강제 리플로우 + 인라인 Fallback)
-    this._forceCenter(li);
-    this._forceFlip(li);
+    // 중앙 고정 + 플립
+    li.classList.add('centered', 'flipped');
 
     // 텍스트 주입
     this.fillFortuneContent(li, this.state.todaysCards[idx]);
@@ -90,16 +89,7 @@ class FortuneCardModal {
   }
   clearAll() {
     this.els.cards.forEach(li => {
-      li.classList.remove('selected','centered','fade-out');
-      const inner = this.getInner(li);
-      if (!inner) return;
-      inner.classList.remove('flipped');
-      // 인라인 Fallback 제거
-      inner.style.position = '';
-      inner.style.left = '';
-      inner.style.top = '';
-      inner.style.transform = '';
-      inner.style.zIndex = '';
+      li.classList.remove('selected','centered','fade-out','flipped');
     });
   }
   selectCard(n) {
@@ -136,57 +126,21 @@ class FortuneCardModal {
     this.els.title.classList.add('fade-out');
     others.forEach(x => x.classList.add('fade-out'));
 
-    // 1) 뒷면 텍스트 먼저
+    // 1) 뒷면 텍스트 먼저 주입
     this.fillFortuneContent(li, fortune);
 
-    // 2) 중앙 고정 (클래스 + 인라인 Fallback)
+    // 2) 중앙 정렬로 이동
     await this.nextFrame();
-    this._forceCenter(li);
+    li.classList.add('centered');
+    
+    // 3) 중앙 정렬 애니메이션 완료 후 뒤집기
+    await this.delay(1000);
+    li.classList.add('flipped');
 
-    // 3) 두 프레임 후 flip (클래스 + 인라인 Fallback)
-    await this.nextFrame();
-    await this.delay(100);
-    this._forceFlip(li);
-
-    // 4) 버튼 노출
-    await this.delay(400);
+    // 4) 플립 완료 후 버튼 노출
+    await this.delay(800); // flip transition 시간
     this.els.btn.textContent = '포트폴리오도 함께 살펴보세요! 📂';
     this.els.btn.classList.add('show');
-  }
-
-  /* ===== 강제 중앙/플립(Fallback 포함) ===== */
-  _forceCenter(li) {
-    const inner = this.getInner(li);
-    if (!inner) return;
-    li.classList.add('selected','centered');
-
-    // 강제 리플로우
-    inner.getBoundingClientRect();
-
-    // 인라인 Fallback(스타일 충돌 대비)
-    inner.style.position = 'fixed';
-    inner.style.left = '50%';
-    inner.style.top = '50%';
-    // 이동은 CSS var(--move)와 동일하게
-    inner.style.transform = 'translate(-50%, -50%) rotateY(0deg)'; // 회전은 아직 X
-    inner.style.zIndex = '10';
-
-    console.debug('[fortune] centered applied');
-  }
-
-  _forceFlip(li) {
-    const inner = this.getInner(li);
-    if (!inner) return;
-
-    // 클래스 부여
-    inner.classList.add('flipped');
-
-    // 리플로우 후 인라인 보정(충돌 대비)
-    inner.getBoundingClientRect();
-    // 회전 먼저 → 이동(현재 중앙에 있으므로 translate 유지)
-    inner.style.transform = 'rotateY(180deg) translate(-50%, -50%)';
-
-    console.debug('[fortune] flipped applied');
   }
 
   /* ===== 모달 ===== */
