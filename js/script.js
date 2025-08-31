@@ -427,7 +427,11 @@ window.addEventListener("DOMContentLoaded", () => {
         left: targetPosition,
         behavior: 'smooth'
       });
+
+      
     }
+
+    
   });
 
   // 📌 marquee 복제 함수
