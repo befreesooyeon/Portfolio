@@ -50,39 +50,48 @@ return `
     <!-- OVERVIEW -->
     ${(project.overview || project.overviewRoles?.length || project.overviewImpact?.length || project.overviewQuote) ? `
     <section class="project-overview">
-    <h3 class="project-section-title">OVERVIEW-</h3>
-    ${project.overview ? `<p class="project-text">${project.overview}</p>` : ''}
+    <div class="inner">
+    <div className="info">
+        <h3 class="project-section-title">OVERVIEW-</h3>
 
-    <div class="project-overview-sub">
+        ${Array.isArray(project.overview)
+        ? project.overview.map(text => `<p class="project-text">${text}</p>`).join('')
+        : (project.overview ? `<p class="project-text">${project.overview}</p>` : '')
+        }
+
+        <div class="project-overview-sub">
         ${project.overviewRoles?.length ? `
         <div class="project-block">
-            <h4 class="project-sub-title">Role</h4>
+            <h4 class="project-sub-title">➀ Role</h4>
             <ul class="project-list">${list(project.overviewRoles)}</ul>
         </div>` : ''}
 
         ${project.overviewImpact?.length ? `
         <div class="project-block">
-            <h4 class="project-sub-title">Impact</h4>
+            <h4 class="project-sub-title">➁ Impact</h4>
             <ul class="project-list">${list(project.overviewImpact)}</ul>
         </div>` : ''}
 
         ${project.overviewQuote ? `
         <div class="project-block">
-            <h4 class="project-sub-title">Quote</h4>
+            <h4 class="project-sub-title">➂ Quote</h4>
             <p class="project-quote">${project.overviewQuote}</p>
         </div>` : ''}
-    </div>
+        </div>
 
-    <div class="project-cta">
+        <div class="project-cta">
         ${project.figmaLink ? `<a class="btn btn-ghost" href="${project.figmaLink}" target="_blank" rel="noopener">FIGMA →</a>` : ''}
-        ${project.pdfLink ? `<a class="btn btn-ghost" href="${project.pdfLink}" target="_blank" rel="noopener">PDF →</a>` : ''}
-    </div>
+        ${project.BriefLink ? `<a class="btn btn-ghost" href="${project.BriefLink}" target="_blank" rel="noopener">BREIEF →</a>` : ''}
+        </div>
+        </div>
 
-    ${project.overviewImage ? `
-    <div class="project-overview-media">
+        ${project.overviewImage ? `
+        <div class="project-overview-media">
         <img class="project-overview-image" src="${project.overviewImage}" alt="${slot(project.title)}">
-    </div>` : ''}
+        </div>` : ''}
+    </div>
     </section>` : ''}
+
 
     <!-- SOLUTION -->
     ${(project.solution || project.solutionThumbs?.length || project.solutionHero) ? `
