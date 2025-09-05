@@ -548,6 +548,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+
   // 📌 Footer Get In Touch 버튼 클릭 시 이메일 작성 (새창)
   const footerBtn = document.querySelector('.footer .footer-btn');
   if (footerBtn) {

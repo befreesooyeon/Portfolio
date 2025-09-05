@@ -51,7 +51,7 @@ return `
     ${(project.overview || project.overviewRoles?.length || project.overviewImpact?.length || project.overviewQuote) ? `
     <section class="project-overview">
     <div class="inner">
-    <div className="info">
+    <div class="info">
         <h3 class="project-section-title">OVERVIEW-</h3>
 
         ${Array.isArray(project.overview)
@@ -59,7 +59,7 @@ return `
         : (project.overview ? `<p class="project-text">${project.overview}</p>` : '')
         }
 
-        <div class="project-overview-sub">
+        <div class="project-sub">
         ${project.overviewRoles?.length ? `
         <div class="project-block">
             <h4 class="project-sub-title">➀ Role</h4>
@@ -80,8 +80,17 @@ return `
         </div>
 
         <div class="project-cta">
-        ${project.figmaLink ? `<a class="btn btn-ghost" href="${project.figmaLink}" target="_blank" rel="noopener">FIGMA →</a>` : ''}
-        ${project.BriefLink ? `<a class="btn btn-ghost" href="${project.BriefLink}" target="_blank" rel="noopener">BREIEF →</a>` : ''}
+        ${project.figmaLink ? `
+            <a class="btn btn-ghost" href="${project.figmaLink}" target="_blank" rel="noopener">
+            <span class="btn-rotate"></span>
+            <span class="btn-text">FIGMA →</span>
+            </a>` : ''}
+
+        ${project.BriefLink ? `
+            <a class="btn btn-ghost" href="${project.BriefLink}" target="_blank" rel="noopener">
+            <span class="btn-rotate"></span>
+            <span class="btn-text">BRIEF →</span>
+            </a>` : ''}
         </div>
         </div>
 
@@ -94,23 +103,96 @@ return `
 
 
     <!-- SOLUTION -->
-    ${(project.solution || project.solutionThumbs?.length || project.solutionHero) ? `
+    ${(project.solution || project.solutionCollabo?.length || project.solutionTest?.length || project.solutionAchieve || project.solutionAddImg || project.solutionImage) ? `
     <section class="project-solution">
+    <div class="inner">
+    <div class="info">
     <h3 class="project-section-title">SOLUTION-</h3>
-    ${project.solution ? `<p class="project-text">${project.solution}</p>` : ''}
 
-    <div class="project-solution-grid">
-        ${project.solutionThumbs?.length ? `
-        <div class="project-solution-thumbs">
-            ${project.solutionThumbs.map(src => `<img src="${src}" alt="">`).join('')}
+    <div class="project-sub">
+    ${project.solutionCollabo?.length ? `
+    <div class="project-block">
+        <h4 class="project-sub-title">➀ Collaboration & Publishing</h4>
+        <ul class="project-list">${list(project.solutionCollabo)}</ul>
+    </div>` : ''}
+
+    ${project.solutionTest?.length ? `
+    <div class="project-block">
+        <h4 class="project-sub-title">➁ Usability Test</h4>
+        <ul class="project-list">${list(project.solutionTest)}</ul>
+    </div>` : ''}
+
+    ${project.solutionAchieve?.length ? `
+        <div class="project-block">
+            <h4 class="project-sub-title">➂ Achievements</h4>
+            <ul class="project-list">${list(project.solutionAchieve)}</ul>
         </div>` : ''}
-        ${project.solutionHero ? `
-        <div class="project-solution-hero">
-            <img class="project-solution-image" src="${project.solutionHero}" alt="${slot(project.title)}">
+        </div>
+
+    ${project.solutionAddImg ? `
+        <div class="project-AddImg">
+        <img class="add-image" src="${project.solutionAddImg1}" alt="${slot(project.title)}">
+        <img class="add-image" src="${project.solutionAddImg2}" alt="${slot(project.title)}">
+        <img class="add-image" src="${project.solutionAddImg3}" alt="${slot(project.title)}">
+        </div>` : ''}
+    </div>
+
+    ${project.solutionImage ? `
+        <div class="project-solution-media">
+        <img class="project-solution-image" src="${project.solutionImage}" alt="${slot(project.title)}">
         </div>` : ''}
     </div>
     </section>` : ''}
 
+    <!-- MEDIA -->
+    ${(project.categoryTit || project.box1Imgs?.length || project.box2Imgs?.length || project.bannerImgt || project.phone1Img ||project.phone2Img || project.phone3Img) ? `
+    <section class="project-media">
+    <div class="inner">
+    ${project.categoryTit ? `<h2 class="categoryTit">${slot(project.categoryTit)}</h2>` : ''}
+    </div>
+
+    ${(project.box1Imgs?.length || project.box2Imgs?.length) ? `
+    <div class="imgBoxSli">
+        ${project.box1Imgs?.length ? `
+        <div class="Box1">
+        ${project.box1Imgs.map(src => `<img src="${src}" alt="${slot(project.title)}">`).join('')}
+        </div>` : ''}
+
+        ${project.box2Imgs?.length ? `
+        <div class="Box2">
+        ${project.box2Imgs.map(src => `<img src="${src}" alt="${slot(project.title)}">`).join('')}
+        </div>` : ''}
+    </div>` : ''}
+
+    ${project.bannerImgt ? `
+    <div class="bannerImgt">
+        <img src="${project.bannerImgt}" alt="${slot(project.title)}">
+    </div>` : ''}
+
+
+    ${(project.phone1Img || project.phone2Img || project.phone3Img) ? `
+    <div class="phoneM">
+        ${project.phone1Img ? `
+        <div class="phone1">
+        <img src="${project.phone1Img}" alt="${slot(project.title)}">
+        </div>` : ''}
+
+        ${project.phone2Img ? `
+        <div class="phone2">
+        <img src="${project.phone2Img}" alt="${slot(project.title)}">
+        </div>` : ''}
+
+        ${project.phone3Img ? `
+        <div class="phone3">
+        <img src="${project.phone3Img}" alt="${slot(project.title)}">
+        </div>` : ''}
+    </div>` : ''}
+
+    <nav class="project-nav">
+        <button type="button" class="project-nav-btn project-nav-prev" aria-label="Previous">‹</button>
+        <button type="button" class="project-nav-btn project-nav-next" aria-label="Next">›</button>
+    </nav>
+    </section>` : ''}
 </div>
 `;
 }
