@@ -447,6 +447,29 @@ padding-bottom: 40px; box-sizing: border-box; border-bottom: 1px solid #ccc;}
 #projectModal .modal-content .content .project-media .phoneM {display: flex; justify-self: center; gap: 80px; position: relative; width: 70%; height: 100%; padding: 130px 0; box-sizing: border-box;}
 #projectModal .modal-content .content .project-media .phoneM img {width: 100%; height: 100%; object-fit: contain;}
 
+/* prev */
+#projectModal .project-nav {display:flex;justify-content:space-between;align-items:center;margin:130px 96px;}
+#projectModal .project-nav-prev,#projectModal .project-nav-next {display:flex; align-items:center; gap:24px; cursor:pointer;}
+#projectModal .project-nav-prev .label,#projectModal .project-nav-next .label {display:flex;flex-direction:column;gap:10px;}
+#projectModal .project-nav-prev .label {align-items:flex-start;}
+#projectModal .project-nav-next .label {align-items:flex-end;}
+#projectModal .nav-type {font-size:18px; opacity:.7; transition:opacity .25s ease;}
+#projectModal .nav-title {position:relative;font-size:30px;line-height:1.2;transition:transform .25s ease,color .25s ease;}
+#projectModal .nav-title::after {content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform .25s ease;}
+#projectModal .project-nav-next .nav-title::after {transform-origin:right center;}
+#projectModal .arrow svg {width:40px;height:40px;display:block;transition:transform .25s ease,opacity .25s ease;}
+#projectModal .arrow svg path {stroke:currentColor;transition:stroke .25s ease;}
+
+/* hover motion */
+#projectModal .project-nav-prev:hover .arrow svg {transform:translateX(-6px);}
+#projectModal .project-nav-next:hover .arrow svg {transform:translateX(6px);}
+#projectModal .project-nav-prev:hover .nav-title {transform:translateX(-4px); /* color: #B7D3C6; */}
+#projectModal .project-nav-next:hover .nav-title {transform:translateX(4px); /* color: #B7D3C6; */}
+#projectModal .project-nav-prev:hover .nav-title::after,#projectModal .project-nav-next:hover .nav-title::after {transform:scaleX(1);}
+#projectModal .project-nav-prev:hover .nav-type,#projectModal .project-nav-next:hover .nav-type {opacity:1;}
+
+/* disabled state */
+#projectModal .project-nav-btn[disabled] {opacity:.35;pointer-events:none;}
 
 
 
