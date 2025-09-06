@@ -42,6 +42,7 @@
     description: "감각적인 비주얼과 스토리텔링 중심으로 구성한 탬버린즈 웹사이트 개편입니다.",
     siteUrl: "https://befreesooyeon.github.io/Tamburins_final-main/",
 
+    visualImg: "./images/Tamburins_visual.png",
     about: "오프라인 경험을 온라인으로 확장하기 위해 6명의 팀원과 협업하여,<br>탬버린즈의 디지털 아이덴티티를 구현했습니다.",
     aboutDate: "2025.06.01~<br>06.30",
     aboutRole: "Team Project · 6 Members<br>Role: Web / MO Design Leader<br>Contribution: 60%",

@@ -13,7 +13,7 @@ return `
     <p class="visual-left">${slot(project.viewLabel || 'WORKS - TAMBURINS')}</p>
     ${project.image ? `
     <div class="visual-media">
-        <img class="visual-image" src="${slot(project.image)}" alt="${slot(project.title)}">
+        <img class="visual-image" src="${slot(project.visualImg)}" alt="${slot(project.title)}">
     </div>` : ''}
     <div class="visual-right">
     ${project.siteUrl 
@@ -155,14 +155,19 @@ return `
     <div class="imgBoxSli">
         ${project.box1Imgs?.length ? `
         <div class="Box1">
-        ${project.box1Imgs.map(src => `<img src="${src}" alt="${slot(project.title)}">`).join('')}
+            ${project.box1Imgs.map(src => `
+            <div class="imgItem"><img src="${src}" alt="${slot(project.title)}"></div>
+            `).join('')}
         </div>` : ''}
 
         ${project.box2Imgs?.length ? `
         <div class="Box2">
-        ${project.box2Imgs.map(src => `<img src="${src}" alt="${slot(project.title)}">`).join('')}
+            ${project.box2Imgs.map(src => `
+            <div class="imgItem"><img src="${src}" alt="${slot(project.title)}"></div>
+            `).join('')}
         </div>` : ''}
     </div>` : ''}
+
 
     ${project.bannerImgt ? `
     <div class="bannerImgt">
