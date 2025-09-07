@@ -550,13 +550,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // 📌 Footer Get In Touch 버튼 클릭 시 이메일 작성 (새창)
-  const footerBtn = document.querySelector('.footer .footer-btn');
-  if (footerBtn) {
-    footerBtn.addEventListener('click', function() {
-      const email = 'sooeaeoyo@gmail.com';
-      const mailtoLink = `mailto:${email}`;
-      window.open(mailtoLink, '_blank');
-    });
-  }
+
+
+  
+
 });

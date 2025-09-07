@@ -5,18 +5,37 @@ import { renderProjectDetail } from './works-detail.js';
 
 let currentGalleryIndex = -1;
 let modalInited = false;
-let currentProjectIndex = -1; // 현재 열린 프로젝트의 index (portfolioData 기준)
+let currentProjectIndex = -1;
+
+/* 공용: 모달 내 실제 스크롤 컨테이너 찾기 */
+function getScroller() {
+const modal = document.getElementById('projectModal');
+if (!modal) return null;
+// 보통 .content가 스크롤러지만, 프로젝트별 CSS에 따라 .modal-content가 스크롤러일 수도 있어 대비
+return modal.querySelector('.modal-content .content')
+    || modal.querySelector('.modal-content')
+    || modal;
+}
+
+/* 공용: 모달 스크롤 리셋 */
+function resetModalScroll() {
+const scroller = getScroller();
+if (scroller) scroller.scrollTop = 0;
+}
 
 /* ---------- Modal: Open / Close ---------- */
 export function openModal(modalId) {
 const modal = document.getElementById(modalId);
 if (!modal) return;
+
 document.body.classList.add('modal-open');
 document.body.style.overflow = 'hidden';
 modal.classList.add('active');
-const header = document.querySelector('header');
-if (header) header.style.zIndex = 0;
+document.querySelector('header')?.style && (document.querySelector('header').style.zIndex = 0);
 document.querySelector('.narrative-container')?.classList.add('modal-open');
+
+// 모달 열 때 항상 최상단부터
+resetModalScroll();
 }
 
 export function closeModal() {
@@ -27,6 +46,9 @@ document.querySelector('.narrative-container')?.classList.remove('modal-open');
 const header = document.querySelector('header');
 if (header) header.style.zIndex = 10000;
 currentGalleryIndex = -1;
+
+// 닫을 때도 스크롤 위치 초기화 (다음 열림 대비)
+resetModalScroll();
 
 // GSAP 정리
 if (window.ScrollTrigger) {
@@ -73,11 +95,7 @@ const newIndex = direction === 'prev' ? currentGalleryIndex - 1 : currentGallery
 if (newIndex >= 0 && newIndex < galleryData.length) updatePhotoModal(galleryData[newIndex], newIndex);
 }
 
-/* ---------- Project Detail Mount & Helpers ---------- */
-function getScroller() {
-return document.querySelector('#projectModal .modal-content .content');
-}
-
+/* ---------- Project Detail ---------- */
 function killModalScrollTriggers() {
 if (!window.ScrollTrigger) return;
 const scroller = getScroller();
@@ -94,7 +112,7 @@ gsap.registerPlugin(ScrollTrigger);
 const scroller = getScroller();
 if (!scroller) return;
 
-// 혹시 남아있는 트리거 정리
+// 기존 트리거 정리
 killModalScrollTriggers();
 
 scroller.querySelectorAll('.project-media').forEach(section => {
@@ -125,9 +143,9 @@ if (phoneM) {
     const tlPhones = gsap.timeline({
     scrollTrigger: { trigger: phoneM, scroller, start: 'top bottom', end: 'bottom top', scrub: 1, invalidateOnRefresh: true }
     });
-    if (phone1) tlPhones.to(phone1, { yPercent: 20, ease: 'power2.in' }, 0);
+    if (phone1) tlPhones.to(phone1, { yPercent: 20,  ease: 'power2.in' }, 0);
     if (phone2) tlPhones.to(phone2, { yPercent: -10, ease: 'power2.in' }, 0);
-    if (phone3) tlPhones.to(phone3, { yPercent: 20, ease: 'power2.in' }, 0);
+    if (phone3) tlPhones.to(phone3, { yPercent: 20,  ease: 'power2.in' }, 0);
 }
 });
 
@@ -151,29 +169,27 @@ function mountProject(project) {
 const scroller = getScroller();
 if (!scroller) return;
 
-// 기존 ScrollTrigger 정리
+// GSAP 정리
 killModalScrollTriggers();
 
-// 기존 내용 교체
-const prev = scroller.querySelector('.project-detail-root');
-if (prev) prev.remove();
-
+// 이전 내용 제거 후 새로 삽입
+scroller.querySelector('.project-detail')?.remove();
 const html = renderProjectDetail(project);
 const wrapper = document.createElement('div');
 wrapper.className = 'project-detail';
 wrapper.innerHTML = html;
 scroller.appendChild(wrapper);
 
-// 현재 index 보관
+// 현재 인덱스 기록
 currentProjectIndex = portfolioData.findIndex(p => String(p.id) === String(project.id));
 
-// 스크롤 최상단으로 즉시 이동 (하단에서 시작 방지)
-scroller.scrollTop = 0;
+// 항상 최상단부터 시작 (핵심!)
+resetModalScroll();
 
 // 내비 타이틀 갱신
 updateProjectNavTitles(currentProjectIndex);
 
-// GSAP 재초기화
+// GSAP 다시 세팅
 requestAnimationFrame(() => { initProjectMediaScroll(); });
 }
 
@@ -182,18 +198,18 @@ export function initModalTriggers() {
 if (modalInited) return;
 modalInited = true;
 
-// 폴더/포춘
-document.querySelector('.now .inner .folder-content')?.addEventListener('click', () => openModal('folderModal'));
-document.querySelector('.fortune-trigger')?.addEventListener('click', e => { e.preventDefault(); openModal('fortuneModal'); });
+document.querySelector('.now .inner .folder-content')
+?.addEventListener('click', () => openModal('folderModal'));
 
-// 공통 위임
+document.querySelector('.fortune-trigger')
+?.addEventListener('click', e => { e.preventDefault(); openModal('fortuneModal'); });
+
 document.addEventListener('click', e => {
-// 닫기
 if (e.target.classList.contains('modal-close-btn')) { e.preventDefault(); closeModal(); }
 
-// 포토 모달
 if (e.target.closest('.modal-nav-prev')) navigateGallery('prev');
 if (e.target.closest('.modal-nav-next')) navigateGallery('next');
+
 if (e.target.classList.contains('photo-view-btn')) {
     e.preventDefault();
     const title = e.target.getAttribute('data-title');
@@ -201,26 +217,23 @@ if (e.target.classList.contains('photo-view-btn')) {
     if (idx !== -1) { updatePhotoModal(galleryData[idx], idx); openModal('photoModal'); }
 }
 
-// 프로젝트 내비(prev/next) — 순환 이동 + 스크롤 0
+// 프로젝트 내비게이션 (순환)
 if (e.target.closest('.project-nav-prev')) {
     e.preventDefault();
     if (currentProjectIndex < 0) return;
     const total = portfolioData.length;
     const prevIndex = (currentProjectIndex - 1 + total) % total;
-    const project = portfolioData[prevIndex];
-    mountProject(project);
+    mountProject(portfolioData[prevIndex]);
 }
 if (e.target.closest('.project-nav-next')) {
     e.preventDefault();
     if (currentProjectIndex < 0) return;
     const total = portfolioData.length;
     const nextIndex = (currentProjectIndex + 1) % total;
-    const project = portfolioData[nextIndex];
-    mountProject(project);
+    mountProject(portfolioData[nextIndex]);
 }
 });
 
-// 키보드
 document.addEventListener('keydown', e => {
 if (e.key === 'Escape') closeModal();
 
@@ -231,13 +244,12 @@ if (photoModal?.classList.contains('active')) {
 }
 });
 
-// 닫기 바리에이션
 document.querySelectorAll('.r').forEach(btn => btn.addEventListener('click', closeModal));
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
 overlay.addEventListener('click', function (e) { if (e.target === this) closeModal(); });
 });
 
-// 카드 클릭 → 프로젝트 모달 열기
+// 카드 클릭 → 프로젝트 모달
 const portfolioGrid = document.querySelector('.portfolio-grid');
 if (portfolioGrid) {
 portfolioGrid.addEventListener('click', e => {
@@ -247,9 +259,8 @@ portfolioGrid.addEventListener('click', e => {
     const project = portfolioData.find(item => String(item.id) === id);
     if (!project) return;
 
-    // 그리기 + 상단으로 초기화 + 내비 갱신
-    mountProject(project);
-    openModal('projectModal');
+    mountProject(project);    // 내용 먼저 그리고
+    openModal('projectModal'); // 모달 열기
 });
 }
 }
