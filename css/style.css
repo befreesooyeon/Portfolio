@@ -308,6 +308,8 @@ margin-left: -96px;}
 .about .inner .contents .box .grid .title {font-weight: 500; display: flex; margin-bottom: 20px;}
 .about .inner .contents .box .grid .title svg {margin-right: 10px;}
 .about .inner .contents .box .grid ul {margin-bottom: 70px;}
+.about .inner .contents .box .grid ul:nth-child(3) {margin-bottom: 0;}
+
 .about .inner .contents .box .grid ul li {margin-bottom: 5px; line-height: 32px; white-space: nowrap;}
 .about .inner .contents .box .grid ul li:last-child {margin-bottom: 0;}
 
