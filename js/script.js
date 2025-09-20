@@ -434,16 +434,6 @@ window.addEventListener("DOMContentLoaded", () => {
     
   });
 
-  // 📌 marquee 복제 함수
-  function cloneMarqueeContent(trackSelector) {
-    const track = document.querySelector(trackSelector);
-    const content = track.children[0].cloneNode(true);
-    track.appendChild(content);
-  }
-
-  cloneMarqueeContent('#marquee1 .marquee-track');
-  cloneMarqueeContent('#marquee2 .marquee-track');
-
   // Tooltip 스크롤
   const tooltip = document.querySelector(".tooltip");
   const nowSection = document.querySelector(".narrative-container .now");
