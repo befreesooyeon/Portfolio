@@ -348,7 +348,8 @@ justify-content: center; align-items: center; width: 44px; height: 44px; border-
 .works .inner .portfolio-grid .card .card-content .tit h3 {font-size: 20px; font-weight: 500;}
 .works .inner .portfolio-grid .card .card-content .tit p {color: #666;}
 .works .inner .portfolio-grid .card .card-content .description {color: #666; line-height: 24px; margin-top: 10px; display: block;}
-.works .inner .portfolio-grid .card .thumbnail img {border-radius: 16px; width: 100%;}
+.works .inner .portfolio-grid .card .thumbnail img, .works .inner .portfolio-grid .card .thumbnail video {border-radius: 16px; width: 100%;
+}
 .works .inner .load-more-wrapper {text-align: center; margin-top: 100px;} 
 #loadMoreBtn {padding: 16px 32px; box-sizing: border-box; font-size: 18px; background: none; border: 1px solid #252525; border-radius: 50px; font-weight: 500;  cursor: pointer; display: inline-block;}
 
@@ -366,7 +367,7 @@ left: 50%; transform: translateX(-50%); z-index: 10000; cursor: pointer;}
 #projectModal .modal-content .content .project-visual .visual-left {justify-self:start; align-self:center; white-space:nowrap;}
 #projectModal .modal-content .content .project-visual .visual-right {justify-self:end; align-self:center; white-space:nowrap;}
 #projectModal .modal-content .content .project-visual .inner .top .visual-media {width: 450px; height: 600px;}
-#projectModal .modal-content .content .project-visual .inner .top .visual-media .visual-image {width:100%; height:100%; object-fit:cover;}
+#projectModal .modal-content .content .project-visual .inner .top .visual-media .visual-media-asset {width:100%; height:100%; object-fit:cover;}
 
 #projectModal .modal-content .content .project-visual .inner .bottom {display: flex; justify-content: space-between; flex-wrap: wrap; position: absolute;
 bottom: 2%; width: 100%;}
@@ -375,8 +376,10 @@ bottom: 2%; width: 100%;}
 
 
 /* project-banner */
-#projectModal .modal-content .content .project-banner {width: 100%; height: auto; object-fit: contain;}
-#projectModal .modal-content .content .project-banner .project-banner-image {width: 100%; height: 100%; object-fit: cover;}
+/* #projectModal .modal-content .content .project-banner {width: 100%; height: auto; object-fit: contain;}
+#projectModal .modal-content .content .project-banner .project-banner-image {width: 100%; height: 100%; object-fit: cover;} */
+#projectModal .modal-content .content .project-banner { position:relative; overflow:hidden; height:100vh; object-fit: contain;}
+#projectModal .modal-content .content .project-banner .project-banner-image {width:100%; height:100%; object-fit:cover; will-change:transform;}
 
 /* project-overview */
 #projectModal .modal-content .content section {margin-top: 260px; width: 100%; height: 100%;}
@@ -412,10 +415,9 @@ padding-bottom: 40px; box-sizing: border-box; border-bottom: 1px solid #ccc;}
 /* Media Section */
 #projectModal .modal-content .content .project-media {position: relative; overflow: hidden;}
 #projectModal .modal-content .content .project-media .inner {position: relative; z-index: 2;}
+
 #projectModal .modal-content .content .project-media .categoryTit {
   position: relative; font-size: 130px; font-weight: normal; margin-bottom: 130px; left: 0;}
-
-/* 트랙 */
 #projectModal .modal-content .content .project-media .imgBoxSli {position:relative; z-index:1; height:clamp(500px,45vw,950px); overflow:hidden;}
 #projectModal .modal-content .content .project-media .imgBoxSli .Box1, #projectModal .modal-content .content .project-media .imgBoxSli .Box2 {position:absolute; display:flex; gap:40px; align-items:stretch; width:max-content; height:calc((100% - 40px) / 2);}
 #projectModal .modal-content .content .project-media .imgBoxSli .Box1 {top:0; left:0;}

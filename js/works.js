@@ -1,5 +1,4 @@
 // works
-
 import { portfolioData } from './data.js';
 import { initFilters } from './filter.js';
 import { initModalTriggers } from './modal.js';
@@ -11,12 +10,22 @@ let currentFilter = 'ALL';
 let currentIndex = 6;
 let currentData = portfolioData;
 
+function renderThumbMedia(src, altText = '') {
+if (!src) return '';
+const ext = src.split('.').pop().toLowerCase();
+const isVideo = ext === 'mp4' || ext === 'webm';
+if (isVideo) {
+return `<video src="${src}" autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;"></video>`;
+}
+return `<img src="${src}" alt="${altText}">`;
+}
+
 export function renderCards(data) {
 portfolioGrid.innerHTML = data
 .map(item => `
     <div class="card" data-category="${item.category}" data-id="${item.id}">
     <div class="thumbnail">
-        <img src="${item.image}" alt="${item.title}">
+        ${renderThumbMedia(item.image, item.title)}
         <div class="icon-circle">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
             <path d="M7.10682 18.3874L5.69261 16.9731L14.1779 8.48786H6.39971V6.47968H17.6003V17.6803H15.5921V9.90208L7.10682 18.3874Z" fill="#252525"/>
@@ -59,14 +68,13 @@ updateLoadMoreButton(portfolioData, "ALL", 6);
 initFilters();
 });
 
-
 loadMoreBtn.addEventListener('click', () => {
 const nextItems = currentData.slice(currentIndex, currentIndex + 3);
 const newHTML = nextItems
 .map(item => `
     <div class="card" data-category="${item.category}" data-id="${item.id}">
     <div class="thumbnail">
-        <img src="${item.image}" alt="${item.title}">
+        ${renderThumbMedia(item.image, item.title)}
         <div class="icon-circle">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
             <path d="M7.10682 18.3874L5.69261 16.9731L14.1779 8.48786H6.39971V6.47968H17.6003V17.6803H15.5921V9.90208L7.10682 18.3874Z" fill="#252525"/>
