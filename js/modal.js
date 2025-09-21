@@ -115,21 +115,21 @@ killModalScrollTriggers();
 // 배너 이미지 패럴럭스
 const bannerImg = scroller.querySelector('.project-banner .project-banner-image');
 if (bannerImg) {
-gsap.set(bannerImg, { willChange: 'transform' });
+gsap.set(bannerImg, { yPercent: -10, willChange: 'transform' });
 gsap.to(bannerImg, {
-    yPercent: 20,
-    ease: 'none',
-    scrollTrigger: {
+yPercent: 10,
+ease: 'none',
+scrollTrigger: {
     trigger: bannerImg.closest('.project-banner'),
     scroller,
     start: 'top bottom',
     end: 'bottom top',
     scrub: true
-    }
+}
 });
 }
 
-// 프로젝트 미디어 애니메이션
+// 프로젝트 미디어 애니메이션 (좌우/상하 이동)
 scroller.querySelectorAll('.project-media').forEach(section => {
 const track  = section.querySelector('.imgBoxSli');
 const box1   = track?.querySelector('.Box1');
@@ -174,6 +174,26 @@ if (imgs.length) {
     });
 }
 });
+
+// 공통 미디어 순차 등장 (fade+scale, 모달 열릴 때 1회)
+const medias = scroller.querySelectorAll('.media-asset');
+if (medias.length) {
+gsap.set(medias, { opacity: 0, scale: 1.05, willChange: 'transform, opacity' });
+
+gsap.to(medias, {
+    opacity: 1,
+    scale: 1,
+    duration: 0.7,
+    ease: 'power2.out',
+    stagger: 0.12,
+    scrollTrigger: {
+    trigger: scroller.querySelector('.project-detail-root'),
+    scroller,
+    start: 'top 80%',
+    once: true
+    }
+});
+}
 
 ScrollTrigger.refresh();
 }

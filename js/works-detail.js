@@ -5,14 +5,14 @@ const list = (arr) => (Array.isArray(arr) && arr.length ? arr.map(v => `<li>${v}
 
 // 공통: src에 따라 <img> 또는 <video> 반환
 const renderMedia = (src, alt, className = '') => {
-if (!src) return '';
-const ext = src.split('.').pop().toLowerCase();
-if (ext === 'mp4' || ext === 'webm') {
-    return `<video class="${className}" src="${slot(src)}" autoplay muted loop playsinline></video>`;
-}
-// 기본은 이미지 (jpg, png, gif, webp 등)
-return `<img class="${className}" src="${slot(src)}" alt="${slot(alt)}">`;
+    if (!src) return '';
+    const ext = src.split('.').pop().toLowerCase();
+    if (ext === 'mp4' || ext === 'webm') {
+    return `<video class="media-asset ${className}" src="${slot(src)}" autoplay muted loop playsinline></video>`;
+    }
+    return `<img class="media-asset ${className}" src="${slot(src)}" alt="${slot(alt)}">`;
 };
+
 
 // 비주얼 소스 (visualImg > image)
 const visualSrc = project.visualImg || project.image;
