@@ -3,56 +3,55 @@ export const portfolioData =
 [
     {
     id: "1",
-    title: "Aesop Web Renewal Project",
+    title: "Aesop",
     navTitle: "Aesop",
     image: "./images/Aesop_cover.png",
     category: "(UX UI)",
     description: "브랜드 아이덴티티를 강화하고 사용자 경험을 개선한 이솝 공식 웹사이트 리뉴얼입니다.",
-    siteUrl: "https://example.com/aesop-renewal",
+    siteUrl: "https://befreesooyeon.github.io/aesop",
 
     visualImg: "./images/Aesop_visual.png",
     viewLabel: "WORKES - AESOP",
-    about: "이솝의 브랜드 철학과 미니멀한 미학을 반영하여 5명의 팀원과 협업하여,<br>현대적이고 직관적인 웹 경험을 구현했습니다.",
-    aboutDate: "2023.03.01~<br>03.30",
-    aboutRole: "Team Project · 5 Members<br>Role: UI/UX Design Leader<br>Contribution: 65%",
+    about: "브랜드의 무드와 사용자 경험을 고려하여<br>메인 페이지 전체를 리뉴얼한 개인 프로젝트입니다.",
+    aboutDate: "2024.07.01~<br>07.07",
+    aboutRole: "Personal Project <br>Role: UX Research, UI Design, Prototyping<br>Contribution: 100%",
     aboutCategory: "UX UI Design",
-    bannerImage: "./images/aesop_banner.png",
+    bannerImage: "./images/Aesop_banner.png",
     overview: [
         "이솝은 오프라인 매장의 감각적인 경험으로 유명하지만,<br>기존 웹사이트는 브랜드의 <span>미니멀한 철학</span>을 충분히 담아내지 못했습니다.",
         "<br>본 프로젝트는 웹사이트를 제품 쇼케이스를 넘어, <br>브랜드의 스토리텔링과 감성을 전달하는 디지털 공간으로 재구성하여<br>온라인에서도 이솝만의 <span>독특한 브랜드 경험</span>을 확장하고자 기획되었습니다."
+        
     ],
     overviewRoles: [
-        "Team Leader & UI/UX Designer",
-        "메인 페이지 · 제품 상세 · 브랜드 스토리 · 매장 찾기 디자인 주도",
-        "디자인 기획서 65% 참여, 팀 전체 피드백 및 방향성 관리"
+        "리서치 · 정보 구조 설계 · 메인/제품 상세 페이지 UI 디자인 · 프로토타입",
+        "(100% 개인 작업)"
     ],
-    overviewImpact: ["전환율 +12%, 체류 시간 +15% 달성으로 사용자 참여도 향상", "브랜드 아이덴티티 강화와 온라인 경험의 차별화"],
-    overviewQuote: "Modern · Minimal · Sensual — 이솝만의 감성을 온라인으로 확장하다.",
-    figmaLink: "https://www.figma.com/design/aesop-renewal-project",
-    BriefLink: "https://www.figma.com/proto/aesop-renewal-brief",
+    overviewImpact: ["브랜드 리서치, 기획, 웹 디자인 전 과정, 프로토타입"],
+    figmaLink: "https://www.figma.com/design/UUxkFz7BGSsbuY7E8B7E85/Aesop?node-id=0-1&t=DgBtKMndeqahzbIA-1",
+    BriefLink: "https://www.figma.com/design/UUxkFz7BGSsbuY7E8B7E85/Aesop?node-id=241-127&t=DgBtKMndeqahzbIA-1",
     overviewImage: "./images/aesop_mockup1.png",
 
-    solutionCollabo: ["스크롤 기반 인터랙션 아이디어 제안, CSS 애니메이션 구현", "시네마그래프 효과 시도 후 개발팀과 협업", "테스트 단계에서 직접 코드 수정으로 원하는 효과 반영"],
-    solutionTest: ["평균 4.5/5점 달성", "브랜드 일관성·사용성에서 높은 평가 → 브랜드 경험 강화"],
-    solutionAchieve: ["학원 내 5개 팀 중 1위(최우수상) 수상", "최종 피드백 95/100점 획득"],
-    solutionImage: "./images/aesop_mockup2.png",
+    // solutionCollabo: ["스크롤 기반 인터랙션 아이디어 제안, CSS 애니메이션 구현", "시네마그래프 효과 시도 후 개발팀과 협업", "테스트 단계에서 직접 코드 수정으로 원하는 효과 반영"],
+    // solutionTest: ["평균 4.5/5점 달성", "브랜드 일관성·사용성에서 높은 평가 → 브랜드 경험 강화"],
+    // solutionAchieve: ["학원 내 5개 팀 중 1위(최우수상) 수상", "최종 피드백 95/100점 획득"],
+    solutionImage: "./images/aesop_mockup1.png",
 
-    solutionAddImg: true,
-    solutionAddImg1: "./images/aesop_solution_01.png",
-    solutionAddImg2: "./images/aesop_solution_02.png",
-    solutionAddImg3: "./images/aesop_solution_03.png",
+    // solutionAddImg: true,
+    // solutionAddImg1: "./images/aesop_solution_01.png",
+    // solutionAddImg2: "./images/aesop_solution_02.png",
+    // solutionAddImg3: "./images/aesop_solution_03.png",
 
     categoryTit: "UX UI Design",
     box1Imgs: [
-        "./images/aesop_box1_01.png",
-        "./images/aesop_box1_02.png",
-        "./images/aesop_box1_03.png",
-        "./images/aesop_box1_04.png",
-        "./images/aesop_box1_05.png"
+        "./images/Abox1Imgs_01.png",
+        "./images/Abox1Imgs_02.png",
+        "./images/Abox1Imgs_03.png",
+        "./images/Abox1Imgs_04.png",
+        "./images/Abox1Imgs_05.png"
     ],
     box2Imgs: [
-        "./images/aesop_box2_01.png",
-        "./images/aesop_box2_02.png",
+        "./images/Abox2Imgs_01.png",
+        "./images/Abox2Imgs_02.png",
         "./images/aesop_box2_03.png",
         "./images/aesop_box2_04.png",
         "./images/aesop_box2_05.png"
@@ -64,7 +63,7 @@ export const portfolioData =
     },
     {
     id: "2",
-    title: "Tamburins Web Renewal Project",
+    title: "Tamburins",
     navTitle: "Tamburins",
     image: "./images/Tamburins_cover.png",
     category: "(UX UI)",
@@ -105,18 +104,18 @@ export const portfolioData =
 
     categoryTit: "UX UI Design",
     box1Imgs: [
-        "./images/box1Imgs_01.png",
-        "./images/box1Imgs_02.png",
-        "./images/box1Imgs_03.png",
-        "./images/box1Imgs_04.png",
-        "./images/box1Imgs_05.png"
+        "./images/Tbox1Imgs_01.png",
+        "./images/Tbox1Imgs_02.png",
+        "./images/Tbox1Imgs_03.png",
+        "./images/Tbox1Imgs_04.png",
+        "./images/Tbox1Imgs_05.png"
     ],
     box2Imgs: [
-        "./images/box2Imgs_01.png",
-        "./images/box2Imgs_02.png",
-        "./images/box2Imgs_03.png",
-        "./images/box2Imgs_04.png",
-        "./images/box2Imgs_05.png"
+        "./images/Tbox2Imgs_01.png",
+        "./images/Tbox2Imgs_02.png",
+        "./images/Tbox2Imgs_03.png",
+        "./images/Tbox2Imgs_04.png",
+        "./images/Tbox2Imgs_05.png"
     ],
     bannerImgt: "./images/bannerImgt_01.png",
     phone1Img: "./images/phoneImg_01.png",
@@ -125,7 +124,7 @@ export const portfolioData =
     },
     {
     id: "3",
-    title: "Fan app Loopin App design",
+    title: "Loopin",
     navTitle: "Loopin",
     image: "./images/Loopin_cover.png",
     category: "(UX UI)",
@@ -186,7 +185,7 @@ export const portfolioData =
     },
     {
     id: "4",
-    title: "Space Tailor Portfolio Design",
+    title: "Space Tailor Portfolio",
     navTitle: "Space Tailor",
     image: "./images/spacetailor_cover.png",
     category: "(UX UI)",
@@ -247,7 +246,7 @@ export const portfolioData =
     },
     {
     id: "5",
-    title: "Daily Subscription Portfolio Design",
+    title: "Daily Subscription Portfolio",
     navTitle: "Daily Subscription",
     image: "./images/일상구독_cover.png",
     category: "(UX UI)",
@@ -308,7 +307,7 @@ export const portfolioData =
     },
     {
     id: "6",
-    title: "Subway App Renewal Project",
+    title: "Subway",
     navTitle: "Subway",
     image: "./images/subway_cover.png",
     category: "(UX UI)",
@@ -430,7 +429,7 @@ export const portfolioData =
     },
     {
     id: "8",
-    title: "Arozjewelry Clone coding",
+    title: "Arozjewelry",
     navTitle: "Arozjewelry",
     image: "./images/arozjewelry_cover.png",
     category: "(CLONE CODING)",
