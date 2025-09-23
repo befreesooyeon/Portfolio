@@ -29,12 +29,12 @@ export const portfolioData =
     overviewImpact: ["브랜드 리서치, 기획, 웹 디자인 전 과정, 프로토타입"],
     figmaLink: "https://www.figma.com/design/UUxkFz7BGSsbuY7E8B7E85/Aesop?node-id=0-1&t=DgBtKMndeqahzbIA-1",
     BriefLink: "https://www.figma.com/design/UUxkFz7BGSsbuY7E8B7E85/Aesop?node-id=241-127&t=DgBtKMndeqahzbIA-1",
-    overviewImage: "./images/aesop_mockup1.png",
+    overviewImage: "./images/Aesop_mockup1.png",
 
     // solutionCollabo: ["스크롤 기반 인터랙션 아이디어 제안, CSS 애니메이션 구현", "시네마그래프 효과 시도 후 개발팀과 협업", "테스트 단계에서 직접 코드 수정으로 원하는 효과 반영"],
     // solutionTest: ["평균 4.5/5점 달성", "브랜드 일관성·사용성에서 높은 평가 → 브랜드 경험 강화"],
     // solutionAchieve: ["학원 내 5개 팀 중 1위(최우수상) 수상", "최종 피드백 95/100점 획득"],
-    solutionImage: "./images/aesop_mockup1.png",
+    solutionImage: "./images/Aesop_mockup2.png",
 
     // solutionAddImg: true,
     // solutionAddImg1: "./images/aesop_solution_01.png",
@@ -47,19 +47,17 @@ export const portfolioData =
         "./images/Abox1Imgs_02.png",
         "./images/Abox1Imgs_03.png",
         "./images/Abox1Imgs_04.png",
-        "./images/Abox1Imgs_05.png"
     ],
     box2Imgs: [
+        "./images/Abox1Imgs_05.png",
         "./images/Abox2Imgs_01.png",
         "./images/Abox2Imgs_02.png",
-        "./images/aesop_box2_03.png",
-        "./images/aesop_box2_04.png",
-        "./images/aesop_box2_05.png"
+        "./images/Abox2Imgs_03.png",
     ],
-    bannerImgt: "./images/aesop_bannerImg.png",
-    phone1Img: "./images/aesop_phone1.png",
-    phone2Img: "./images/aesop_phone2.png",
-    phone3Img: "./images/aesop_phone3.png"
+    bannerImgt: "./images/Aesop_mockup3.png",
+    phone1Img: "./images/AphoneImg_01.png",
+    phone2Img: "./images/AphoneImg_02.png",
+    // phone3Img: "./images/aesop_phone3.png"
     },
     {
     id: "2",
@@ -118,9 +116,9 @@ export const portfolioData =
         "./images/Tbox2Imgs_05.png"
     ],
     bannerImgt: "./images/bannerImgt_01.png",
-    phone1Img: "./images/phoneImg_01.png",
-    phone2Img: "./images/phoneImg_02.png",
-    phone3Img: "./images/phoneImg_03.png"
+    phone1Img: "./images/TphoneImg_01.png",
+    phone2Img: "./images/TphoneImg_02.png",
+    phone3Img: "./images/TphoneImg_03.png"
     },
     {
     id: "3",
@@ -129,28 +127,28 @@ export const portfolioData =
     image: "./images/Loopin_cover.png",
     category: "(UX UI)",
     description: "팬과 아티스트 간 소통을 강화하는 Loopin 모바일 앱 UI·UX 디자인입니다.",
-    siteUrl: "https://example.com/loopin-app",
+    siteUrl: "https://loopin-six.vercel.app/",
 
     visualImg: "./images/Loopin_visual.png",
     viewLabel: "WORKES - LOOPIN",
-    about: "팬과 아티스트 간의 새로운 소통 방식을 제안하기 위해 4명의 팀원과 협업하여,<br>Loopin의 혁신적인 모바일 경험을 구현했습니다.",
-    aboutDate: "2023.01.01~<br>01.31",
-    aboutRole: "Team Project · 4 Members<br>Role: App UX/UI Design Leader<br>Contribution: 70%",
+    about: "루핀(Loopin)은 팬이 능동적으로 참여하고 감정을 표현할 수 있는 팬 중심 커뮤니티 앱입니다.<br>아티스트별 테마 UI와 Midjourney 시각 요소로 몰입감을 강화했습니다.",
+    aboutDate: "2025.07.01~<br>07.31",
+    aboutRole: "Team Project · 6 Members<br>Role: App UX/UI Design Leader<br>Contribution: 50%",
     aboutCategory: "UX UI Design",
-    bannerImage: "./images/loopin_banner.png",
+    bannerImage: "./images/Loopin_banner.png",
     overview: [
-        "기존 팬 커뮤니티 앱들은 일방향적 소통에 집중되어,<br>팬과 아티스트 간의 <span>진정한 상호작용</span>을 제공하지 못했습니다.",
-        "<br>본 프로젝트는 앱을 단순한 팬클럽 플랫폼이 아닌, <br>팬과 아티스트가 함께 성장하고 소통할 수 있는 디지털 공간으로 재정의하여<br>모바일에서 <span>새로운 팬덤 경험</span>을 확장하고자 기획되었습니다."
+        "기존 팬덤 플랫폼은 아티스트 중심 정보 제공이나 소비 기능에 머물러,<br>팬들이 능동적으로 참여하거나 감정을 표현하기엔 한계가 있었습니다.",
+        "<br>루핀(Loopin)은 팬이 주도적으로 활동하고<br>감정적으로 연결될 수 있는 <span>몰입형 감성 커뮤니티 앱</span>으로 기획되었으며,<br>아티스트별 테마 기반 UI와 개인화 경험을 통해 온라인 팬덤 문화를 확장하고자 했습니다."
     ],
     overviewRoles: [
         "Team Leader & UX/UI Designer",
-        "메인 피드 · 메시지 · 팬룸 · 아티스트 프로필 · 이벤트 디자인 주도",
-        "디자인 기획서 70% 참여, 팀 전체 피드백 및 방향성 관리"
+        "스플래시, 로그인, 팬페이지, 기획서 등 핵심 화면 디자인 주도",
+        "디자인 기획서 50% 참여, 팀원 결과물 피드백 및 방향성 조율"
     ],
-    overviewImpact: ["사용자 리텐션 +20%, MAU 증가로 앱 활성도 크게 향상", "팬-아티스트 간 소통 방식의 혁신과 새로운 팬덤 문화 조성"],
-    overviewQuote: "Fans first, Simple & Fun — 팬과 아티스트를 연결하는 새로운 방식.",
-    figmaLink: "https://www.figma.com/design/loopin-app-design",
-    BriefLink: "https://www.figma.com/proto/loopin-app-brief",
+    overviewImpact: ["사용성 테스트 평균 4.2/5점, 특히 심미성과 일관성에서 높은 평가", "팬 중심 인터랙션 설계로 소속감과 교류 경험 강화"],
+    overviewQuote: "Fans first, Immersive & Emotional — 팬과 아티스트를 감성적으로 연결하다.",
+    figmaLink: "https://www.figma.com/design/raCePqV5GU0cP2LB6BFIP2/Loopin?node-id=1-1070&t=YhMOh35WcYxwUhRu-1",
+    BriefLink: "https://www.figma.com/proto/raCePqV5GU0cP2LB6BFIP2/Loopin?page-id=0%3A1&node-id=1-6840&viewport=154%2C152%2C0.06&t=V01N75pk0p5CdGVu-1&scaling=scale-down-width&content-scaling=fixed",
     overviewImage: "./images/loopin_mockup1.png",
 
     solutionCollabo: ["팬 활동 중심 탭 구조 아이디어 제안, 직관적 메시지 UI 구현", "스와이프 제스처 및 알림 시스템 개발팀과 협업", "테스트 단계에서 직접 UI 수정으로 사용성 개선"],

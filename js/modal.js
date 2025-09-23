@@ -115,9 +115,9 @@ killModalScrollTriggers();
 // 배너 이미지 패럴럭스
 const bannerImg = scroller.querySelector('.project-banner .project-banner-image');
 if (bannerImg) {
-gsap.set(bannerImg, { yPercent: -5, willChange: 'transform' });
+gsap.set(bannerImg, { yPercent: -10, willChange: 'transform' });
 gsap.to(bannerImg, {
-yPercent: 5,
+yPercent: 10,
 ease: 'none',
 scrollTrigger: {
     trigger: bannerImg.closest('.project-banner'),
