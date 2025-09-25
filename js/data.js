@@ -96,9 +96,9 @@ export const portfolioData =
     solutionImage: "./images/Tamburins_mockup2.png",
 
     solutionAddImg: true,
-    solutionAddImg1: "./images/solution_01.png",
-    solutionAddImg2: "./images/solution_02.png",
-    solutionAddImg3: "./images/solution_03.png",
+    solutionAddImg1: "./images/Tsolution_01.png",
+    solutionAddImg2: "./images/Tsolution_02.png",
+    solutionAddImg3: "./images/Tsolution_03.png",
 
     categoryTit: "UX UI Design",
     box1Imgs: [
@@ -138,48 +138,48 @@ export const portfolioData =
     bannerImage: "./images/Loopin_banner.png",
     overview: [
         "기존 팬덤 플랫폼은 아티스트 중심 정보 제공이나 소비 기능에 머물러,<br>팬들이 능동적으로 참여하거나 감정을 표현하기엔 한계가 있었습니다.",
-        "<br>루핀(Loopin)은 팬이 주도적으로 활동하고<br>감정적으로 연결될 수 있는 <span>몰입형 감성 커뮤니티 앱</span>으로 기획되었으며,<br>아티스트별 테마 기반 UI와 개인화 경험을 통해 온라인 팬덤 문화를 확장하고자 했습니다."
+        "<br>루핀(Loopin)은 팬이 주도적으로 활동하고<br>감정적으로 연결될 수 있는 <span pan>몰입형 감성 커뮤니티 앱</span>으로 기획되었으며,<br>아티스트별 테마 기반 UI와 개인화 경험을 통해 온라인 팬덤 문화를 확장하고자 했습니다."
     ],
     overviewRoles: [
         "Team Leader & UX/UI Designer",
         "스플래시, 로그인, 팬페이지, 기획서 등 핵심 화면 디자인 주도",
         "디자인 기획서 50% 참여, 팀원 결과물 피드백 및 방향성 조율"
     ],
-    overviewImpact: ["사용성 테스트 평균 4.2/5점, 특히 심미성과 일관성에서 높은 평가", "팬 중심 인터랙션 설계로 소속감과 교류 경험 강화"],
+    overviewImpact: ["사용성 테스트 평균 4.2/5점", "특히 심미성과 일관성에서 높은 평가"],
     overviewQuote: "Fans first, Immersive & Emotional — 팬과 아티스트를 감성적으로 연결하다.",
     figmaLink: "https://www.figma.com/design/raCePqV5GU0cP2LB6BFIP2/Loopin?node-id=1-1070&t=YhMOh35WcYxwUhRu-1",
     BriefLink: "https://www.figma.com/proto/raCePqV5GU0cP2LB6BFIP2/Loopin?page-id=0%3A1&node-id=1-6840&viewport=154%2C152%2C0.06&t=V01N75pk0p5CdGVu-1&scaling=scale-down-width&content-scaling=fixed",
     overviewImage: "./images/loopin_mockup1.png",
 
-    solutionCollabo: ["팬 활동 중심 탭 구조 아이디어 제안, 직관적 메시지 UI 구현", "스와이프 제스처 및 알림 시스템 개발팀과 협업", "테스트 단계에서 직접 UI 수정으로 사용성 개선"],
-    solutionTest: ["평균 4.2/5점 달성", "사용 편의성·재미 요소에서 높은 평가 → 팬 경험 강화"],
-    solutionAchieve: ["학원 내 6개 팀 중 3위(장려상) 수상", "최종 피드백 92/100점 획득"],
-    solutionImage: "./images/loopin_mockup2.png",
+    solutionCollabo: ["팬 활동 중심 탭 구조 아이디어 제안", "Midjourney 비주얼 아이디어 확장."],
+    solutionTest: ["사용성 테스트 평균 4.34/5점 기록", "심미성·일관성 긍정적 평가"],
+    solutionAchieve: ["학원 내 4개 팀 중 디자인' 리더십상' 수상"],
+    solutionImage: "./images/Loopin_mockup2.png",
 
     solutionAddImg: true,
-    solutionAddImg1: "./images/loopin_solution_01.png",
-    solutionAddImg2: "./images/loopin_solution_02.png",
-    solutionAddImg3: "./images/loopin_solution_03.png",
+    solutionAddImg1: "./images/Lsolution_01.png",
+    solutionAddImg2: "./images/Lsolution_02.png",
+    solutionAddImg3: "./images/Lsolution_03.png",
 
     categoryTit: "UX UI Design",
     box1Imgs: [
-        "./images/loopin_box1_01.png",
-        "./images/loopin_box1_02.png",
-        "./images/loopin_box1_03.png",
-        "./images/loopin_box1_04.png",
-        "./images/loopin_box1_05.png"
+        "./images/Lbox1Imgs_01.png",
+        "./images/Lbox1Imgs_02.png",
+        "./images/Lbox1Imgs_03.png",
+        "./images/Lbox1Imgs_04.png",
+        "./images/Lbox1Imgs_05.png"
     ],
     box2Imgs: [
-        "./images/loopin_box2_01.png",
-        "./images/loopin_box2_02.png",
-        "./images/loopin_box2_03.png",
-        "./images/loopin_box2_04.png",
-        "./images/loopin_box2_05.png"
+        "./images/Lbox2Imgs_01.png",
+        "./images/Lbox2Imgs_02.png",
+        "./images/Lbox2Imgs_03.png",
+        "./images/Lbox2Imgs_04.png",
+        "./images/Lbox2Imgs_05.png"
     ],
-    bannerImgt: "./images/loopin_bannerImg.png",
-    phone1Img: "./images/loopin_phone1.png",
-    phone2Img: "./images/loopin_phone2.png",
-    phone3Img: "./images/loopin_phone3.png"
+    bannerImgt: "./images/Loopin_mockup4.mp4",
+    phone1Img: "./images/LphoneImg_01.png",
+    phone2Img: "./images/LphoneImg_02.png",
+    phone3Img: "./images/LphoneImg_03.png"
     },
     {
     id: "4",

@@ -362,13 +362,6 @@ window.addEventListener("DOMContentLoaded", () => {
       scrub: 0.1
     },
     {
-      selector: ".works .title svg",
-      trigger: ".works",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: 0.1
-    },
-    {
       selector: ".footer-spin",
       trigger: "body",
       start: "top bottom",
