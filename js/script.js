@@ -338,39 +338,51 @@ const themeAnimationConfig = {
 });
 
 // 가로스크롤 start
-window.addEventListener("DOMContentLoaded", () => { 
-  const sections = gsap.utils.toArray(".narrative-container section");
-  const totalWidth = sections.reduce((sum, sec) => sum + sec.offsetWidth, 0);
+// 가로 스크롤 + 버튼 이동
+window.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin); // ScrollToPlugin 없으면 등록만 되고 무시됨
 
-  // 가로 스크롤 트윈
+  const sections = gsap.utils.toArray(".narrative-container section");
+  const getScrollLen = () => sections.reduce((s, el) => s + el.offsetWidth, 0) - window.innerWidth;
+
+  let scrollLen = getScrollLen();
+
   gsap.to(sections, {
-    x: -totalWidth + window.innerWidth,
+    x: -scrollLen,
     ease: "none",
     scrollTrigger: {
-      id: "next-section",        // ⭐ 버튼 클릭 시 참조할 ID
+      id: "narrativeScroll",            // ← 이 id로 찾음
       trigger: ".narrative-container",
       pin: true,
       scrub: 1,
       start: "top top",
-      end: () => "+=" + totalWidth + "px"
+      end: () => "+=" + scrollLen
     }
   });
 
-  // 스크롤 버튼 → 다음 섹션으로 이동
-  const btn = document.querySelector(".scroll-btn");
-  btn?.addEventListener("click", e => {
+  // 스크롤 버튼 → #next-section으로
+  document.querySelector(".scroll-btn")?.addEventListener("click", (e) => {
     e.preventDefault();
     const target = document.querySelector("#next-section");
-    if (!target) return;
-
-    const total = document.querySelector(".narrative-container").scrollWidth - window.innerWidth;
-    const progress = target.offsetLeft / total; // 목표 위치 → 전체 스크롤 비율
-
     const st = ScrollTrigger.getById("narrativeScroll");
-    if (st) {
-      gsap.to(st, { progress, duration: 1, ease: "power2.inOut" });
+    if (!target || !st) return;
+
+    // 가로 offsetLeft → 세로 스크롤 위치로 변환
+    const y = Math.min(st.start + target.offsetLeft, st.end);
+
+    if (gsap.plugins && gsap.plugins.scrollTo) {
+      gsap.to(window, { scrollTo: y, duration: 1, ease: "power2.inOut" });
+    } else {
+      window.scrollTo({ top: y, behavior: "smooth" }); // 플러그인 없을 때도 동작
     }
   });
+
+  // 리사이즈 반영
+  window.addEventListener("resize", () => {
+    scrollLen = getScrollLen();
+    ScrollTrigger.refresh();
+  });
+
 
   // 로고 회전
   [
@@ -482,5 +494,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }, true);
 });
+
 
 
