@@ -153,7 +153,7 @@ export const portfolioData =
 
     solutionCollabo: ["팬 활동 중심 탭 구조 아이디어 제안", "Midjourney 비주얼 아이디어 확장."],
     solutionTest: ["사용성 테스트 평균 4.34/5점 기록", "심미성·일관성 긍정적 평가"],
-    solutionAchieve: ["학원 내 4개 팀 중 디자인' 리더십상' 수상"],
+    solutionAchieve: ["학원 내 4개 팀 중 '디자인 리더십상' 수상"],
     solutionImage: "./images/Loopin_mockup2.png",
 
     solutionAddImg: true,
@@ -182,7 +182,67 @@ export const portfolioData =
     phone3Img: "./images/LphoneImg_03.png"
     },
     {
-    id: "4",
+id: "4",
+title: "Subway",
+navTitle: "Subway",
+image: "./images/Subway_cover.gif",
+category: "(UX UI)",
+description: "주문 편의성과 프로모션 접근성을 높인 서브웨이 공식 앱 개편입니다.",
+siteUrl: "https://www.figma.com/proto/w9gseVujbfURnwBwM3X45y/Subway?page-id=1%3A2690&node-id=1-4320&p=f&viewport=-2496%2C-264%2C0.37&t=EeUETdu4EKDMcFfA-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4318",
+
+visualImg: "./images/Subway_visual.gif",
+viewLabel: "WORKES - SUBWAY",
+about: "서브웨이 앱은 복잡한 주문 과정과 낮은 직관성으로 불편함이 있었습니다.<br>본 프로젝트는 간소화된 주문 플로우와 직관적 UI로 사용자 경험을 개선하는 것을 목표로 했습니다.",
+aboutDate: "2025.03.06~<br>03.19",
+aboutRole: "Team Project · 5 Members<br>Role: MO Design Leader<br>Contribution: 50%",
+aboutCategory: "UX UI Design",
+bannerImage: "./images/Subway_banner.png",
+overview: [
+    "기존 서브웨이 앱은 <span>복잡한 주문 단계와<br>직관적이지 않은 UI</span>로 사용자 경험이 저하되었습니다.","<br>본 프로젝트에서는 <span>간편 로그인, 메뉴 즐겨찾기, 대기시간 안내, 정돈된 홈 화면</span>으로 개선을 제안했습니다.<br>저는 팀장으로서 <span>디자인 시스템을 총괄하고 팀원들을 이끌며,</span> 직관적이고 효율적인 주문 경험을 구현했습니다."
+],
+overviewRoles: [
+    "Team Leader & UX/UI Designer",
+    "디자인 시스템 구축 및 전반적인 톤앤매너 지휘",
+    "로그인·메인·주문 플로우·즐겨찾기 UI 등 디자인 주도"
+],
+overviewImpact: ["주문 단계 단순화로 앱 접근성 향상", "직관적 UI로 초보 사용자도 쉽게 적응","나만의 메뉴 기능으로 재사용 경험 강화"],
+overviewQuote: "Easy Order, Fun Subway — 쉽고 재미있는 주문으로 더 나은 서브웨이 경험.",
+figmaLink: "https://www.figma.com/design/w9gseVujbfURnwBwM3X45y/Subway?node-id=0-1&t=OhAQuxmfqsg3g29V-1",
+BriefLink: "https://www.figma.com/proto/w9gseVujbfURnwBwM3X45y/Subway?page-id=0%3A1&node-id=1-813&viewport=-364%2C556%2C0.08&t=6LNxG21rfcIONZu0-1&scaling=scale-down-width&content-scaling=fixed",
+overviewImage: "./images/Subway_mockup1.png",
+
+solutionCollabo: ["아이디어 제안, 주제 확정.", "디자인 시스템 구축, 화면 피드백.", "퍼블리싱 제외, 프로토타입 관리."],
+solutionTest: ["25명 테스트 진행.", "만족도 88%, 이해도 84%, 재사용 의향 76%"],
+solutionAchieve: ["학원 첫 팀 프로젝트였지만 4개 팀 중 디자인 완성도 면에서 가장 좋은 평가를 받음."],
+solutionImage: "./images/Subway_mockup2.png",
+
+solutionAddImg: true,
+solutionAddImg1: "./images/Subsolution_01.png",
+solutionAddImg2: "./images/Subsolution_02.png",
+solutionAddImg3: "./images/Subsolution_03.png",
+
+categoryTit: "UX UI Design",
+box1Imgs: [
+    "./images/Subbox1Imgs_01.png",
+    "./images/Subbox1Imgs_02.png",
+    "./images/Subbox1Imgs_03.png",
+    "./images/Subbox1Imgs_04.png",
+    "./images/Subbox1Imgs_05.png"
+],
+box2Imgs: [
+    "./images/Subbox2Imgs_01.png",
+    "./images/Subbox2Imgs_02.png",
+    "./images/Subbox2Imgs_03.png",
+    "./images/Subbox2Imgs_04.png",
+    "./images/Subbox2Imgs_05.png"
+],
+bannerImgt: "./images/Subway_mockup3.png",
+phone1Img: "./images/SubphoneImg_01.png",
+phone2Img: "./images/SubphoneImg_02.png",
+phone3Img: "./images/SubphoneImg_03.png"
+    },
+    {
+    id: "5",
     title: "Space Tailor Portfolio",
     navTitle: "Space Tailor",
     image: "./images/spacetailor_cover.png",
@@ -243,7 +303,7 @@ export const portfolioData =
     phone3Img: "./images/spacetailor_phone3.png"
     },
     {
-    id: "5",
+    id: "6",
     title: "Daily Subscription Portfolio",
     navTitle: "Daily Subscription",
     image: "./images/일상구독_cover.png",
@@ -304,68 +364,190 @@ export const portfolioData =
     phone3Img: "./images/daily_phone3.png"
     },
     {
-    id: "6",
-    title: "Subway",
-    navTitle: "Subway",
-    image: "./images/subway_cover.png",
-    category: "(UX UI)",
-    description: "주문 편의성과 프로모션 접근성을 높인 서브웨이 공식 앱 개편입니다.",
-    siteUrl: "https://example.com/subway-app-renewal",
+id: "7",
+title: "시현하다",
+navTitle: "Henri Matisse",
+image: "./images/henri_cover.png",
+category: "(EDITORIAL)",
+description: "앙리 마티스의 컷 아웃 기반 리플렛 디자인 프로젝트입니다.",
+siteUrl: "https://example.com/henri-matisse-leaflet",
 
-    visualImg: "./images/subway_visual.png",
-    viewLabel: "WORKES - SUBWAY",
-    about: "고객의 주문 편의성을 극대화하기 위해 5명의 팀원과 협업하여,<br>Subway의 혁신적인 모바일 주문 경험을 구현했습니다.",
-    aboutDate: "2023.01.01~<br>01.31",
-    aboutRole: "Team Project · 5 Members<br>Role: UX/UI Designer<br>Contribution: 55%",
-    aboutCategory: "UX UI Design",
-    bannerImage: "./images/subway_banner.png",
-    overview: [
-        "기존 서브웨이 앱은 복잡한 주문 과정과 프로모션 정보의 접근성 부족으로,<br>사용자들이 <span>빠르고 간편한 주문</span>을 하기 어려운 문제가 있었습니다.",
-        "<br>본 프로젝트는 앱을 단순한 주문 도구가 아닌, <br>고객의 취향과 선호를 학습하여 맞춤형 경험을 제공하는 스마트 플랫폼으로 재정의하여<br>모바일에서 <span>최적화된 주문 경험</span>을 제공하고자 기획되었습니다."
-    ],
-    overviewRoles: [
-        "UX/UI Designer",
-        "메인 화면 · 메뉴 선택 · 커스터마이징 · 결제 · 프로모션 페이지 디자인 주도",
-        "디자인 기획서 55% 참여, 팀 전체 피드백 및 방향성 관리"
-    ],
-    overviewImpact: ["주문율 +25%, 앱 사용 빈도 증가로 매출 크게 향상", "모바일 주문 앱 UX의 새로운 기준 제시와 고객 만족도 개선"],
-    overviewQuote: "Easy Order, Fun Subway — 쉽고 재미있는 주문으로 더 나은 서브웨이 경험.",
-    figmaLink: "https://www.figma.com/design/subway-app-renewal",
-    BriefLink: "https://www.figma.com/proto/subway-app-brief",
-    overviewImage: "./images/subway_mockup1.png",
+visualImg: "./images/henri_visual.png",
+viewLabel: "WORKES - HENRI MATISSE",
+about: "예술가의 철학과 작품 세계를 효과적으로 전달하기 위해 3명의 팀원과 협업하여,<br>Henri Matisse의 예술적 감성을 담은 리플렛을 구현했습니다.",
+aboutDate: "2021.11.01~<br>11.30",
+aboutRole: "Team Project · 3 Members<br>Role: Graphic Designer<br>Contribution: 80%",
+aboutCategory: "Editorial Design",
+bannerImage: "./images/henri_banner.png",
+overview: [
+    "기존 전시 리플렛들은 단순한 정보 전달에 집중되어,<br>예술가의 <span>창작 철학과 감성</span>을 충분히 전달하지 못하는 문제가 있었습니다.",
+    "<br>본 프로젝트는 리플렛을 단순한 안내서가 아닌, <br>마티스의 컷 아웃 기법을 활용하여 작품과 철학을 시각적으로 경험할 수 있는 아트 오브젝트로 재정의하여<br>관람객들에게 <span>예술적 감동</span>을 선사하고자 기획되었습니다."
+],
+overviewRoles: [
+    "Team Leader & Graphic Designer",
+    "컨셉 기획 · 컷 아웃 디자인 · 타이포그래피 · 레이아웃 · 인쇄 감리 주도",
+    "디자인 기획서 80% 참여, 팀 전체 피드백 및 방향성 관리"
+],
+overviewImpact: ["전시 방문객 반응 상승, 리플렛 수집률 크게 증가", "예술 전시 리플렛의 새로운 기준 제시와 예술적 가치 부여"],
+overviewQuote: "Art into Paper — 종이 위에 예술을 담아 감동을 전달하다.",
+figmaLink: "https://www.figma.com/design/henri-matisse-leaflet",
+BriefLink: "https://www.figma.com/proto/henri-matisse-brief",
+overviewImage: "./images/henri_mockup1.png",
 
-    solutionCollabo: ["원터치 주문, 시각적 프로모션 강조 아이디어 제안", "드래그앤드랍 커스터마이징 기능 개발팀과 협업", "테스트 단계에서 직접 UI 수정으로 주문 플로우 최적화"],
-    solutionTest: ["평균 4.4/5점 달성", "편의성·속도에서 높은 평가 → 주문 경험 만족도 크게 증가"],
-    solutionAchieve: ["학원 내 5개 팀 중 1위(최우수상) 수상", "최종 피드백 97/100점 획득"],
-    solutionImage: "./images/subway_mockup2.png",
+solutionCollabo: ["컬러풀 컷아웃 아트웍 적용 아이디어 직접 제안", "인쇄 기법 및 후가공 방식 인쇄업체와 협업", "테스트 단계에서 직접 색상 및 레이아웃 수정으로 완성도 향상"],
+solutionTest: ["평균 4.6/5점 달성", "창의성·예술성에서 높은 평가 → 전시 경험 만족도 증가"],
+solutionAchieve: ["학원 내 4개 팀 중 1위(최우수상) 수상", "최종 피드백 99/100점 획득"],
+solutionImage: "./images/henri_mockup2.png",
 
-    solutionAddImg: true,
-    solutionAddImg1: "./images/subway_solution_01.png",
-    solutionAddImg2: "./images/subway_solution_02.png",
-    solutionAddImg3: "./images/subway_solution_03.png",
+solutionAddImg: true,
+solutionAddImg1: "./images/henri_solution_01.png",
+solutionAddImg2: "./images/henri_solution_02.png",
+solutionAddImg3: "./images/henri_solution_03.png",
 
-    categoryTit: "App Renewal",
-    box1Imgs: [
-        "./images/subway_box1_01.png",
-        "./images/subway_box1_02.png",
-        "./images/subway_box1_03.png",
-        "./images/subway_box1_04.png",
-        "./images/subway_box1_05.png"
-    ],
-    box2Imgs: [
-        "./images/subway_box2_01.png",
-        "./images/subway_box2_02.png",
-        "./images/subway_box2_03.png",
-        "./images/subway_box2_04.png",
-        "./images/subway_box2_05.png"
-    ],
-    bannerImgt: "./images/subway_bannerImg.png",
-    phone1Img: "./images/subway_phone1.png",
-    phone2Img: "./images/subway_phone2.png",
-    phone3Img: "./images/subway_phone3.png"
+categoryTit: "Editorial Design",
+box1Imgs: [
+    "./images/henri_box1_01.png",
+    "./images/henri_box1_02.png",
+    "./images/henri_box1_03.png",
+    "./images/henri_box1_04.png",
+    "./images/henri_box1_05.png"
+],
+box2Imgs: [
+    "./images/henri_box2_01.png",
+    "./images/henri_box2_02.png",
+    "./images/henri_box2_03.png",
+    "./images/henri_box2_04.png",
+    "./images/henri_box2_05.png"
+],
+bannerImgt: "./images/henri_bannerImg.png",
+phone1Img: "./images/henri_phone1.png",
+phone2Img: "./images/henri_phone2.png",
+phone3Img: "./images/henri_phone3.png"
     },
     {
-    id: "7",
+id: "8",
+title: "Arozjewelry",
+navTitle: "Arozjewelry",
+image: "./images/arozjewelry_cover.png",
+category: "(CLONE CODING)",
+description: "프랑스 쥬얼리 브랜드 아로제주얼리 클론 코딩 결과물입니다.",
+siteUrl: "https://example.com/arozjewelry-clone",
+
+visualImg: "./images/arozjewelry_visual.png",
+viewLabel: "WORKES - AROZJEWELRY",
+about: "프론트엔드 개발 역량 강화와 고급 웹 기술 습득을 위해 개인 프로젝트로,<br>Arozjewelry의 정교한 클론 사이트를 구현했습니다.",
+aboutDate: "2023.04.01~<br>04.30",
+aboutRole: "Individual Project<br>Role: Frontend Developer<br>Contribution: 100%",
+aboutCategory: "Clone Coding",
+bannerImage: "./images/arozjewelry_banner.png",
+overview: [
+    "기존 학습 과정에서는 단순한 레이아웃 구현에 집중되어,<br>실제 브랜드의 <span>섬세한 디테일과 고급 인터랙션</span>을 구현하지 못하는 한계가 있었습니다.",
+    "<br>본 프로젝트는 클론 코딩을 단순한 모방이 아닌, <br>프랑스 럭셔리 브랜드의 정교한 디자인과 인터랙션을 완벽히 재현하여<br>개발자로서 <span>고급 기술력과 디테일</span>을 습득하고자 기획되었습니다."
+],
+overviewRoles: [
+    "Frontend Developer",
+    "HTML 마크업 · CSS 스타일링 · JavaScript 인터랙션 · 반응형 구현 전담",
+    "개발 계획 수립 100%, 코드 작성 및 최적화 전 과정 독립 수행"
+],
+overviewImpact: ["퍼블리싱 속도 향상, 고급 CSS 기술 습득으로 개발 역량 크게 성장", "럭셔리 브랜드 웹사이트 구현 노하우 습득과 포트폴리오 완성도 향상"],
+overviewQuote: "Pixel Perfect Clone — 완벽한 클론으로 개발 실력을 증명하다.",
+figmaLink: "https://www.figma.com/design/arozjewelry-clone-reference",
+BriefLink: "https://github.com/username/arozjewelry-clone",
+overviewImage: "./images/arozjewelry_mockup1.png",
+
+solutionCollabo: ["반응형 구현, 인터랙션 모듈 아이디어 직접 구현", "고급 CSS 애니메이션 및 JavaScript 기능 독립적 학습 및 적용", "크로스 브라우징 테스트 단계에서 직접 코드 최적화로 호환성 확보"],
+solutionTest: ["개인 학습 목표 100% 달성", "기술적 난이도·완성도에서 스스로 높은 평가 → 개발 자신감 향상"],
+solutionAchieve: ["개인 프로젝트 중 최고 완성도 달성", "포트폴리오 기술 스택 다양화 및 실무 경험 축적"],
+solutionImage: "./images/arozjewelry_mockup2.png",
+
+solutionAddImg: true,
+solutionAddImg1: "./images/arozjewelry_solution_01.png",
+solutionAddImg2: "./images/arozjewelry_solution_02.png",
+solutionAddImg3: "./images/arozjewelry_solution_03.png",
+
+categoryTit: "Clone Coding",
+box1Imgs: [
+    "./images/arozjewelry_box1_01.png",
+    "./images/arozjewelry_box1_02.png",
+    "./images/arozjewelry_box1_03.png",
+    "./images/arozjewelry_box1_04.png",
+    "./images/arozjewelry_box1_05.png"
+],
+box2Imgs: [
+    "./images/arozjewelry_box2_01.png",
+    "./images/arozjewelry_box2_02.png",
+    "./images/arozjewelry_box2_03.png",
+    "./images/arozjewelry_box2_04.png",
+    "./images/arozjewelry_box2_05.png"
+],
+bannerImgt: "./images/arozjewelry_bannerImg.png",
+phone1Img: "./images/arozjewelry_phone1.png",
+phone2Img: "./images/arozjewelry_phone2.png",
+phone3Img: "./images/arozjewelry_phone3.png"
+    },
+    {
+    id: "9",
+    title: "Daehae Clone",
+    navTitle: "Henri Matisse",
+    image: "./images/henri_cover.png",
+    category: "(EDITORIAL)",
+    description: "앙리 마티스의 컷 아웃 기반 리플렛 디자인 프로젝트입니다.",
+    siteUrl: "https://example.com/henri-matisse-leaflet",
+
+    visualImg: "./images/henri_visual.png",
+    viewLabel: "WORKES - HENRI MATISSE",
+    about: "예술가의 철학과 작품 세계를 효과적으로 전달하기 위해 3명의 팀원과 협업하여,<br>Henri Matisse의 예술적 감성을 담은 리플렛을 구현했습니다.",
+    aboutDate: "2021.11.01~<br>11.30",
+    aboutRole: "Team Project · 3 Members<br>Role: Graphic Designer<br>Contribution: 80%",
+    aboutCategory: "Editorial Design",
+    bannerImage: "./images/henri_banner.png",
+    overview: [
+        "기존 전시 리플렛들은 단순한 정보 전달에 집중되어,<br>예술가의 <span>창작 철학과 감성</span>을 충분히 전달하지 못하는 문제가 있었습니다.",
+        "<br>본 프로젝트는 리플렛을 단순한 안내서가 아닌, <br>마티스의 컷 아웃 기법을 활용하여 작품과 철학을 시각적으로 경험할 수 있는 아트 오브젝트로 재정의하여<br>관람객들에게 <span>예술적 감동</span>을 선사하고자 기획되었습니다."
+    ],
+    overviewRoles: [
+        "Team Leader & Graphic Designer",
+        "컨셉 기획 · 컷 아웃 디자인 · 타이포그래피 · 레이아웃 · 인쇄 감리 주도",
+        "디자인 기획서 80% 참여, 팀 전체 피드백 및 방향성 관리"
+    ],
+    overviewImpact: ["전시 방문객 반응 상승, 리플렛 수집률 크게 증가", "예술 전시 리플렛의 새로운 기준 제시와 예술적 가치 부여"],
+    overviewQuote: "Art into Paper — 종이 위에 예술을 담아 감동을 전달하다.",
+    figmaLink: "https://www.figma.com/design/henri-matisse-leaflet",
+    BriefLink: "https://www.figma.com/proto/henri-matisse-brief",
+    overviewImage: "./images/henri_mockup1.png",
+
+    solutionCollabo: ["컬러풀 컷아웃 아트웍 적용 아이디어 직접 제안", "인쇄 기법 및 후가공 방식 인쇄업체와 협업", "테스트 단계에서 직접 색상 및 레이아웃 수정으로 완성도 향상"],
+    solutionTest: ["평균 4.6/5점 달성", "창의성·예술성에서 높은 평가 → 전시 경험 만족도 증가"],
+    solutionAchieve: ["학원 내 4개 팀 중 1위(최우수상) 수상", "최종 피드백 99/100점 획득"],
+    solutionImage: "./images/henri_mockup2.png",
+
+    solutionAddImg: true,
+    solutionAddImg1: "./images/henri_solution_01.png",
+    solutionAddImg2: "./images/henri_solution_02.png",
+    solutionAddImg3: "./images/henri_solution_03.png",
+
+    categoryTit: "Editorial Design",
+    box1Imgs: [
+        "./images/henri_box1_01.png",
+        "./images/henri_box1_02.png",
+        "./images/henri_box1_03.png",
+        "./images/henri_box1_04.png",
+        "./images/henri_box1_05.png"
+    ],
+    box2Imgs: [
+        "./images/henri_box2_01.png",
+        "./images/henri_box2_02.png",
+        "./images/henri_box2_03.png",
+        "./images/henri_box2_04.png",
+        "./images/henri_box2_05.png"
+    ],
+    bannerImgt: "./images/henri_bannerImg.png",
+    phone1Img: "./images/henri_phone1.png",
+    phone2Img: "./images/henri_phone2.png",
+    phone3Img: "./images/henri_phone3.png"
+    },
+    {
+    id: "10",
     title: "Henri Matisse Leaflet Design",
     navTitle: "Henri Matisse",
     image: "./images/henri_cover.png",
@@ -426,8 +608,8 @@ export const portfolioData =
     phone3Img: "./images/henri_phone3.png"
     },
     {
-    id: "8",
-    title: "Arozjewelry",
+    id: "11",
+    title: "graphic?",
     navTitle: "Arozjewelry",
     image: "./images/arozjewelry_cover.png",
     category: "(CLONE CODING)",
@@ -485,66 +667,5 @@ export const portfolioData =
     phone1Img: "./images/arozjewelry_phone1.png",
     phone2Img: "./images/arozjewelry_phone2.png",
     phone3Img: "./images/arozjewelry_phone3.png"
-    },
-    {
-    id: "9",
-    title: "Aesop",
-    navTitle: "Aesop (Clone)",
-    image: "./images/Aesop_cover.png",
-    category: "(CLONE CODING)",
-    description: "A web redesign project that reinterprets Aesop's brand mood with a modern, trend-driven approach.",
-    siteUrl: "https://example.com/aesop-clone-modern",
-
-    visualImg: "./images/aesop_clone_visual.png",
-    viewLabel: "WORKES - AESOP CLONE",
-    about: "이솝 브랜드의 모던하고 트렌디한 재해석을 위해 개인 프로젝트로,<br>Aesop의 혁신적인 웹 리디자인 클론을 구현했습니다.",
-    aboutDate: "2023.05.01~<br>05.31",
-    aboutRole: "Individual Project<br>Role: Frontend Developer<br>Contribution: 100%",
-    aboutCategory: "Clone Coding",
-    bannerImage: "./images/aesop_clone_banner.png",
-    overview: [
-        "기존 이솝 웹사이트는 클래식한 미니멀 디자인에 집중되어,<br>젊은 세대가 선호하는 <span>모던하고 트렌디한 감성</span>을 충분히 반영하지 못했습니다.",
-        "<br>본 프로젝트는 클론 코딩을 단순한 복사가 아닌, <br>이솝의 브랜드 DNA는 유지하면서 현대적인 웹 트렌드와 인터랙션을 적용하여<br>개발자로서 <span>창의적 해석력과 기술력</span>을 동시에 증명하고자 기획되었습니다."
-    ],
-    overviewRoles: [
-        "Frontend Developer & UX Reinterpreter",
-        "React 컴포넌트 설계 · 모던 CSS 구현 · 트렌드 기반 인터랙션 · SPA 최적화 전담",
-        "개발 전략 수립 100%, 코드 아키텍처 설계 및 구현 전 과정 독립 수행"
-    ],
-    overviewImpact: ["디자인 구현력 상승, React 고급 활용법 습득으로 개발 전문성 향상", "브랜드 재해석 능력과 모던 웹 개발 트렌드 적용 역량 확보"],
-    overviewQuote: "Trend-driven UI — 트렌드와 기술이 만나 새로운 이솝을 탄생시키다.",
-    figmaLink: "https://www.figma.com/design/aesop-modern-clone",
-    BriefLink: "https://github.com/username/aesop-modern-clone",
-    overviewImage: "./images/aesop_clone_mockup1.png",
-
-    solutionCollabo: ["SPA 기반 컴포넌트 구조화 아이디어 직접 설계 및 구현", "모던 CSS-in-JS 및 React Hook 활용 독립적 학습 및 적용", "성능 최적화 테스트 단계에서 직접 코드 리팩토링으로 로딩 속도 개선"],
-    solutionTest: ["개인 기술 목표 100% 달성", "혁신성·기술적 완성도에서 스스로 최고 평가 → 개발 전문성 확립"],
-    solutionAchieve: ["개인 React 프로젝트 중 최고 수준 달성", "모던 프론트엔드 기술 스택 완전 습득 및 실무 준비 완료"],
-    solutionImage: "./images/aesop_clone_mockup2.png",
-
-    solutionAddImg: true,
-    solutionAddImg1: "./images/aesop_clone_solution_01.png",
-    solutionAddImg2: "./images/aesop_clone_solution_02.png",
-    solutionAddImg3: "./images/aesop_clone_solution_03.png",
-
-    categoryTit: "Clone Coding",
-    box1Imgs: [
-        "./images/aesop_clone_box1_01.png",
-        "./images/aesop_clone_box1_02.png",
-        "./images/aesop_clone_box1_03.png",
-        "./images/aesop_clone_box1_04.png",
-        "./images/aesop_clone_box1_05.png"
-    ],
-    box2Imgs: [
-        "./images/aesop_clone_box2_01.png",
-        "./images/aesop_clone_box2_02.png",
-        "./images/aesop_clone_box2_03.png",
-        "./images/aesop_clone_box2_04.png",
-        "./images/aesop_clone_box2_05.png"
-    ],
-    bannerImgt: "./images/aesop_clone_bannerImg.png",
-    phone1Img: "./images/aesop_clone_phone1.png",
-    phone2Img: "./images/aesop_clone_phone2.png",
-    phone3Img: "./images/aesop_clone_phone3.png"
     }
 ];

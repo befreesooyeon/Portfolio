@@ -190,6 +190,7 @@ const themeAnimationConfig = {
       [".section-light", { backgroundColor: "#f5f5f5" }],
       [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
       [".text-dark", { color: "#dbdbdb" }],
+      [".modal-content", { backgroundColor: "#000000" }],
 
       // SVG
       ["svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
@@ -233,6 +234,9 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#f5f5f5"}],
       [".gallery-card .card-info p", { color: "#dbdbdb"}],
       [".footer", { color: "#252525", backgroundColor: "#dbdbdb"}],
+      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", {color: "#999999"}],
+
+
       
       // fortune
       ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#000000", color: "#dbdbdb", borderColor: "#dbdbdb"}],
@@ -250,6 +254,7 @@ const themeAnimationConfig = {
       [".section-light", { backgroundColor: "#f5f5f5" }],
       [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
       [".text-dark", { color: "#252525" }],
+      [".modal-content", { backgroundColor: "#f5f5f5" }],
 
       // SVG
       ["svg path", { fill: "#252525", stroke: "#252525" }],
@@ -295,6 +300,7 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#333333"}],
       [".gallery-card .card-info p", { color: "#666666"}],
       [".footer", { color: "#dbdbdb", backgroundColor: "#000000"}],
+      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", {color: "#666666"}],
 
       // fortune
       ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#f5f5f5", color: "#252525", borderColor: "#252525"}],
@@ -333,208 +339,148 @@ const themeAnimationConfig = {
 
 // 가로스크롤 start
 window.addEventListener("DOMContentLoaded", () => { 
-  let sections = gsap.utils.toArray(".narrative-container section");
-  
-  let totalWidth = 0;
-  sections.forEach(section => {
-    totalWidth += section.offsetWidth;
-  });
+  const sections = gsap.utils.toArray(".narrative-container section");
+  const totalWidth = sections.reduce((sum, sec) => sum + sec.offsetWidth, 0);
 
-  let scrollTween = gsap.to(sections, {
-    x: -totalWidth + window.innerWidth, // 실제 너비로 계산
+  // 가로 스크롤 트윈
+  gsap.to(sections, {
+    x: -totalWidth + window.innerWidth,
     ease: "none",
     scrollTrigger: {
-      trigger: '.narrative-container',
+      id: "next-section",        // ⭐ 버튼 클릭 시 참조할 ID
+      trigger: ".narrative-container",
       pin: true,
       scrub: 1,
-      start: 'top top',
-      end: () => "+=" + totalWidth + "px", // 실제 너비로 end 계산
+      start: "top top",
+      end: () => "+=" + totalWidth + "px"
     }
   });
 
-  // 📌 로고 회전 애니메이션 설정
-  const logoRotationConfigs = [
-    {
-      selector: ".line1 .logo-spin",
-      trigger: ".visual",
-      start: "top top",
-      end: "bottom top",
-      scrub: 0.1
-    },
-    {
-      selector: ".footer-spin",
-      trigger: "body",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: 0.1
-    }
-  ];
+  // 스크롤 버튼 → 다음 섹션으로 이동
+  const btn = document.querySelector(".scroll-btn");
+  btn?.addEventListener("click", e => {
+    e.preventDefault();
+    const target = document.querySelector("#next-section");
+    if (!target) return;
 
-  logoRotationConfigs.forEach(config => {
-    gsap.to(config.selector, {
+    const total = document.querySelector(".narrative-container").scrollWidth - window.innerWidth;
+    const progress = target.offsetLeft / total; // 목표 위치 → 전체 스크롤 비율
+
+    const st = ScrollTrigger.getById("narrativeScroll");
+    if (st) {
+      gsap.to(st, { progress, duration: 1, ease: "power2.inOut" });
+    }
+  });
+
+  // 로고 회전
+  [
+    { selector: ".line1 .logo-spin", trigger: ".visual", start: "top top", end: "bottom top" },
+    { selector: ".footer-spin", trigger: "body", start: "top bottom", end: "bottom top" }
+  ].forEach(cfg => {
+    gsap.to(cfg.selector, {
       rotation: 360,
       ease: "none",
-      scrollTrigger: {
-        trigger: config.trigger,
-        start: config.start,
-        end: config.end,
-        scrub: config.scrub
-      }
+      scrollTrigger: { trigger: cfg.trigger, start: cfg.start, end: cfg.end, scrub: 0.1 }
     });
   });
 
-  // narrtive 표지 마우스 hover시 사진 변경
-  const tabs = document.querySelectorAll('.tab');
-  const mainImage = document.getElementById('mainImage');
-  const mainTxt = document.getElementById('mainTxt');
-  const defaultImage = 'images/narrativePhoto.png';
-  const defaultText = '각 키워드에 마우스를 올려보세요 ☺';
+  // 표지 hover 시 메인 이미지 변경
+  const tabs = document.querySelectorAll(".tab");
+  const mainImage = document.getElementById("mainImage");
+  const mainTxt = document.getElementById("mainTxt");
+  const defaultImage = "images/narrativePhoto.png";
+  const defaultText = "각 키워드에 마우스를 올려보세요 ☺";
 
   tabs.forEach(tab => {
-    tab.addEventListener('mouseenter', () => {
-      const imageName = tab.getAttribute('data-image');
-      const text = tab.getAttribute('data-text');
-      mainImage.setAttribute('src', `images/${imageName}`);
-      mainTxt.textContent = text;
+    tab.addEventListener("mouseenter", () => {
+      mainImage.src = `images/${tab.dataset.image}`;
+      mainTxt.textContent = tab.dataset.text;
     });
-
-    tab.addEventListener('mouseleave', () => {
-      // 이미지 & 텍스트 원래대로
-      mainImage.setAttribute('src', defaultImage);
+    tab.addEventListener("mouseleave", () => {
+      mainImage.src = defaultImage;
       mainTxt.textContent = defaultText;
     });
   });
 
-  // narrtive 표지 Scroll-btn 클릭 시 페이지 이동
-  document.querySelector('.scroll-btn').addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const container = document.querySelector('.narrative-container');
-    const target = document.querySelector('#next-section');
-
-    if (container && target) {
-      const targetPosition = target.offsetLeft;
-
-      // 부드러운 스크롤
-      container.scrollTo({
-        left: targetPosition,
-        behavior: 'smooth'
-      });
-
-      
-    }
-
-    
-  });
-
-  // Tooltip 스크롤
+  // Tooltip 이동
   const tooltip = document.querySelector(".tooltip");
   const nowSection = document.querySelector(".narrative-container .now");
+  if (tooltip && nowSection) {
+    gsap.to(tooltip, {
+      top: "50%",
+      left: "18%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".now",
+        start: "top",
+        end: () => "+=" + (nowSection.offsetLeft + nowSection.offsetWidth) + "px",
+        scrub: 1
+      }
+    });
+  }
 
-  gsap.to(tooltip, {
-    top: "50%",
-    left: "18%",
-    ease: "none",
-    scrollTrigger: {
-      trigger: '.now',
-      start: 'top',
-      end: () => "+=" + (nowSection.offsetLeft + nowSection.offsetWidth) + "px", // .now 섹션이 끝나는 지점
-      scrub: 1,
-    }
-  }); 
+  // keywords 반복 텍스트
+  const scrollText = document.querySelector(".keyWords .scrollText");
+  if (scrollText) {
+    scrollText.innerHTML = scrollText.innerHTML.repeat(3);
+    gsap.to(scrollText, {
+      x: "-50%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".keyWords",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1
+      }
+    });
+  }
 
-  // keywords gsap
-  const scrollText = document.querySelector('.keyWords .scrollText');
-  const originalHTML = scrollText.innerHTML;
-  scrollText.innerHTML = originalHTML + originalHTML + originalHTML;
-
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.keyWords',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 1,
-      ease: "power1.inOut"
-    }
-  });
-
-  tl.to(scrollText, {
-    x: '-50%',
-    duration: 1,
-    ease: "none"
-  });
-
-  // About-accordion
-  const accordionItems = document.querySelectorAll('.accordion-item');
-  
+  // About 아코디언
+  const accordionItems = document.querySelectorAll(".accordion-item");
   accordionItems.forEach(item => {
-    const accordionTit = item.querySelector('.accordion-tit');
-    const accordionContent = item.querySelector('.accordion-content');
-    
-    accordionTit.addEventListener('click', function() {
-      const isActive = item.classList.contains('active');
-      
-      // 모든 아코디언 항목 닫기
-      accordionItems.forEach(otherItem => {
-        otherItem.classList.remove('active');
-        const otherContent = otherItem.querySelector('.accordion-content');
-        otherContent.style.maxHeight = '0';
+    const tit = item.querySelector(".accordion-tit");
+    const content = item.querySelector(".accordion-content");
+    tit?.addEventListener("click", () => {
+      const active = item.classList.contains("active");
+      accordionItems.forEach(i => {
+        i.classList.remove("active");
+        i.querySelector(".accordion-content").style.maxHeight = 0;
       });
-      
-      // 클릭한 항목이 닫혀있었다면 열기
-      if (!isActive) {
-        item.classList.add('active');
-        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+      if (!active) {
+        item.classList.add("active");
+        content.style.maxHeight = content.scrollHeight + "px";
       }
     });
   });
 
-  // ⭐️ WORKS-filter 클릭 시 클래스 적용
-  const filterItems = document.querySelectorAll('.filter-item');
-  const indicator = document.querySelector('.filter-indicator');
-
+  // Works filter indicator
+  const filterItems = document.querySelectorAll(".filter-item");
+  const indicator = document.querySelector(".filter-indicator");
   filterItems.forEach(item => {
-    item.addEventListener('click', () => {
-      // active 클래스 이동
-      filterItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-
-      const leftPos = item.offsetLeft + 0;
-
-      gsap.to(indicator, {
-        duration: 0.5,
-        x: leftPos,
-        ease: 'power2.out',
-      });
+    item.addEventListener("click", () => {
+      filterItems.forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+      gsap.to(indicator, { x: item.offsetLeft, duration: 0.5, ease: "power2.out" });
     });
   });
 
-  // ⭐️ hover 시 효과
-  document.querySelectorAll('.works .inner .portfolio-grid .card').forEach(card => {
-    const icon = card.querySelector('.icon-circle svg');
-    if (!icon) return; // 아이콘 없으면 패스
-
-    card.addEventListener('mouseenter', () => {
-      gsap.to(icon, {
-        xPercent: 100,
-        duration: 0.25,
-        ease: 'power2.in',
-        onComplete: () => {
-          gsap.set(icon, { xPercent: -100 });
-          gsap.to(icon, {
-            xPercent: 0,
-            duration: 0.25,
-            ease: 'power2.out'
-          });
-        }
-      });
+  // Works 카드 hover → icon-circle 애니메이션
+  const portfolioGrid = document.querySelector(".works .inner .portfolio-grid");
+  portfolioGrid?.addEventListener("mouseenter", e => {
+    const card = e.target.closest(".card");
+    if (!card) return;
+    const icon = card.querySelector(".icon-circle svg");
+    if (!icon) return;
+    gsap.to(icon, {
+      xPercent: 100,
+      duration: 0.25,
+      ease: "power2.in",
+      onComplete: () => {
+        gsap.set(icon, { xPercent: -100 });
+        gsap.to(icon, { xPercent: 0, duration: 0.25, ease: "power2.out" });
+      }
     });
-  });
-
-
-
-
-
-  
-
+  }, true);
 });
+
+

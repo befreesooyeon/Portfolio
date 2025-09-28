@@ -20,6 +20,15 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 .dot::after {content: ''; width: 14px; height: 14px; border-radius: 50%; background: #B7D3C6; display: inline-block; margin-left: 20px; cursor: pointer;}
 .modal-close-btn {cursor: pointer; font-weight: 500; display: inline;}
 
+/* hover- 공통 물 차오름 효과 */
+.fill-btn {position:relative;display:inline-flex;align-items:center;justify-content:center;gap:4px;width:fit-content;color:#252525;background:none;border:1px solid #252525;border-radius:50px;cursor:pointer;overflow:hidden;transition:color 0.3s ease;}
+.fill-btn span {position:relative;z-index:2;}
+.fill-btn svg {position:relative;z-index:2;}
+.fill-btn::before {content:"";position:absolute;left:0;bottom:0;width:100%;height:0%;background:#252525;z-index:1;transition:height 0.3s ease;}
+.fill-btn:hover::before {height:100%;}
+.fill-btn:hover {color:#dbdbdb;}
+
+
 
 /* 영어폰트 */
 .en1 {font-family: 'Ampersand', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: -14px;}
@@ -268,12 +277,12 @@ section .inner .des .kr {line-height: 24px;}
 .about .inner .profile .left .name .dot {position: relative; display: inline-block;}
 .about .inner .profile .left .name .en6 {font-size: 100px; white-space: nowrap;}
 .about .inner .profile .left .info {font-size: 24px; font-weight: 500; line-height: 1; margin-bottom: 40px;}
-.about .inner .profile .left .info .info_email {display: block; font-size: 18px; padding: 10px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50px; width: fit-content; margin-top: 10px; cursor: pointer;}
+.about .inner .profile .left .info .info_email {padding:10px; font-size:18px;line-height:1; display: block; margin-top: 15px;}
 .about .inner .profile .left  .introduction {line-height: 26px;}
 .about .inner .profile .left  .introduction .en7 {font-size: 40px; line-height: 50px; margin-bottom: 30px; display: block;}
 .about .inner .profile .left  .introduction .first-group {margin-bottom: 10px; display: block;}
 .about .inner .profile .left  .introduction .second-group {margin-bottom: 20px; display: block;}
-.about .inner .profile .left .resume {cursor: pointer; font-size: 18px; line-height: 36px; padding: 8px 16px; box-sizing: border-box; border: 1px solid #252525; border-radius: 50px; display: flex; width: fit-content; justify-content: center; align-items: center; gap: 3px;}
+.about .inner .profile .left .resume {padding:8px 16px;font-size:18px;line-height:36px;}
 .about .inner .profile .right {width: 40%; height: 100%;}
 .about .inner .profile .right img {filter: grayscale(100%); border-radius: 16px; width: 100%; height: 100%; object-fit: cover;}
 
@@ -338,19 +347,28 @@ font-weight: 500; margin-left: -217px; display: flex;}
 /* works - portfolio-gird 스타일 정의  */
 .works .inner .portfolio-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 27px; margin-top: 50px;   width: 100%;}
 .works .inner .portfolio-grid .card {cursor: pointer;}
-.works .inner .portfolio-grid .card .thumbnail {position: relative;}
+.works .inner .portfolio-grid .card .thumbnail {position: relative; overflow: hidden;}
 .works .inner .portfolio-grid .card .thumbnail .icon-circle  {display: inline-flex;
 justify-content: center; align-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; cursor: pointer; overflow: hidden; position: absolute; bottom: 20px; left: 20px;}
 .works .inner .portfolio-grid .card .thumbnail .icon-circle svg {display: block;}
+
 .works .inner .portfolio-grid .card .card-content {margin-top: 20px;}
 .works .inner .portfolio-grid .card .card-content .tit {display: flex;justify-content: space-between; align-items: center;  font-weight: 500;}
 .works .inner .portfolio-grid .card .card-content .tit h3 {font-size: 20px; font-weight: 500;}
 .works .inner .portfolio-grid .card .card-content .tit p {color: #666;}
 .works .inner .portfolio-grid .card .card-content .description {color: #666; line-height: 24px; margin-top: 10px; display: block;}
-.works .inner .portfolio-grid .card .thumbnail img, .works .inner .portfolio-grid .card .thumbnail video {border-radius: 16px; width: 100%;
-}
+
+.works .inner .portfolio-grid .card .thumbnail img, .works .inner .portfolio-grid .card .thumbnail video {width: 100%; height: 100%;
+  border-radius: 16px; transition: transform 0.3s ease, filter 0.3s ease;
+  transform: scale(1); will-change: transform;}
+/* hover */
+.works .inner .portfolio-grid .card:hover .thumbnail img,
+.works .inner .portfolio-grid .card:hover .thumbnail video {
+transform: scale(1.05); filter: brightness(1.05);}
 .works .inner .load-more-wrapper {text-align: center; margin-top: 100px;} 
-#loadMoreBtn {padding: 16px 32px; box-sizing: border-box; font-size: 18px; background: none; border: 1px solid #252525; border-radius: 50px; font-weight: 500;  cursor: pointer; display: inline-block;}
+#loadMoreBtn {padding:16px 32px; font-size:18px; font-weight:500;}
+
+
 
 /* portfolio-modal */
 #projectModal .modal-content {width: 100%; height: 100%; border-radius: 0%; box-shadow: none; background: #f5f5f5;}
@@ -371,7 +389,7 @@ left: 50%; transform: translateX(-50%); z-index: 10000; cursor: pointer;}
 #projectModal .modal-content .content .project-visual .inner .bottom {display: flex; justify-content: space-between; flex-wrap: wrap; position: absolute;
 bottom: 2%; width: 100%;}
 #projectModal .modal-content .content .project-visual .inner .bottom .project-label {font-size:18px; font-weight:500;}
-#projectModal .modal-content .content .project-visual .inner .bottom .project-text {margin-top:10px; line-height:140%; color:#666;}
+#projectModal .modal-content .content .project-visual .inner .bottom .project-text {margin-top:10px; line-height:150%; color:#666;}
 
 
 /* project-banner */
@@ -385,7 +403,7 @@ bottom: 2%; width: 100%;}
 #projectModal .modal-content .content section .inner {display: flex; justify-content: space-between;}
 #projectModal .modal-content .content .inner .info {width: 45%; height: 100%; display: flex; flex-direction: column; justify-content: space-evenly;}
 #projectModal .modal-content .content .inner .project-section-title {font-size: 48px; font-weight: 500; margin-bottom: 40px;}
-#projectModal .modal-content .content .inner .project-text {color: #666; line-height: 150%;}
+#projectModal .modal-content .content .project-overview .inner .project-text {color: #666; line-height: 150%;}
 #projectModal .modal-content .content .inner .project-text:nth-child(3){border-bottom: 1px solid #ccc; padding-bottom: 40px; box-sizing: border-box;}
 #projectModal .modal-content .content .inner .project-text span {font-weight: 600;}
 #projectModal .modal-content .content .inner .project-sub {padding-top: 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 30px;}
@@ -434,7 +452,7 @@ padding-bottom: 40px; box-sizing: border-box; border-bottom: 1px solid #ccc;}
 #projectModal .modal-content .content .project-media .bannerImgt video {width: 100%; height: 100%; object-fit: contain;}
 
 /* phoneM */
-#projectModal .modal-content .content .project-media .phoneM {display: flex; justify-self: center; gap: 80px; position: relative; width: 70%; height: 100%; padding: 130px 0; box-sizing: border-box;}
+#projectModal .modal-content .content .project-media .phoneM {display: flex; justify-self: center; gap: 80px; position: relative; width: 62%; height: 100%; padding: 130px 0; box-sizing: border-box;}
 #projectModal .modal-content .content .project-media .phoneM img {width: 100%; height: 100%; object-fit: contain;}
 
 /* prev */
