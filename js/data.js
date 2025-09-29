@@ -247,182 +247,47 @@ phone3Img: "./images/SubphoneImg_03.png"
     navTitle: "Space Tailor",
     image: "./images/spacetailor_cover.png",
     category: "(UX UI)",
-    description: "스페이스 테일러의 브랜드 제안서 시각화 및 포트폴리오 디자인입니다.",
-    siteUrl: "https://example.com/spacetailor-portfolio",
+    description: "스페이스 테일러의 브랜드 시각화 및 포트폴리오 디자인입니다.",
+    siteUrl: "https://gridge.co.kr/requester/portfolio/detail/space-tailor-2022",
 
-    visualImg: "./images/spacetailor_visual.png",
+    visualImg: "./images/Space_visual.png",
     viewLabel: "WORKES - SPACE TAILOR",
-    about: "스타트업의 비즈니스 가치를 효과적으로 전달하기 위해 3명의 팀원과 협업하여,<br>Space Tailor의 브랜드 포트폴리오를 구현했습니다.",
-    aboutDate: "2022.08.01~<br>08.31",
-    aboutRole: "Team Project · 3 Members<br>Role: Visual Design Leader<br>Contribution: 75%",
+    about: "직전 회사에서 진행한 앱 프로젝트를 기반으로,<br>브랜드 홍보용 포트폴리오 기획서 디자인을 단독으로 담당했습니다.<br>4가지 반응형 웹 디자인과 비주얼 구성으로 브랜드 가치를 표현했습니다.",
+    aboutDate: "2024.09.02~<br>09.30",
+    aboutRole: "Company Project (Solo Design)<br>Role: Visual Designer (UX/UI Design)<br>Contribution: 100%",
     aboutCategory: "UX UI Design",
-    bannerImage: "./images/spacetailor_banner.png",
-    overview: [
-        "스타트업 초기 단계에서는 복잡한 비즈니스 모델과 기술적 가치를,<br>투자자들에게 <span>명확하고 설득력 있게</span> 전달하기 어려운 문제가 있습니다.",
-        "<br>본 프로젝트는 포트폴리오를 단순한 자료집이 아닌, <br>브랜드 스토리와 비즈니스 가치를 시각적으로 전달하는 도구로 재정의하여<br>투자자들에게 <span>강력한 첫인상</span>을 남기고자 기획되었습니다."
-    ],
-    overviewRoles: [
-        "Team Leader & Visual Designer",
-        "브랜드 아이덴티티 · 비즈니스 모델 · 시장 분석 · 팀 소개 디자인 주도",
-        "디자인 기획서 75% 참여, 팀 전체 피드백 및 방향성 관리"
-    ],
-    overviewImpact: ["투자유치 성공률 상승, 브랜드 인지도 크게 향상", "스타트업 브랜딩의 새로운 기준 제시와 시각적 차별화"],
-    overviewQuote: "Design for Persuasion — 설득하는 디자인으로 비즈니스 가치를 전달하다.",
-    figmaLink: "https://www.figma.com/design/spacetailor-portfolio",
-    BriefLink: "https://www.figma.com/proto/spacetailor-brief",
-    overviewImage: "./images/spacetailor_mockup1.png",
-
-    solutionCollabo: ["간결한 비주얼 언어와 명확한 정보 구조 아이디어 제안", "인포그래픽 및 차트 디자인 개발팀과 협업", "테스트 단계에서 직접 레이아웃 수정으로 가독성 개선"],
-    solutionTest: ["평균 4.4/5점 달성", "명확성·설득력에서 높은 평가 → 투자자 관심도 증가"],
-    solutionAchieve: ["학원 내 5개 팀 중 1위(최우수상) 수상", "최종 피드백 96/100점 획득"],
-    solutionImage: "./images/spacetailor_mockup2.png",
-
-    solutionAddImg: true,
-    solutionAddImg1: "./images/spacetailor_solution_01.png",
-    solutionAddImg2: "./images/spacetailor_solution_02.png",
-    solutionAddImg3: "./images/spacetailor_solution_03.png",
-
-    categoryTit: "Portfolio",
-    box1Imgs: [
-        "./images/spacetailor_box1_01.png",
-        "./images/spacetailor_box1_02.png",
-        "./images/spacetailor_box1_03.png",
-        "./images/spacetailor_box1_04.png",
-        "./images/spacetailor_box1_05.png"
-    ],
-    box2Imgs: [
-        "./images/spacetailor_box2_01.png",
-        "./images/spacetailor_box2_02.png",
-        "./images/spacetailor_box2_03.png",
-        "./images/spacetailor_box2_04.png",
-        "./images/spacetailor_box2_05.png"
-    ],
-    bannerImgt: "./images/spacetailor_bannerImg.png",
-    phone1Img: "./images/spacetailor_phone1.png",
-    phone2Img: "./images/spacetailor_phone2.png",
-    phone3Img: "./images/spacetailor_phone3.png"
     },
     {
     id: "6",
     title: "Daily Subscription Portfolio",
     navTitle: "Daily Subscription",
-    image: "./images/일상구독_cover.png",
+    image: "./images/Daily_cover.png",
     category: "(UX UI)",
     description: "라이프스타일 구독 서비스를 직관적이고 깔끔하게 구성한 포트폴리오 디자인입니다.",
     siteUrl: "https://example.com/daily-subscription",
 
-    visualImg: "./images/daily_visual.png",
+    visualImg: "./images/Daily_visual.png",
     viewLabel: "WORKES - DAILY SUBSCRIPTION",
     about: "일상 속 편리함을 제공하는 구독 서비스 경험을 개선하기 위해 4명의 팀원과 협업하여,<br>Daily Subscription의 직관적인 UX를 구현했습니다.",
     aboutDate: "2023.02.01~<br>02.28",
     aboutRole: "Team Project · 4 Members<br>Role: UX/UI Designer<br>Contribution: 60%",
     aboutCategory: "UX UI Design",
-    bannerImage: "./images/daily_banner.png",
-    overview: [
-        "기존 구독 서비스들은 복잡한 구독 플로우와 관리의 어려움으로,<br>사용자들이 <span>쉽게 접근하고 지속 이용</span>하기 어려운 문제가 있었습니다.",
-        "<br>본 프로젝트는 서비스를 단순한 구독 플랫폼이 아닌, <br>사용자의 라이프스타일에 자연스럽게 스며드는 일상 도구로 재정의하여<br>모든 연령대가 <span>간편하게 이용</span>할 수 있도록 기획되었습니다."
-    ],
-    overviewRoles: [
-        "UX/UI Designer",
-        "구독 플로우 · 상품 선택 · 결제 시스템 · 마이페이지 · 관리 도구 디자인 주도",
-        "디자인 기획서 60% 참여, 팀 전체 피드백 및 방향성 관리"
-    ],
-    overviewImpact: ["서비스 이탈률 -10%, 구독 지속율 향상으로 안정적 매출 증대", "구독 서비스 UX의 새로운 기준 제시와 사용자 만족도 개선"],
-    overviewQuote: "Simple daily life — 일상을 더 쉽고 편리하게 만드는 구독 경험.",
-    figmaLink: "https://www.figma.com/design/daily-subscription-ux",
-    BriefLink: "https://www.figma.com/proto/daily-subscription-brief",
-    overviewImage: "./images/daily_mockup1.png",
-
-    solutionCollabo: ["구독 흐름 UI와 유저 플로우 강화 아이디어 제안", "원터치 구독 및 관리 시스템 개발팀과 협업", "테스트 단계에서 직접 UI 개선으로 사용 편의성 향상"],
-    solutionTest: ["평균 4.3/5점 달성", "직관성·편의성에서 높은 평가 → 사용자 경험 만족도 증가"],
-    solutionAchieve: ["학원 내 6개 팀 중 2위(우수상) 수상", "최종 피드백 94/100점 획득"],
-    solutionImage: "./images/daily_mockup2.png",
-
-    solutionAddImg: true,
-    solutionAddImg1: "./images/daily_solution_01.png",
-    solutionAddImg2: "./images/daily_solution_02.png",
-    solutionAddImg3: "./images/daily_solution_03.png",
-
-    categoryTit: "UX UI Design",
-    box1Imgs: [
-        "./images/daily_box1_01.png",
-        "./images/daily_box1_02.png",
-        "./images/daily_box1_03.png",
-        "./images/daily_box1_04.png",
-        "./images/daily_box1_05.png"
-    ],
-    box2Imgs: [
-        "./images/daily_box2_01.png",
-        "./images/daily_box2_02.png",
-        "./images/daily_box2_03.png",
-        "./images/daily_box2_04.png",
-        "./images/daily_box2_05.png"
-    ],
-    bannerImgt: "./images/daily_bannerImg.png",
-    phone1Img: "./images/daily_phone1.png",
-    phone2Img: "./images/daily_phone2.png",
-    phone3Img: "./images/daily_phone3.png"
     },
     {
 id: "7",
-title: "시현하다",
-navTitle: "Henri Matisse",
-image: "./images/henri_cover.png",
-category: "(EDITORIAL)",
+title: "Sihyunhada Portfolio",
+navTitle: "Sihyunhada",
+image: "./images/Sih_cover.png",
+category: "(UX UI)",
 description: "앙리 마티스의 컷 아웃 기반 리플렛 디자인 프로젝트입니다.",
-siteUrl: "https://example.com/henri-matisse-leaflet",
+siteUrl: "https://gridge.co.kr/requester/portfolio/detail/sihyun-hada-2024",
 
-visualImg: "./images/henri_visual.png",
-viewLabel: "WORKES - HENRI MATISSE",
+visualImg: "./images/Sih_visual.png",
+viewLabel: "WORKES - SIHYUNHADA",
 about: "예술가의 철학과 작품 세계를 효과적으로 전달하기 위해 3명의 팀원과 협업하여,<br>Henri Matisse의 예술적 감성을 담은 리플렛을 구현했습니다.",
-aboutDate: "2021.11.01~<br>11.30",
-aboutRole: "Team Project · 3 Members<br>Role: Graphic Designer<br>Contribution: 80%",
+aboutDate: "2024.08.01~<br>08.30",
+aboutRole: "Company Project (Solo Design)<br>Role: Visual Designer (UX/UI Design)<br>Contribution: 100%",
 aboutCategory: "Editorial Design",
-bannerImage: "./images/henri_banner.png",
-overview: [
-    "기존 전시 리플렛들은 단순한 정보 전달에 집중되어,<br>예술가의 <span>창작 철학과 감성</span>을 충분히 전달하지 못하는 문제가 있었습니다.",
-    "<br>본 프로젝트는 리플렛을 단순한 안내서가 아닌, <br>마티스의 컷 아웃 기법을 활용하여 작품과 철학을 시각적으로 경험할 수 있는 아트 오브젝트로 재정의하여<br>관람객들에게 <span>예술적 감동</span>을 선사하고자 기획되었습니다."
-],
-overviewRoles: [
-    "Team Leader & Graphic Designer",
-    "컨셉 기획 · 컷 아웃 디자인 · 타이포그래피 · 레이아웃 · 인쇄 감리 주도",
-    "디자인 기획서 80% 참여, 팀 전체 피드백 및 방향성 관리"
-],
-overviewImpact: ["전시 방문객 반응 상승, 리플렛 수집률 크게 증가", "예술 전시 리플렛의 새로운 기준 제시와 예술적 가치 부여"],
-overviewQuote: "Art into Paper — 종이 위에 예술을 담아 감동을 전달하다.",
-figmaLink: "https://www.figma.com/design/henri-matisse-leaflet",
-BriefLink: "https://www.figma.com/proto/henri-matisse-brief",
-overviewImage: "./images/henri_mockup1.png",
-
-solutionCollabo: ["컬러풀 컷아웃 아트웍 적용 아이디어 직접 제안", "인쇄 기법 및 후가공 방식 인쇄업체와 협업", "테스트 단계에서 직접 색상 및 레이아웃 수정으로 완성도 향상"],
-solutionTest: ["평균 4.6/5점 달성", "창의성·예술성에서 높은 평가 → 전시 경험 만족도 증가"],
-solutionAchieve: ["학원 내 4개 팀 중 1위(최우수상) 수상", "최종 피드백 99/100점 획득"],
-solutionImage: "./images/henri_mockup2.png",
-
-solutionAddImg: true,
-solutionAddImg1: "./images/henri_solution_01.png",
-solutionAddImg2: "./images/henri_solution_02.png",
-solutionAddImg3: "./images/henri_solution_03.png",
-
-categoryTit: "Editorial Design",
-box1Imgs: [
-    "./images/henri_box1_01.png",
-    "./images/henri_box1_02.png",
-    "./images/henri_box1_03.png",
-    "./images/henri_box1_04.png",
-    "./images/henri_box1_05.png"
-],
-box2Imgs: [
-    "./images/henri_box2_01.png",
-    "./images/henri_box2_02.png",
-    "./images/henri_box2_03.png",
-    "./images/henri_box2_04.png",
-    "./images/henri_box2_05.png"
-],
-bannerImgt: "./images/henri_bannerImg.png",
-phone1Img: "./images/henri_phone1.png",
-phone2Img: "./images/henri_phone2.png",
-phone3Img: "./images/henri_phone3.png"
     },
     {
 id: "8",
@@ -487,10 +352,10 @@ phone3Img: "./images/arozjewelry_phone3.png"
     },
     {
     id: "9",
-    title: "Daehae Clone",
+    title: "Daehye",
     navTitle: "Henri Matisse",
     image: "./images/henri_cover.png",
-    category: "(EDITORIAL)",
+    category: "(CLONE CODING)",
     description: "앙리 마티스의 컷 아웃 기반 리플렛 디자인 프로젝트입니다.",
     siteUrl: "https://example.com/henri-matisse-leaflet",
 

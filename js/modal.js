@@ -22,7 +22,6 @@ const scroller = getScroller();
 if (scroller) scroller.scrollTop = 0;
 }
 
-/* ---------- Modal Open / Close ---------- */
 export function openModal(modalId) {
 const modal = document.getElementById(modalId);
 if (!modal) return;
@@ -35,27 +34,90 @@ if (header?.style) header.style.zIndex = 0;
 document.querySelector('.narrative-container')?.classList.add('modal-open');
 
 resetModalScroll();
+
+const content = modal.querySelector('.modal-content');
+
+if (content) {
+if (modalId === 'folderModal') {
+    // 📂 작은 모달: scale + fade
+    gsap.fromTo(content,
+    { scale: 0.95, opacity: 0, y: 20 },
+    { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+    );
+} else {
+    // 📌 풀사이즈 모달: slide up + fade
+    gsap.fromTo(content,
+    { y: 40, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }
+    );
+}
+}
 }
 
 export function closeModal() {
-document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-document.body.classList.remove('modal-open');
-document.body.style.overflow = '';
-document.querySelector('.narrative-container')?.classList.remove('modal-open');
-const header = document.querySelector('header');
-if (header) header.style.zIndex = 10000;
-currentGalleryIndex = -1;
+  document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+    const content = modal.querySelector('.modal-content');
+    if (content) {
+      if (modal.id === 'folderModal') {
+        // 📂 작은 모달: scale + fade
+        gsap.to(content, {
+          scale: 0.95,
+          opacity: 0,
+          y: 20,
+          duration: 0.25,
+          ease: "power2.in",
+          onComplete: () => modal.classList.remove('active')
+        });
+      } else if (modal.id === 'fortuneModal' || modal.id === 'projectModal') {
+        // 📌 풀사이즈 모달: fade only (깜박임 최소화)
+        gsap.to(content, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.inOut",
+          onComplete: () => {
+            modal.classList.remove('active');
+            gsap.set(content, { clearProps: "all" });
+          }
+        });
+      } else if (modal.id === 'photoModal') {
+        // 🖼 포토 모달: zoom out + fade
+        gsap.to(content, {
+          scale: 0.95,
+          opacity: 0,
+          duration: 0.25,
+          ease: "power2.in",
+          onComplete: () => {
+            modal.classList.remove('active');
+            gsap.set(content, { clearProps: "all" });
+          }
+        });
+      } else {
+        modal.classList.remove('active');
+      }
+    } else {
+      modal.classList.remove('active');
+    }
+  });
 
-resetModalScroll();
+  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
+  document.querySelector('.narrative-container')?.classList.remove('modal-open');
+  const header = document.querySelector('header');
+  if (header) header.style.zIndex = 10000;
+  currentGalleryIndex = -1;
 
-// GSAP 트리거 정리
-if (window.ScrollTrigger) {
-const modal = document.getElementById('projectModal');
-const inModal = el => modal && modal.contains(el);
-ScrollTrigger.getAll().forEach(st => { if (inModal(st.trigger)) st.kill(); });
-ScrollTrigger.refresh();
+  resetModalScroll();
+
+  if (window.ScrollTrigger) {
+    const modal = document.getElementById('projectModal');
+    const inModal = el => modal && modal.contains(el);
+    ScrollTrigger.getAll().forEach(st => { if (inModal(st.trigger)) st.kill(); });
+    ScrollTrigger.refresh();
+  }
 }
-}
+
+
+
 
 /* ---------- Photo Modal ---------- */
 function updatePhotoModal(galleryItem, index) {
@@ -117,19 +179,19 @@ const bannerImg = scroller.querySelector('.project-banner .project-banner-image'
 if (bannerImg) {
 gsap.set(bannerImg, { yPercent: -10, willChange: 'transform' });
 gsap.to(bannerImg, {
-yPercent: 10,
-ease: 'none',
-scrollTrigger: {
+    yPercent: 10,
+    ease: 'none',
+    scrollTrigger: {
     trigger: bannerImg.closest('.project-banner'),
     scroller,
     start: 'top bottom',
     end: 'bottom top',
     scrub: true
-}
+    }
 });
 }
 
-// 프로젝트 미디어 애니메이션 (좌우/상하 이동)
+// 프로젝트 미디어 애니메이션
 scroller.querySelectorAll('.project-media').forEach(section => {
 const track  = section.querySelector('.imgBoxSli');
 const box1   = track?.querySelector('.Box1');
@@ -175,7 +237,7 @@ if (imgs.length) {
 }
 });
 
-// 공통 미디어 순차 등장 (fade+scale, 모달 열릴 때 1회)
+// 공통 미디어 순차 등장
 const medias = scroller.querySelectorAll('.media-asset');
 if (medias.length) {
 gsap.set(medias, { opacity: 0, scale: 1.05, willChange: 'transform, opacity' });

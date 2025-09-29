@@ -308,33 +308,50 @@ const themeAnimationConfig = {
   }
 };
 
+// Dark Mode 토글 + Hover 효과
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  const span = themeToggle.querySelector('span');
 
+  // 클릭 시 다크/라이트 모드 전환
+  themeToggle.addEventListener('click', function (e) {
+    e.preventDefault();
 
+    const body = document.body;
+    const isDark = body.classList.toggle('dark-mode');
+    const config = isDark ? themeAnimationConfig.dark : themeAnimationConfig.light;
 
-  // Dark Mode
-  const themeToggle = document.getElementById('themeToggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function (e) {
-      e.preventDefault();
+    const tl = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
+    this.firstChild.textContent = config.buttonText;
 
-      const body = document.body;
-      const isDark = body.classList.toggle('dark-mode');
-      const btn = this;
-      const config = isDark ? themeAnimationConfig.dark : themeAnimationConfig.light;
-
-      const tl = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
-      
-      btn.firstChild.textContent = config.buttonText;
-      
-      // 애니메이션 적용
-      config.animations.forEach(([selector, props]) => {
-        tl.to(selector, props, 0);
-      });
-
-      // 모드 변경 후 현재 활성 메뉴 색상 갱신
-      applyLinkColors();
+    config.animations.forEach(([selector, props]) => {
+      tl.to(selector, props, 0);
     });
-  }
+
+    applyLinkColors();
+  });
+
+  // ⭐ Hover → pulse 효과
+  themeToggle.addEventListener('mouseenter', () => {
+    gsap.to(span, {
+      scale: 1.2,
+      duration: 0.3,
+      ease: "power2.out",
+      yoyo: true,
+      repeat: 1 // scale → 원래 크기 → 다시 scale
+    });
+  });
+
+  themeToggle.addEventListener('mouseleave', () => {
+    gsap.to(span, {
+      scale: 1,
+      duration: 0.2,
+      ease: "power2.inOut"
+    });
+  });
+}
+
+
 });
 
 // 가로스크롤 start
@@ -401,18 +418,48 @@ window.addEventListener("DOMContentLoaded", () => {
   const mainImage = document.getElementById("mainImage");
   const mainTxt = document.getElementById("mainTxt");
   const defaultImage = "images/narrativePhoto.png";
-  const defaultText = "각 키워드에 마우스를 올려보세요 ☺";
+  const defaultText = "각 키워드에 호버해보세요 ☺";
 
-  tabs.forEach(tab => {
-    tab.addEventListener("mouseenter", () => {
+tabs.forEach(tab => {
+  tab.addEventListener("mouseenter", () => {
+    // 이미지 애니메이션
+    mainImage.classList.add("reveal");
+    mainTxt.classList.add("text-out");
+
+    setTimeout(() => {
+      // 새로운 이미지 & 텍스트 적용
       mainImage.src = `images/${tab.dataset.image}`;
       mainTxt.textContent = tab.dataset.text;
-    });
-    tab.addEventListener("mouseleave", () => {
+
+      // 애니메이션 리셋 + 반대방향으로 나타남
+      mainImage.classList.remove("reveal");
+      mainTxt.classList.remove("text-out");
+      mainTxt.classList.add("text-in");
+
+      // text-in 효과 끝나면 제거 (다음 애니를 위해)
+      setTimeout(() => mainTxt.classList.remove("text-in"), 600);
+    }, 400);
+  });
+
+  tab.addEventListener("mouseleave", () => {
+    // 원래 이미지/텍스트로 복귀
+    mainImage.classList.add("reveal");
+    mainTxt.classList.add("text-out");
+
+    setTimeout(() => {
       mainImage.src = defaultImage;
       mainTxt.textContent = defaultText;
-    });
+
+      mainImage.classList.remove("reveal");
+      mainTxt.classList.remove("text-out");
+      mainTxt.classList.add("text-in");
+
+      setTimeout(() => mainTxt.classList.remove("text-in"), 600);
+    }, 400);
   });
+});
+
+
 
   // Tooltip 이동
   const tooltip = document.querySelector(".tooltip");
