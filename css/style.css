@@ -17,7 +17,6 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 
 /* 공통요소 */
 .inner {margin: 0 96px;}
-.dot::after {content: ''; width: 14px; height: 14px; border-radius: 50%; background: #B7D3C6; display: inline-block; margin-left: 20px; cursor: pointer;}
 .modal-close-btn {cursor: pointer; font-weight: 500; display: inline;}
 
 /* hover- 공통 물 차오름 효과 */
@@ -27,7 +26,6 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 .fill-btn::before {content:"";position:absolute;left:0;bottom:0;width:100%;height:0%;background:#252525;z-index:1;transition:height 0.3s ease;}
 .fill-btn:hover::before {height:100%;}
 .fill-btn:hover {color:#dbdbdb;}
-
 
 
 
@@ -281,8 +279,7 @@ section .inner .des .kr {line-height: 24px;}
 .about .inner .profile {display: flex; justify-content: space-between;}
 .about .inner .profile .left {width: 60%; height: 100%; display: flex; flex-direction: column;}
 .about .inner .profile .left .name {font-size: 140px; line-height: 0.8; letter-spacing: -4px; font-weight: 500; margin-bottom: 30px;}
-.about .inner .profile .left .name .dot {position: relative; display: inline-block;}
-.about .inner .profile .left .name .en6 {font-size: 100px; white-space: nowrap;}
+.about .inner .profile .left .en6 {font-size: 100px; white-space: nowrap; margin-bottom: 30px;}
 .about .inner .profile .left .info {font-size: 24px; font-weight: 500; line-height: 1; margin-bottom: 40px;}
 .about .inner .profile .left .info .info_email {padding:10px; font-size:18px;line-height:1; display: block; margin-top: 15px;}
 .about .inner .profile .left  .introduction {line-height: 26px;}
@@ -290,6 +287,8 @@ section .inner .des .kr {line-height: 24px;}
 .about .inner .profile .left  .introduction .first-group {margin-bottom: 10px; display: block;}
 .about .inner .profile .left  .introduction .second-group {margin-bottom: 20px; display: block;}
 .about .inner .profile .left .resume {padding:8px 16px;font-size:18px;line-height:36px;}
+.about .inner .profile .left .resume:hover svg path {color: #dbdbdb;}
+
 .about .inner .profile .right {width: 40%; height: 100%;}
 .about .inner .profile .right img {filter: grayscale(100%); border-radius: 16px; width: 100%; height: 100%; object-fit: cover;}
 
