@@ -149,7 +149,7 @@ export const portfolioData =
     overviewQuote: "Fans first, Immersive & Emotional — 팬과 아티스트를 감성적으로 연결하다.",
     figmaLink: "https://www.figma.com/design/raCePqV5GU0cP2LB6BFIP2/Loopin?node-id=1-1070&t=YhMOh35WcYxwUhRu-1",
     BriefLink: "https://www.figma.com/proto/raCePqV5GU0cP2LB6BFIP2/Loopin?page-id=0%3A1&node-id=1-6840&viewport=154%2C152%2C0.06&t=V01N75pk0p5CdGVu-1&scaling=scale-down-width&content-scaling=fixed",
-    overviewImage: "./images/loopin_mockup1.png",
+    overviewImage: "./images/Loopin_mockup1.png",
 
     solutionCollabo: ["팬 활동 중심 탭 구조 아이디어 제안", "Midjourney 비주얼 아이디어 확장."],
     solutionTest: ["사용성 테스트 평균 4.34/5점 기록", "심미성·일관성 긍정적 평가"],
