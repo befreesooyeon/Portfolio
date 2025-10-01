@@ -41,22 +41,30 @@ export function openModal(modalId) {
   const content = modal.querySelector('.modal-content');
 
   if (content) {
+    // projectModal, fortuneModal만 테마 색 적용
+    if (modalId === 'projectModal' || modalId === 'fortuneModal') {
+      const isDark = document.body.classList.contains("dark-mode");
+      content.style.backgroundColor = isDark ? "#000000" : "#f5f5f5";
+    } 
+    //  photoModal / folderModal → 배경 투명
+    else if (modalId === 'photoModal' || modalId === 'folderModal') {
+      content.style.backgroundColor = "transparent";
+    }
+
+    // --- 애니메이션 처리 ---
     if (modalId === 'folderModal') {
-      // 📂 작은 모달: scale + slide
       gsap.fromTo(
         content,
         { scale: 0.95, y: 20, opacity: 1 },
         { scale: 1, y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' }
       );
     } else if (modalId === 'photoModal') {
-      // 🖼 포토 모달: zoom in
       gsap.fromTo(
         content,
         { scale: 1.05, opacity: 1 },
         { scale: 1, opacity: 1, duration: 0.35, ease: 'power2.out' }
       );
     } else {
-      // 📌 풀사이즈 모달 (fortune/project): slide only
       gsap.fromTo(
         content,
         { y: 1920, opacity: 1 },
@@ -65,6 +73,8 @@ export function openModal(modalId) {
     }
   }
 }
+
+
 
 /* ---------- Modal Close ---------- */
 export function closeModal() {
@@ -81,7 +91,8 @@ export function closeModal() {
           ease: 'power2.in',
           onComplete: () => {
             modal.classList.remove('active');
-            gsap.set(content, { clearProps: 'all' });
+            // ✅ transform, opacity만 초기화
+            gsap.set(content, { clearProps: 'transform,opacity' });
           }
         });
       } else if (modal.id === 'photoModal') {
@@ -92,7 +103,7 @@ export function closeModal() {
           ease: 'power2.in',
           onComplete: () => {
             modal.classList.remove('active');
-            gsap.set(content, { clearProps: 'all' });
+            gsap.set(content, { clearProps: 'transform,opacity' });
           }
         });
       } else {
@@ -103,7 +114,7 @@ export function closeModal() {
           ease: 'power2.inOut',
           onComplete: () => {
             modal.classList.remove('active');
-            gsap.set(content, { clearProps: 'all' });
+            gsap.set(content, { clearProps: 'transform,opacity' });
           }
         });
       }
@@ -138,13 +149,20 @@ function updatePhotoModal(galleryItem, index) {
   currentGalleryIndex = index;
   if (!modalContent) return;
 
-  const isDarkMode = document.body.classList.contains('dark-mode');
-  const strokeColor = isDarkMode ? '#dbdbdb' : '#252525';
-
   modalContent.innerHTML = `
     <p class="modal-close-btn">CLOSE</p>
-    <button class="modal-nav-btn modal-nav-prev" ${index === 0 ? 'disabled' : ''}>←</button>
-    <button class="modal-nav-btn modal-nav-next" ${index === galleryData.length - 1 ? 'disabled' : ''}>→</button>
+    <button class="modal-nav-btn modal-nav-prev" ${index === 0 ? 'disabled' : ''}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="36" viewBox="0 0 60 36" fill="none">
+        <path d="M20 0.499999C20 2.355 18.1675 5.125 16.3125 7.45C13.9275 10.45 11.0775 13.0675 7.81 15.065C5.36 16.5625 2.39 18 7.64949e-07 18M7.64949e-07 18C2.39 18 5.3625 19.4375 7.81 20.935C11.0775 22.935 13.9275 25.5525 16.3125 28.5475C18.1675 30.875 20 33.65 20 35.5M7.64949e-07 18L60 18" stroke="#252525"/>
+      </svg>
+    </button>
+
+    <button class="modal-nav-btn modal-nav-next" ${index === galleryData.length - 1 ? 'disabled' : ''}>
+     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="36" viewBox="0 0 60 36" fill="none">
+      <path d="M40 0.499999C40 2.355 41.8325 5.125 43.6875 7.45C46.0725 10.45 48.9225 13.0675 52.19 15.065C54.64 16.5625 57.61 18 60 18M60 18C57.61 18 54.6375 19.4375 52.19 20.935C48.9225 22.935 46.0725 25.5525 43.6875 28.5475C41.8325 30.875 40 33.65 40 35.5M60 18L-7.64949e-07 18" stroke="#252525"/>
+    </svg>
+    </button>
+
     <div class="modal-photo-wrapper">
       <img src="${galleryItem.image}" alt="${galleryItem.title}" class="modal-photo-image" />
     </div>

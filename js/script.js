@@ -1,3 +1,5 @@
+// script.js
+
 // header highlight + 스크롤 연동 + 속도 반응형 애니메이션
 document.addEventListener("DOMContentLoaded", () => {
   const gnb = document.querySelector('.gnb-c');
@@ -168,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-    // 다크/라이트 모드에 맞춰 링크 색상 적용
+  // 다크/라이트 모드에 맞춰 링크 색상 적용
   function applyLinkColors() {
     const isDark = document.body.classList.contains('dark-mode');
     gnbLinks.forEach(a => a.style.color = isDark ? "#dbdbdb" : "#252525");
@@ -190,7 +192,7 @@ const themeAnimationConfig = {
       [".section-light", { backgroundColor: "#f5f5f5" }],
       [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
       [".text-dark", { color: "#dbdbdb" }],
-      [".modal-content", { backgroundColor: "#000000" }],
+      
 
       // SVG
       ["svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
@@ -201,6 +203,8 @@ const themeAnimationConfig = {
       [".about .inner .contents .box .grid .title .skill-icon svg path", { fill: "none", stroke: "#dbdbdb" }],
       [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#dbdbdb", stroke: "none" }],
       [".about .inner .profile .left .resume:hover svg path", { fill: "#dbdbdb", stroke: "none" }],
+      ["#photoModal .modal-nav-btn svg path", {stroke: "#dbdbdb" }],
+      
 
       
       // Borders
@@ -228,7 +232,6 @@ const themeAnimationConfig = {
       [".keyWords .textWrap .line-divider", { backgroundColor: "#dbdbdb" }],
       ["header .innerHeader .gnb-r ul li a .icon-wrap path, .about .inner .profile .left a svg path", { fill: "#dbdbdb", stroke: "none" }],
       [".works .inner .portfolio-grid .card .thumbnail .icon-circle", {backgroundColor: "#000000"}],
-      ["#photoModal .modal-nav-btn svg path", {stroke: "#dbdbdb"}],
 
       // Text
       [".visual .subText .copyright, .now .inner .left .folder .folder-content .textBox", { color: "#999999" }],
@@ -236,8 +239,8 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#f5f5f5"}],
       [".gallery-card .card-info p", { color: "#dbdbdb"}],
       [".footer", { color: "#252525", backgroundColor: "#dbdbdb"}],
-      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", {color: "#999999"}],
       [".fill-btn span", {color: "#dbdbdb"}],
+      
 
       
       // fortune
@@ -260,7 +263,6 @@ const themeAnimationConfig = {
       [".section-light", { backgroundColor: "#f5f5f5" }],
       [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
       [".text-dark", { color: "#252525" }],
-      [".modal-content", { backgroundColor: "#f5f5f5" }],
 
       // SVG
       ["svg path", { fill: "#252525", stroke: "#252525" }],
@@ -270,6 +272,7 @@ const themeAnimationConfig = {
       [".orizin .inner .orizin-marquee .o-marquee .marquee-track .content2 .icon path", { fill: "none", stroke: "#252525" }],
       [".about .inner .contents .box .grid .title .skill-icon svg path", { fill: "none", stroke: "#252525" }],
       [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#252525", stroke: "none" }],
+      ["#photoModal .modal-nav-btn svg path", {stroke: "#252525" }],
       
 
       // Borders
@@ -296,7 +299,6 @@ const themeAnimationConfig = {
       [".keyWords .textWrap .line-divider", { backgroundColor: "#252525" }],
       ["header .innerHeader .gnb-r ul li a .icon-wrap path, .about .inner .profile .left a svg path", { fill: "#252525", stroke: "none" }],
       [".works .inner .portfolio-grid .card .thumbnail .icon-circle", {backgroundColor: "#ffffff"}],
-      ["#photoModal .modal-nav-btn svg path", {stroke: "#252525"}],
       
 
       // Text
@@ -306,7 +308,6 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#333333"}],
       [".gallery-card .card-info p", { color: "#666666"}],
       [".footer", { color: "#dbdbdb", backgroundColor: "#000000"}],
-      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", {color: "#666666"}],
       [".fill-btn span", {color: "#252525"}],
 
       // fortune
@@ -343,6 +344,9 @@ if (themeToggle) {
     applyLinkColors();
   });
 
+
+
+  
   // ⭐ Hover → pulse 효과
   themeToggle.addEventListener('mouseenter', () => {
     gsap.to(span, {
@@ -553,6 +557,3 @@ tabs.forEach(tab => {
     });
   }, true);
 });
-
-
-
