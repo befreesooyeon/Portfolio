@@ -233,6 +233,7 @@ const themeAnimationConfig = {
       ["header .innerHeader .gnb-r ul li a .icon-wrap path, .about .inner .profile .left a svg path", { fill: "#dbdbdb", stroke: "none" }],
       [".works .inner .portfolio-grid .card .thumbnail .icon-circle", {backgroundColor: "#000000"}],
 
+
       // Text
       [".visual .subText .copyright, .now .inner .left .folder .folder-content .textBox", { color: "#999999" }],
       [".works .inner .portfolio-grid .card .card-content .tit p, .works .inner .portfolio-grid .card .card-content .description", { color: "#999999" }],
@@ -247,8 +248,7 @@ const themeAnimationConfig = {
       ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#000000", color: "#dbdbdb", borderColor: "#dbdbdb"}],
 
      // fill-btn
-      [".fill-btn::before", {ackgroundColor: "#dbdbdb;"}],
-      [".fill-btn:hover span", {color: "#252525;"}],
+      [".fill-btn:hover svg path", {fill: "#252525;"}],
     ]
   },
 
@@ -314,8 +314,7 @@ const themeAnimationConfig = {
       ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#f5f5f5", color: "#252525", borderColor: "#252525"}],
 
       // fill-btn
-      [".fill-btn::before", {ackgroundColor: "#252525;"}],
-      [".fill-btn:hover span", {color: "#dbdbdb;"}],
+      [".fill-btn:hover svg path", {fill: "#dbdbdb;"}],
 
     ]
   }
