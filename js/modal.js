@@ -145,32 +145,33 @@ export function closeModal() {
 
 /* ---------- Photo Modal ---------- */
 function updatePhotoModal(galleryItem, index) {
-  const modalContent = document.querySelector('#photoModal .content');
-  currentGalleryIndex = index;
-  if (!modalContent) return;
+const modalContent = document.querySelector('#photoModal .content');
+currentGalleryIndex = index;
+if (!modalContent) return;
 
-  modalContent.innerHTML = `
-    <p class="modal-close-btn">CLOSE</p>
-    <button class="modal-nav-btn modal-nav-prev" ${index === 0 ? 'disabled' : ''}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="36" viewBox="0 0 60 36" fill="none">
-        <path d="M20 0.499999C20 2.355 18.1675 5.125 16.3125 7.45C13.9275 10.45 11.0775 13.0675 7.81 15.065C5.36 16.5625 2.39 18 7.64949e-07 18M7.64949e-07 18C2.39 18 5.3625 19.4375 7.81 20.935C11.0775 22.935 13.9275 25.5525 16.3125 28.5475C18.1675 30.875 20 33.65 20 35.5M7.64949e-07 18L60 18" stroke="#252525"/>
-      </svg>
-    </button>
+const isDarkMode = document.body.classList.contains('dark-mode');
+const strokeColor = isDarkMode ? '#dbdbdb' : '#252525';
 
-    <button class="modal-nav-btn modal-nav-next" ${index === galleryData.length - 1 ? 'disabled' : ''}>
-     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="36" viewBox="0 0 60 36" fill="none">
-      <path d="M40 0.499999C40 2.355 41.8325 5.125 43.6875 7.45C46.0725 10.45 48.9225 13.0675 52.19 15.065C54.64 16.5625 57.61 18 60 18M60 18C57.61 18 54.6375 19.4375 52.19 20.935C48.9225 22.935 46.0725 25.5525 43.6875 28.5475C41.8325 30.875 40 33.65 40 35.5M60 18L-7.64949e-07 18" stroke="#252525"/>
+modalContent.innerHTML = `
+<p class="modal-close-btn">CLOSE</p>
+<button class="modal-nav-btn modal-nav-prev" ${index === 0 ? 'disabled' : ''}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <path d="M13.3 8.3C13.3 9.6 12.1 11.4 10.9 13c-1.6 2-3.5 3.7-5.7 5  -1.6 1-3.6 2-5.2 2M0 20c1.6 0 3.6 1 5.2 2 2.2 1.3 4.1 3.1 5.7 5 1.2 1.6 2.4 3.4 2.4 4.7M0 20L40 20" stroke="${strokeColor}"/>
     </svg>
-    </button>
-
-    <div class="modal-photo-wrapper">
-      <img src="${galleryItem.image}" alt="${galleryItem.title}" class="modal-photo-image" />
-    </div>
-    <div class="modal-photo-info">
-      <h3 class="modal-photo-title">${galleryItem.title}</h3>
-      <p class="modal-photo-description">${galleryItem.description}</p>
-    </div>
-  `;
+</button>
+<button class="modal-nav-btn modal-nav-next" ${index === galleryData.length - 1 ? 'disabled' : ''}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <path d="M26.7 8.3C26.7 9.6 27.9 11.4 29.1 13c1.6 2 3.5 3.7 5.7 5 1.6 1 3.6 2 5.2 2M40 20c-1.6 0-3.6 1-5.2 2-2.2 1.3-4.1 3.1-5.7 5-1.2 1.6-2.4 3.4-2.4 4.7M40 20L0 20" stroke="${strokeColor}"/>
+    </svg>
+</button>
+<div class="modal-photo-wrapper">
+    <img src="${galleryItem.image}" alt="${galleryItem.title}" class="modal-photo-image" />
+</div>
+<div class="modal-photo-info">
+    <h3 class="modal-photo-title">${galleryItem.title}</h3>
+    <p class="modal-photo-description">${galleryItem.description}</p>
+</div>
+`;
 }
 
 function navigateGallery(direction) {
