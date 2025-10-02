@@ -192,6 +192,8 @@ const themeAnimationConfig = {
       [".section-light", { backgroundColor: "#f5f5f5" }],
       [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
       [".text-dark", { color: "#dbdbdb" }],
+      ["#projectModal .modal-content", { backgroundColor: "#000000", }],
+      
       
 
       // SVG
@@ -221,6 +223,7 @@ const themeAnimationConfig = {
       [".works .inner .filter-wrapper .filter-navigation, #loadMoreBtn", { borderColor: "#dbdbdb" }],
       [".my-photo .inner .text-wrap a", { borderColor: "#dbdbdb", backgroundColor: "#000000" }],
       [".footer .inner .footer-meta", { borderColor: "#252525"}],
+      ["#projectModal .modal-content .content .project-overview .project-cta .btn.btn-ghost .btn-rotate", { borderColor: "#dbdbdb"}],
 
 
       // Highlights / Buttons
@@ -241,6 +244,8 @@ const themeAnimationConfig = {
       [".gallery-card .card-info p", { color: "#dbdbdb"}],
       [".footer", { color: "#252525", backgroundColor: "#dbdbdb"}],
       [".fill-btn span", {color: "#dbdbdb"}],
+      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", "#projectModal .modal-content .content .project-overview .inner .project-text", {color: "#666666"}],
+      
       
 
       
@@ -263,6 +268,7 @@ const themeAnimationConfig = {
       [".section-light", { backgroundColor: "#f5f5f5" }],
       [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
       [".text-dark", { color: "#252525" }],
+      ["#projectModal .modal-content", { backgroundColor: "#f5f5f5", }],
 
       // SVG
       ["svg path", { fill: "#252525", stroke: "#252525" }],
@@ -288,7 +294,8 @@ const themeAnimationConfig = {
       [".about .inner .contents .box .list li, .about .inner .contents .box .accordion-list .accordion-item  ", { borderColor: "#252525" }],
       [".works .inner .filter-wrapper .filter-navigation, #loadMoreBtn", { borderColor: "#252525" }],
       [".my-photo .inner .text-wrap a", { borderColor: "#252525", backgroundColor: "#f5f5f5" }],
-      [".footer .inner .footer-meta", { borderColor: "#dbdbdb"}],    
+      [".footer .inner .footer-meta", { borderColor: "#dbdbdb"}], 
+      ["#projectModal .modal-content .content .project-overview .project-cta .btn.btn-ghost .btn-rotate", { borderColor: "#252525"}],
 
       // Highlights / Buttons
       ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
@@ -309,6 +316,8 @@ const themeAnimationConfig = {
       [".gallery-card .card-info p", { color: "#666666"}],
       [".footer", { color: "#dbdbdb", backgroundColor: "#000000"}],
       [".fill-btn span", {color: "#252525"}],
+      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text","#projectModal .modal-content .content .project-overview .inner .project-text", "#projectModal .modal-content .content .project-block .project-list li", "#projectModal .modal-content .content .project-overview .project-block .project-quote", {color: "#999999"}],
+      
 
       // fortune
       ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#f5f5f5", color: "#252525", borderColor: "#252525"}],
@@ -325,7 +334,24 @@ const themeToggle = document.getElementById('themeToggle');
 if (themeToggle) {
   const span = themeToggle.querySelector('span');
 
-  // 클릭 시 다크/라이트 모드 전환
+  // ✅ 테마 전환 시 CSS 변수 적용 함수
+  function applyThemeVariables(isDark) {
+    if (isDark) {
+      // 다크 모드
+      document.documentElement.style.setProperty('--cta-color', '#dbdbdb');
+      document.documentElement.style.setProperty('--fill-btn-bg', '#dbdbdb');
+      document.documentElement.style.setProperty('--fill-btn-hover-text', '#252525');
+      document.documentElement.style.setProperty('--fill-btn-hover-fill', '#252525');
+    } else {
+      // 라이트 모드
+      document.documentElement.style.setProperty('--cta-color', '#252525');
+      document.documentElement.style.setProperty('--fill-btn-bg', '#252525');
+      document.documentElement.style.setProperty('--fill-btn-hover-text', '#dbdbdb');
+      document.documentElement.style.setProperty('--fill-btn-hover-fill', '#dbdbdb');
+    }
+  }
+
+  // 📌 클릭 시 다크/라이트 모드 전환
   themeToggle.addEventListener('click', function (e) {
     e.preventDefault();
 
@@ -340,12 +366,13 @@ if (themeToggle) {
       tl.to(selector, props, 0);
     });
 
+    // ✅ CSS 변수 업데이트 호출
+    applyThemeVariables(isDark);
+
+    // ✅ 링크 색상도 반영
     applyLinkColors();
   });
 
-
-
-  
   // ⭐ Hover → pulse 효과
   themeToggle.addEventListener('mouseenter', () => {
     gsap.to(span, {
