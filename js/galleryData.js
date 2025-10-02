@@ -1,9 +1,9 @@
 export const galleryData = [
 {
 id: "1",
-title: "🎨 Words Left Behind",
+title: "💪 Muscle Cookie Moment",
 image: "./images/gallery_01.png",
-description: "졸업 전시회, 익명의 누군가가 남기고 간.."
+description: "근육 모양 쿠키라니 귀여워서 먹기 아까웠던.."
 },
 {
 id: "2",
@@ -63,7 +63,7 @@ description: "이제 곧 끝낼 거야… 라고 몇 번째 말했더라."
 id: "11",
 title: "🍲 Shabu Shift Snap",
 image: "./images/gallery_11.png",
-description: "샤브샤브집 알바 중, 찍은 소소한 한 컷."
+description: "샤브샤브집 알바 중, 후다닥 찍은 한 컷."
 },
 {
 id: "12",
