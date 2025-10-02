@@ -18,16 +18,15 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 /* 공통요소 */
 .inner {margin: 0 96px;}
 .modal-close-btn {cursor: pointer; font-weight: 500; display: inline;}
-
-/* hover- 공통 물 차오름 효과 */
-.fill-btn {position:relative;display:inline-flex;align-items:center;justify-content:center;gap:4px;width:fit-content;color:#252525;background:none;border:1px solid #252525;border-radius:50px;cursor:pointer;overflow:hidden;transition:color 0.3s ease;}
+:root { --fill-btn-color:#252525; --fill-btn-border:#252525; --fill-btn-bg:#252525; --fill-btn-hover-text:#dbdbdb; --fill-btn-hover-fill:#dbdbdb; }
+.fill-btn {position:relative;display:inline-flex;align-items:center;justify-content:center;gap:4px;width:fit-content;color:var(--fill-btn-color);background:none;border:1px solid var(--fill-btn-border);border-radius:50px;cursor:pointer;overflow:hidden;transition:color 0.3s ease,border-color 0.3s ease;}
 .fill-btn span {position:relative;z-index:2;}
 .fill-btn svg {position:relative;z-index:2;}
-.fill-btn::before {content:"";position:absolute;left:0;bottom:0;width:100%;height:0%;background:var(--fill-btn-bg);z-index:1;transition:height 0.3s ease;}
-.fill-btn span, .fill-btn svg path {position:relative;z-index:2;transition:color 0.3s ease, fill 0.3s ease;}
+.fill-btn::before {content:"";position:absolute;left:0;bottom:0;width:100%;height:0%;background:var(--fill-btn-bg);z-index:1;transition:height 0.3s ease,background 0.3s ease;}
 .fill-btn:hover::before {height:100%;}
-.fill-btn:hover span {color:var(--fill-btn-hover-text);}
-.fill-btn:hover svg path {fill:var(--fill-btn-hover-fill);}
+.fill-btn:hover span {color:var(--fill-btn-hover-text);transition:color 0.3s ease;}
+.fill-btn:hover svg path {fill:var(--fill-btn-hover-fill);transition:fill 0.3s ease;}
+
 
 
 /* 영어폰트 */

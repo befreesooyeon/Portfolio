@@ -334,24 +334,27 @@ const themeToggle = document.getElementById('themeToggle');
 if (themeToggle) {
   const span = themeToggle.querySelector('span');
 
-  // ✅ 테마 전환 시 CSS 변수 적용 함수
-  function applyThemeVariables(isDark) {
-    if (isDark) {
-      // 다크 모드
-      document.documentElement.style.setProperty('--cta-color', '#dbdbdb');
-      document.documentElement.style.setProperty('--fill-btn-bg', '#dbdbdb');
-      document.documentElement.style.setProperty('--fill-btn-hover-text', '#252525');
-      document.documentElement.style.setProperty('--fill-btn-hover-fill', '#252525');
-    } else {
-      // 라이트 모드
-      document.documentElement.style.setProperty('--cta-color', '#252525');
-      document.documentElement.style.setProperty('--fill-btn-bg', '#252525');
-      document.documentElement.style.setProperty('--fill-btn-hover-text', '#dbdbdb');
-      document.documentElement.style.setProperty('--fill-btn-hover-fill', '#dbdbdb');
-    }
+  //  테마 전환 시 CSS 변수 적용 함수
+function applyThemeVariables(isDark) {
+  if (isDark) {
+    // 다크 모드
+    document.documentElement.style.setProperty('--fill-btn-color', '#dbdbdb');
+    document.documentElement.style.setProperty('--fill-btn-border', '#dbdbdb');
+    document.documentElement.style.setProperty('--fill-btn-bg', '#dbdbdb');
+    document.documentElement.style.setProperty('--fill-btn-hover-text', '#252525');
+    document.documentElement.style.setProperty('--fill-btn-hover-fill', '#252525');
+  } else {
+    // 라이트 모드
+    document.documentElement.style.setProperty('--fill-btn-color', '#252525');
+    document.documentElement.style.setProperty('--fill-btn-border', '#252525');
+    document.documentElement.style.setProperty('--fill-btn-bg', '#252525');
+    document.documentElement.style.setProperty('--fill-btn-hover-text', '#dbdbdb');
+    document.documentElement.style.setProperty('--fill-btn-hover-fill', '#dbdbdb');
   }
+}
 
-  // 📌 클릭 시 다크/라이트 모드 전환
+
+  //  클릭 시 다크/라이트 모드 전환
   themeToggle.addEventListener('click', function (e) {
     e.preventDefault();
 
@@ -366,10 +369,8 @@ if (themeToggle) {
       tl.to(selector, props, 0);
     });
 
-    // ✅ CSS 변수 업데이트 호출
     applyThemeVariables(isDark);
 
-    // ✅ 링크 색상도 반영
     applyLinkColors();
   });
 
