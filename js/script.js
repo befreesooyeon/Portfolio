@@ -337,8 +337,7 @@ if (themeToggle) {
 //  테마 전환 시 CSS 변수 적용 함수
 function applyThemeVariables(isDark) {
   if (isDark) {
-    // 다크 모드
-    document.documentElement.style.setProperty('--cta-color', '#dbdbdb');   
+    // 다크 모드 
     document.documentElement.style.setProperty('--fill-btn-color', '#dbdbdb');
     document.documentElement.style.setProperty('--fill-btn-border', '#dbdbdb');
     document.documentElement.style.setProperty('--fill-btn-bg', '#dbdbdb');
@@ -346,7 +345,6 @@ function applyThemeVariables(isDark) {
     document.documentElement.style.setProperty('--fill-btn-hover-fill', '#252525');
   } else {
     // 라이트 모드
-    document.documentElement.style.setProperty('--cta-color', '#252525');
     document.documentElement.style.setProperty('--fill-btn-color', '#252525');
     document.documentElement.style.setProperty('--fill-btn-border', '#252525');
     document.documentElement.style.setProperty('--fill-btn-bg', '#252525');
@@ -377,10 +375,6 @@ themeToggle.addEventListener('click', function (e) {
   });
 
   applyThemeVariables(isDark);
-  document.querySelectorAll('.within-cta').forEach(el => el.style.display = 'none');
-  void document.body.offsetHeight;
-  document.querySelectorAll('.within-cta').forEach(el => el.style.display = '');
-
   applyLinkColors();
 });
 

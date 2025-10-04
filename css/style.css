@@ -495,21 +495,13 @@ padding-bottom: 40px; box-sizing: border-box; border-bottom: 1px solid #ccc;}
 .my-photo .inner .text-wrap a {width:424px; height:140px; border:1px solid #252525; background:#F5F5F5; border-radius:50%; display:flex; justify-content:center; align-items:center; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
 
 .my-photo .inner .text-wrap a.within-cta {overflow:hidden; color:transparent; transition:transform .26s cubic-bezier(.2,.7,.2,1);}
-
-.my-photo .inner .text-wrap a.within-cta::before,.my-photo .inner .text-wrap a.within-cta::after {content:attr(data-text); position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); white-space:nowrap; transition:transform .42s cubic-bezier(.2,.7,.2,1), opacity .42s cubic-bezier(.2,.7,.2,1);  color: var(--cta-color, #252525);}
-
-.my-photo .inner .text-wrap a.within-cta:hover {transform:translate(-50%,-50%) rotate(-10deg); cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"><text x="14" y="20" font-size="20" text-anchor="middle">📩</text></svg>') 14 14, pointer;}
+.my-photo .inner .text-wrap a.within-cta::before,.my-photo .inner .text-wrap a.within-cta::after {content:attr(data-text); position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); white-space:nowrap; transition:transform .42s cubic-bezier(.2,.7,.2,1), opacity .42s cubic-bezier(.2,.7,.2,1); color:var(--cta-color, #252525);}
 .my-photo .inner .text-wrap a.within-cta::after {content:attr(data-alt); transform:translate(-50%,calc(50% + 16px)); opacity:0;}
+.my-photo .inner .text-wrap a.within-cta:hover {transform:translate(-50%,-50%) rotate(-10deg); cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"><text x="14" y="20" font-size="20" text-anchor="middle">📩</text></svg>') 14 14, pointer;}
 .my-photo .inner .text-wrap a.within-cta:hover::before {transform:translate(-50%,calc(-150%)); opacity:0;}
 .my-photo .inner .text-wrap a.within-cta:hover::after {transform:translate(-50%,-50%); opacity:1;}
-@media (prefers-reduced-motion:reduce){ .my-photo .inner .text-wrap a.within-cta::before,.my-photo .inner .text-wrap a.within-cta::after {transition:none;} .my-photo .inner .text-wrap a.within-cta:hover::before {opacity:0;} .my-photo .inner .text-wrap a.within-cta:hover::after {opacity:1;} }
-
-/* 다크모드 강제 적용 */
-body.dark-mode .my-photo .inner .text-wrap a.within-cta::before,
-body.dark-mode .my-photo .inner .text-wrap a.within-cta::after {
-  color: #dbdbdb !important;
-}
-
+body.dark-mode .my-photo .inner .text-wrap a.within-cta::before,body.dark-mode .my-photo .inner .text-wrap a.within-cta::after {color:#dbdbdb !important;}
+@media (prefers-reduced-motion:reduce){.my-photo .inner .text-wrap a.within-cta::before,.my-photo .inner .text-wrap a.within-cta::after {transition:none;} .my-photo .inner .text-wrap a.within-cta:hover::before {opacity:0;} .my-photo .inner .text-wrap a.within-cta:hover::after {opacity:1;}}
 
 
 .gallery-wrapper {width:100%; height:100%; position:absolute; top:60%; left:0;}
