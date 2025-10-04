@@ -338,6 +338,7 @@ if (themeToggle) {
 function applyThemeVariables(isDark) {
   if (isDark) {
     // 다크 모드
+    document.documentElement.style.setProperty('--cta-color', '#dbdbdb');   // ← 추가
     document.documentElement.style.setProperty('--fill-btn-color', '#dbdbdb');
     document.documentElement.style.setProperty('--fill-btn-border', '#dbdbdb');
     document.documentElement.style.setProperty('--fill-btn-bg', '#dbdbdb');
@@ -345,6 +346,7 @@ function applyThemeVariables(isDark) {
     document.documentElement.style.setProperty('--fill-btn-hover-fill', '#252525');
   } else {
     // 라이트 모드
+    document.documentElement.style.setProperty('--cta-color', '#252525');   // ← 추가
     document.documentElement.style.setProperty('--fill-btn-color', '#252525');
     document.documentElement.style.setProperty('--fill-btn-border', '#252525');
     document.documentElement.style.setProperty('--fill-btn-bg', '#252525');
@@ -352,6 +354,7 @@ function applyThemeVariables(isDark) {
     document.documentElement.style.setProperty('--fill-btn-hover-fill', '#dbdbdb');
   }
 }
+
 
 
   //  클릭 시 다크/라이트 모드 전환
@@ -374,6 +377,7 @@ function applyThemeVariables(isDark) {
     applyLinkColors();
   });
 
+  
   // ⭐ Hover → pulse 효과
   themeToggle.addEventListener('mouseenter', () => {
     gsap.to(span, {
