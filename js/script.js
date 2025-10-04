@@ -334,11 +334,11 @@ const themeToggle = document.getElementById('themeToggle');
 if (themeToggle) {
   const span = themeToggle.querySelector('span');
 
-  //  테마 전환 시 CSS 변수 적용 함수
+//  테마 전환 시 CSS 변수 적용 함수
 function applyThemeVariables(isDark) {
   if (isDark) {
     // 다크 모드
-    document.documentElement.style.setProperty('--cta-color', '#dbdbdb');   // ← 추가
+    document.documentElement.style.setProperty('--cta-color', '#dbdbdb');   
     document.documentElement.style.setProperty('--fill-btn-color', '#dbdbdb');
     document.documentElement.style.setProperty('--fill-btn-border', '#dbdbdb');
     document.documentElement.style.setProperty('--fill-btn-bg', '#dbdbdb');
@@ -346,7 +346,7 @@ function applyThemeVariables(isDark) {
     document.documentElement.style.setProperty('--fill-btn-hover-fill', '#252525');
   } else {
     // 라이트 모드
-    document.documentElement.style.setProperty('--cta-color', '#252525');   // ← 추가
+    document.documentElement.style.setProperty('--cta-color', '#252525');
     document.documentElement.style.setProperty('--fill-btn-color', '#252525');
     document.documentElement.style.setProperty('--fill-btn-border', '#252525');
     document.documentElement.style.setProperty('--fill-btn-bg', '#252525');
@@ -355,27 +355,35 @@ function applyThemeVariables(isDark) {
   }
 }
 
+// ⭐ 페이지 로드 시 초기 테마 적용
+const isDarkOnLoad = document.body.classList.contains('dark-mode');
+applyThemeVariables(isDarkOnLoad);
 
 
-  //  클릭 시 다크/라이트 모드 전환
-  themeToggle.addEventListener('click', function (e) {
-    e.preventDefault();
 
-    const body = document.body;
-    const isDark = body.classList.toggle('dark-mode');
-    const config = isDark ? themeAnimationConfig.dark : themeAnimationConfig.light;
+//  클릭 시 다크/라이트 모드 전환
+themeToggle.addEventListener('click', function (e) {
+  e.preventDefault();
 
-    const tl = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
-    this.firstChild.textContent = config.buttonText;
+  const body = document.body;
+  const isDark = body.classList.toggle('dark-mode');
+  const config = isDark ? themeAnimationConfig.dark : themeAnimationConfig.light;
 
-    config.animations.forEach(([selector, props]) => {
-      tl.to(selector, props, 0);
-    });
+  const tl = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
+  this.firstChild.textContent = config.buttonText;
 
-    applyThemeVariables(isDark);
-
-    applyLinkColors();
+  config.animations.forEach(([selector, props]) => {
+    tl.to(selector, props, 0);
   });
+
+  applyThemeVariables(isDark);
+  document.querySelectorAll('.within-cta').forEach(el => el.style.display = 'none');
+  void document.body.offsetHeight;
+  document.querySelectorAll('.within-cta').forEach(el => el.style.display = '');
+
+  applyLinkColors();
+});
+
 
   
   // ⭐ Hover → pulse 효과
