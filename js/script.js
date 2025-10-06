@@ -170,6 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+
+
   // 다크/라이트 모드에 맞춰 링크 색상 적용
   function applyLinkColors() {
     const isDark = document.body.classList.contains('dark-mode');
@@ -193,6 +196,7 @@ const themeAnimationConfig = {
       [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
       [".text-dark", { color: "#dbdbdb" }],
       ["#projectModal .modal-content", { backgroundColor: "#000000", }],
+      ["#fortuneModal .modal-content", { backgroundColor: "#000000", }],
       
       
 
@@ -224,6 +228,7 @@ const themeAnimationConfig = {
       [".my-photo .inner .text-wrap a", { borderColor: "#dbdbdb", backgroundColor: "#000000" }],
       [".footer .inner .footer-meta", { borderColor: "#252525"}],
       ["#projectModal .modal-content .content .project-overview .project-cta .btn.btn-ghost .btn-rotate", { borderColor: "#dbdbdb"}],
+      ["#fortuneModal .modal-content .content .select-btn", { borderColor: "#dbdbdb"}],
 
 
       // Highlights / Buttons
@@ -243,17 +248,9 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#f5f5f5"}],
       [".gallery-card .card-info p", { color: "#dbdbdb"}],
       [".footer", { color: "#252525", backgroundColor: "#dbdbdb"}],
-      [".fill-btn span", {color: "#dbdbdb"}],
-      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", "#projectModal .modal-content .content .project-overview .inner .project-text", {color: "#666666"}],
-      
-      
+      // [".fill-btn span", {color: "#dbdbdb"}],
+      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", "#projectModal .modal-content .content .project-overview .inner .project-text", {color: "#666666"}],,
 
-      
-      // fortune
-      ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#000000", color: "#dbdbdb", borderColor: "#dbdbdb"}],
-
-     // fill-btn
-      [".fill-btn:hover svg path", {fill: "#252525;"}],
     ]
   },
 
@@ -269,6 +266,7 @@ const themeAnimationConfig = {
       [".section-dark", { backgroundColor: "#000000", color: "#dbdbdb" }],
       [".text-dark", { color: "#252525" }],
       ["#projectModal .modal-content", { backgroundColor: "#f5f5f5", }],
+      ["#fortuneModal .modal-content", { backgroundColor: "#f5f5f5", }],
 
       // SVG
       ["svg path", { fill: "#252525", stroke: "#252525" }],
@@ -278,6 +276,8 @@ const themeAnimationConfig = {
       [".orizin .inner .orizin-marquee .o-marquee .marquee-track .content2 .icon path", { fill: "none", stroke: "#252525" }],
       [".about .inner .contents .box .grid .title .skill-icon svg path", { fill: "none", stroke: "#252525" }],
       [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#252525", stroke: "none" }],
+
+      
       ["#photoModal .modal-nav-btn svg path", {stroke: "#252525" }],
       
 
@@ -296,6 +296,7 @@ const themeAnimationConfig = {
       [".my-photo .inner .text-wrap a", { borderColor: "#252525", backgroundColor: "#f5f5f5" }],
       [".footer .inner .footer-meta", { borderColor: "#dbdbdb"}], 
       ["#projectModal .modal-content .content .project-overview .project-cta .btn.btn-ghost .btn-rotate", { borderColor: "#252525"}],
+      ["#fortuneModal .modal-content .content .select-btn", { borderColor: "#252525"}],
 
       // Highlights / Buttons
       ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
@@ -315,51 +316,47 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#333333"}],
       [".gallery-card .card-info p", { color: "#666666"}],
       [".footer", { color: "#dbdbdb", backgroundColor: "#000000"}],
-      [".fill-btn span", {color: "#252525"}],
       ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text","#projectModal .modal-content .content .project-overview .inner .project-text", "#projectModal .modal-content .content .project-block .project-list li", "#projectModal .modal-content .content .project-overview .project-block .project-quote", {color: "#999999"}],
-      
 
-      // fortune
-      ["#fortuneModal .modal-content, #fortuneModal .modal-content .content .select-btn", {backgroundColor: "#f5f5f5", color: "#252525", borderColor: "#252525"}],
 
       // fill-btn
-      [".fill-btn:hover svg path", {fill: "#dbdbdb;"}],
+      // [".fill-btn:hover svg path", {fill: "#dbdbdb;"}],
 
     ]
   }
 };
 
-// Dark Mode 토글 + Hover 효과
+// ⭐⭐ Dark Mode 토글 + Hover 효과
 const themeToggle = document.getElementById('themeToggle');
 if (themeToggle) {
   const span = themeToggle.querySelector('span');
 
 //  테마 전환 시 CSS 변수 적용 함수
 function applyThemeVariables(isDark) {
+  const root = document.documentElement;
+  
   if (isDark) {
-    // 다크 모드 
-    document.documentElement.style.setProperty('--fill-btn-color', '#dbdbdb');
-    document.documentElement.style.setProperty('--fill-btn-border', '#dbdbdb');
-    document.documentElement.style.setProperty('--fill-btn-bg', '#dbdbdb');
-    document.documentElement.style.setProperty('--fill-btn-hover-text', '#252525');
-    document.documentElement.style.setProperty('--fill-btn-hover-fill', '#252525');
+    root.style.setProperty('--fill-btn-color', '#dbdbdb');
+    root.style.setProperty('--fill-btn-border', '#dbdbdb');
+    root.style.setProperty('--fill-btn-bg', '#dbdbdb');
+    root.style.setProperty('--fill-btn-hover-text', '#252525');
+    root.style.setProperty('--fill-btn-hover-fill', '#252525');
   } else {
-    // 라이트 모드
-    document.documentElement.style.setProperty('--fill-btn-color', '#252525');
-    document.documentElement.style.setProperty('--fill-btn-border', '#252525');
-    document.documentElement.style.setProperty('--fill-btn-bg', '#252525');
-    document.documentElement.style.setProperty('--fill-btn-hover-text', '#dbdbdb');
-    document.documentElement.style.setProperty('--fill-btn-hover-fill', '#dbdbdb');
+    root.style.setProperty('--fill-btn-color', '#252525');
+    root.style.setProperty('--fill-btn-border', '#252525');
+    root.style.setProperty('--fill-btn-bg', '#252525');
+    root.style.setProperty('--fill-btn-hover-text', '#dbdbdb');
+    root.style.setProperty('--fill-btn-hover-fill', '#dbdbdb');
   }
 }
 
-// ⭐ 페이지 로드 시 초기 테마 적용
+//  페이지 로드 시 초기 테마 적용
 const isDarkOnLoad = document.body.classList.contains('dark-mode');
 applyThemeVariables(isDarkOnLoad);
 
 
 
-//  클릭 시 다크/라이트 모드 전환
+// ⭐ 클릭 시 다크/라이트 모드 전환
 themeToggle.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -380,7 +377,7 @@ themeToggle.addEventListener('click', function (e) {
 
 
   
-  // ⭐ Hover → pulse 효과
+  //  Hover → pulse 효과
   themeToggle.addEventListener('mouseenter', () => {
     gsap.to(span, {
       scale: 1.2,
@@ -399,8 +396,6 @@ themeToggle.addEventListener('click', function (e) {
     });
   });
 }
-
-
 });
 
 // 가로스크롤 start
@@ -561,16 +556,34 @@ tabs.forEach(tab => {
     });
   });
 
-  // Works filter indicator
-  const filterItems = document.querySelectorAll(".filter-item");
-  const indicator = document.querySelector(".filter-indicator");
-  filterItems.forEach(item => {
-    item.addEventListener("click", () => {
-      filterItems.forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
-      gsap.to(indicator, { x: item.offsetLeft, duration: 0.5, ease: "power2.out" });
+// Works filter indicator
+const filterItems = document.querySelectorAll(".filter-item");
+const indicator = document.querySelector(".filter-indicator");
+
+filterItems.forEach(item => {
+  item.addEventListener("click", () => {
+    filterItems.forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
+    gsap.to(indicator, { x: item.offsetLeft, duration: 0.5, ease: "power2.out" });
+
+    const isDark = document.body.classList.contains('dark-mode');
+
+    // 아이콘과 설명 텍스트 재적용 (초기화 방지)
+    const iconPaths = document.querySelectorAll(".works .inner .portfolio-grid .card .thumbnail .icon-circle svg path");
+    const descriptions = document.querySelectorAll(".works .inner .portfolio-grid .card .card-content .description");
+
+    iconPaths.forEach(path => {
+      path.style.fill = isDark ? "#dbdbdb" : "#252525";
+      path.style.stroke = "none";
+    });
+
+    descriptions.forEach(desc => {
+      desc.style.color = isDark ? "#999999" : "#666666";
     });
   });
+});
+
+
 
   // Works 카드 hover → icon-circle 애니메이션
   const portfolioGrid = document.querySelector(".works .inner .portfolio-grid");

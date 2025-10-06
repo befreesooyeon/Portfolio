@@ -18,16 +18,30 @@ body {font-family: 'pretendard'; font-style: normal; font-weight: 400; backgroun
 /* 공통요소 */
 .inner {margin: 0 96px;}
 .modal-close-btn {cursor: pointer; font-weight: 500; display: inline;}
-:root { --fill-btn-color:#252525; --fill-btn-border:#252525; --fill-btn-bg:#252525; --fill-btn-hover-text:#dbdbdb; --fill-btn-hover-fill:#dbdbdb; }
+
+/* fill-btn */
+:root {--fill-btn-color:#252525; --fill-btn-border:#252525; --fill-btn-bg:#252525; --fill-btn-hover-text:#dbdbdb; --fill-btn-hover-fill:#dbdbdb;}
 .fill-btn {position:relative;display:inline-flex;align-items:center;justify-content:center;gap:4px;width:fit-content;color:var(--fill-btn-color);background:none;border:1px solid var(--fill-btn-border);border-radius:50px;cursor:pointer;overflow:hidden;transition:color 0.3s ease,border-color 0.3s ease;}
 .fill-btn span {position:relative;z-index:2;}
 .fill-btn svg {position:relative;z-index:2;}
 .fill-btn::before {content:"";position:absolute;left:0;bottom:0;width:100%;height:0%;background:var(--fill-btn-bg);z-index:1;transition:height 0.3s ease,background 0.3s ease;}
 .fill-btn:hover::before {height:100%;}
-.fill-btn:hover span {color:var(--fill-btn-hover-text);transition:color 0.3s ease;}
-.fill-btn:hover svg path {fill:var(--fill-btn-hover-fill);transition:fill 0.3s ease;}
+.fill-btn:hover span {color:var(--fill-btn-hover-text) !important;transition:color 0.3s ease;}
+.fill-btn:hover svg path {fill:var(--fill-btn-hover-fill) !important;transition:fill 0.3s ease;}
 
+/* 라이트 모드 기본값 */
+body:not(.dark-mode) .fill-btn {color:#252525;border-color:#252525;}
+body:not(.dark-mode) .fill-btn span {color:#252525;}
+body:not(.dark-mode) .fill-btn::before {background:#252525;}
+body:not(.dark-mode) .fill-btn:hover span {color:#dbdbdb !important;}
+body:not(.dark-mode) .fill-btn:hover svg path {fill:#dbdbdb !important;}
 
+/* 다크모드 */
+body.dark-mode .fill-btn {color:#dbdbdb;border-color:#dbdbdb;}
+body.dark-mode .fill-btn span {color:#dbdbdb;}
+body.dark-mode .fill-btn::before {background:#dbdbdb;}
+body.dark-mode .fill-btn:hover span {color:#252525 !important;}
+body.dark-mode .fill-btn:hover svg path {fill:#252525 !important;}
 
 /* 영어폰트 */
 .en1 {font-family: 'Ampersand', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: -14px;}
@@ -105,7 +119,7 @@ header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; j
 .card-back .fortune-title { font-size: 24px; color: #4A6CF7; font-weight: 500; margin-bottom: 8px; }
 .card-back .fortune-description { color: #666; line-height: 22px; }
 
-#fortuneModal .modal-content .content .select-btn { font-size: 18px; font-weight: 500; width: 300px; height: 60px; box-sizing: border-box; border: 1px solid #252525; display: inline-flex; justify-content: center; align-items: center; border-radius: 50px; cursor: pointer; position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background-color: #f5f5f5; opacity: 0; pointer-events: none; transition: all 0.5s ease; z-index: 20; }
+#fortuneModal .modal-content .content .select-btn { font-size: 18px; font-weight: 500; width: 300px; height: 60px; box-sizing: border-box; border: 1px solid #252525; display: inline-flex; justify-content: center; align-items: center; border-radius: 50px; cursor: pointer; position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); opacity: 0; pointer-events: none; transition: all 0.5s ease; z-index: 20; }
 #fortuneModal .modal-content .content .select-btn.show { bottom: 50px; opacity: 1; pointer-events: all; }
 
 @keyframes cardAppear { to { opacity: 1; transform: translateY(0); } }
