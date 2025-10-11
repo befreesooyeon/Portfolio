@@ -161,7 +161,7 @@ header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; j
 
 .narrative .image-view {position: absolute; z-index: 999; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center;}
 
-/* .narrative .image-view img {margin-bottom: 20px;} */
+.narrative .image-view img {margin-bottom: 20px;}
 #mainImage {position:relative;display:block;width: 288px; height: 384px; object-fit: cover;object-fit:cover;clip-path:inset(0 0 0 0);transition:clip-path 0.6s ease-in-out;}
 #mainImage.reveal {clip-path:inset(0 0 100% 0);}
 #mainTxt {display:inline-block;opacity:1;transform:translateY(0);transition:opacity 0.5s ease,transform 0.6s ease;}
