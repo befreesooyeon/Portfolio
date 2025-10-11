@@ -421,30 +421,80 @@ nextTitleEl.textContent =
 }
 
 function mountProject(project) {
-const scroller = getScroller();
-if (!scroller) return;
+  const scroller = getScroller();
+  if (!scroller) return;
 
-killModalScrollTriggers();
+  killModalScrollTriggers();
 
-// 기존 상세 제거 후 새로 렌더링
-scroller.querySelector('.project-detail')?.remove();
-const html = renderProjectDetail(project);
-const wrapper = document.createElement('div');
-wrapper.className = 'project-detail';
-wrapper.innerHTML = html;
-scroller.appendChild(wrapper);
+  // 기존 상세 제거 후 새로 렌더링
+  scroller.querySelector('.project-detail')?.remove();
+  const html = renderProjectDetail(project);
+  const wrapper = document.createElement('div');
+  wrapper.className = 'project-detail';
+  wrapper.innerHTML = html;
+  scroller.appendChild(wrapper);
 
-currentProjectIndex = portfolioData.findIndex(p => String(p.id) === String(project.id));
-resetModalScroll();
-updateProjectNavTitles(currentProjectIndex);
+  currentProjectIndex = portfolioData.findIndex(p => String(p.id) === String(project.id));
+  resetModalScroll();
+  updateProjectNavTitles(currentProjectIndex);
 
-// 콘텐츠 교체 후에도 테마 재적용 (배경/텍스트)
-syncModalTheme();
+  // 콘텐츠 교체 후에도 테마 재적용 (배경/텍스트)
+  syncModalTheme();
 
-requestAnimationFrame(() => {
-  initProjectMediaScroll();
-});
+  requestAnimationFrame(() => {
+    initProjectMediaScroll();
+  });
+
+  // 새 프로젝트 로드 후 비주얼 애니메이션 다시 실행
+  setTimeout(() => animateProjectVisual(), 200);
 }
+
+
+/* -------------------- Project Modal Visual Animation -------------------- */
+function animateProjectVisual() {
+  const visual = document.querySelector("#projectModal .project-visual");
+  if (!visual) return;
+
+  // ✅ 최초 표시 허용
+  gsap.set(visual, { opacity: 1, visibility: "visible" });
+
+  const img = visual.querySelector(".visual-media img, .visual-media video");
+  const left = visual.querySelector(".visual-left");
+  const right = visual.querySelector(".visual-right");
+  const blocks = visual.querySelectorAll(".bottom .project-about-block");
+
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  // 초기 상태 세팅
+  gsap.set([img, left, right, blocks], { opacity: 0, y: 30 });
+
+  // 애니메이션 시퀀스
+  tl.to(img, { opacity: 1, y: 0, duration: 1.2 })
+    .fromTo(left, { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8 }, "-=0.6")
+    .fromTo(right, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8 }, "-=0.7")
+    .to(blocks, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 }, "-=0.5");
+}
+
+
+// 📌 project 모달 열릴 때 실행되도록 연결
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.type === "attributes" && m.attributeName === "class") {
+        const modal = m.target;
+        if (modal.id === "projectModal" && modal.classList.contains("active")) {
+          setTimeout(() => animateProjectVisual(), 200); // 오픈 슬라이드 직후 실행
+        }
+      }
+    }
+  });
+  const modal = document.getElementById("projectModal");
+  if (modal) observer.observe(modal, { attributes: true });
+});
+
+
+
+
 
 /* -------------------- Init Triggers -------------------- */
 export function initModalTriggers() {

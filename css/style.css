@@ -425,6 +425,7 @@ transform: scale(1.05); filter: brightness(1.05);}
 #projectModal .modal-content .content {width: 100%; height: 100%; overflow-y: auto;}
 #projectModal .modal-close-btn {position: fixed; top: 40px;
 left: 50%; transform: translateX(-50%); z-index: 10000; cursor: pointer;}
+#projectModal .project-visual { opacity: 0; visibility: hidden; }
 
 #projectModal .modal-content .content .project-visual {width:100%; height: 100vh; display:flex; align-items:center; margin-top: 0;}
 #projectModal .modal-content .content .project-visual .inner

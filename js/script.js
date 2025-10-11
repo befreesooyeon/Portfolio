@@ -393,6 +393,18 @@ window.addEventListener("DOMContentLoaded", () => {
     delay: 0.5,
   });
 
+    // 로고 회전
+  [
+    { selector: ".line1 .logo-spin", trigger: ".visual", start: "top top", end: "bottom top" },
+    { selector: ".footer-spin", trigger: "body", start: "top bottom", end: "bottom top" }
+  ].forEach(cfg => {
+    gsap.to(cfg.selector, {
+      rotation: 360,
+      ease: "none",
+      scrollTrigger: { trigger: cfg.trigger, start: cfg.start, end: cfg.end, scrub: 0.1 }
+    });
+  });
+
   gsap.to(".image-view img", {
     yPercent: -10,
     ease: "none",
