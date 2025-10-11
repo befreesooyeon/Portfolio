@@ -141,7 +141,7 @@ if (content) {
   }
 }
 
-// ✅ 모달을 연 직후 테마 반영 (애니 끝나기 기다릴 필요 없음)
+//  모달을 연 직후 테마 반영 (애니 끝나기 기다릴 필요 없음)
 syncModalTheme();
 // 혹시 GSAP가 중간에 값을 건드려도 한 프레임 뒤 다시 고정
 requestAnimationFrame(syncModalTheme);
@@ -216,40 +216,100 @@ if (window.ScrollTrigger) {
 
 /* -------------------- Photo Modal -------------------- */
 function updatePhotoModal(galleryItem, index) {
-const modalContent = document.querySelector('#photoModal .content');
-currentGalleryIndex = index;
-if (!modalContent) return;
+  const modalContent = document.querySelector('#photoModal .content');
+  currentGalleryIndex = index;
+  if (!modalContent) return;
 
-// path는 stroke="currentColor"로 두고, 버튼 color를 테마에 맞춰 바꿔서 일관 제어
-modalContent.innerHTML = `
-  <p class="modal-close-btn">CLOSE</p>
-  <button class="modal-nav-btn modal-nav-prev" ${index === 0 ? 'disabled' : ''}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="36" viewBox="0 0 60 36" fill="none">
-      <path d="M20 0.5C20 2.355 18.1675 5.125 16.3125 7.45C13.9275 10.45 11.0775 13.0675 7.81 15.065C5.36 16.5625 2.39 18 0 18
-      C2.39 18 5.3625 19.4375 7.81 20.935C11.0775 22.935 13.9275 25.5525 16.3125 28.5475C18.1675 30.875 20 33.65 20 35.5
-      M0 18L60 18" stroke="currentColor"/>
-    </svg>
-  </button>
+  // =========================
+  // 1️⃣ 모달 콘텐츠 생성
+  // =========================
+  modalContent.innerHTML = `
+    <p class="modal-close-btn">CLOSE</p>
 
-  <button class="modal-nav-btn modal-nav-next" ${index === galleryData.length - 1 ? 'disabled' : ''}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="36" viewBox="0 0 60 36" fill="none">
-      <path d="M40 0.5C40 2.355 41.8325 5.125 43.6875 7.45C46.0725 10.45 48.9225 13.0675 52.19 15.065C54.64 16.5625 57.61 18 60 18
-      C57.61 18 54.6375 19.4375 52.19 20.935C48.9225 22.935 46.0725 25.5525 43.6875 28.5475C41.8325 30.875 40 33.65 40 35.5
-      M60 18L0 18" stroke="currentColor"/>
-    </svg>
-  </button>
+    <button class="modal-nav-btn modal-nav-prev" ${index === 0 ? 'disabled' : ''}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="36" viewBox="0 0 60 36" fill="none">
+        <path d="M20 0.5C20 2.355 18.1675 5.125 16.3125 7.45C13.9275 10.45 11.0775 13.0675 7.81 15.065C5.36 16.5625 2.39 18 0 18
+        C2.39 18 5.3625 19.4375 7.81 20.935C11.0775 22.935 13.9275 25.5525 16.3125 28.5475C18.1675 30.875 20 33.65 20 35.5
+        M0 18L60 18" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
 
-  <div class="modal-photo-wrapper">
-    <img src="${galleryItem.image}" alt="${galleryItem.title}" class="modal-photo-image" />
-  </div>
-  <div class="modal-photo-info">
-    <h3 class="modal-photo-title">${galleryItem.title}</h3>
-    <p class="modal-photo-description">${galleryItem.description}</p>
-  </div>
-`;
+    <button class="modal-nav-btn modal-nav-next" ${index === galleryData.length - 1 ? 'disabled' : ''}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="36" viewBox="0 0 60 36" fill="none">
+        <path d="M40 0.5C40 2.355 41.8325 5.125 43.6875 7.45C46.0725 10.45 48.9225 13.0675 52.19 15.065C54.64 16.5625 57.61 18 60 18
+        C57.61 18 54.6375 19.4375 52.19 20.935C48.9225 22.935 46.0725 25.5525 43.6875 28.5475C41.8325 30.875 40 33.65 40 35.5
+        M60 18L0 18" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
 
-// ✅ 콘텐츠 교체 직후 테마 강제 반영
-syncModalTheme();
+    <div class="modal-photo-wrapper">
+      <img src="${galleryItem.image}" alt="${galleryItem.title}" class="modal-photo-image" />
+    </div>
+
+    <div class="modal-photo-info">
+      <h3 class="modal-photo-title">${galleryItem.title}</h3>
+      <p class="modal-photo-description">${galleryItem.description}</p>
+    </div>
+  `;
+
+  // =========================
+  // 2️⃣ 테마 동기화
+  // =========================
+  syncModalTheme();
+
+  // =========================
+  // 3️⃣ 버튼 이벤트 새로 등록
+  // =========================
+  const prevBtn = modalContent.querySelector(".modal-nav-prev");
+  const nextBtn = modalContent.querySelector(".modal-nav-next");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      lastDirection = "prev";
+      navigateGallery("prev");
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      lastDirection = "next";
+      navigateGallery("next");
+    });
+  }
+
+  // =========================
+  // 4️⃣ GSAP 애니메이션
+  // =========================
+  const img = modalContent.querySelector(".modal-photo-image");
+  const title = modalContent.querySelector(".modal-photo-title");
+  const desc = modalContent.querySelector(".modal-photo-description");
+
+  const direction = (typeof lastDirection !== "undefined") ? lastDirection : "next";
+  const xDir = direction === "next" ? 100 : -100;
+
+  gsap.set(img, { opacity: 0, x: xDir, filter: "blur(10px)" });
+  gsap.set([title, desc], { opacity: 0, y: 40 });
+
+  const tl = gsap.timeline();
+  tl.to(img, {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    duration: 0.9,
+    ease: "power3.out"
+  })
+  .to(title, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: "power2.out"
+  }, "-=0.4")
+  .to(desc, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: "power2.out"
+  }, "-=0.45");
 }
 
 function navigateGallery(direction) {
@@ -257,6 +317,7 @@ const newIndex = direction === 'prev' ? currentGalleryIndex - 1 : currentGallery
 if (newIndex >= 0 && newIndex < galleryData.length)
   updatePhotoModal(galleryData[newIndex], newIndex);
 }
+
 
 /* -------------------- Project Detail -------------------- */
 function killModalScrollTriggers() {
@@ -340,25 +401,6 @@ scroller.querySelectorAll('.project-media').forEach(section => {
   }
 });
 
-// 공통 미디어 순차 등장
-const medias = scroller.querySelectorAll('.media-asset');
-if (medias.length) {
-  gsap.set(medias, { opacity: 0, scale: 1.05, willChange: 'transform, opacity' });
-
-  gsap.to(medias, {
-    opacity: 1,
-    scale: 1,
-    duration: 0.7,
-    ease: 'power2.out',
-    stagger: 0.12,
-    scrollTrigger: {
-      trigger: scroller.querySelector('.project-detail-root'),
-      scroller,
-      start: 'top 80%',
-      once: true
-    }
-  });
-}
 
 ScrollTrigger.refresh();
 }
@@ -396,7 +438,7 @@ currentProjectIndex = portfolioData.findIndex(p => String(p.id) === String(proje
 resetModalScroll();
 updateProjectNavTitles(currentProjectIndex);
 
-// ✅ 콘텐츠 교체 후에도 테마 재적용 (배경/텍스트)
+// 콘텐츠 교체 후에도 테마 재적용 (배경/텍스트)
 syncModalTheme();
 
 requestAnimationFrame(() => {

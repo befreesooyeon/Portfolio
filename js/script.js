@@ -1,56 +1,36 @@
-// script.js
-
-// header highlight + 스크롤 연동 + 속도 반응형 애니메이션
+//  script.js
 document.addEventListener("DOMContentLoaded", () => {
   const gnb = document.querySelector('.gnb-c');
   const highlight = gnb.querySelector('.highlight');
   const gnbLinks = gnb.querySelectorAll('a');
-  const padX = 8; // 가상 padding-left/right
-  let activeLink = null; // 현재 active 상태의 링크 저장
-  let lastScrollY = window.scrollY; // 마지막 스크롤 위치 저장
+  const padX = 8;
+  let activeLink = null;
+  let lastScrollY = window.scrollY;
 
-  // 📌 공통 스크롤 애니메이션 함수
+  // 부드러운 스크롤
   function smoothScrollTo(targetY, duration = 1, ease = "power2.inOut") {
-    gsap.to(window, {
-      scrollTo: targetY,
-      duration: duration,
-      ease: ease
-    });
+    gsap.to(window, { scrollTo: targetY, duration, ease });
   }
 
-  // 📌 앵커 링크 스크롤 처리 함수
   function handleAnchorClick(e, link) {
     e.preventDefault();
     const targetId = link.getAttribute('href');
     if (targetId && targetId.startsWith('#')) {
       let targetY;
-      const headerOffset = 130; // 헤더 높이
-      
-      // #home 클릭 시 페이지 맨 위로 이동
-      if (targetId === '#home') {
-        targetY = 0;
-      } 
-      // #footer 클릭 시 스크롤 가능한 맨 아래로 이동 (margin-bottom 포함)
-      else if (targetId === '#footer') {
-        targetY = document.documentElement.scrollHeight - window.innerHeight;
-      } 
+      const headerOffset = 130;
+      if (targetId === '#home') targetY = 0;
+      else if (targetId === '#footer') targetY = document.documentElement.scrollHeight - window.innerHeight;
       else {
         const target = document.querySelector(targetId);
-        if (target) {
-          targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-        } else {
-          return;
-        }
+        if (!target) return;
+        targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
       }
-      
       smoothScrollTo(targetY);
     }
   }
 
-  // highlight 이동 + 크기 설정 함수
   function moveHighlightTo(link, speedFactor = 1) {
     if (!link || !highlight) return;
-    
     const gnbRect = gnb.getBoundingClientRect();
     const linkRect = link.getBoundingClientRect();
     const linkLeft = linkRect.left - gnbRect.left;
@@ -64,59 +44,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // active 상태 적용
   function setActiveLink(link, speedFactor = 1) {
     if (!link) return;
-    
     gnbLinks.forEach(a => a.classList.remove('active'));
     link.classList.add('active');
     activeLink = link;
-
     applyLinkColors();
     moveHighlightTo(link, speedFactor);
   }
 
-  // 📌 페이지 로드 시 기본 활성화 (첫 번째 링크)
   if (gnbLinks.length > 0) {
     activeLink = gnbLinks[0];
-    setTimeout(() => {
-      setActiveLink(activeLink);
-    }, 100);
+    setTimeout(() => setActiveLink(activeLink), 100);
   }
 
-  
-  // 📌 마우스 올리면 하이라이트 이동
-  gnbLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => moveHighlightTo(link));
-  });
+  gnbLinks.forEach(link => link.addEventListener('mouseenter', () => moveHighlightTo(link)));
+  gnb.addEventListener('mouseleave', () => activeLink && moveHighlightTo(activeLink));
 
-  // 📌 메뉴 전체에서 마우스 나가면 active 위치로 복귀
-  gnb.addEventListener('mouseleave', () => {
-    if (activeLink) moveHighlightTo(activeLink);
-  });
+  gnbLinks.forEach(link => link.addEventListener('click', e => { setActiveLink(link); handleAnchorClick(e, link); }));
 
-  // 📌 클릭 시 active 고정 + 스크롤 이동
-  gnbLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      setActiveLink(link);
-      handleAnchorClick(e, link);
-    });
-  });
-
-  // 📌 스크롤 시 현재 섹션에 맞춰 active 변경 + 속도 반응형 애니메이션
   const sections = [
-    { 
-      link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#home'),
-      section: document.querySelector('#home')
-    },
-    { 
-      link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#about'),
-      section: document.querySelector('#about')
-    },
-    { 
-      link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#works'),
-      section: document.querySelector('#works')
-    }
+    { link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#home'), section: document.querySelector('#home') },
+    { link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#about'), section: document.querySelector('#about') },
+    { link: Array.from(gnbLinks).find(link => link.getAttribute('href') === '#works'), section: document.querySelector('#works') }
   ].filter(item => item.link && item.section);
 
   let scrollTimeout;
@@ -125,23 +75,16 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTimeout = setTimeout(() => {
       const scrollY = window.scrollY;
       const headerOffset = 140;
-
-      // 📌 스크롤 속도 계산
       const scrollSpeed = Math.abs(scrollY - lastScrollY);
       lastScrollY = scrollY;
-      const speedFactor = Math.min(Math.max(scrollSpeed / 50, 1), 3); 
-
+      const speedFactor = Math.min(Math.max(scrollSpeed / 50, 1), 3);
       let current = null;
-      
-      // 페이지 맨 아래에서 CONTACT 활성화
+
       if (scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100) {
         current = Array.from(gnbLinks).find(link => link.getAttribute('href') === '#footer');
       } else {
-        // 각 섹션의 시작점 기준으로 활성화
         for (const { link, section } of sections.reverse()) {
-          const sectionTop = section.offsetTop - headerOffset;
-          
-          if (scrollY >= sectionTop) {
+          if (scrollY >= section.offsetTop - headerOffset) {
             current = link;
             break;
           }
@@ -149,40 +92,25 @@ document.addEventListener("DOMContentLoaded", () => {
         sections.reverse();
       }
 
-      if (current && current !== activeLink) {
-        setActiveLink(current, speedFactor);
-      }
+      if (current && current !== activeLink) setActiveLink(current, speedFactor);
     }, 10);
   });
 
-  // 📌 창 크기 변경 시 active 위치 재조정
-  window.addEventListener('resize', () => {
-    setTimeout(() => {
-      if (activeLink) moveHighlightTo(activeLink);
-    }, 100);
-  });
+  window.addEventListener('resize', () => setTimeout(() => activeLink && moveHighlightTo(activeLink), 100));
 
-  // 📌 전체 페이지 내 a[href^="#"] 클릭 시 부드러운 스크롤 적용 (gnb 제외)
-  const allLinks = document.querySelectorAll('a[href^="#"]:not(.gnb-c a)');
-  allLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-      handleAnchorClick(e, this);
-    });
-  });
+  document.querySelectorAll('a[href^="#"]:not(.gnb-c a)').forEach(link =>
+    link.addEventListener('click', e => handleAnchorClick(e, link))
+  );
 
-
-
-
-  // 다크/라이트 모드에 맞춰 링크 색상 적용
+  // -----------------------------
+  // 🎨 다크/라이트 모드
+  // -----------------------------
   function applyLinkColors() {
     const isDark = document.body.classList.contains('dark-mode');
     gnbLinks.forEach(a => a.style.color = isDark ? "#dbdbdb" : "#252525");
-    if (activeLink) {
-      activeLink.style.color = isDark ? "#252525" : "#ffffff";
-    }
+    if (activeLink) activeLink.style.color = isDark ? "#252525" : "#ffffff";
   }
 
-  // 📌 Dark Mode 애니메이션 설정 객체
 const themeAnimationConfig = {
   dark: {
     buttonText: 'DARK',
@@ -396,122 +324,413 @@ themeToggle.addEventListener('click', function (e) {
     });
   });
 }
-});
 
-// 가로스크롤 start
-// 가로 스크롤 + 버튼 이동
+}); // ← Header block end
+
+
+// ------------------------------------
+// ② ScrollTrigger / Narrative / About motion
+// ------------------------------------
 window.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin); // ScrollToPlugin 없으면 등록만 되고 무시됨
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+  // =====================================================
+  // [1] Horizontal Scroll Setup
+  // =====================================================
   const sections = gsap.utils.toArray(".narrative-container section");
   const getScrollLen = () => sections.reduce((s, el) => s + el.offsetWidth, 0) - window.innerWidth;
-
   let scrollLen = getScrollLen();
 
-  gsap.to(sections, {
+  // 가로 스크롤 기본 애니메이션
+  const horizontalScroll = gsap.to(sections, {
     x: -scrollLen,
     ease: "none",
     scrollTrigger: {
-      id: "narrativeScroll",            // ← 이 id로 찾음
+      id: "narrativeScroll",
       trigger: ".narrative-container",
       pin: true,
       scrub: 1,
       start: "top top",
-      end: () => "+=" + scrollLen
-    }
+      end: () => "+=" + scrollLen,
+      invalidateOnRefresh: true,
+    },
   });
 
-  // 스크롤 버튼 → #next-section으로
+  // Scroll 버튼 (→ 다음 섹션 이동)
   document.querySelector(".scroll-btn")?.addEventListener("click", (e) => {
     e.preventDefault();
     const target = document.querySelector("#next-section");
     const st = ScrollTrigger.getById("narrativeScroll");
-    if (!target || !st) return;
-
-    // 가로 offsetLeft → 세로 스크롤 위치로 변환
-    const y = Math.min(st.start + target.offsetLeft, st.end);
-
-    if (gsap.plugins && gsap.plugins.scrollTo) {
-      gsap.to(window, { scrollTo: y, duration: 1, ease: "power2.inOut" });
-    } else {
-      window.scrollTo({ top: y, behavior: "smooth" }); // 플러그인 없을 때도 동작
-    }
+    if (target && st)
+      gsap.to(window, {
+        scrollTo: st.start + target.offsetLeft,
+        duration: 1,
+        ease: "power2.inOut",
+      });
   });
 
-  // 리사이즈 반영
   window.addEventListener("resize", () => {
     scrollLen = getScrollLen();
     ScrollTrigger.refresh();
   });
 
-
-  // 로고 회전
-  [
-    { selector: ".line1 .logo-spin", trigger: ".visual", start: "top top", end: "bottom top" },
-    { selector: ".footer-spin", trigger: "body", start: "top bottom", end: "bottom top" }
-  ].forEach(cfg => {
-    gsap.to(cfg.selector, {
-      rotation: 360,
-      ease: "none",
-      scrollTrigger: { trigger: cfg.trigger, start: cfg.start, end: cfg.end, scrub: 0.1 }
-    });
+  // =====================================================
+  // [2] Hero Intro
+  // =====================================================
+  gsap.from(".mainTitle p, .visual .subText .copyright, .visual .subText .desc", {
+    y: 300,
+    opacity: 0,
+    duration: 1.4,
+    ease: "expo.out",
+    stagger: 0.15,
   });
 
-  // 표지 hover 시 메인 이미지 변경
+  gsap.from(".logo-spin", {
+    rotate: -180,
+    opacity: 0,
+    duration: 1.8,
+    ease: "power3.out",
+    delay: 0.5,
+  });
+
+  gsap.to(".image-view img", {
+    yPercent: -10,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".narrative",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1,
+    },
+  });
+
+  gsap.from(".about .right img", {
+    opacity: 0,
+    y: 60,
+    rotate: -3,
+    duration: 1.2,
+    ease: "power3.out",
+    scrollTrigger: { trigger: ".about", start: "top 80%" },
+  });
+
+  // =====================================================
+  // [3] Narrative 탭 hover 시 메인 이미지 & 텍스트 변경
+  // =====================================================
   const tabs = document.querySelectorAll(".tab");
   const mainImage = document.getElementById("mainImage");
   const mainTxt = document.getElementById("mainTxt");
   const defaultImage = "images/narrativePhoto.png";
   const defaultText = "각 키워드에 호버해보세요 ☺";
 
-tabs.forEach(tab => {
-  tab.addEventListener("mouseenter", () => {
-    // 이미지 애니메이션
-    mainImage.classList.add("reveal");
-    mainTxt.classList.add("text-out");
+  tabs.forEach((tab) => {
+    tab.addEventListener("mouseenter", () => {
+      gsap.to(mainImage, { opacity: 0, duration: 0.3, ease: "power2.out" });
+      gsap.to(mainTxt, { opacity: 0, y: -10, duration: 0.3, ease: "power2.out" });
 
-    setTimeout(() => {
-      // 새로운 이미지 & 텍스트 적용
-      mainImage.src = `images/${tab.dataset.image}`;
-      mainTxt.textContent = tab.dataset.text;
+      setTimeout(() => {
+        mainImage.src = `images/${tab.dataset.image}`;
+        mainTxt.textContent = tab.dataset.text;
+        gsap.to(mainImage, { opacity: 1, duration: 0.4, ease: "power2.out" });
+        gsap.fromTo(
+          mainTxt,
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }
+        );
+      }, 300);
+    });
 
-      // 애니메이션 리셋 + 반대방향으로 나타남
-      mainImage.classList.remove("reveal");
-      mainTxt.classList.remove("text-out");
-      mainTxt.classList.add("text-in");
+    tab.addEventListener("mouseleave", () => {
+      gsap.to(mainImage, { opacity: 0, duration: 0.3, ease: "power2.out" });
+      gsap.to(mainTxt, { opacity: 0, y: -10, duration: 0.3, ease: "power2.out" });
 
-      // text-in 효과 끝나면 제거 (다음 애니를 위해)
-      setTimeout(() => mainTxt.classList.remove("text-in"), 600);
-    }, 400);
+      setTimeout(() => {
+        mainImage.src = defaultImage;
+        mainTxt.textContent = defaultText;
+        gsap.to(mainImage, { opacity: 1, duration: 0.4, ease: "power2.out" });
+        gsap.fromTo(
+          mainTxt,
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }
+        );
+      }, 300);
+    });
   });
 
-  tab.addEventListener("mouseleave", () => {
-    // 원래 이미지/텍스트로 복귀
-    mainImage.classList.add("reveal");
-    mainTxt.classList.add("text-out");
+  // =====================================================
+  // [4] Section Animations (containerAnimation 기준)
+  // =====================================================
 
-    setTimeout(() => {
-      mainImage.src = defaultImage;
-      mainTxt.textContent = defaultText;
-
-      mainImage.classList.remove("reveal");
-      mainTxt.classList.remove("text-out");
-      mainTxt.classList.add("text-in");
-
-      setTimeout(() => mainTxt.classList.remove("text-in"), 600);
-    }, 400);
+  // ① 키워드 (narrative)
+  gsap.from(".narrative .tabList li", {
+    opacity: 0,
+    y: 40,
+    duration: 1.2,
+    ease: "power3.out",
+    stagger: 0.15,
+    scrollTrigger: {
+      trigger: ".narrative",
+      containerAnimation: horizontalScroll,
+      start: "left 80%",
+      once: true,
+    },
   });
+
+  // ② Orizin
+
+  gsap.from(".orizin .imgs li:nth-child(1)", {
+    x: -80,
+    opacity: 0,
+    duration: 1.4,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".orizin",
+      containerAnimation: horizontalScroll,
+      start: "left center",
+      once: true,
+    },
+  });
+
+  gsap.from(".orizin .imgs li:nth-child(2)", {
+    x: 80,
+    opacity: 0,
+    duration: 1.4,
+    ease: "power3.out",
+    delay: 0.1,
+    scrollTrigger: {
+      trigger: ".orizin",
+      containerAnimation: horizontalScroll,
+      start: "left center",
+      once: true,
+    },
+  });
+
+  gsap.from(".orizin .des", {
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    delay: 0.4,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".orizin",
+      containerAnimation: horizontalScroll,
+      start: "left 70%",
+      once: true,
+    },
+  });
+
+
+
+
+// ③ Now (폴더 열림 + 이미지 인입 + 패럴랙스 + 텍스트)
+
+// 0️. 초기 세팅
+gsap.set(".now .inner .left .folder .images .img01", { x: -200, y: 50, rotate: -10, opacity: 0 });
+gsap.set(".now .inner .left .folder .images .img02", { x: 250, y: -80, rotate: 8, opacity: 0 });
+gsap.set(".now .inner .left .folder .images .img03", { x: 120, y: 200, rotate: -5, opacity: 0 });
+gsap.set(".now .inner .left .folder .folder-content img", { transformOrigin: "bottom center", rotateX: 0 });
+
+// 1️. 폴더 열림 + 이미지 인입 타임라인
+const nowTL = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".now",
+    containerAnimation: horizontalScroll,
+    start: "left center",
+    once: true,
+  },
+});
+
+// (1) 폴더 아이콘 열림
+nowTL.to(".now .inner .left .folder .folder-content img", {
+  rotateX: 25,
+  duration: 0.5,
+  ease: "power2.out",
+})
+// (2) 이미지 등장
+.to(".now .inner .left .folder .images .img01", {
+  x: 0,
+  y: 0,
+  rotate: 0,
+  opacity: 1,
+  duration: 1.2,
+  ease: "power3.out",
+}, "-=0.1")
+.to(".now .inner .left .folder .images .img02", {
+  x: 0,
+  y: 0,
+  rotate: 0,
+  opacity: 1,
+  duration: 1.2,
+  ease: "power3.out",
+}, "-=0.8")
+.to(".now .inner .left .folder .images .img03", {
+  x: 0,
+  y: 0,
+  rotate: 0,
+  opacity: 1,
+  duration: 1.2,
+  ease: "power3.out",
+}, "-=0.8")
+// (3) 폴더 닫히듯 복귀
+.to(".now .inner .left .folder .folder-content img", {
+  rotateX: 0,
+  duration: 0.6,
+  ease: "power1.inOut",
+}, "-=0.5");
+
+// 2. 폴더 패럴랙스 (스크롤 시 위아래 살짝 움직임)
+gsap.utils.toArray(".now .inner .left .folder").forEach((folder, i) => {
+  gsap.to(folder, {
+    y: i % 2 === 0 ? -20 : 20,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".now",
+      containerAnimation: horizontalScroll,
+      start: "left center",
+      end: "right center",
+      scrub: 1,
+    },
+  });
+});
+
+// 3. 텍스트 페이드업
+gsap.from(".now .des", {
+  opacity: 0,
+  y: 60,
+  duration: 1.2,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".now",
+    containerAnimation: horizontalScroll,
+    start: "left 80%",
+    once: true,
+  },
+});
+
+
+// ④ Become (시네마틱 리빌)
+const becomeTL = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".become",
+    containerAnimation: horizontalScroll, // ✅ 가로 스크롤 연동
+    start: "left center",
+    once: true,
+  },
+});
+
+// 1️. 타이틀 등장 (각 단어별 stagger)
+becomeTL.from(".become .left h2 span", {
+  yPercent: 100,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power4.out",
+  stagger: 0.15,
+});
+
+// 2️. 타원형 DESIGN 버튼
+becomeTL.from(".become .left .oval-text", {
+  scale: 0.85,
+  opacity: 0,
+  filter: "blur(6px)",
+  duration: 1.1,
+  ease: "back.out(1.7)",
+}, "-=0.8");
+
+// 3️. 서브 카피 [Evolving Vision]
+becomeTL.from(".become .left .vision", {
+  opacity: 0,
+  y: 40,
+  duration: 1.2,
+  ease: "power3.out",
+  stagger: 0.15,
+}, "-=0.6");
+
+//  4. 텍스트 페이드업
+gsap.from(".become .des", {
+  opacity: 0,
+  y: 60,
+  duration: 1.2,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".become",
+    containerAnimation: horizontalScroll,
+    start: "left 80%",
+    once: true,
+  },
+});
+
+// 5. Become Right Image (Reactive 3D Tilt)
+const becomeImg = document.querySelector(".become .inner .right img");
+
+if (becomeImg) {
+  // 등장 애니메이션 (살짝 오른쪽에서 fade-in)
+  gsap.from(becomeImg, {
+    x: 100,
+    opacity: 0,
+    scale: 0.98,
+    duration: 1.2,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".become",
+      containerAnimation: horizontalScroll,
+      start: "left 70%",
+      once: true,
+    },
+  });
+
+  // 리액티브 3D tilt (마우스 움직임에 반응)
+  const maxRotate = 6; // 기울기 강도
+  const maxMove = 20; // 이동량
+
+  becomeImg.addEventListener("mousemove", (e) => {
+    const rect = becomeImg.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // 중앙 기준 -0.5 ~ 0.5로 정규화
+    const rotateY = ((x / rect.width) - 0.5) * maxRotate * 2;
+    const rotateX = ((y / rect.height) - 0.5) * -maxRotate * 2;
+    const moveX = ((x / rect.width) - 0.5) * maxMove;
+    const moveY = ((y / rect.height) - 0.5) * maxMove;
+
+    gsap.to(becomeImg, {
+      rotateY,
+      rotateX,
+      x: moveX,
+      y: moveY,
+      scale: 1.03,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  });
+
+  // 마우스 나가면 원래 위치로 복귀
+  becomeImg.addEventListener("mouseleave", () => {
+    gsap.to(becomeImg, {
+      rotateY: 0,
+      rotateX: 0,
+      x: 0,
+      y: 0,
+      scale: 1,
+      duration: 0.6,
+      ease: "power3.out",
+    });
+  });
+}
+
 });
 
 
 
-  // Tooltip 이동
+// ------------------------------------
+// ③ Tooltip, Keywords, Accordion, Works Filter
+// ------------------------------------
+window.addEventListener("DOMContentLoaded", () => {
   const tooltip = document.querySelector(".tooltip");
   const nowSection = document.querySelector(".narrative-container .now");
   if (tooltip && nowSection) {
     gsap.to(tooltip, {
       top: "50%",
-      left: "18%",
+      left: "20%",
       ease: "none",
       scrollTrigger: {
         trigger: ".now",
@@ -522,84 +741,99 @@ tabs.forEach(tab => {
     });
   }
 
-  // keywords 반복 텍스트
+  // Works Title Cinematic Entrance
+  gsap.from(".works .title", {
+    x: -250,
+    scale: 0.95,
+    opacity: 0,
+    duration: 1.8,
+    ease: "power4.out",
+    scrollTrigger: {
+      trigger: ".works .title",
+      start: "top 85%",
+      once: true
+    }
+  });
+
   const scrollText = document.querySelector(".keyWords .scrollText");
   if (scrollText) {
     scrollText.innerHTML = scrollText.innerHTML.repeat(3);
-    gsap.to(scrollText, {
-      x: "-50%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".keyWords",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1
-      }
-    });
+    gsap.to(scrollText, { x: "-50%", ease: "none", scrollTrigger: { trigger: ".keyWords", start: "top bottom", end: "bottom top", scrub: 1 } });
   }
 
-  // About 아코디언
   const accordionItems = document.querySelectorAll(".accordion-item");
   accordionItems.forEach(item => {
     const tit = item.querySelector(".accordion-tit");
     const content = item.querySelector(".accordion-content");
-    tit?.addEventListener("click", () => {
+    tit.addEventListener("click", () => {
       const active = item.classList.contains("active");
-      accordionItems.forEach(i => {
-        i.classList.remove("active");
-        i.querySelector(".accordion-content").style.maxHeight = 0;
-      });
-      if (!active) {
-        item.classList.add("active");
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
+      accordionItems.forEach(i => { i.classList.remove("active"); i.querySelector(".accordion-content").style.maxHeight = 0; });
+      if (!active) { item.classList.add("active"); content.style.maxHeight = content.scrollHeight + "px"; }
     });
   });
 
-// Works filter indicator
-const filterItems = document.querySelectorAll(".filter-item");
-const indicator = document.querySelector(".filter-indicator");
-
-filterItems.forEach(item => {
-  item.addEventListener("click", () => {
-    filterItems.forEach(i => i.classList.remove("active"));
-    item.classList.add("active");
-    gsap.to(indicator, { x: item.offsetLeft, duration: 0.5, ease: "power2.out" });
-
-    const isDark = document.body.classList.contains('dark-mode');
-
-    // 아이콘과 설명 텍스트 재적용 (초기화 방지)
-    const iconPaths = document.querySelectorAll(".works .inner .portfolio-grid .card .thumbnail .icon-circle svg path");
-    const descriptions = document.querySelectorAll(".works .inner .portfolio-grid .card .card-content .description");
-
-    iconPaths.forEach(path => {
-      path.style.fill = isDark ? "#dbdbdb" : "#252525";
-      path.style.stroke = "none";
-    });
-
-    descriptions.forEach(desc => {
-      desc.style.color = isDark ? "#999999" : "#666666";
+  const filterItems = document.querySelectorAll(".filter-item");
+  const indicator = document.querySelector(".filter-indicator");
+  filterItems.forEach(item => {
+    item.addEventListener("click", () => {
+      filterItems.forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+      gsap.to(indicator, { x: item.offsetLeft, duration: 0.5, ease: "power2.out" });
     });
   });
+  
 });
 
+// ===============================
+// Icon-circle Cinematic Hover Animation (모든 카드 자동 감지)
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.querySelector(".works .inner .portfolio-grid");
+  if (!grid) return;
 
-
-  // Works 카드 hover → icon-circle 애니메이션
-  const portfolioGrid = document.querySelector(".works .inner .portfolio-grid");
-  portfolioGrid?.addEventListener("mouseenter", e => {
+  grid.addEventListener("mouseenter", e => {
     const card = e.target.closest(".card");
     if (!card) return;
-    const icon = card.querySelector(".icon-circle svg");
+
+    const icon = card.querySelector(".icon-circle");
     if (!icon) return;
-    gsap.to(icon, {
-      xPercent: 100,
-      duration: 0.25,
-      ease: "power2.in",
-      onComplete: () => {
-        gsap.set(icon, { xPercent: -100 });
-        gsap.to(icon, { xPercent: 0, duration: 0.25, ease: "power2.out" });
+
+    // 트윈 중복 방지
+    gsap.killTweensOf(icon);
+
+    // hover-in: 회전 + scale + glow
+    gsap.fromTo(icon,
+      {
+        scale: 0.7,
+        opacity: 0,
+        rotate: -25,
+        filter: "drop-shadow(0 0 0px rgba(255,255,255,0))"
+      },
+      {
+        scale: 1.05,
+        opacity: 1,
+        rotate: 0,
+        filter: "drop-shadow(0 0 12px rgba(255,255,255,0.4))",
+        duration: 0.5,
+        ease: "power3.out"
       }
+    );
+
+    // subtle pulse (빛이 1회 살짝 퍼졌다 사라짐)
+    gsap.to(icon, {
+      scale: 1,
+      filter: "drop-shadow(0 0 0px rgba(255,255,255,0))",
+      duration: 0.6,
+      ease: "power2.inOut",
+      delay: 0.45
     });
   }, true);
+
+  const svg = icon.querySelector("svg");
+gsap.fromTo(svg, { rotate: -45 }, { rotate: 0, duration: 0.5, ease: "expo.out" });
+
 });
+
+
+
+

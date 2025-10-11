@@ -94,15 +94,15 @@ header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; j
 #fortuneModal .modal-content .content .cards .card-03 { animation-delay: 0.6s; }
 
 #fortuneModal .cards li .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); transform-origin: center center; }
-#fortuneModal .cards li:not(.selected):not(.centered):not(.fade-out) .card-inner:hover { transform: scale(1.01) translateY(-10px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+#fortuneModal .cards li:not(.selected):not(.centered):not(.fade-out) .card-inner:hover {transform: translateY(-8px) rotateX(2deg) scale(1.02); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);}
 #fortuneModal .cards li.selected .card-inner { transform: translateY(-10px) scale(1.01); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
 /* 중앙 정렬 상태 - 위치만 변경 */
-#fortuneModal .cards li.centered { position: fixed !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; z-index: 10; transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+#fortuneModal .cards li.centered { position: fixed !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%)  scale(1.05) rotateX(2deg) !important; z-index: 10; transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
 
 /* 중앙 정렬된 후 카드 뒤집기 */
 #fortuneModal .cards li.centered .card-inner { transform: none !important; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s; /* 0.3초 딜레이 */ }
-#fortuneModal .cards li.centered.flipped .card-inner { transform: rotateY(180deg) !important; }
+#fortuneModal .cards li.centered.flipped .card-inner { transform: rotateY(180deg) !important;  transition: transform 0.9s cubic-bezier(0.68,-0.55,0.27,1.55);}
 
 #fortuneModal .cards li.fade-out .card-inner { transform: scale(1) translateY(0px); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 #fortuneModal .cards li.fade-out { opacity: 0 !important; transform: scale(0.9) translateY(30px) !important; pointer-events: none !important; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
@@ -122,7 +122,12 @@ header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; j
 #fortuneModal .modal-content .content .select-btn { font-size: 18px; font-weight: 500; width: 300px; height: 60px; box-sizing: border-box; border: 1px solid #252525; display: inline-flex; justify-content: center; align-items: center; border-radius: 50px; cursor: pointer; position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); opacity: 0; pointer-events: none; transition: all 0.5s ease; z-index: 20; }
 #fortuneModal .modal-content .content .select-btn.show { bottom: 50px; opacity: 1; pointer-events: all; }
 
-@keyframes cardAppear { to { opacity: 1; transform: translateY(0); } }
+@keyframes cardAppear {
+  0% { opacity: 0; transform: translateY(60px) rotateX(8deg) scale(0.95); }
+  60% { opacity: 1; transform: translateY(-4px) rotateX(0deg) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 
 
 
@@ -141,7 +146,6 @@ header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; j
 .narrative-container {position: relative; display: flex; width: 100%; height: 100vh; overflow: hidden; scroll-behavior: smooth;}
 .narrative .inner {position: relative; height: 100%; box-sizing: border-box;}
 
-
 /* 네러티브 표지 */
 .narrative .inner::before {content: ''; position: absolute; top: 50%; left: 50%; width: 1px; height: 78%; background: #ccc; transform: translate(-50%, -50%); z-index: 1;}
 .narrative .inner::after {content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background:#ccc; transform: translateY(-50%); z-index: 1;}
@@ -157,7 +161,7 @@ header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; j
 
 .narrative .image-view {position: absolute; z-index: 999; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center;}
 
-.narrative .image-view img {margin-bottom: 20px;}
+/* .narrative .image-view img {margin-bottom: 20px;} */
 #mainImage {position:relative;display:block;width: 288px; height: 384px; object-fit: cover;object-fit:cover;clip-path:inset(0 0 0 0);transition:clip-path 0.6s ease-in-out;}
 #mainImage.reveal {clip-path:inset(0 0 100% 0);}
 #mainTxt {display:inline-block;opacity:1;transform:translateY(0);transition:opacity 0.5s ease,transform 0.6s ease;}
@@ -195,8 +199,11 @@ section .inner .des .kr {line-height: 24px;}
 .orizin .inner .content .txt .en3 {letter-spacing: 0; font-size: 40px;}
 
 /* orizin-content 사진 hover */
-.orizin .inner .content .imgs li img {width: 330px; height: 380px; cursor: pointer;}
-.orizin .inner .content .imgs li img:hover {filter: grayscale(0%);}
+.orizin .inner .content .imgs li { overflow: hidden; }
+.orizin .inner .content .imgs li .img-wrap { width: 330px; height: 380px; overflow: hidden; margin-bottom: 20px;}
+.orizin .inner .content .imgs li .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.9); transform: scale(1); transform-origin: center center; transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), filter 0.6s ease; }
+.orizin .inner .content .imgs li .img-wrap img:hover { filter: grayscale(0%) brightness(1.05) contrast(1.05); transform: scale(1.1); }
+
 
 /* Section-now */
 .now {width: 100vw; height: 100%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative;}
@@ -206,6 +213,20 @@ section .inner .des .kr {line-height: 24px;}
 .now .inner .left .folder::before {content: ''; display: block; width: 100%; height: 100%; visibility: hidden;} /* 레이아웃 유지용 */
 .now .inner .left .folder .images {position: absolute; bottom: 20%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center;  z-index: 1; cursor: pointer;}
 .now .inner .left .folder .images > img {width: 113px; height: 138px; display: block; margin-bottom: 10px; border: 4px solid #fff; box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15);}
+.now .inner .left .folder .folder-content img {
+  will-change: transform;
+  transform-origin: bottom center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.now .inner .left .folder .images img {
+  will-change: transform, opacity;
+  transform-origin: center center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+
 .now .inner .left .folder .images .img01 {transform: rotate(-24deg);}
 .now .inner .left .folder .images .img02 {position: absolute; z-index: 1; bottom: 20%;}
 .now .inner .left .folder .images .img03 {transform: rotate(24deg); z-index: 2;}
@@ -256,8 +277,15 @@ section .inner .des .kr {line-height: 24px;}
 .become .inner .left .tit .line1 .en3 , .become .inner .left .tit .line2 .en3 {color: #B7D3C6;  white-space: nowrap;}
 .become .inner .left .tit .line2 {margin-left: 155px;}
 .become .inner .left .tit .point {font-size: 60px; padding: 20px 104px; box-sizing: border-box; border: 1px solid #252525; border-radius: 60%; margin-right: 20px;}
-.become .inner .right img {width: 468px; height: 736px; transition: all 0.3s; cursor: pointer; border: 1px solid #252525; border-radius: 50%;}
-.become .inner .right img:hover {transform: rotate(10deg); transition: all 0.3s;}
+.become .inner .right img {width: 468px; height: 736px; cursor: pointer; border: 1px solid #252525; will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 0.3s ease;
+  border-radius: 50%;
+  overflow: hidden;}
+/* .become .inner .right img:hover {transform: rotate(10deg); transition: all 0.3s;} */
+
+
 /* Section-keyword */
 .keyWords .textWrap {padding: 200px 195px; box-sizing: border-box; text-align: center; line-height: 1;}
 .keyWords .textWrap > div:not(:last-child) {margin-bottom: 10px;}
@@ -354,7 +382,7 @@ transform-origin: center;}
 .works {margin-top: 130px; width: 100%;}
 .works .inner {position: relative;}
 .works .title {font-size: 600px; line-height: 1; letter-spacing: -24px;
-font-weight: 500; margin-left: -217px; display: flex;}
+font-weight: 500;}
 .works .inner .topText {margin-top: 150px; display: flex; justify-content: space-between; font-size: 48px; line-height: 60px; letter-spacing: -1.92px;}
 
 .works .inner .filter-wrapper { position: relative; }
@@ -369,8 +397,9 @@ font-weight: 500; margin-left: -217px; display: flex;}
 .works .inner .portfolio-grid .card {cursor: pointer;}
 .works .inner .portfolio-grid .card .thumbnail {position: relative; overflow: hidden;}
 .works .inner .portfolio-grid .card .thumbnail .icon-circle  {display: inline-flex;
-justify-content: center; align-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; cursor: pointer; overflow: hidden; position: absolute; bottom: 20px; left: 20px;}
+justify-content: center; align-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; cursor: pointer; overflow: hidden; position: absolute; bottom: 20px; left: 20px; }
 .works .inner .portfolio-grid .card .thumbnail .icon-circle svg {display: block;}
+
 
 .works .inner .portfolio-grid .card .card-content {margin-top: 20px;}
 .works .inner .portfolio-grid .card .card-content .tit {display: flex;justify-content: space-between; align-items: center;  font-weight: 500;}
@@ -546,7 +575,7 @@ body.dark-mode .my-photo .inner .text-wrap a.within-cta::before,body.dark-mode .
 .my-photo #photoModal .modal-content  {width: 100%; height: 100vh; border-radius: 0%; box-shadow: none;}
 .my-photo #photoModal .modal-content .content {height: 100vh; padding: 40px 245px; box-sizing: border-box; text-align: center;  display: flex; justify-content: space-between; flex-direction: column; position: relative; }
 #photoModal .modal-nav-btn {position: absolute; top: 50%; transform: translateY(-50%);
-border: none; width: 50px; height: 50px; background: none; cursor: pointer; transition: all 0.2s ease;}
+border: none; width: 50px; height: 50px; background: none; cursor: pointer; opacity: 0.7; transition: opacity 0.3s ease, transform 0.3s ease;}
 #photoModal .modal-nav-btn:hover:not(:disabled) {transform: translateY(-50%) scale(1.2); transition: all 0.2s ease;}
 #photoModal .modal-nav-btn:disabled {opacity: 0.3; cursor: not-allowed;}
 #photoModal .modal-nav-prev {left: 96px;}
@@ -554,6 +583,8 @@ border: none; width: 50px; height: 50px; background: none; cursor: pointer; tran
 .modal-photo-wrapper img {width: 440px; height: 720px; object-fit: cover;}
 .modal-photo-info .modal-photo-title {font-size: 18px; font-weight: 500; color: #f5f5f5; margin-bottom: 10px;}
 .modal-photo-info .modal-photo-description {color: #dbdbdb}
+
+
 
 
 /* Section-footer */
@@ -567,3 +598,6 @@ border: none; width: 50px; height: 50px; background: none; cursor: pointer; tran
 .footer .inner .footer-bottom {margin-top: 160px; display: flex; justify-content: space-between;}
 .footer .inner .footer-bottom .brand {font-size: 150px; letter-spacing: -6px; line-height: 1; white-space: nowrap;}
 .footer .inner .footer-meta {margin-top: 40px; display: flex; justify-content: space-between; text-transform: uppercase; padding-top: 10px; border-top: 1px solid #dbdbdb;}
+
+
+
