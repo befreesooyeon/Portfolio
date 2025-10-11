@@ -530,9 +530,6 @@ window.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-
-
-
 // ③ Now (폴더 열림 + 이미지 인입 + 패럴랙스 + 텍스트)
 
 // 0️. 초기 세팅
@@ -729,9 +726,9 @@ if (becomeImg) {
   });
 }
 
+
+
 });
-
-
 
 // ------------------------------------
 // ③ Tooltip, Keywords, Accordion, Works Filter
@@ -843,8 +840,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const svg = icon.querySelector("svg");
 gsap.fromTo(svg, { rotate: -45 }, { rotate: 0, duration: 0.5, ease: "expo.out" });
-
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const myPhoto = document.querySelector(".my-photo");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        myPhoto.classList.add("visible");
+        observer.unobserve(myPhoto); // 한 번만 실행
+      }
+    });
+  }, { threshold: 0.4 }); // 40% 정도 화면에 들어오면 실행
+
+  observer.observe(myPhoto);
+});
+
+
+
+
+
+
 
 
 
