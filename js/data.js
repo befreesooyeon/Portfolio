@@ -321,126 +321,23 @@ aboutCategory: "Clone Coding",
     aboutRole: "Individual Project<br>Role: Frontend Developer<br>Contribution: 100%",
     aboutCategory: "Clone Coding",
     },
-    // {
-    // id: "10",
-    // title: "Henri Matisse Leaflet Design",
+    {
+    id: "10",
+    title: "Graphic Design",
     // navTitle: "Henri Matisse",
-    // image: "./images/henri_cover.png",
-    // category: "(EDITORIAL)",
-    // description: "앙리 마티스의 컷 아웃 기반 리플렛 디자인 프로젝트입니다.",
-    // siteUrl: "https://example.com/henri-matisse-leaflet",
+    image: "./images/Graphic_cover.gif",
+    category: "(GRAPHIC)",
+    description: "대학 시절 진행한 그래픽 디자인 프로젝트를 한눈에 볼 수 있도록 정리했습니다.",
+    siteUrl: "https://drive.google.com/file/d/1gyBYNnpeX7VjykShMw9VINcXhZZG3Crt/view?usp=sharing",
 
-    // visualImg: "./images/henri_visual.png",
-    // viewLabel: "WORKES - HENRI MATISSE",
-    // about: "예술가의 철학과 작품 세계를 효과적으로 전달하기 위해 3명의 팀원과 협업하여,<br>Henri Matisse의 예술적 감성을 담은 리플렛을 구현했습니다.",
-    // aboutDate: "2021.11.01~<br>11.30",
-    // aboutRole: "Team Project · 3 Members<br>Role: Graphic Designer<br>Contribution: 80%",
-    // aboutCategory: "Editorial Design",
-    // bannerImage: "./images/henri_banner.png",
-    // overview: [
-    //     "기존 전시 리플렛들은 단순한 정보 전달에 집중되어,<br>예술가의 <span>창작 철학과 감성</span>을 충분히 전달하지 못하는 문제가 있었습니다.",
-    //     "<br>본 프로젝트는 리플렛을 단순한 안내서가 아닌, <br>마티스의 컷 아웃 기법을 활용하여 작품과 철학을 시각적으로 경험할 수 있는 아트 오브젝트로 재정의하여<br>관람객들에게 <span>예술적 감동</span>을 선사하고자 기획되었습니다."
-    // ],
-    // overviewRoles: [
-    //     "Team Leader & Graphic Designer",
-    //     "컨셉 기획 · 컷 아웃 디자인 · 타이포그래피 · 레이아웃 · 인쇄 감리 주도",
-    //     "디자인 기획서 80% 참여, 팀 전체 피드백 및 방향성 관리"
-    // ],
-    // overviewImpact: ["전시 방문객 반응 상승, 리플렛 수집률 크게 증가", "예술 전시 리플렛의 새로운 기준 제시와 예술적 가치 부여"],
-    // overviewQuote: "Art into Paper — 종이 위에 예술을 담아 감동을 전달하다.",
-    // figmaLink: "https://www.figma.com/design/henri-matisse-leaflet",
-    // BriefLink: "https://www.figma.com/proto/henri-matisse-brief",
-    // overviewImage: "./images/henri_mockup1.png",
+    visualImg: "./images/Graphic_visual.gif",
+    viewLabel: "WORKES - GRAPHIC DESIGN",
+    about: "그래픽 디자인을 통해 사고의 폭을 넓히고,<br>시각적 표현의 가능성을 탐구했던 대학 시절의 프로젝트를 담았습니다.",
+    aboutDate: "2021.04~<br>2022.06",
+    aboutRole: "Personal Project<br>Role: Drawing, Graphic Design <br>Contribution: 100%",
+    aboutCategory: "Graphic Design",
+    projectMedia: [],
+    },
 
-    // solutionCollabo: ["컬러풀 컷아웃 아트웍 적용 아이디어 직접 제안", "인쇄 기법 및 후가공 방식 인쇄업체와 협업", "테스트 단계에서 직접 색상 및 레이아웃 수정으로 완성도 향상"],
-    // solutionTest: ["평균 4.6/5점 달성", "창의성·예술성에서 높은 평가 → 전시 경험 만족도 증가"],
-    // solutionAchieve: ["학원 내 4개 팀 중 1위(최우수상) 수상", "최종 피드백 99/100점 획득"],
-    // solutionImage: "./images/henri_mockup2.png",
-
-    // solutionAddImg: true,
-    // solutionAddImg1: "./images/henri_solution_01.png",
-    // solutionAddImg2: "./images/henri_solution_02.png",
-    // solutionAddImg3: "./images/henri_solution_03.png",
-
-    // categoryTit: "Editorial Design",
-    // box1Imgs: [
-    //     "./images/henri_box1_01.png",
-    //     "./images/henri_box1_02.png",
-    //     "./images/henri_box1_03.png",
-    //     "./images/henri_box1_04.png",
-    //     "./images/henri_box1_05.png"
-    // ],
-    // box2Imgs: [
-    //     "./images/henri_box2_01.png",
-    //     "./images/henri_box2_02.png",
-    //     "./images/henri_box2_03.png",
-    //     "./images/henri_box2_04.png",
-    //     "./images/henri_box2_05.png"
-    // ],
-    // bannerImgt: "./images/henri_bannerImg.png",
-    // phone1Img: "./images/henri_phone1.png",
-    // phone2Img: "./images/henri_phone2.png",
-    // phone3Img: "./images/henri_phone3.png"
-    // },
-    // {
-    // id: "11",
-    // title: "graphic?",
-    // navTitle: "Arozjewelry",
-    // image: "./images/arozjewelry_cover.png",
-    // category: "(CLONE CODING)",
-    // description: "프랑스 쥬얼리 브랜드 아로제주얼리 클론 코딩 결과물입니다.",
-    // siteUrl: "https://example.com/arozjewelry-clone",
-
-    // visualImg: "./images/arozjewelry_visual.png",
-    // viewLabel: "WORKES - AROZJEWELRY",
-    // about: "프론트엔드 개발 역량 강화와 고급 웹 기술 습득을 위해 개인 프로젝트로,<br>Arozjewelry의 정교한 클론 사이트를 구현했습니다.",
-    // aboutDate: "2023.04.01~<br>04.30",
-    // aboutRole: "Individual Project<br>Role: Frontend Developer<br>Contribution: 100%",
-    // aboutCategory: "Clone Coding",
-    // bannerImage: "./images/arozjewelry_banner.png",
-    // overview: [
-    //     "기존 학습 과정에서는 단순한 레이아웃 구현에 집중되어,<br>실제 브랜드의 <span>섬세한 디테일과 고급 인터랙션</span>을 구현하지 못하는 한계가 있었습니다.",
-    //     "<br>본 프로젝트는 클론 코딩을 단순한 모방이 아닌, <br>프랑스 럭셔리 브랜드의 정교한 디자인과 인터랙션을 완벽히 재현하여<br>개발자로서 <span>고급 기술력과 디테일</span>을 습득하고자 기획되었습니다."
-    // ],
-    // overviewRoles: [
-    //     "Frontend Developer",
-    //     "HTML 마크업 · CSS 스타일링 · JavaScript 인터랙션 · 반응형 구현 전담",
-    //     "개발 계획 수립 100%, 코드 작성 및 최적화 전 과정 독립 수행"
-    // ],
-    // overviewImpact: ["퍼블리싱 속도 향상, 고급 CSS 기술 습득으로 개발 역량 크게 성장", "럭셔리 브랜드 웹사이트 구현 노하우 습득과 포트폴리오 완성도 향상"],
-    // overviewQuote: "Pixel Perfect Clone — 완벽한 클론으로 개발 실력을 증명하다.",
-    // figmaLink: "https://www.figma.com/design/arozjewelry-clone-reference",
-    // BriefLink: "https://github.com/username/arozjewelry-clone",
-    // overviewImage: "./images/arozjewelry_mockup1.png",
-
-    // solutionCollabo: ["반응형 구현, 인터랙션 모듈 아이디어 직접 구현", "고급 CSS 애니메이션 및 JavaScript 기능 독립적 학습 및 적용", "크로스 브라우징 테스트 단계에서 직접 코드 최적화로 호환성 확보"],
-    // solutionTest: ["개인 학습 목표 100% 달성", "기술적 난이도·완성도에서 스스로 높은 평가 → 개발 자신감 향상"],
-    // solutionAchieve: ["개인 프로젝트 중 최고 완성도 달성", "포트폴리오 기술 스택 다양화 및 실무 경험 축적"],
-    // solutionImage: "./images/arozjewelry_mockup2.png",
-
-    // solutionAddImg: true,
-    // solutionAddImg1: "./images/arozjewelry_solution_01.png",
-    // solutionAddImg2: "./images/arozjewelry_solution_02.png",
-    // solutionAddImg3: "./images/arozjewelry_solution_03.png",
-
-    // categoryTit: "Clone Coding",
-    // box1Imgs: [
-    //     "./images/arozjewelry_box1_01.png",
-    //     "./images/arozjewelry_box1_02.png",
-    //     "./images/arozjewelry_box1_03.png",
-    //     "./images/arozjewelry_box1_04.png",
-    //     "./images/arozjewelry_box1_05.png"
-    // ],
-    // box2Imgs: [
-    //     "./images/arozjewelry_box2_01.png",
-    //     "./images/arozjewelry_box2_02.png",
-    //     "./images/arozjewelry_box2_03.png",
-    //     "./images/arozjewelry_box2_04.png",
-    //     "./images/arozjewelry_box2_05.png"
-    // ],
-    // bannerImgt: "./images/arozjewelry_bannerImg.png",
-    // phone1Img: "./images/arozjewelry_phone1.png",
-    // phone2Img: "./images/arozjewelry_phone2.png",
-    // phone3Img: "./images/arozjewelry_phone3.png"
-    // }
+    
 ];
