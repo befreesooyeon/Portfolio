@@ -3,6 +3,22 @@ export const portfolioData =
 [
     {
     id: "1",
+    title: "PanaPixel",
+    navTitle: "PanaPixel",
+    image: "./images/panapixel_cover.png",
+    category: "(UX UI)",
+    description: "AI 비주얼로 브랜드 아이덴티티를 강화한 자동차 필름 웹 리뉴얼 프로젝트입니다.",
+    siteUrl: "https://pana-pixel-front.vercel.app/",
+
+    visualImg: "./images/panapixel_visual.mp4",
+    viewLabel: "WORKES - PANAPIXEL",
+    about: "자동차 필름 브랜드 웹사이트를 리뉴얼하며 사용성을 개선하고,<br>브랜드 아이덴티티를 시각적으로 강화했습니다.<br>AI 기반 이미지와 영상을 활용해 콘셉트부터 시각 표현까지 완성도 있게 구현했습니다.",
+    aboutDate: "2025.09~<br>2026.01",
+    aboutRole: "Freelance Project<br>Role: Planning, UI Design, Interaction Direction<br>Contribution: 100%",
+    aboutCategory: "UX UI Design",
+    },
+    {
+    id: "2",
     title: "Aesop",
     navTitle: "Aesop",
     image: "./images/Aesop_cover.png",
@@ -60,7 +76,7 @@ export const portfolioData =
     // phone3Img: "./images/aesop_phone3.png"
     },
     {
-    id: "2",
+    id: "3",
     title: "Tamburins",
     navTitle: "Tamburins",
     image: "./images/Tamburins_cover.png",
@@ -121,7 +137,7 @@ export const portfolioData =
     phone3Img: "./images/TphoneImg_03.png"
     },
     {
-    id: "3",
+    id: "4",
     title: "Loopin",
     navTitle: "Loopin",
     image: "./images/Loopin_cover.png",
@@ -182,7 +198,7 @@ export const portfolioData =
     phone3Img: "./images/LphoneImg_03.png"
     },
     {
-id: "4",
+id: "5",
 title: "Subway",
 navTitle: "Subway",
 image: "./images/Subway_cover.gif",
@@ -242,7 +258,7 @@ phone2Img: "./images/SubphoneImg_02.png",
 phone3Img: "./images/SubphoneImg_03.png"
     },
     {
-    id: "5",
+    id: "6",
     title: "Space Tailor Portfolio",
     navTitle: "Space Tailor",
     image: "./images/spacetailor_cover.png",
