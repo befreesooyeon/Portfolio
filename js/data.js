@@ -8,7 +8,7 @@ export const portfolioData =
     image: "./images/panapixel_cover.png",
     category: "(UX UI)",
     description: "AI 비주얼로 브랜드 아이덴티티를 강화한 자동차 필름 웹 리뉴얼 프로젝트입니다.",
-    siteUrl: "https://pana-pixel-front.vercel.app/",
+    siteUrl: "https://www.panapixel.com/",
 
     visualImg: "./images/panapixel_visual.mp4",
     viewLabel: "WORKES - PANAPIXEL",
