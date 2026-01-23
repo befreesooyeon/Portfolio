@@ -1,4 +1,5 @@
 //  script.js
+
 document.addEventListener("DOMContentLoaded", () => {
   const gnb = document.querySelector('.gnb-c');
   const highlight = gnb.querySelector('.highlight');
@@ -374,37 +375,91 @@ window.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.refresh();
   });
 
-  // =====================================================
-  // [2] Hero Intro
-  // =====================================================
-  gsap.from(".mainTitle p, .visual .subText .copyright, .visual .subText .desc", {
-    y: 300,
+// ======================================
+// VISUAL INTRO (GLOBAL)
+// ======================================
+function initVisualIntro() {
+  const visual = document.querySelector(".visual");
+  if (!visual) return;
+
+  const tl = gsap.timeline({
+    defaults: { ease: "power3.out" }
+  });
+
+  // 
+  tl.from(".bg-blur", {
+    y: 40,
+    scale: 0.96,
     opacity: 0,
-    duration: 1.4,
-    ease: "expo.out",
-    stagger: 0.15,
+    duration: 1.6
   });
 
-  gsap.from(".logo-spin", {
-    rotate: -180,
-    opacity: 0,
-    duration: 1.8,
-    ease: "power3.out",
-    delay: 0.5,
-  });
+  // 텍스트 인트로
+  tl
+    .from(".visual .top .en9", {
+      y: 40,
+      opacity: 0,
+      duration: 0.9
+    }, "-=0.9")
+    .from(".visual .top .tit-sans", {
+      y: 28,
+      opacity: 0,
+      duration: 0.8
+    }, "-=0.6")
+    .from(".visual .bottom .caption", {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.08
+    }, "-=0.5")
+    .from(".visual .center-wrap", {
+      y: 18,
+      opacity: 0,
+      duration: 0.6
+    }, "-=0.4");
 
-    // 로고 회전
-  [
-    { selector: ".line1 .logo-spin", trigger: ".visual", start: "top top", end: "bottom top" },
-    { selector: ".footer-spin", trigger: "body", start: "top bottom", end: "bottom top" }
-  ].forEach(cfg => {
-    gsap.to(cfg.selector, {
-      rotation: 360,
-      ease: "none",
-      scrollTrigger: { trigger: cfg.trigger, start: cfg.start, end: cfg.end, scrub: 0.1 }
-    });
-  });
+  const wrap = visual.querySelector(".center-wrap");
+  const circle = wrap?.querySelector(".circle-text");
+  if (!wrap || !circle) return;
 
+  let isAnimating = false;
+
+  wrap.addEventListener("mouseenter", () => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    gsap.timeline({
+      defaults: { ease: "power2.out" },
+      onComplete: () => (isAnimating = false)
+    })
+      .to(circle, { x: 14, rotation: -5, duration: 0.14 })
+      .to(circle, { x: -10, rotation: 4, duration: 0.16 })
+      .to(circle, { x: 6, rotation: -2, duration: 0.16 })
+      .to(circle, { x: 0, rotation: 0, duration: 0.24, ease: "power3.out" });
+  });
+}
+
+
+initVisualIntro();
+
+
+
+// ================================
+// 2. ABOUT – IMAGE PARALLAX
+// ================================
+gsap.to(".image-view img", {
+  yPercent: -10,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".narrative",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: 1
+  }
+});
+
+
+  // about 이미지
   gsap.to(".image-view img", {
     yPercent: -10,
     ease: "none",

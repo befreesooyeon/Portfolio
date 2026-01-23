@@ -52,6 +52,7 @@ body.dark-mode .fill-btn:hover svg path {fill:#252525 !important;}
 .en6 {font-family: 'Ogg'; font-weight: 500; line-height: 1;}
 .en7 {font-family: 'Ogg-Book'; letter-spacing: -2px;}
 .en8 {font-family: 'Ampersand'; font-style: italic; line-height: 1; font-weight: normal; letter-spacing: -1px;}
+.en9 {font-family: 'Fragment'; font-style: italic; line-height: 1; font-weight: normal;}
 
 /* header */
 header {position: fixed; top: 0; left: 0; width: 100%; height: 40px; z-index: 10000; margin-top: 20px; font-size: 17px;}
@@ -132,16 +133,39 @@ header .innerHeader .gnb-r ul li a {display: inline-flex; align-items: center; j
 
 
 /* Section-visual */
-.visual { width: 100%; height: 100vh; text-align: right; position: relative;}
-.visual .inner {display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding: 170px 0 130px; box-sizing: border-box;}
-.visual .mainTitle { text-align: right;}
+.visual { width: 100%; height: 100vh; position: relative; overflow: hidden;}
+.visual .bg-blur {position: absolute; inset: 0; z-index: 0; pointer-events: none;}
+.visual .blur-shape {position: absolute; top: 50%; left: 50%;
+transform: translate(-50%, -50%);}
+
+.visual .inner {display: flex; height: 100%; padding: 130px 0 70px; box-sizing: border-box; position: relative; z-index: 1;}
+.visual .inner .mainTit {display: flex; flex-direction: column;
+  justify-content: space-between; width: 100%; height: 100%;} 
+.visual .inner .mainTit .top {font-size: 160px; display: flex;    flex-direction: row; justify-content: space-between; align-items: center;
+align-self: stretch;}
+.visual .inner .mainTit .top .en9 {letter-spacing: -2px;}
+.visual .inner .mainTit .top .tit-sans {font-weight: 500; letter-spacing: -4px; font-size: 160px;}
+.visual .inner .mainTit .bottom {display: flex;  flex-direction: row; justify-content: space-between; align-items: flex-end;
+align-self: stretch;}
+.visual .inner .mainTit .bottom .center-wrap {position: relative;
+  display: inline-flex; align-items: center; justify-content: center;}
+.visual .inner .mainTit .bottom .center-wrap .circle-text { position: absolute; left: -40px; z-index: 1;
+width: 150px; height: 36px; border: 0.5px solid #252525; background: #f5f5f5; border-radius: 50%; display: flex;
+align-items: center; justify-content: center;
+font-size: 12px; pointer-events: none; will-change: transform;}
+/* .visual .inner .mainTit .bottom .center-wrap::before {content: "UX UI · WEB · GRAPHIC"; font-size: 12px; position: absolute; left: -50px; top: 50%; transform: translateY(-50%); text-align: center; display: flex; align-items: center; justify-content: center; width: 150px; height: 36px; border: 0.5px solid #252525; background:#f5f5f5; border-radius: 50%; z-index: 2; pointer-events: none; transition: transform 0.3s cubic-bezier(.22,.61,.36,1); cursor: pointer;}
+.visual .inner .mainTit .bottom .center-wrap:hover::before {transform:  rotate(6deg);} */
+
+.visual .inner .mainTit .bottom .caption {font-size: 14px; color: #4F4F4F;}
+.visual .inner .mainTit .bottom .center {font-size: 170px; position: relative;}
+/* .visual .mainTitle { text-align: right;}
 .visual .mainTitle .en1 {font-size: 274px; line-height: 234px; white-space: nowrap;}
 .visual .mainTitle .line1 { display: flex; justify-content: flex-end; align-items: center; gap: 4px;}
 .visual .mainTitle .line2 {display: flex; align-items: end; justify-content: flex-end; margin-left: 30px;}
 .visual .subText {display: flex; flex-direction: column; gap: 16px; text-align: left; position: absolute; bottom: 10%;}
 .visual .subText .copyright {font-size: 14px; color: #666; margin-bottom: 30px;}
 .visual .subText .desc {font-size: 22px; display: flex; gap: 50px;}
-.visual .subText .desc .intro {display: block; margin-left: 84px;}
+.visual .subText .desc .intro {display: block; margin-left: 84px;} */
 
 .narrative-container {position: relative; display: flex; width: 100%; height: 100vh; overflow: hidden; scroll-behavior: smooth;}
 .narrative .inner {position: relative; height: 100%; box-sizing: border-box;}
@@ -337,16 +361,17 @@ section .inner .des .kr {line-height: 24px;}
 /* content */
 .about .inner .contents {margin-top: 196px;} 
 .about .inner .contents .box {display: flex; justify-content: space-between; padding: 100px 0; box-sizing: border-box; border-top: 1px solid #252525;}
-.about .inner .contents .box .en8 {font-size: 48px; width: 50%;}
-.about .inner .contents .box .list {font-size: 20px; width: 50%;}
+.about .inner .contents .box .en8 {font-size: 32px; width: 50%;}
+.about .inner .contents .box .list {font-size: 18px; width: 50%;}
 .about .inner .contents .box .list li {padding: 10px 0; border-bottom: 1px solid #252525; box-sizing: border-box;}
 .about .inner .contents .box .list li .period {float: right;}
 .about .inner .contents .box .list li:first-child {padding-top: 0;}
 .about .inner .contents .box .list li:last-child {border-bottom: none;}
-.about .inner .contents .box .grid {font-size: 20px; width: 50%;}
-.about .inner .contents .box .grid .conBox {display: flex;}
+.about .inner .contents .box .grid {font-size: 18px; width: 50%;}
+.about .inner .contents .box .grid .conBox {display: flex; padding-top: 70px;}
+.about .inner .contents .box .grid .iDo {line-height: 32px;}
 .about .inner .contents .box .grid .conBox div:nth-child(2) {margin-left: 200px;}
-.about .inner .contents .box .grid .title {font-weight: 500; display: flex; margin-bottom: 20px;}
+.about .inner .contents .box .grid .title {font-weight: 500; display: flex; margin-bottom: 16px;}
 .about .inner .contents .box .grid .title svg {margin-right: 10px;}
 .about .inner .contents .box .grid ul {margin-bottom: 70px;}
 .about .inner .contents .box .grid ul:nth-child(3) {margin-bottom: 0;}
@@ -361,8 +386,8 @@ section .inner .des .kr {line-height: 24px;}
 .about .inner .contents .box .accordion-list .accordion-item:last-child {border-bottom: 0;}
 .about .inner .contents .box .accordion-list .accordion-item .accordion-tit {display: flex; justify-content: space-between; align-items: center;}
 
-.about .inner .contents .box .accordion-list .accordion-item .accordion-tit span {font-size: 20px; line-height: 32px; font-weight: 500;}
-.about .inner .contents .box .accordion-list .accordion-content .accordion-answer {font-size: 18px; padding: 10px 0; line-height: 32px;}
+.about .inner .contents .box .accordion-list .accordion-item .accordion-tit span {font-size: 18px; line-height: 32px; font-weight: 500;}
+.about .inner .contents .box .accordion-list .accordion-content .accordion-answer {font-size: 16px; padding: 10px 0; line-height: 32px;}
 /* 아코디언 콘텐츠 초기 상태 */
 .about .inner .contents .box .accordion-list .accordion-item .accordion-content {max-height: 0; overflow: hidden; transition: max-height 0.3s ease;}
 .about .inner .contents .box .accordion-list .accordion-item.active .accordion-content {max-height: none; }
