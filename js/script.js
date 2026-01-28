@@ -167,7 +167,8 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#f5f5f5"}],
       [".gallery-card .card-info p", { color: "#dbdbdb"}],
       [".footer", { color: "#252525", backgroundColor: "#dbdbdb"}],
-      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", "#projectModal .modal-content .content .project-overview .inner .project-text", {color: "#666666"}],,
+      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", "#projectModal .modal-content .content .project-overview .inner .project-text", {color: "#666666"}],
+      [".visual .inner .mainTit .bottom .caption", {color: "#4F4F4F"}],
 
     ]
   },
@@ -224,6 +225,7 @@ const themeAnimationConfig = {
       [".gallery-card .card-info p", { color: "#666666"}],
       [".footer", { color: "#dbdbdb", backgroundColor: "#000000"}],
       ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text","#projectModal .modal-content .content .project-overview .inner .project-text", "#projectModal .modal-content .content .project-block .project-list li", "#projectModal .modal-content .content .project-overview .project-block .project-quote", {color: "#999999"}],
+      [".visual .inner .mainTit .bottom .caption", {color: "#AFAFAF"}],
     ]
   }
 };
@@ -372,6 +374,8 @@ function initVisualIntro() {
 }
 initVisualIntro();
 });
+
+
 
 
 // 가로 스크롤 애니메이션 & hover
