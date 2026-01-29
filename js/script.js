@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (activeLink) activeLink.style.color = isDark ? "#252525" : "#ffffff";
   }
 
+
+  
 const themeAnimationConfig = {
   dark: {
     buttonText: 'DARK',
@@ -137,6 +139,7 @@ const themeAnimationConfig = {
       [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#dbdbdb", stroke: "none" }],
       [".about .inner .profile .left .resume:hover svg path", { fill: "#dbdbdb", stroke: "none" }],
       ["#photoModal .modal-nav-btn svg path", {stroke: "#dbdbdb" }],
+      [".visual .bg-blur .blur-shape path", {fill: "#B7D3C6" , stroke: "none" }],
       
 
       
@@ -193,9 +196,8 @@ const themeAnimationConfig = {
       [".works .title svg path, .footer .inner .footer-bottom .footer-spin path", { fill: "#B7D3C6", stroke: "#B7D3C6" }],
       [".about .inner .contents .box .grid .title .skill-icon svg path", { fill: "none", stroke: "#252525" }],
       [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#252525", stroke: "none" }],
-
-      
       ["#photoModal .modal-nav-btn svg path", {stroke: "#252525" }],
+      [".visual .bg-blur .blur-shape path", {fill: "#B7D3C6" , stroke: "none" }],
       
 
       // Borders
@@ -226,6 +228,7 @@ const themeAnimationConfig = {
       [".footer", { color: "#dbdbdb", backgroundColor: "#000000"}],
       ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text","#projectModal .modal-content .content .project-overview .inner .project-text", "#projectModal .modal-content .content .project-block .project-list li", "#projectModal .modal-content .content .project-overview .project-block .project-quote", {color: "#999999"}],
       [".visual .inner .mainTit .bottom .caption", {color: "#AFAFAF"}],
+      
     ]
   }
 };
