@@ -16,6 +16,64 @@ export const portfolioData =
     aboutDate: "2025.09~<br>2026.01",
     aboutRole: "Freelance Project<br>Role: Planning, UI Design, Interaction Direction<br>Contribution: 100%",
     aboutCategory: "UX UI Design",
+    bannerImage: "./images/panapixel_banner.png",
+    overview: [
+        "PANAPIXEL 웹사이트 리뉴얼은 <span>프리랜서 외주 형태로 진행된 프로젝트</span>로,<br>자동차 필름 브랜드를 <span>패션·아트 기반의 감각적인 브랜드</span>로 재정의하는 것이 핵심 목표였습니다.",
+        "<br>고객사는 기능적 설명보다 <span>패셔너블하고 아트적인 무드</span>를 웹 경험 전반에 녹여내길 원했고,<br>이를 위해 브랜드 톤과 비주얼 방향성에 대한 높은 완성도가 요구된 프로젝트였습니다."
+    ],
+    overviewRoles: [
+        "Web Renewal Project UX/UI Design (1인 디자이너)",
+        "· 외주 프로젝트로 진행되었으며,<br>PM·개발자와 협업 툴을 활용해 디자인 리뷰 및 피드백을 주고받았습니다."
+    ],
+    overviewImpact: [
+    "· 웹 리뉴얼 전반의 UX 구조 및 사용자 흐름 정의",
+    "· 메인 페이지 및 주요 콘텐츠 섹션 UI 설계",
+    "· 브랜드 무드를 반영한 인터랙션 방향성 설정"
+    ],
+    overviewQuote: [
+    "· 브랜드 컨셉에 맞는 비주얼 시스템과 UI 스타일 구체화",
+    "· AI 기반 이미지·영상 제작을 활용한 웹 콘텐츠 비주얼 구현",
+    "· 퍼블리싱을 고려해 인터랙션 흐름을 실제 구현 단위로 정리",],
+    webLink: "https://www.panapixel.com/",
+    overviewImage: "./images/panapixel_mockup1.png",
+
+    solutionCollabo: [
+        "· 고객사 니즈를 기획서로 정리해 시안 제안",
+        "· 인터랙션 아이디어 직접 제안, CSS/JS 구현", 
+        "· 컨펌 과정에서 즉각적인 수정과 방향 조율", 
+        ],
+    solutionTest: [
+        "· 배포 이후 실제 사용 흐름을 기준으로 지속적인 수정",
+        "· 브랜드 무드를 해치지 않는 선에서 사용성 개선"],
+    solutionAchieve: [
+        "· AI 기반 콘텐츠 제작 경험을 통해, 디자인 과정에서 AI 활용 역량의 중요성을 체감",
+        "· 개발 리소스를 고려한 UI·인터랙션 설계와 소통의 중요성을 배움"],
+    solutionImage: "./images/panapixel_mockup2.png",
+
+    solutionAddImg: true,
+    solutionAddImg1: "./images/panasolution_01.png",
+    solutionAddImg2: "./images/panasolution_02.png",
+    solutionAddImg3: "./images/panasolution_03.png",
+
+    categoryTit: "UX UI Design",
+    box1Imgs: [
+        "./images/panabox1Imgs_01.png",
+        "./images/panabox1Imgs_02.png",
+        "./images/panabox1Imgs_03.png",
+        "./images/panabox1Imgs_04.png",
+        "./images/panabox1Imgs_05.png"
+    ],
+    box2Imgs: [
+        "./images/panabox2Imgs_01.png",
+        "./images/panabox2Imgs_02.png",
+        "./images/panabox2Imgs_03.png",
+        "./images/panabox2Imgs_04.png",
+        "./images/panabox2Imgs_05.png"
+    ],
+    bannerImgt: "./images/panapixel_mockup3.png",
+    phone1Img: "./images/panaphoneImg_01.png",
+    phone2Img: "./images/panaphoneImg_02.png",
+    phone3Img: "./images/panaphoneImg_03.png"
     },
     {
     id: "2",
@@ -149,7 +207,7 @@ export const portfolioData =
     viewLabel: "WORKES - LOOPIN",
     about: "루핀(Loopin)은 팬이 능동적으로 참여하고 감정을 표현할 수 있는 팬 중심 커뮤니티 앱입니다.<br>아티스트별 테마 UI와 Midjourney 시각 요소로 몰입감을 강화했습니다.",
     aboutDate: "2025.07.01~<br>07.31",
-    aboutRole: "Team Project · 6 Members<br>Role: App UX/UI Design Leader<br>Contribution: 50%",
+    aboutRole: "Team Project · 6 Members<br>Role: App UX/UI Design Leader<br>Contribution: 40%",
     aboutCategory: "UX UI Design",
     bannerImage: "./images/Loopin_banner.png",
     overview: [

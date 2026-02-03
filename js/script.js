@@ -134,12 +134,14 @@ const themeAnimationConfig = {
       // SVG
       ["svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
       ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { fill: "#dbdbdb", stroke: "#dbdbdb" }],
-      [".works .title svg path, .footer .inner .footer-bottom .footer-spin path", { fill: "#B7D3C6", stroke: "#B7D3C6" }],
+      [".footer .inner .footer-bottom .footer-spin path", { fill: "#B7D3C6", stroke: "none" }],
       [".about .inner .contents .box .grid .title .skill-icon svg path", { fill: "none", stroke: "#dbdbdb" }],
       [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#dbdbdb", stroke: "none" }],
       [".about .inner .profile .left .resume:hover svg path", { fill: "#dbdbdb", stroke: "none" }],
       ["#photoModal .modal-nav-btn svg path", {stroke: "#dbdbdb" }],
       [".visual .bg-blur .blur-shape path", {fill: "#B7D3C6" , stroke: "none" }],
+      [".marquee-content svg path", {fill: "#dbdbdb" , stroke: "none" }],
+      
       
 
       
@@ -155,6 +157,7 @@ const themeAnimationConfig = {
       [".footer .inner .footer-meta", { borderColor: "#252525"}],
       ["#projectModal .modal-content .content .project-overview .project-cta .btn.btn-ghost .btn-rotate", { borderColor: "#dbdbdb"}],
       ["#fortuneModal .modal-content .content .select-btn", { borderColor: "#dbdbdb"}],
+      [".visual .inner .mainTit .bottom .center-wrap .circle-text", { borderColor: "#dbdbdb", backgroundColor: "#000000"}],
 
 
       // Highlights / Buttons
@@ -170,8 +173,7 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#f5f5f5"}],
       [".gallery-card .card-info p", { color: "#dbdbdb"}],
       [".footer", { color: "#252525", backgroundColor: "#dbdbdb"}],
-      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", "#projectModal .modal-content .content .project-overview .inner .project-text", {color: "#666666"}],
-      [".visual .inner .mainTit .bottom .caption", {color: "#4F4F4F"}],
+      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text", "#projectModal .modal-content .content .project-overview .inner .project-text", ".visual .inner .mainTit .bottom .caption", {color: "#666666"}],
 
     ]
   },
@@ -193,11 +195,12 @@ const themeAnimationConfig = {
       // SVG
       ["svg path", { fill: "#252525", stroke: "#252525" }],
       ["header .innerHeader .gnb-r ul li a svg path, .about .inner .profile .left a svg path", { fill: "#252525", stroke: "#252525" }],
-      [".works .title svg path, .footer .inner .footer-bottom .footer-spin path", { fill: "#B7D3C6", stroke: "#B7D3C6" }],
+      [".footer .inner .footer-bottom .footer-spin path", { fill: "#B7D3C6", stroke: "none" }],
       [".about .inner .contents .box .grid .title .skill-icon svg path", { fill: "none", stroke: "#252525" }],
       [".about .inner .contents .box .accordion-list .accordion-item .accordion-icon path, .works .inner .portfolio-grid .card .thumbnail .icon-circle svg path", { fill: "#252525", stroke: "none" }],
       ["#photoModal .modal-nav-btn svg path", {stroke: "#252525" }],
       [".visual .bg-blur .blur-shape path", {fill: "#B7D3C6" , stroke: "none" }],
+      [".marquee-content svg path", {fill: "#252525" , stroke: "none" }],
       
 
       // Borders
@@ -211,13 +214,15 @@ const themeAnimationConfig = {
       [".my-photo .inner .text-wrap a", { borderColor: "#252525", backgroundColor: "#f5f5f5" }],
       [".footer .inner .footer-meta", { borderColor: "#dbdbdb"}], 
       ["#projectModal .modal-content .content .project-overview .project-cta .btn.btn-ghost .btn-rotate", { borderColor: "#252525"}],
-      ["#fortuneModal .modal-content .content .select-btn", { borderColor: "#252525"}],
+      [".visual .inner .mainTit .bottom .center-wrap .circle-text", { borderColor: "#252525", backgroundColor: "#f5f5f5"}],
 
       // Highlights / Buttons
       ["header .innerHeader .gnb-c .highlight", { backgroundColor: "#d4d4d4" }],
       ["header .innerHeader .gnb-r ul li a span", { backgroundColor: "#000000" }],
       ["header .innerHeader .gnb-r ul li a .icon-wrap path, .about .inner .profile .left a svg path", { fill: "#252525", stroke: "none" }],
       [".works .inner .portfolio-grid .card .thumbnail .icon-circle", {backgroundColor: "#ffffff"}],
+      [".visual .inner .mainTit .bottom .center-wrap .circle-text", {backgroundColor: "#f5f5f5"}],
+
       
 
       // Text
@@ -226,8 +231,7 @@ const themeAnimationConfig = {
       [".gallery-card .card-info", { color: "#333333"}],
       [".gallery-card .card-info p", { color: "#666666"}],
       [".footer", { color: "#dbdbdb", backgroundColor: "#000000"}],
-      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text","#projectModal .modal-content .content .project-overview .inner .project-text", "#projectModal .modal-content .content .project-block .project-list li", "#projectModal .modal-content .content .project-overview .project-block .project-quote", {color: "#999999"}],
-      [".visual .inner .mainTit .bottom .caption", {color: "#AFAFAF"}],
+      ["#projectModal .modal-content .content .project-visual .inner .bottom .project-text","#projectModal .modal-content .content .project-overview .inner .project-text", "#projectModal .modal-content .content .project-block .project-list li", "#projectModal .modal-content .content .project-overview .project-block .project-quote", ".visual .inner .mainTit .bottom .caption", {color: "#999999"}],
       
     ]
   }
@@ -320,7 +324,7 @@ function initVisualIntro() {
   if (!visual) return;
 
   const tl = gsap.timeline({
-    defaults: { ease: "power3.out" }
+    defaults: { ease: "power3.out" }  
   });
 
   // 
@@ -332,6 +336,8 @@ function initVisualIntro() {
   });
 
   // 텍스트 인트로
+
+
   tl
     .from(".visual .top .en9", {
       y: 40,
@@ -379,9 +385,7 @@ initVisualIntro();
 });
 
 
-
-
-// 가로 스크롤 애니메이션 & hover
+// Marquee 애니메이션 & hover
 document.addEventListener("DOMContentLoaded", () => {
 
   const marquee = document.querySelector(".marquee");
@@ -425,6 +429,18 @@ window.addEventListener("DOMContentLoaded", () => {
       once: true
     }
   });
+
+    // 로고 회전
+  [ { selector: ".bg-blur", trigger: ".visual", start: "top top", end: "bottom top" },
+    { selector: ".footer-spin", trigger: "body", start: "top bottom", end: "bottom top" }
+  ].forEach(cfg => {
+    gsap.to(cfg.selector, {
+      rotation: 360,
+      ease: "none",
+      scrollTrigger: { trigger: cfg.trigger, start: cfg.start, end: cfg.end, scrub: 0.6 }
+    });
+  });
+
 
   const accordionItems = document.querySelectorAll(".accordion-item");
   accordionItems.forEach(item => {
@@ -492,11 +508,17 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "power2.inOut",
       delay: 0.45
     });
+
+
+
+
   }, true);
 
   const svg = icon.querySelector("svg");
 gsap.fromTo(svg, { rotate: -45 }, { rotate: 0, duration: 0.5, ease: "expo.out" });
 });
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {

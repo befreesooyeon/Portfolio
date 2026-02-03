@@ -23,21 +23,34 @@ return `<img class="media-asset ${className}" src="${slot(
 // 비주얼 소스 선택 (visualImg > image)
 const visualSrc = project.visualImg || project.image;
 
-// id별 OVERVIEW 타이틀 커스텀 매핑
+// id별 OVERVIEW + SOLUTION 타이틀 커스텀 매핑
 const customTitles = {
-1: { role: '➀ Scope', impact: '➁ What I Did', quote: '➂ Quote' }
-// 필요 시 다른 id도 추가 가능
+    1: { 
+    // Overview 제목
+    role: '① Role & Project Type', 
+    impact: '② Scope', 
+    quote: '③ What I Did',
+    // Solution 제목 추가
+    solutionCollabo: '➀ Collaboration & Publishing',
+    solutionTest: '➁ Interactive Design',  // 변경된 제목
+    solutionAchieve: '➂ Key Learnings'     // 변경된 제목
+    },
+    // 필요 시 다른 id도 추가 가능
 };
 
-// 프로젝트 id에 맞는 타이틀 가져오기 (없으면 기본값 사용)
+    // 프로젝트 id에 맞는 타이틀 가져오기 (없으면 기본값 사용)
 const titles = customTitles[project.id] || {
 role: '➀ Role',
 impact: '➁ Impact',
-quote: '➂ Quote'
+quote: '➂ Quote',
+// Solution 기본값 추가
+solutionCollabo: '➀ Collaboration & Publishing',
+solutionTest: '➁ Usability Test',
+solutionAchieve: '➂ Achievements'
 };
 
 // SOLUTION 섹션에서 info를 숨길 id 모음
-const hideSolutionInfoIds = ["1"];
+const hideSolutionInfoIds = ["2"];
 
 return `
 <div class="project-detail-root">
@@ -141,13 +154,22 @@ ${
             ? `
         <div class="project-block">
             <h4 class="project-sub-title">${titles.quote}</h4>
-            <p class="project-quote">${project.overviewQuote}</p>
+            <ul class="project-list">${list(project.overviewQuote)}</ul>
         </div>`
             : ''
         }
         </div>
 
         <div class="project-cta">
+        ${
+            project.webLink
+            ? `
+        <a class="btn btn-ghost" href="${project.webLink}" target="_blank" rel="noopener">
+            <span class="btn-rotate"></span><span class="btn-text">WEB →</span>
+        </a>`
+            : ''
+        }
+
         ${
             project.figmaLink
             ? `
@@ -208,7 +230,7 @@ ${
             project.solutionCollabo?.length
             ? `
         <div class="project-block">
-            <h4 class="project-sub-title">➀ Collaboration & Publishing</h4>
+            <h4 class="project-sub-title">${titles.solutionCollabo}</h4>
             <ul class="project-list">${list(project.solutionCollabo)}</ul>
         </div>`
             : ''
@@ -218,7 +240,7 @@ ${
             project.solutionTest?.length
             ? `
         <div class="project-block">
-            <h4 class="project-sub-title">➁ Usability Test</h4>
+            <h4 class="project-sub-title">${titles.solutionTest}</h4>
             <ul class="project-list">${list(project.solutionTest)}</ul>
         </div>`
             : ''
@@ -228,7 +250,7 @@ ${
             project.solutionAchieve?.length
             ? `
         <div class="project-block">
-            <h4 class="project-sub-title">➂ Achievements</h4>
+            <h4 class="project-sub-title">${titles.solutionAchieve}</h4>
             <ul class="project-list">${list(project.solutionAchieve)}</ul>
         </div>`
             : ''
