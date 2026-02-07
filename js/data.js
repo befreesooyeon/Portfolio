@@ -35,7 +35,7 @@ export const portfolioData =
     "· AI 기반 이미지·영상 제작을 활용한 웹 콘텐츠 비주얼 구현",
     "· 퍼블리싱을 고려해 인터랙션 흐름을 실제 구현 단위로 정리",],
     webLink: "https://www.panapixel.com/",
-    overviewImage: "./images/panapixel_mockup1.png",
+    overviewImage: "./images/panapixel_mockup1.mp4",
 
     solutionCollabo: [
         "· 고객사 니즈를 기획서로 정리해 시안 제안",
