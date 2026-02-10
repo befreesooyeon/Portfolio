@@ -408,7 +408,54 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.to(marquee, { backgroundColor: "transparent", duration: 0.3 });
   });
 
+  // about Draggable⭐️
+gsap.registerPlugin(Draggable);
+
+const items = document.querySelectorAll('.dragImgs img');
+const bounds = document.querySelector('.profile'); // 🔥 여기!
+
+items.forEach(item => {
+  Draggable.create(item, {
+    type: "x,y",
+    bounds: bounds,      // profile 전체에서 드래그
+    inertia: true,
+    edgeResistance: 0.85,
+    zIndexBoost: true,   // 드래그 시 위로
+    onPress() {
+      gsap.to(this.target, { scale: 1.08, duration: 0.15 });
+    },
+    onRelease() {
+      gsap.to(this.target, { scale: 1, duration: 0.15 });
+    }
+  });
 });
+
+
+
+  function checkHover(target) {
+    const itemRect = target.getBoundingClientRect();
+    const charRect = character.getBoundingClientRect();
+
+    const isOver =
+      itemRect.right > charRect.left &&
+      itemRect.left < charRect.right &&
+      itemRect.bottom > charRect.top &&
+      itemRect.top < charRect.bottom;
+
+    if (isOver) {
+      gsap.to(character, {
+        duration: 0.15
+      });
+    } else {
+      gsap.to(character, {
+        boxShadow: "none",
+        duration: 0.15
+      });
+    }
+  }
+
+});
+
 
 
 

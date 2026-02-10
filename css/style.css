@@ -208,21 +208,40 @@ section .inner .des .kr {line-height: 24px;} */
 
 /* Section-about */
 .about {margin-top: 130px; width: 100%;}
-.about .inner .profile {display: flex; justify-content: space-between;}
-.about .inner .profile .left {width: 60%; height: 100%; display: flex; flex-direction: column;}
+.about .inner .profile {display: flex; justify-content: space-between; position: relative;}
+.about .inner .profile .left {width: 100%; height: 100%; display: flex; flex-direction: column;}
 .about .inner .profile .left .name {font-size: 140px; line-height: 0.8; letter-spacing: -4px; font-weight: 500; margin-bottom: 30px;}
 .about .inner .profile .left .en6 {font-size: 100px; white-space: nowrap; margin-bottom: 30px;}
-.about .inner .profile .left .info {font-size: 24px; font-weight: 500; line-height: 1; margin-bottom: 40px;}
-.about .inner .profile .left .info .info_email {padding:10px; font-size:18px;line-height:1; display: block; margin-top: 15px;}
+.about .inner .profile .left .info_email {padding:8px 12px; font-size:18px; 
+display: block;  margin-bottom: 40px;}
+.about .inner .profile .left .info_email span {display: flex; justify-content: center; align-items: center; gap: 6px;}
 .about .inner .profile .left  .introduction {line-height: 26px;}
 .about .inner .profile .left  .introduction .en7 {font-size: 40px; line-height: 50px; margin-bottom: 30px; display: block;}
 .about .inner .profile .left  .introduction .first-group {margin-bottom: 10px; display: block; font-size: 20px; line-height: 150%; font-weight: 500;}
 .about .inner .profile .left  .introduction .second-group {margin-bottom: 20px; display: block;}
-.about .inner .profile .left .resume {padding:8px 16px;font-size:18px;line-height:36px;}
-.about .inner .profile .left .resume:hover svg path {color: #dbdbdb;}
 
-.about .inner .profile .right {width: 40%; height: 100%;}
-.about .inner .profile .right img {filter: grayscale(100%); border-radius: 16px; width: 100%; height: 100%; object-fit: cover;}
+.about .inner .profile .right {position: relative; width: 60%;}
+.about .inner .profile .right .guide {position: absolute; top: 25%;
+left: 40%; transform: translateX(-50%); text-align: center; font-size: 14px;
+}
+.about .inner .profile .right .stage {position: relative; width: 100%; height: 100%;}
+.about .inner .profile .right .character {position: absolute; top: 70%; left: 10%;
+transform: translateY(-50%); z-index: 1;}
+.about .inner .profile .right .character img {max-width: 360px; width: 100%; pointer-events: none; user-select: none;}
+
+.about .inner .profile .right .dragImgs {position: absolute; z-index: 2; inset: 0;}
+.about .inner .profile .right .dragImgs img {position: absolute; cursor: grab; user-select: none;}
+.about .inner .profile .right .dragImgs img:active {cursor: grabbing;}
+
+.dragImgs img:nth-child(1) { top: 18%; left: 0%; }
+.dragImgs img:nth-child(2) { top: 40%; left: -16%; }
+.dragImgs img:nth-child(3) { top: 60%; left: -10%; }
+.dragImgs img:nth-child(4) { top: 40%; right: 30%; }
+.dragImgs img:nth-child(5) { bottom: 33%; right: 8%; }
+.dragImgs img:nth-child(6) { bottom: 5%; right: -10%; }
+
+
+
 
 /* content */
 .about .inner .contents {margin-top: 130px;} 
