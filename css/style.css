@@ -221,7 +221,7 @@ display: block;  margin-bottom: 40px;}
 .about .inner .profile .left  .introduction .second-group {margin-bottom: 20px; display: block;}
 
 .about .inner .profile .right {position: relative; width: 60%;}
-.about .inner .profile .right .guide {position: absolute; top: 25%;
+.about .inner .profile .right .guide {position: absolute; top: 16%;
 left: 40%; transform: translateX(-50%); text-align: center; font-size: 14px;
 }
 .about .inner .profile .right .stage {position: relative; width: 100%; height: 100%;}
@@ -253,13 +253,13 @@ transform: translateY(-50%); z-index: 1;}
 .about .inner .contents .box .list li:first-child {padding-top: 0;}
 .about .inner .contents .box .list li:last-child {border-bottom: none;}
 .about .inner .contents .box .grid {font-size: 18px; width: 50%;}
-.about .inner .contents .box .grid .conBox {display: flex; padding-top: 70px;}
+.about .inner .contents .box .grid .conBox {display: flex; padding-top: 70px; padding-bottom: 70px; box-sizing: border-box;}
 .about .inner .contents .box .grid .iDo {line-height: 32px;}
 .about .inner .contents .box .grid .conBox div:nth-child(2) {margin-left: 200px;}
 .about .inner .contents .box .grid .title {font-weight: 500; display: flex; margin-bottom: 16px;}
 .about .inner .contents .box .grid .title svg {margin-right: 10px;}
 .about .inner .contents .box .grid ul {margin-bottom: 70px;}
-.about .inner .contents .box .grid ul:nth-child(3) {margin-bottom: 0;}
+.about .inner .contents .box .grid ul:last-child {margin-bottom: 0;}
 
 .about .inner .contents .box .grid ul li {margin-bottom: 5px; line-height: 32px; white-space: nowrap;}
 .about .inner .contents .box .grid ul li:last-child {margin-bottom: 0;}
